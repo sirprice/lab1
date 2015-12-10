@@ -42,7 +42,7 @@ public class ShowAlbumController implements Initializable {
     public void setParent(Parent parent){
         this.show = parent;
         showStage = new Stage();
-        showStage.setScene(new Scene(show, 600, 500));
+        showStage.setScene(new Scene(show, 460, 260));
         showStage.initModality(Modality.APPLICATION_MODAL);
         //editStage.initOwner(primaryStage);
     }

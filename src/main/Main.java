@@ -14,11 +14,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-
-
         InitFxml initFxml = new InitFxml();
         initFxml.initializLoadersAndControllers(primaryStage);
-
 
     }
 

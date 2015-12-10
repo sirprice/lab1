@@ -21,6 +21,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Album;
 import main.Main;
+import models.Model;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,10 +33,11 @@ public class MainController implements Initializable {
     private DeleteController deleteController;
     private EditAlbumController editAlbumController;
     private ShowAlbumController showAlbumController;
+    private Model model;
 
     private Parent album, main, edit;
     private Stage primaryStage, editStage;
-    private ObservableList <Album> albums = FXCollections.observableArrayList();
+    private ObservableList <Album> albums;
     @FXML private Button mainToAlbum, showAlbums, albumDelete;
     @FXML private Button albumToMain;
     @FXML private TableView <Album> albumTable;
@@ -47,6 +49,10 @@ public class MainController implements Initializable {
 
     public void setPrimaryStage(Stage primarystage){
         this.primaryStage = primarystage;
+    }
+
+    public void setModel(Model model){
+        this.model = model;
     }
 
     public void setControllers(AddAlbumController addAlbumController, EditAlbumController editAlbumController, DeleteController deleteController, ShowAlbumController showAlbumController ) {
@@ -82,11 +88,14 @@ public class MainController implements Initializable {
             showAlbumController.showAlbum(selected);
         }
     }
+    public void addAlbum(){
+        addAlbumController.addAlbum();
+    }
 
     public void editAlbum(ActionEvent e) {
         Album selected = albumTable.getSelectionModel().getSelectedItem();
         if (!(selected == null)) {
-            editAlbumController.editAlbum(selected, e);
+            editAlbumController.editAlbum(selected);
         }
     }
 
@@ -97,12 +106,7 @@ public class MainController implements Initializable {
         }
     }
     public ObservableList<Album> getAlbums(){
-
-        albums.add(new Album("Master Of Puppets", "Metallica", AlbumGenre.METAL, 2));
-        albums.add(new Album("Master Of Puppets", "Metallica", AlbumGenre.CLASSIC, 1));
-        albums.add(new Album("Master Of Puppets", "Metallica", AlbumGenre.DANCE, 3));
-        albums.add(new Album("Master Of Puppets", "Metallica", AlbumGenre.HIPHOP, 4));
-
+        albums = model.getAlbums();
         return albums;
     }
 }
