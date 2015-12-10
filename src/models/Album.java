@@ -63,6 +63,7 @@ public class Album {
         this.genre = genre;
         this.rating = rating;
         this.artist = artist;
+        // something
     }
 
 
