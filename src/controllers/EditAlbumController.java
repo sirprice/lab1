@@ -11,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Album;
@@ -29,6 +31,7 @@ public class EditAlbumController implements Initializable{
     private Album selectedAlbum;
     @FXML private TextField editTitle, editArtist;
     @FXML private ChoiceBox editGenre, editRating;
+    @FXML private ImageView albumCover;
 
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<AlbumGenre> editGenreList = FXCollections.observableArrayList();
@@ -61,6 +64,8 @@ public class EditAlbumController implements Initializable{
         editArtist.setText(album.getArtist());
         editGenre.setValue(album.getGenre());
         editRating.setValue(album.getRating());
+        Image img = new Image("/Images/Metallica.jpg");
+        albumCover.setImage(img);
 
 
         editStage.show();
