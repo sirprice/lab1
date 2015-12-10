@@ -20,7 +20,7 @@ public class Main extends Application {
 
         Parent editAlbum = null;
         FXMLLoader editAlbumLoader = new FXMLLoader();
-        editAlbum = editAlbumLoader.load(getClass().getResource("/fxml/editAlbum.fxml").openStream());
+        editAlbum = editAlbumLoader.load(getClass().getResource("/fxml/editRecord.fxml").openStream());
         EditAlbumController eACtrl = editAlbumLoader.getController();
         eACtrl.setParent(editAlbum);
         if (eACtrl == null) System.out.println("edit album controllern är null");
