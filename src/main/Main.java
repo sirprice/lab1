@@ -1,9 +1,6 @@
 package main;
 
-import controllers.AddAlbumController;
-import controllers.DeleteController;
-import controllers.EditAlbumController;
-import controllers.MainController;
+import controllers.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,6 +22,13 @@ public class Main extends Application {
         eACtrl.setParent(editAlbum);
         if (eACtrl == null) System.out.println("edit album controllern är null");
 
+        Parent showAlbum = null;
+        FXMLLoader showAlbumLoader = new FXMLLoader();
+        showAlbum = showAlbumLoader.load(getClass().getResource("/fxml/showAlbum.fxml").openStream());
+        ShowAlbumController sACtrl = showAlbumLoader.getController();
+        sACtrl.setParent(showAlbum);
+        if (sACtrl == null) System.out.println("edit album controllern är null");
+
         Parent addAlbum = null;
         FXMLLoader addAlbumLoader = new FXMLLoader();
         addAlbum = addAlbumLoader.load(getClass().getResource("/fxml/addAlbum.fxml").openStream());
@@ -39,7 +43,7 @@ public class Main extends Application {
         MainController mCtrl = loader.getController();
         if (mCtrl == null) System.out.println("main controllern är null");
         mCtrl.setPrimaryStage(primaryStage);
-        mCtrl.setControllers(aACtrl, eACtrl, dCtrl);
+        mCtrl.setControllers(aACtrl, eACtrl, dCtrl, sACtrl);
 
         primaryStage.setTitle("Media Center");
         primaryStage.setScene(new Scene(root, 1280, 720));

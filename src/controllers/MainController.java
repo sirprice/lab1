@@ -31,6 +31,7 @@ public class MainController implements Initializable {
     private AddAlbumController addAlbumController;
     private DeleteController deleteController;
     private EditAlbumController editAlbumController;
+    private ShowAlbumController showAlbumController;
 
     private Parent album, main, edit;
     private Stage primaryStage, editStage;
@@ -48,10 +49,12 @@ public class MainController implements Initializable {
         this.primaryStage = primarystage;
     }
 
-    public void setControllers(AddAlbumController addAlbumController, EditAlbumController editAlbumController, DeleteController deleteController) {
+    public void setControllers(AddAlbumController addAlbumController, EditAlbumController editAlbumController, DeleteController deleteController, ShowAlbumController showAlbumController ) {
         this.addAlbumController = addAlbumController;
         this.editAlbumController = editAlbumController;
         editAlbumController.setPrimaryStage(primaryStage);
+        this.showAlbumController = showAlbumController;
+        showAlbumController.setPrimaryStage(primaryStage);
         this.deleteController = deleteController;
     }
     public void toMenu(){
@@ -73,23 +76,17 @@ public class MainController implements Initializable {
             albumTable.setItems(getAlbums());
     }
 
-    public void editAlbum(Event e) {
-        MouseEvent me;
-        ActionEvent ae;
+    public void showSelectedAlbum(MouseEvent me){
         Album selected = albumTable.getSelectionModel().getSelectedItem();
-        if (e.getEventType().equals(MouseEvent.MOUSE_CLICKED)) {
-            me = (MouseEvent) e;
-            if (me.getClickCount() == 2 && !(selected == null)) {
-                editAlbumController.editAlbum(selected, e);
-
-            }
+        if (me.getClickCount() == 2 && !(selected == null)) {
+            showAlbumController.showAlbum(selected);
         }
+    }
 
-        if (e.getEventType().equals(ActionEvent.ACTION)) {
-            if (!(selected == null)) {
-                editAlbumController.editAlbum(selected, e);
-
-            }
+    public void editAlbum(ActionEvent e) {
+        Album selected = albumTable.getSelectionModel().getSelectedItem();
+        if (!(selected == null)) {
+            editAlbumController.editAlbum(selected, e);
         }
     }
 

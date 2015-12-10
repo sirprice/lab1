@@ -26,6 +26,7 @@ public class EditAlbumController implements Initializable{
     private Stage editStage, primaryStage;
     private Parent edit;
     private AlbumGenre genre;
+    private Album selectedAlbum;
     @FXML private TextField editTitle, editArtist;
     @FXML private ChoiceBox editGenre, editRating;
 
@@ -54,6 +55,7 @@ public class EditAlbumController implements Initializable{
     }
 
     public void editAlbum(Album album, Event e){
+        selectedAlbum = album;
 
         editTitle.setText(album.getTitle());
         editArtist.setText(album.getArtist());
@@ -64,4 +66,9 @@ public class EditAlbumController implements Initializable{
         editStage.show();
 
     }
+
+    private void saveAlbum(){
+
+    }
+
 }
