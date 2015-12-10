@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -32,6 +33,7 @@ public class EditAlbumController implements Initializable{
     @FXML private TextField editTitle, editArtist;
     @FXML private ChoiceBox editGenre, editRating;
     @FXML private ImageView albumCover;
+    @FXML private Button editSubmitt;
 
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<AlbumGenre> editGenreList = FXCollections.observableArrayList();
@@ -46,7 +48,6 @@ public class EditAlbumController implements Initializable{
     }
     public void setPrimaryStage(Stage primaryStage){
         this.primaryStage = primaryStage;
-
     }
 
     public void setParent(Parent parent){
@@ -64,16 +65,19 @@ public class EditAlbumController implements Initializable{
         editArtist.setText(album.getArtist());
         editGenre.setValue(album.getGenre());
         editRating.setValue(album.getRating());
-        Image img = new Image("/Images/Metallica.jpg");
-        albumCover.setImage(img);
+        //Image img = new Image("/Images/Metallica.jpg");
+        //albumCover.setImage(img);
 
 
         editStage.show();
 
     }
 
-    private void saveAlbum(){
+    public void saveAlbum(){
+        selectedAlbum.setArtist(editArtist.getText());
+        selectedAlbum.setTitle(editTitle.getText());
+        selectedAlbum.setGenre((AlbumGenre) editGenre.getValue());
+        selectedAlbum.setRaiting((Integer) editRating.getValue());
 
     }
-
 }
