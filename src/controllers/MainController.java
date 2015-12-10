@@ -44,12 +44,16 @@ public class MainController implements Initializable {
 
     }
 
-    public void setControllers(AddAlbumController addAlbumController, EditAlbumController editAlbumController, DeleteController deleteController){
-        this.addAlbumController = addAlbumController;
-        this.editAlbumController = editAlbumController;
-        this.deleteController = deleteController;
+    public void setPrimaryStage(Stage primarystage){
+        this.primaryStage = primarystage;
     }
 
+    public void setControllers(AddAlbumController addAlbumController, EditAlbumController editAlbumController, DeleteController deleteController) {
+        this.addAlbumController = addAlbumController;
+        this.editAlbumController = editAlbumController;
+        editAlbumController.setPrimaryStage(primaryStage);
+        this.deleteController = deleteController;
+    }
     public void toMenu(){
         primaryStage = (Stage) albumToMain.getScene().getWindow();
         try {
@@ -77,12 +81,14 @@ public class MainController implements Initializable {
             me = (MouseEvent) e;
             if (me.getClickCount() == 2 && !(selected == null)) {
                 editAlbumController.editAlbum(selected, e);
+
             }
         }
 
         if (e.getEventType().equals(ActionEvent.ACTION)) {
             if (!(selected == null)) {
                 editAlbumController.editAlbum(selected, e);
+
             }
         }
     }

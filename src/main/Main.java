@@ -38,7 +38,7 @@ public class Main extends Application {
         root = loader.load(getClass().getResource("/fxml/main.fxml").openStream());
         MainController mCtrl = loader.getController();
         if (mCtrl == null) System.out.println("main controllern är null");
-
+        mCtrl.setPrimaryStage(primaryStage);
         mCtrl.setControllers(aACtrl, eACtrl, dCtrl);
 
         primaryStage.setTitle("Media Center");

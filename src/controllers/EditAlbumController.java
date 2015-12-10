@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
  */
 public class EditAlbumController implements Initializable{
 
-    private Stage editStage;
+    private Stage editStage, primaryStage;
     private Parent edit;
     private AlbumGenre genre;
     @FXML private TextField editTitle, editArtist;
@@ -40,8 +40,17 @@ public class EditAlbumController implements Initializable{
         editGenre.setItems(editGenreList);
 
     }
+    public void setPrimaryStage(Stage primaryStage){
+        this.primaryStage = primaryStage;
+
+    }
+
     public void setParent(Parent parent){
         this.edit = parent;
+        editStage = new Stage();
+        editStage.setScene(new Scene(edit, 600, 500));
+        editStage.initModality(Modality.APPLICATION_MODAL);
+        //editStage.initOwner(primaryStage);
     }
 
     public void editAlbum(Album album, Event e){
@@ -51,10 +60,7 @@ public class EditAlbumController implements Initializable{
         editGenre.setValue(album.getGenre());
         editRating.setValue(album.getRating());
 
-        editStage = new Stage();
-        editStage.setScene(new Scene(edit, 600, 500));
-        editStage.initModality(Modality.WINDOW_MODAL);
-        editStage.initOwner(((Node) e.getSource()).getScene().getWindow());
+
         editStage.show();
 
     }
