@@ -7,17 +7,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="460.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditAlbumController">
     <children>
-        <Label layoutX="190.0" layoutY="47.0" text="Title" textFill="WHITE" />
-        <Label layoutX="191.0" layoutY="80.0" text="Artist" textFill="WHITE" />
-        <Label layoutX="190.0" layoutY="113.0" prefHeight="17.0" prefWidth="43.0" text="Genre" textFill="WHITE" />
-        <Label layoutX="190.0" layoutY="146.0" text="Raiting" textFill="WHITE" />
+        <Label layoutX="190.0" layoutY="47.0" text="Title:" textFill="WHITE" />
+        <Label layoutX="191.0" layoutY="80.0" text="Artist:" textFill="WHITE" />
+        <Label layoutX="190.0" layoutY="113.0" prefHeight="17.0" prefWidth="43.0" text="Genre:" textFill="WHITE" />
+        <Label layoutX="190.0" layoutY="146.0" text="Raiting:" textFill="WHITE" />
         <TextField fx:id="editTitle" layoutX="276.0" layoutY="42.0" />
         <TextField fx:id="editArtist" layoutX="276.0" layoutY="75.0" />
-        <Button fx:id="editSubmitt" layoutX="380.0" layoutY="185.0" mnemonicParsing="false" onAction="#saveAlbum" text="Submitt" />
+        <Button fx:id="editSubmitt" layoutX="380.0" layoutY="226.0" mnemonicParsing="false" onAction="#saveAlbum" text="Submitt" />
         <Label layoutX="83.0" layoutY="14.0" text="EDIT" textFill="WHITE" />
-        <Button fx:id="abortSubmitt" layoutX="311.0" layoutY="185.0" mnemonicParsing="false" text="Abort" />
+        <Button fx:id="abortSubmitt" layoutX="319.0" layoutY="226.0" mnemonicParsing="false" text="Abort" />
         <ChoiceBox fx:id="editGenre" layoutX="276.0" layoutY="106.0" prefHeight="27.0" prefWidth="168.0" />
         <ChoiceBox fx:id="editRating" layoutX="276.0" layoutY="140.0" prefHeight="27.0" prefWidth="169.0" />
-      <ImageView fx:id="albumCover" fitHeight="161.0" fitWidth="167.0" layoutX="14.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="albumCover" fitHeight="150.0" fitWidth="167.0" layoutX="14.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="editUrl" layoutX="64.0" layoutY="193.0" prefHeight="27.0" prefWidth="382.0" />
+      <Label layoutX="21.0" layoutY="198.0" text="Url:" textFill="WHITE" />
     </children>
 </AnchorPane>

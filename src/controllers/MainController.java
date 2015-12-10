@@ -92,9 +92,9 @@ public class MainController implements Initializable {
 
     public void deleteAlbum(){
         int index = albumTable.getSelectionModel().getSelectedIndex();
-        System.out.println(index);
-        if (index>=0)
-            albums.remove(index);
+        if (index >= 0) {
+            deleteController.deleteAlbum(albums, index);
+        }
     }
     public ObservableList<Album> getAlbums(){
 

@@ -56,7 +56,7 @@ public class ShowAlbumController implements Initializable {
         raitingLabel.setText(raiting);
 
 
-        Image cover = new Image("http://assets.rollingstone.com/assets/images/gallery/20120917-master-500x-1347906914.jpg");
+        Image cover = new Image(album.getCoverUrl());
         albumCover.setImage(cover);
 
         showStage.show();

@@ -58,9 +58,9 @@
                     <PropertyValueFactory property="genre" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="raiting" minWidth="0.0" prefWidth="85.0" text="Raiting">
+            <TableColumn fx:id="raiting" minWidth="0.0" prefWidth="85.0" text="Rating">
                 <cellValueFactory>
-                    <PropertyValueFactory property="raiting" />
+                    <PropertyValueFactory property="rating" />
                 </cellValueFactory>
             </TableColumn>
 
@@ -83,9 +83,9 @@
                   <PropertyValueFactory property="genre" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn minWidth="0.0" prefWidth="85.0" text="Raiting">
+            <TableColumn minWidth="0.0" prefWidth="85.0" text="Rating">
                <cellValueFactory>
-                  <PropertyValueFactory property="raiting" />
+                  <PropertyValueFactory property="rating" />
                </cellValueFactory>
             </TableColumn>
          </columns>

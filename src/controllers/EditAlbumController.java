@@ -30,7 +30,7 @@ public class EditAlbumController implements Initializable{
     private Parent edit;
     private AlbumGenre genre;
     private Album selectedAlbum;
-    @FXML private TextField editTitle, editArtist;
+    @FXML private TextField editTitle, editArtist, editUrl;
     @FXML private ChoiceBox editGenre, editRating;
     @FXML private ImageView albumCover;
     @FXML private Button editSubmitt;
@@ -65,8 +65,9 @@ public class EditAlbumController implements Initializable{
         editArtist.setText(album.getArtist());
         editGenre.setValue(album.getGenre());
         editRating.setValue(album.getRating());
-        //Image img = new Image("/Images/Metallica.jpg");
-        //albumCover.setImage(img);
+        editUrl.setText(album.getCoverUrl());
+        Image img = new Image(album.getCoverUrl());
+        albumCover.setImage(img);
 
 
         editStage.show();
@@ -78,6 +79,7 @@ public class EditAlbumController implements Initializable{
         selectedAlbum.setTitle(editTitle.getText());
         selectedAlbum.setGenre((AlbumGenre) editGenre.getValue());
         selectedAlbum.setRaiting((Integer) editRating.getValue());
+        selectedAlbum.setCoverUrl(editUrl.getText());
 
     }
 }

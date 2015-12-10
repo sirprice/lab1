@@ -9,6 +9,50 @@ public class Album {
     private String date;
     private String title;
 
+    private AlbumGenre genre;
+    private int rating;
+    private String releaseDate;
+    private String artist;
+    private String noOfSongs;
+
+
+    private String coverUrl;
+    //private Review review;
+
+
+
+    public Album(String title, String artist, AlbumGenre genre, int rating) {
+        this.title = title;
+        this.genre = genre;
+        this.rating = rating;
+        this.artist = artist;
+        this.coverUrl = "http://www.yourwebgraphics.com/gallery/data/thumbnails/392/3D-Women-Question-mark-01.png";
+    }
+
+    public Album(String title, String artist, AlbumGenre genre, int rating, String coverUrl){
+        this.title = title;
+        this.genre = genre;
+        this.rating = rating;
+        this.artist = artist;
+        this.coverUrl = coverUrl;
+    }
+
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
     public AlbumGenre getGenre() {
         return genre;
     }
@@ -25,47 +69,13 @@ public class Album {
         this.rating = rating;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
+    public String getCoverUrl() {
+        return coverUrl;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setCoverUrl(String coverUrl) {
+        this.coverUrl = coverUrl;
     }
-
-    public String getArtist() {
-        return artist;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
-    public String getNoOfSongs() {
-        return noOfSongs;
-    }
-
-    public void setNoOfSongs(String noOfSongs) {
-        this.noOfSongs = noOfSongs;
-    }
-
-    private AlbumGenre genre;
-    private int rating;
-    private String releaseDate;
-    private String artist;
-    private String noOfSongs;
-    //private Review review;
-
-
-
-    public Album(String title, String artist, AlbumGenre genre, int rating) {
-        this.title = title;
-        this.genre = genre;
-        this.rating = rating;
-        this.artist = artist;
-        // something
-    }
-
 
     public String getDate() {
         return date;
@@ -73,14 +83,6 @@ public class Album {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getRealeseDate() {
@@ -91,4 +93,11 @@ public class Album {
         this.releaseDate = releaseDate;
     }
 
+    public String getNoOfSongs() {
+        return noOfSongs;
+    }
+
+    public void setNoOfSongs(String noOfSongs) {
+        this.noOfSongs = noOfSongs;
+    }
 }
