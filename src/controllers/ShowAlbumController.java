@@ -52,8 +52,8 @@ public class ShowAlbumController implements Initializable {
         titleLabel.setText(album.getTitle());
         artistLabel.setText(album.getArtist());
         genreLabel.setText(album.getGenre().toString());
-        String raiting = "" + album.getRating();
-        raitingLabel.setText(raiting);
+        String rating = "" + album.getRating();
+        raitingLabel.setText(rating);
 
 
         Image cover = new Image(album.getCoverUrl());

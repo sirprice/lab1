@@ -41,8 +41,9 @@ public class AddAlbumController implements Initializable {
         this.model = model;
     }
     public void setChoiceBoxes(){
-        addGenre.setItems(model.getAlbumGenreList());
         addRating.setItems(model.getRatingList());
+        addGenre.setItems(model.getAlbumGenreList());
+
     }
     public void setParent(Parent parent){
         this.add = parent;

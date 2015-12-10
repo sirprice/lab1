@@ -62,15 +62,15 @@ public class EditAlbumController implements Initializable{
         //editStage.initOwner(primaryStage);
     }
 
-    public void editAlbum(Album album){
-        selectedAlbum = album;
+    public void editAlbum(int index){
+        selectedAlbum = model.getAlbum(index);
 
-        editTitle.setText(album.getTitle());
-        editArtist.setText(album.getArtist());
-        editGenre.setValue(album.getGenre());
-        editRating.setValue(album.getRating());
-        editUrl.setText(album.getCoverUrl());
-        Image img = new Image(album.getCoverUrl());
+        editTitle.setText(selectedAlbum.getTitle());
+        editArtist.setText(selectedAlbum.getArtist());
+        editGenre.setValue(selectedAlbum.getGenre());
+        editRating.setValue(selectedAlbum.getRating());
+        editUrl.setText(selectedAlbum.getCoverUrl());
+        Image img = new Image(selectedAlbum.getCoverUrl());
         albumCover.setImage(img);
 
 

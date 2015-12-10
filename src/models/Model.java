@@ -37,6 +37,9 @@ public class Model {
     public ObservableList<Album> getAlbums() {
         return albums;
     }
+    public Album getAlbum(int index) {
+        return albums.get(index);
+    }
 
     public void setAlbums(ObservableList<Album> albums) {
         this.albums = albums;
