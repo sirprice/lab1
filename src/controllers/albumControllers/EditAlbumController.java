@@ -64,28 +64,38 @@ public class EditAlbumController implements Initializable{
         //editStage.initOwner(primaryStage);
     }
 
-    public void editAlbumItems(int index){
-        selectedAlbum = model.getAlbum(index);
-        editTitle.setText(model.getAlbum(index).getTitle());
+    public void editAlbumItems(Album selectedAlbum,int index){              //shows album text and window
 
+        this.selectedAlbum = selectedAlbum;
+        this.index = index;
+
+        editTitle.setText(selectedAlbum.getTitle());
         editArtist.setText(selectedAlbum.getArtist());
         editGenre.setValue(selectedAlbum.getGenre());
         editRating.setValue(selectedAlbum.getRating());
         editUrl.setText(selectedAlbum.getCoverUrl());
+
         Image img = new Image(selectedAlbum.getCoverUrl());
         albumCover.setImage(img);
 
-
         editStage.show();
+
 
     }
 
     public void saveAlbum(){
+
+
         selectedAlbum.setArtist(editArtist.getText());
         selectedAlbum.setTitle(editTitle.getText());
         selectedAlbum.setGenre((AlbumGenre) editGenre.getValue());
         selectedAlbum.setRating((Integer) editRating.getValue());
         selectedAlbum.setCoverUrl(editUrl.getText());
+
+        model.setAlbums(index,selectedAlbum);
+
+
         editStage.close();
+
     }
 }
