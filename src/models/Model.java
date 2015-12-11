@@ -42,6 +42,10 @@ public class Model {
         return albums.get(index);
     }
 
+    public void setAlbums(int index,Album album) {
+        albums.set(index,album);
+
+    }
 
     public void addAlbum(Album newAlbum){
         albums.add(newAlbum);
