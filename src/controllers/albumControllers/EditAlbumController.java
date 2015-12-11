@@ -70,11 +70,11 @@ public class EditAlbumController implements Initializable{
 
 
 
-    public void editAlbumItems(Album selectedAlbum,int index){              //shows album text and window
+    public void editAlbumItems(){              //shows album text and window
 
-        this.selectedAlbum = selectedAlbum;
-        this.index = index;
 
+        selectedAlbum = albumTable.getSelectionModel().getSelectedItem();
+        this.index = albumTable.getSelectionModel().getSelectedIndex();
 
         editTitle.setText(selectedAlbum.getTitle());
         editArtist.setText(selectedAlbum.getArtist());
@@ -97,9 +97,14 @@ public class EditAlbumController implements Initializable{
         model.getAlbum(index).setGenre((AlbumGenre) editGenre.getValue());
         model.getAlbum(index).setRating((Integer) editRating.getValue());
         model.getAlbum(index).setCoverUrl(editUrl.getText());
+        albumTable.refresh();
 
         editStage.close();
 
+    }
+
+    public void setAlbumTable(TableView<Album> albumTable){
+        this.albumTable = albumTable;
     }
 
 }

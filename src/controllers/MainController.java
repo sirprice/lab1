@@ -43,8 +43,8 @@ public class MainController implements Initializable {
 
     }
 
-    public void setPrimaryStage(Stage primarystage){
-        this.primaryStage = primarystage;
+    public void setPrimaryStage(Stage primaryStage){
+        this.primaryStage = primaryStage;
     }
 
     public void setModel(Model model){
@@ -58,6 +58,7 @@ public class MainController implements Initializable {
 
         this.editAlbumController = editAlbumController;
         editAlbumController.setPrimaryStage(primaryStage);
+        editAlbumController.setAlbumTable(albumTable);
         // todo set albumTable
 
 
@@ -98,15 +99,14 @@ public class MainController implements Initializable {
     public void editAlbum(ActionEvent e) {
         Album selected = albumTable.getSelectionModel().getSelectedItem();
         if (!(selected == null)) {
-            editAlbumController.editAlbumItems(selected,albumTable.getSelectionModel().getSelectedIndex());
-            albumTable.refresh();
+            editAlbumController.editAlbumItems();
         }
     }
 
     public void deleteAlbum(){
         int index = albumTable.getSelectionModel().getSelectedIndex();
         if (index >= 0) {
-            deleteController.deleteAlbum(albums, index);
+            deleteController.deleteAlbum(albums, index); ///albums är tom todo
         }
     }
     public ObservableList<Album> getAlbums(){

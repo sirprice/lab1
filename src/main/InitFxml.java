@@ -77,6 +77,8 @@ public class InitFxml {
             mCtrl.showAlbums();
             mCtrl.showMovies();
 
+            //- - - - - - - - - - - -Login Controller - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
             primaryStage.setTitle("Media Center");
             primaryStage.setScene(new Scene(root, 1280, 720));
             primaryStage.show();
