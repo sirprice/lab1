@@ -49,6 +49,7 @@ public class EditAlbumController implements Initializable{
 
     public void setModel(Model model){
         this.model = model;
+        System.out.println("hahahaa");
     }
 
     public void setChoiceBoxes(){
