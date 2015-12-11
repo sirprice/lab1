@@ -58,6 +58,8 @@ public class MainController implements Initializable {
 
         this.editAlbumController = editAlbumController;
         editAlbumController.setPrimaryStage(primaryStage);
+        // todo set albumTable
+
 
         this.showAlbumController = showAlbumController;
         showAlbumController.setPrimaryStage(primaryStage);
@@ -65,7 +67,7 @@ public class MainController implements Initializable {
         this.deleteController = deleteController;
 
         this.addMovieController = addMovieController;
-        addAlbumController.setPrimaryStage(primaryStage);
+        addMovieController.setPrimaryStage(primaryStage);
     }
 
     public void toMenu(){
