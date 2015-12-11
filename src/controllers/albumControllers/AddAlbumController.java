@@ -59,7 +59,8 @@ public class AddAlbumController implements Initializable {
 
 
     public void createAlbum(){
-        Album newAlbum = null;
+
+        Album newAlbum;
 
         if (addUrl.getText().isEmpty()) {
             System.out.println("Halle");

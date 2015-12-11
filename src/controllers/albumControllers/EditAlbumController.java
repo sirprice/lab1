@@ -55,6 +55,7 @@ public class EditAlbumController implements Initializable{
     public void setChoiceBoxes(){
         editRating.setItems(model.getRatingList());
         editGenre.setItems(model.getAlbumGenreList());
+
     }
 
     public void setParent(Parent parent){
@@ -65,10 +66,15 @@ public class EditAlbumController implements Initializable{
         //editStage.initOwner(primaryStage);
     }
 
+
+
+
+
     public void editAlbumItems(Album selectedAlbum,int index){              //shows album text and window
 
         this.selectedAlbum = selectedAlbum;
         this.index = index;
+
 
         editTitle.setText(selectedAlbum.getTitle());
         editArtist.setText(selectedAlbum.getArtist());
@@ -86,17 +92,14 @@ public class EditAlbumController implements Initializable{
 
     public void saveAlbum(){
 
-
-        selectedAlbum.setArtist(editArtist.getText());
-        selectedAlbum.setTitle(editTitle.getText());
-        selectedAlbum.setGenre((AlbumGenre) editGenre.getValue());
-        selectedAlbum.setRating((Integer) editRating.getValue());
-        selectedAlbum.setCoverUrl(editUrl.getText());
-
-        model.setAlbums(index,selectedAlbum);
-
+        model.getAlbum(index).setTitle(editTitle.getText());
+        model.getAlbum(index).setArtist(editArtist.getText());
+        model.getAlbum(index).setGenre((AlbumGenre) editGenre.getValue());
+        model.getAlbum(index).setRating((Integer) editRating.getValue());
+        model.getAlbum(index).setCoverUrl(editUrl.getText());
 
         editStage.close();
 
     }
+
 }

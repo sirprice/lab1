@@ -58,6 +58,9 @@ public class Model {
     public void setMovies(ObservableList<Movie> movies) {
         this.movies = movies;
     }
+    public void addMovie(Movie newMovie){
+        movies.add(newMovie);
+    }
 
     public ObservableList<AlbumGenre> getAlbumGenreList() {
         return albumGenreList;

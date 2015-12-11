@@ -12,7 +12,7 @@
         <Label layoutX="190.0" layoutY="146.0" text="Rating:" textFill="WHITE" />
         <TextField fx:id="addTitle" layoutX="276.0" layoutY="42.0" />
         <TextField fx:id="addUrl" layoutX="60.0" layoutY="185.0" prefHeight="27.0" prefWidth="386.0" />
-        <Button fx:id="addSubmit" layoutX="380.0" layoutY="219.0" mnemonicParsing="false" onAction="#createMovie" text="Submit" />
+        <Button fx:id="addSubmit" layoutX="380.0" layoutY="219.0" mnemonicParsing="false" onAction="#saveMovie" text="Submit" />
         <Label layoutX="110.0" layoutY="20.0" text="Add Movie" textFill="WHITE" />
         <Button fx:id="addAbort" layoutX="308.0" layoutY="219.0" mnemonicParsing="false" text="Abort" />
         <ChoiceBox fx:id="addGenre" layoutX="276.0" layoutY="106.0" prefHeight="27.0" prefWidth="168.0" />

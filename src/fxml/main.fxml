@@ -38,7 +38,7 @@
          <font>
             <Font size="17.0" />
          </font></Label>
-      <Button fx:id="showAlbums" layoutX="11.0" layoutY="77.0" mnemonicParsing="false" onAction="#showAlbums" prefHeight="27.0" prefWidth="170.0" text="Show Albums" />
+      <Button fx:id="refreshAlbums" layoutX="11.0" layoutY="77.0" mnemonicParsing="false" onAction="#refreshAlbums" prefHeight="27.0" prefWidth="170.0" text="Refresh" />
       <Button fx:id="albumAdd" layoutX="11.0" layoutY="114.0" mnemonicParsing="false" onAction="#addAlbum" prefHeight="27.0" prefWidth="170.0" text="Add Album" />
       <TableView fx:id="albumTable" layoutX="192.0" layoutY="77.0" onMouseClicked="#showSelectedAlbum" prefHeight="293.0" prefWidth="1075.0">
         <columns>
@@ -62,11 +62,6 @@
                 <cellValueFactory>
                     <PropertyValueFactory property="rating" />
                 </cellValueFactory>
-            </TableColumn>
-            <TableColumn fx:id="raiting1" minWidth="0.0" prefWidth="85.0" text="Options">
-               <cellValueFactory>
-                  <PropertyValueFactory property="rating" />
-               </cellValueFactory>
             </TableColumn>
 
         </columns>
@@ -113,8 +108,8 @@
       </TableView>
       <Button layoutX="1207.0" layoutY="380.0" mnemonicParsing="false" text="Search" />
       <TextField layoutX="1028.0" layoutY="378.0" />
-      <Button fx:id="showAlbums1" layoutX="13.0" layoutY="413.0" mnemonicParsing="false" onAction="#showAlbums" prefHeight="27.0" prefWidth="170.0" text="Show Movies" />
-      <Button fx:id="showAlbums2" layoutX="14.0" layoutY="450.0" mnemonicParsing="false" onAction="#showAlbums" prefHeight="27.0" prefWidth="170.0" text="Add Movie" />
+      <Button fx:id="refreshMovies" layoutX="13.0" layoutY="413.0" mnemonicParsing="false" onAction="#refreshMovies" prefHeight="27.0" prefWidth="170.0" text="Refresh" />
+      <Button fx:id="addMovie" layoutX="14.0" layoutY="450.0" mnemonicParsing="false" onAction="#addMovie" prefHeight="27.0" prefWidth="170.0" text="Add Movie" />
       <Label layoutX="215.0" layoutY="386.0" text="Movies" textFill="WHITE">
          <font>
             <Font size="17.0" />

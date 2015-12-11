@@ -76,7 +76,11 @@ public class MainController implements Initializable {
     // - - - - - - - - - Albums - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     public void showAlbums(){
-            albumTable.setItems(model.getAlbums());
+        albumTable.setItems(model.getAlbums());
+    }
+
+    public void refreshAlbums(){
+        albumTable.refresh();
     }
 
     public void showSelectedAlbum(MouseEvent me){
@@ -93,7 +97,7 @@ public class MainController implements Initializable {
         Album selected = albumTable.getSelectionModel().getSelectedItem();
         if (!(selected == null)) {
             editAlbumController.editAlbumItems(selected,albumTable.getSelectionModel().getSelectedIndex());
-
+            albumTable.refresh();
         }
     }
 
@@ -113,10 +117,13 @@ public class MainController implements Initializable {
     public void showMovies(){
         movieTable.setItems(model.getMovies());
     }
-
-    public void addMovie(){
-
+    public void refreshMovies(){
+        movieTable.refresh();
     }
+    public void addMovie(){
+        addMovieController.createMovie();
+    }
+
 
 
 
