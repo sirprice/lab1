@@ -96,7 +96,7 @@
       <Button fx:id="showAlbums2" layoutX="14.0" layoutY="450.0" mnemonicParsing="false" onAction="#showAlbums" prefHeight="27.0" prefWidth="170.0" text="Add Movie" />
       <Button fx:id="showAlbums21" layoutX="14.0" layoutY="487.0" mnemonicParsing="false" onAction="#showAlbums" prefHeight="27.0" prefWidth="170.0" text="Edit Movie" />
       <Button fx:id="showAlbums22" layoutX="14.0" layoutY="525.0" mnemonicParsing="false" onAction="#showAlbums" prefHeight="27.0" prefWidth="170.0" text="Delete Selected Movie" />
-      <Button fx:id="albumEdit" layoutX="11.0" layoutY="152.0" mnemonicParsing="false" onAction="#editAlbum" prefHeight="27.0" prefWidth="170.0" text="Edit Album" />
+      <Button layoutX="11.0" layoutY="152.0" mnemonicParsing="false" onAction="#editAlbum" prefHeight="27.0" prefWidth="170.0" text="Edit Album" />
       <Button fx:id="albumDelete" layoutX="12.0" layoutY="189.0" mnemonicParsing="false" onAction="#deleteAlbum" prefHeight="27.0" prefWidth="170.0" text="Delete Selected Album" />
       <Label layoutX="215.0" layoutY="386.0" text="Movies" textFill="WHITE">
          <font>

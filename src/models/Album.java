@@ -42,21 +42,20 @@ public class Album {
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
+    
     public String getArtist() {
         return artist;
     }
-
     public void setArtist(String artist) {
         this.artist = artist;
     }
+    
     public AlbumGenre getGenre() {
         return genre;
     }
-
     public void setGenre(AlbumGenre genre) {
         this.genre = genre;
     }
@@ -64,15 +63,13 @@ public class Album {
     public int getRating() {
         return rating;
     }
-
-    public void setRaiting(int rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 
     public String getCoverUrl() {
         return coverUrl;
     }
-
     public void setCoverUrl(String coverUrl) {
         this.coverUrl = coverUrl;
     }
@@ -80,7 +77,6 @@ public class Album {
     public String getDate() {
         return date;
     }
-
     public void setDate(String date) {
         this.date = date;
     }
@@ -88,7 +84,6 @@ public class Album {
     public String getRealeseDate() {
         return releaseDate;
     }
-
     public void setRealeseDate(String realeseDate) {
         this.releaseDate = releaseDate;
     }
@@ -96,7 +91,6 @@ public class Album {
     public String getNoOfSongs() {
         return noOfSongs;
     }
-
     public void setNoOfSongs(String noOfSongs) {
         this.noOfSongs = noOfSongs;
     }

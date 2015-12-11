@@ -13,7 +13,7 @@
         <Label layoutX="190.0" layoutY="146.0" text="Raiting:" textFill="WHITE" />
         <TextField fx:id="editTitle" layoutX="276.0" layoutY="42.0" />
         <TextField fx:id="editArtist" layoutX="276.0" layoutY="75.0" />
-        <Button fx:id="editSubmitt" layoutX="380.0" layoutY="226.0" mnemonicParsing="false" onAction="#saveAlbum" text="Submitt" />
+        <Button layoutX="380.0" layoutY="226.0" mnemonicParsing="false" onAction="#saveAlbum" text="Submit" />
         <Label layoutX="83.0" layoutY="14.0" text="EDIT" textFill="WHITE" />
         <Button fx:id="abortSubmitt" layoutX="319.0" layoutY="226.0" mnemonicParsing="false" text="Abort" />
         <ChoiceBox fx:id="editGenre" layoutX="276.0" layoutY="106.0" prefHeight="27.0" prefWidth="168.0" />

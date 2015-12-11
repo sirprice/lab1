@@ -1,16 +1,14 @@
 package controllers;
 
 import enums.AlbumGenre;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,7 +17,9 @@ import javafx.stage.Stage;
 import models.Album;
 import models.Model;
 
+import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
 /**
@@ -32,10 +32,12 @@ public class EditAlbumController implements Initializable{
     private AlbumGenre genre;
     private Album selectedAlbum;
     private Model model;
+    private int index;
+    private TableView<Album> albumTable;
     @FXML private TextField editTitle, editArtist, editUrl;
     @FXML private ChoiceBox editGenre, editRating;
     @FXML private ImageView albumCover;
-    @FXML private Button editSubmitt;
+    @FXML private Button editSubmit;
 
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -49,7 +51,7 @@ public class EditAlbumController implements Initializable{
         this.model = model;
     }
 
-    public void setChoiseBoxes(){
+    public void setChoiceBoxes(){
         editRating.setItems(model.getRatingList());
         editGenre.setItems(model.getAlbumGenreList());
     }
@@ -62,28 +64,34 @@ public class EditAlbumController implements Initializable{
         //editStage.initOwner(primaryStage);
     }
 
-    public void editAlbum(int index){
-        selectedAlbum = model.getAlbum(index);
+    public void editAlbumItems(int index){              //shows album text and window
 
-        editTitle.setText(selectedAlbum.getTitle());
-        editArtist.setText(selectedAlbum.getArtist());
-        editGenre.setValue(selectedAlbum.getGenre());
-        editRating.setValue(selectedAlbum.getRating());
-        editUrl.setText(selectedAlbum.getCoverUrl());
-        Image img = new Image(selectedAlbum.getCoverUrl());
+        this.index = index;
+
+        editTitle.setText(model.getAlbum(index).getTitle());
+        editArtist.setText(model.getAlbum(index).getArtist());
+        editGenre.setValue(model.getAlbum(index).getGenre());
+        editRating.setValue(model.getAlbum(index).getRating());
+        editUrl.setText(model.getAlbum(index).getCoverUrl());
+
+        Image img = new Image(model.getAlbum(index).getCoverUrl());
         albumCover.setImage(img);
 
-
         editStage.show();
+
 
     }
 
     public void saveAlbum(){
-        selectedAlbum.setArtist(editArtist.getText());
-        selectedAlbum.setTitle(editTitle.getText());
-        selectedAlbum.setGenre((AlbumGenre) editGenre.getValue());
-        selectedAlbum.setRaiting((Integer) editRating.getValue());
-        selectedAlbum.setCoverUrl(editUrl.getText());
+
+        model.getAlbum(index).setArtist(editArtist.getText());
+        model.getAlbum(index).setTitle(editTitle.getText());
+        model.getAlbum(index).setGenre((AlbumGenre) editGenre.getValue());
+        model.getAlbum(index).setRating((Integer) editRating.getValue());
+        model.getAlbum(index).setCoverUrl(editUrl.getText());
+
+
         editStage.close();
+
     }
 }

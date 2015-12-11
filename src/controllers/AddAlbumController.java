@@ -54,7 +54,6 @@ public class AddAlbumController implements Initializable {
 
     public void addAlbum(){
 
-
         addStage.show();
     }
 

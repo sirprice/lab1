@@ -25,7 +25,7 @@ public class InitFxml {
             EditAlbumController eACtrl = editAlbumLoader.getController();
             eACtrl.setParent(editAlbum);
             eACtrl.setModel(model);
-            eACtrl.setChoiseBoxes();
+            eACtrl.setChoiceBoxes();
             if (eACtrl == null) System.out.println("edit album controllern är null");
 
             Parent showAlbum = null;
@@ -33,6 +33,7 @@ public class InitFxml {
             showAlbum = showAlbumLoader.load(getClass().getResource("/fxml/showAlbum.fxml").openStream());
             ShowAlbumController sACtrl = showAlbumLoader.getController();
             sACtrl.setParent(showAlbum);
+
 
             if (sACtrl == null) System.out.println("edit album controllern är null");
 

@@ -95,7 +95,8 @@ public class MainController implements Initializable {
     public void editAlbum(ActionEvent e) {
         Album selected = albumTable.getSelectionModel().getSelectedItem();
         if (!(selected == null)) {
-            editAlbumController.editAlbum(albumTable.getSelectionModel().getSelectedIndex());
+            editAlbumController.editAlbumItems(albumTable.getSelectionModel().getSelectedIndex());
+
         }
     }
 
