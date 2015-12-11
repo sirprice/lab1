@@ -1,29 +1,25 @@
 package controllers;
 
-import enums.AlbumGenre;
+import controllers.albumControllers.AddAlbumController;
+import controllers.albumControllers.EditAlbumController;
+import controllers.albumControllers.ShowAlbumController;
+import controllers.movieControllers.AddMovieController;
 import javafx.scene.Parent;
 
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Album;
 import main.Main;
 import models.Model;
+import models.Movie;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -33,15 +29,15 @@ public class MainController implements Initializable {
     private DeleteController deleteController;
     private EditAlbumController editAlbumController;
     private ShowAlbumController showAlbumController;
+    private AddMovieController addMovieController;
     private Model model;
 
-    private Parent album, main, edit;
-    private Stage primaryStage, editStage;
+    private Parent main;
+    private Stage primaryStage;
     private ObservableList <Album> albums;
-    @FXML private Button mainToAlbum, showAlbums, albumDelete;
-    @FXML private Button albumToMain;
     @FXML private TableView <Album> albumTable;
-    @FXML private TableColumn<Album, String> Title,artist,genre, raiting;
+    @FXML private TableView <Movie> movieTable;
+    //@FXML private TableColumn<Album, String> Title,artist,genre, raiting;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -55,31 +51,32 @@ public class MainController implements Initializable {
         this.model = model;
     }
 
-    public void setControllers(AddAlbumController addAlbumController, EditAlbumController editAlbumController, DeleteController deleteController, ShowAlbumController showAlbumController ) {
+    public void setControllers(AddAlbumController addAlbumController, EditAlbumController editAlbumController,
+                               DeleteController deleteController, ShowAlbumController showAlbumController,
+                               AddMovieController addMovieController){
         this.addAlbumController = addAlbumController;
+
         this.editAlbumController = editAlbumController;
         editAlbumController.setPrimaryStage(primaryStage);
+
         this.showAlbumController = showAlbumController;
         showAlbumController.setPrimaryStage(primaryStage);
+
         this.deleteController = deleteController;
+
+        this.addMovieController = addMovieController;
+        addAlbumController.setPrimaryStage(primaryStage);
     }
+
     public void toMenu(){
-        primaryStage = (Stage) albumToMain.getScene().getWindow();
-        try {
-            FXMLLoader mainLoader = new FXMLLoader();
-            main = mainLoader.load(getClass().getResource("/fxml/main.fxml"));
-        }catch (IOException e){ }
-
         primaryStage.setScene(new Scene(main, Main.WIDTH, Main.HEIGHT));
+        primaryStage.show();
     }
 
-
-
-
-    // - - - - - - - - - Albums - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // - - - - - - - - - Albums - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     public void showAlbums(){
-            albumTable.setItems(getAlbums());
+            albumTable.setItems(model.getAlbums());
     }
 
     public void showSelectedAlbum(MouseEvent me){
@@ -110,4 +107,27 @@ public class MainController implements Initializable {
         albums = model.getAlbums();
         return albums;
     }
+
+    // - - - - - - - - - - Movies - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    public void showMovies(){
+        movieTable.setItems(model.getMovies());
+    }
+
+    public void addMovie(){
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
+

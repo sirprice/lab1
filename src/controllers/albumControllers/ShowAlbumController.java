@@ -1,4 +1,4 @@
-package controllers;
+package controllers.albumControllers;
 
 import enums.AlbumGenre;
 import javafx.collections.FXCollections;

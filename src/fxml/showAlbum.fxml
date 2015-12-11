@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="260.0" maxWidth="460.0" minHeight="260.0" minWidth="460.0" prefHeight="260.0" prefWidth="460.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ShowAlbumController">
+<AnchorPane maxHeight="260.0" maxWidth="460.0" minHeight="260.0" minWidth="460.0" prefHeight="260.0" prefWidth="460.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.albumControllers.ShowAlbumController">
    <children>
       <Label layoutX="224.0" layoutY="27.0" text="Title" textFill="WHITE" />
       <Label layoutX="224.0" layoutY="68.0" text="Genre" textFill="WHITE" />

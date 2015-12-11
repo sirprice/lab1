@@ -63,8 +63,21 @@
                     <PropertyValueFactory property="rating" />
                 </cellValueFactory>
             </TableColumn>
+            <TableColumn fx:id="raiting1" minWidth="0.0" prefWidth="85.0" text="Options">
+               <cellValueFactory>
+                  <PropertyValueFactory property="rating" />
+               </cellValueFactory>
+            </TableColumn>
 
         </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem fx:id="contextAlbumEdit" mnemonicParsing="false" onAction="#editAlbum" text="Edit" />
+                  <MenuItem fx:id="contextAlbumDelete" mnemonicParsing="false" onAction="#deleteAlbum" text="Delete" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
       </TableView>
       <TableView fx:id="movieTable" layoutX="194.0" layoutY="413.0" prefHeight="301.0" prefWidth="1075.0">
          <columns>
@@ -89,18 +102,34 @@
                </cellValueFactory>
             </TableColumn>
          </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem fx:id="contextMovieEdit" mnemonicParsing="false" text="Edit" />
+                  <MenuItem fx:id="contextMovieDelete" mnemonicParsing="false" text="Delete" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
       </TableView>
       <Button layoutX="1207.0" layoutY="380.0" mnemonicParsing="false" text="Search" />
       <TextField layoutX="1028.0" layoutY="378.0" />
       <Button fx:id="showAlbums1" layoutX="13.0" layoutY="413.0" mnemonicParsing="false" onAction="#showAlbums" prefHeight="27.0" prefWidth="170.0" text="Show Movies" />
       <Button fx:id="showAlbums2" layoutX="14.0" layoutY="450.0" mnemonicParsing="false" onAction="#showAlbums" prefHeight="27.0" prefWidth="170.0" text="Add Movie" />
-      <Button fx:id="showAlbums21" layoutX="14.0" layoutY="487.0" mnemonicParsing="false" onAction="#showAlbums" prefHeight="27.0" prefWidth="170.0" text="Edit Movie" />
-      <Button fx:id="showAlbums22" layoutX="14.0" layoutY="525.0" mnemonicParsing="false" onAction="#showAlbums" prefHeight="27.0" prefWidth="170.0" text="Delete Selected Movie" />
-      <Button layoutX="11.0" layoutY="152.0" mnemonicParsing="false" onAction="#editAlbum" prefHeight="27.0" prefWidth="170.0" text="Edit Album" />
-      <Button fx:id="albumDelete" layoutX="12.0" layoutY="189.0" mnemonicParsing="false" onAction="#deleteAlbum" prefHeight="27.0" prefWidth="170.0" text="Delete Selected Album" />
       <Label layoutX="215.0" layoutY="386.0" text="Movies" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font></Label>
+      <RadioButton fx:id="albumTitleSearch" layoutX="891.0" layoutY="49.0" mnemonicParsing="false" selected="true" text="Title">
+         <toggleGroup>
+            <ToggleGroup fx:id="albumRadio" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="albumGenreSearch" layoutX="957.0" layoutY="48.0" mnemonicParsing="false" text="Genre" toggleGroup="$albumRadio" />
+      <RadioButton fx:id="albumGenreSearch" layoutX="957.0" layoutY="384.0" mnemonicParsing="false" text="Genre">
+         <toggleGroup>
+            <ToggleGroup fx:id="movieRadio" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="movieTitleSearch" layoutX="891.0" layoutY="385.0" mnemonicParsing="false" selected="true" text="Title" toggleGroup="$movieRadio" />
    </children>
 </AnchorPane>

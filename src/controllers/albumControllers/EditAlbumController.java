@@ -1,4 +1,4 @@
-package controllers;
+package controllers.albumControllers;
 
 import enums.AlbumGenre;
 import javafx.collections.ObservableList;
@@ -64,34 +64,28 @@ public class EditAlbumController implements Initializable{
         //editStage.initOwner(primaryStage);
     }
 
-    public void editAlbumItems(int index){              //shows album text and window
-
-        this.index = index;
-
+    public void editAlbumItems(int index){
+        selectedAlbum = model.getAlbum(index);
         editTitle.setText(model.getAlbum(index).getTitle());
-        editArtist.setText(model.getAlbum(index).getArtist());
-        editGenre.setValue(model.getAlbum(index).getGenre());
-        editRating.setValue(model.getAlbum(index).getRating());
-        editUrl.setText(model.getAlbum(index).getCoverUrl());
 
-        Image img = new Image(model.getAlbum(index).getCoverUrl());
+        editArtist.setText(selectedAlbum.getArtist());
+        editGenre.setValue(selectedAlbum.getGenre());
+        editRating.setValue(selectedAlbum.getRating());
+        editUrl.setText(selectedAlbum.getCoverUrl());
+        Image img = new Image(selectedAlbum.getCoverUrl());
         albumCover.setImage(img);
 
-        editStage.show();
 
+        editStage.show();
 
     }
 
     public void saveAlbum(){
-
-        model.getAlbum(index).setArtist(editArtist.getText());
-        model.getAlbum(index).setTitle(editTitle.getText());
-        model.getAlbum(index).setGenre((AlbumGenre) editGenre.getValue());
-        model.getAlbum(index).setRating((Integer) editRating.getValue());
-        model.getAlbum(index).setCoverUrl(editUrl.getText());
-
-
+        selectedAlbum.setArtist(editArtist.getText());
+        selectedAlbum.setTitle(editTitle.getText());
+        selectedAlbum.setGenre((AlbumGenre) editGenre.getValue());
+        selectedAlbum.setRating((Integer) editRating.getValue());
+        selectedAlbum.setCoverUrl(editUrl.getText());
         editStage.close();
-
     }
 }
