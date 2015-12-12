@@ -53,10 +53,11 @@ public class AddAlbumController implements Initializable {
     }
 
     public void addAlbum(){
-
         addStage.show();
     }
-
+    public void abortEdit(){
+        addStage.close();
+    }
 
     public void createAlbum(){
 
@@ -76,4 +77,5 @@ public class AddAlbumController implements Initializable {
 
         //}
     }
+
 }

@@ -103,6 +103,10 @@ public class EditAlbumController implements Initializable{
 
     }
 
+    public void abortEdit(){
+        editStage.close();
+    }
+
     public void setAlbumTable(TableView<Album> albumTable){
         this.albumTable = albumTable;
     }

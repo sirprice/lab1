@@ -14,7 +14,7 @@
         <TextField fx:id="addUrl" layoutX="60.0" layoutY="185.0" prefHeight="27.0" prefWidth="386.0" />
         <Button fx:id="addSubmitt" layoutX="380.0" layoutY="219.0" mnemonicParsing="false" onAction="#createAlbum" text="Submitt" />
         <Label layoutX="110.0" layoutY="20.0" text="Add Album" textFill="WHITE" />
-        <Button fx:id="addAbort" layoutX="308.0" layoutY="219.0" mnemonicParsing="false" text="Abort" />
+        <Button fx:id="addAbort" layoutX="308.0" layoutY="219.0" mnemonicParsing="false" onAction="#abortEdit" text="Abort" />
         <ChoiceBox fx:id="addGenre" layoutX="276.0" layoutY="106.0" prefHeight="27.0" prefWidth="168.0" />
         <ChoiceBox fx:id="addRating" layoutX="276.0" layoutY="140.0" prefHeight="27.0" prefWidth="169.0" />
       <TextField fx:id="addArtist" layoutX="276.0" layoutY="75.0" />

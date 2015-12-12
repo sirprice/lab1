@@ -51,6 +51,10 @@ public class Model {
         albums.add(newAlbum);
     }
 
+    public Movie getMovie(int index) {
+        return movies.get(index);
+    }
+
     public ObservableList<Movie> getMovies() {
         return movies;
     }

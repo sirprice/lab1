@@ -81,7 +81,7 @@
                   <PropertyValueFactory property="title" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn minWidth="5.956573486328125" prefWidth="189.4503173828125" text="Artist">
+            <TableColumn minWidth="5.956573486328125" prefWidth="189.4503173828125" text="Director">
                <cellValueFactory>
                   <PropertyValueFactory property="artist" />
                </cellValueFactory>
@@ -100,8 +100,8 @@
          <contextMenu>
             <ContextMenu>
               <items>
-                <MenuItem fx:id="contextMovieEdit" mnemonicParsing="false" text="Edit" />
-                  <MenuItem fx:id="contextMovieDelete" mnemonicParsing="false" text="Delete" onAction="#deleteMovie"/>
+                <MenuItem fx:id="contextMovieEdit" mnemonicParsing="false" onAction="#editMovie" text="Edit" />
+                  <MenuItem fx:id="contextMovieDelete" mnemonicParsing="false" onAction="#deleteMovie" text="Delete" />
               </items>
             </ContextMenu>
          </contextMenu>

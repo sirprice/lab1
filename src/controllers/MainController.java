@@ -4,6 +4,7 @@ import controllers.albumControllers.AddAlbumController;
 import controllers.albumControllers.EditAlbumController;
 import controllers.albumControllers.ShowAlbumController;
 import controllers.movieControllers.AddMovieController;
+import controllers.movieControllers.EditMovieController;
 import javafx.scene.Parent;
 
 
@@ -30,6 +31,7 @@ public class MainController implements Initializable {
     private EditAlbumController editAlbumController;
     private ShowAlbumController showAlbumController;
     private AddMovieController addMovieController;
+    private EditMovieController editMovieController;
     private Model model;
 
     private Parent main;
@@ -53,7 +55,7 @@ public class MainController implements Initializable {
 
     public void setControllers(AddAlbumController addAlbumController, EditAlbumController editAlbumController,
                                DeleteController deleteController, ShowAlbumController showAlbumController,
-                               AddMovieController addMovieController){
+                               AddMovieController addMovieController,EditMovieController editMovieController){
         this.addAlbumController = addAlbumController;
 
         this.editAlbumController = editAlbumController;
@@ -69,6 +71,10 @@ public class MainController implements Initializable {
 
         this.addMovieController = addMovieController;
         addMovieController.setPrimaryStage(primaryStage);
+
+        this.editMovieController = editMovieController;
+        editMovieController.setPrimaryStage(primaryStage);
+        editMovieController.setMovieTable(movieTable);
     }
 
     public void toMenu(){
@@ -113,6 +119,18 @@ public class MainController implements Initializable {
 
     // - - - - - - - - - - Movies - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+    public void editMovie(ActionEvent e) {
+        Movie selected = movieTable.getSelectionModel().getSelectedItem();
+        if (!(selected == null)) {
+            editMovieController.editMovieItems();
+        }
+    }
+    /*public void showSelectedMovie(MouseEvent me){
+        Movie selected = movieTable.getSelectionModel().getSelectedItem();
+        if (me.getClickCount() == 2 && !(selected == null)) {
+            showAlbumController.showAlbum(selected);
+        }
+    }*/
     public void showMovies(){
         movieTable.setItems(model.getMovies());
     }
