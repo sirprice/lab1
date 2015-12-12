@@ -16,8 +16,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Album;
 import models.Model;
-
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;

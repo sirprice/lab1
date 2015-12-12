@@ -40,7 +40,7 @@ public class InitFxml {
             FXMLLoader editMovieLoader = new FXMLLoader();
             editMovie = editMovieLoader.load(getClass().getResource("/fxml/movieFxml/editMovie.fxml").openStream());
             EditMovieController eMCtrl = editMovieLoader.getController();
-            if (eMCtrl == null) System.out.println("edit album controllern är null");
+            if (eMCtrl == null) System.out.println("edit movie controllern är null");
             eMCtrl.setParent(editMovie);
             eMCtrl.setModel(model);
             eMCtrl.setChoiceBoxes();
