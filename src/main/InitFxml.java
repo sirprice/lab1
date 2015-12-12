@@ -28,7 +28,7 @@ public class InitFxml {
             //- - - - - - - - - - - MOVIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             Parent addMovie = null;
             FXMLLoader addMovieLoader = new FXMLLoader();
-            addMovie = addMovieLoader.load(getClass().getResource("/fxml/addMovie.fxml").openStream());
+            addMovie = addMovieLoader.load(getClass().getResource("/fxml/movieFxml/addMovie.fxml").openStream());
             AddMovieController aMCtrl = addMovieLoader.getController();
             if (aMCtrl == null) System.out.println("add movie controllern är null");
             aMCtrl.setParent(addMovie);
@@ -39,7 +39,7 @@ public class InitFxml {
             //- - - - - - - - - - - ALBUMS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             Parent editAlbum = null;
             FXMLLoader editAlbumLoader = new FXMLLoader();
-            editAlbum = editAlbumLoader.load(getClass().getResource("/fxml/editRecord.fxml").openStream());
+            editAlbum = editAlbumLoader.load(getClass().getResource("/fxml/albumFxml/editRecord.fxml").openStream());
             EditAlbumController eACtrl = editAlbumLoader.getController();
             if (eACtrl == null) System.out.println("edit album controllern är null");
             eACtrl.setParent(editAlbum);
@@ -48,7 +48,7 @@ public class InitFxml {
 
             Parent showAlbum = null;
             FXMLLoader showAlbumLoader = new FXMLLoader();
-            showAlbum = showAlbumLoader.load(getClass().getResource("/fxml/showAlbum.fxml").openStream());
+            showAlbum = showAlbumLoader.load(getClass().getResource("/fxml/albumFxml/showAlbum.fxml").openStream());
             ShowAlbumController sACtrl = showAlbumLoader.getController();
             if (sACtrl == null) System.out.println("edit album controllern är null");
             sACtrl.setParent(showAlbum);
@@ -56,7 +56,7 @@ public class InitFxml {
 
             Parent addAlbum = null;
             FXMLLoader addAlbumLoader = new FXMLLoader();
-            addAlbum = addAlbumLoader.load(getClass().getResource("/fxml/addAlbum.fxml").openStream());
+            addAlbum = addAlbumLoader.load(getClass().getResource("/fxml/albumFxml/addAlbum.fxml").openStream());
             AddAlbumController aACtrl = addAlbumLoader.getController();
             if (aACtrl == null) System.out.println("add album controllern är null");
             aACtrl.setParent(addAlbum);
