@@ -104,10 +104,7 @@ public class MainController implements Initializable {
     }
 
     public void deleteAlbum(){
-        int index = albumTable.getSelectionModel().getSelectedIndex();
-        if (index >= 0) {
-            deleteController.deleteAlbum(albums, index); ///albums är tom todo
-        }
+        deleteController.deleteAlbum(albumTable.getSelectionModel().getSelectedIndex());
     }
     public ObservableList<Album> getAlbums(){
         albums = model.getAlbums();
@@ -125,7 +122,9 @@ public class MainController implements Initializable {
     public void addMovie(){
         addMovieController.createMovie();
     }
-
+    public void deleteMovie(){
+        deleteController.deleteMovie(movieTable.getSelectionModel().getSelectedIndex());
+    }
 
 
 

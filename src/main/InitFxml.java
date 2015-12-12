@@ -20,9 +20,9 @@ public class InitFxml {
 
         public void initializLoadersAndControllers(Stage primaryStage) throws IOException {
 
-            DeleteController dCtrl = new DeleteController();
             Model model = new Model();
-
+            DeleteController dCtrl = new DeleteController();
+            dCtrl.setModel(model);
 
 
             //- - - - - - - - - - - MOVIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -101,7 +101,7 @@
             <ContextMenu>
               <items>
                 <MenuItem fx:id="contextMovieEdit" mnemonicParsing="false" text="Edit" />
-                  <MenuItem fx:id="contextMovieDelete" mnemonicParsing="false" text="Delete" />
+                  <MenuItem fx:id="contextMovieDelete" mnemonicParsing="false" text="Delete" onAction="#deleteMovie"/>
               </items>
             </ContextMenu>
          </contextMenu>
