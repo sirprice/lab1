@@ -2,6 +2,8 @@ package models;
 
 import enums.MovieGenre;
 
+import java.util.ArrayList;
+
 /**
  * Created by cj on 10/12/15.
  */
@@ -12,6 +14,7 @@ public class Movie {
     private MovieGenre genre;
     private int rating;
     private String coverUrl;
+    private ArrayList<String> reviews;
 
     public Movie (String title, String director, MovieGenre genre, int raiting){
         this.title = title;

@@ -72,4 +72,8 @@ public class AddMovieController implements Initializable {
             model.addMovie(newMovie);
         }
     }
+
+    public void abortEdit(){
+        addStage.close();
+    }
 }

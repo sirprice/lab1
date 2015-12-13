@@ -58,7 +58,7 @@ public class EditMovieController implements Initializable {
 
     public void setChoiceBoxes(){
         editRating.setItems(model.getRatingList());
-        editGenre.setItems(model.getAlbumGenreList());
+        editGenre.setItems(model.getMovieGenreList());
     }
 
     public void setParent(Parent parent){
@@ -81,8 +81,7 @@ public class EditMovieController implements Initializable {
         editUrl.setText(selectedMovie.getCoverUrl());
 
         Image img = new Image(selectedMovie.getCoverUrl());
-        //movieCover.setImage(img);
-        //albumCover.setImage(img);
+        movieCover.setImage(img);
 
         editStage.show();
 
@@ -92,13 +91,17 @@ public class EditMovieController implements Initializable {
 
         model.getMovie(index).setTitle(editTitle.getText());
         model.getMovie(index).setDirector(editDirector.getText());
-        model.getMovie(index).setGenre((MovieGenre) editGenre.getValue()); //todo make this work with Genre
+        model.getMovie(index).setGenre((MovieGenre) editGenre.getValue());
         model.getMovie(index).setRating((Integer) editRating.getValue());
         model.getMovie(index).setCoverUrl(editUrl.getText());
         movieTable.refresh();
 
         editStage.close();
 
+    }
+
+    public void abortEdit(){
+        editStage.close();
     }
 
 
