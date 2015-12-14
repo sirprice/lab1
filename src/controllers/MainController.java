@@ -82,6 +82,8 @@ public class MainController implements Initializable {
         primaryStage.show();
     }
 
+
+
     // - - - - - - - - - Albums - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     public void showAlbums(){
@@ -144,16 +146,8 @@ public class MainController implements Initializable {
         deleteController.deleteMovie(movieTable.getSelectionModel().getSelectedIndex());
     }
 
-
-
-
-
-
-
-
-
-
-
-
+    public void exitMediaCenter(){
+        //todo close connection to database
+    }
 }
 

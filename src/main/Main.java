@@ -7,8 +7,11 @@ import javafx.stage.Stage;
 public class Main extends Application {
     public static final int WIDTH = 1280;
     public static final int HEIGHT = 720;
+    private String username;
+    private String password;
     @Override
     public void start(Stage primaryStage) throws Exception{
+
 
         InitFxml initFxml = new InitFxml();
         initFxml.initializLoadersAndControllers(primaryStage);

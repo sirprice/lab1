@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import models.JDBCDatabase;
 import models.Model;
 
 import java.io.IOException;
@@ -18,8 +19,14 @@ import java.io.IOException;
  * Created by Scalman on 10/12/15.
  */
 public class InitFxml {
+    private String username = "mediaapp";
+    private String password = "password";
 
         public void initializLoadersAndControllers(Stage primaryStage) throws IOException {
+
+            JDBCDatabase database = new JDBCDatabase("jdbc:mysql://localhost:3306/media?UseClientEnc=UTF8");
+            System.out.println("Databas initierad");
+            database.connect(username,password);
 
             Model model = new Model();
             DeleteController dCtrl = new DeleteController();
