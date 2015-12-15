@@ -74,7 +74,7 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
-      <TableView fx:id="movieTable" layoutX="194.0" layoutY="413.0" prefHeight="301.0" prefWidth="1075.0">
+      <TableView fx:id="movieTable" layoutX="194.0" layoutY="413.0" onMouseClicked="#showSelectedMovie" prefHeight="301.0" prefWidth="1075.0">
          <columns>
             <TableColumn prefWidth="295.5497131347656" text="Title">
                <cellValueFactory>

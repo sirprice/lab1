@@ -1,42 +1,36 @@
-package controllers.albumControllers;
+package controllers.movieControllers;
 
 import enums.AlbumGenre;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Album;
+import models.Movie;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by cj on 10/12/15.
+ * Created by Scalman on 15/12/15.
  */
-public class ShowAlbumController implements Initializable {
+public class ShowMovieController {
 
     private Stage showStage, primaryStage;
     private Parent show;
     private AlbumGenre genre;
-    @FXML private Label titleLabel, artistLabel, genreLabel, raitingLabel;
-    @FXML private ImageView albumCover;
+    @FXML private Label titleLabel, directorLabel, genreLabel, raitingLabel;
+    @FXML private ImageView movieCover;
 
     public void initialize(URL location, ResourceBundle resources) {
 
     }
     public void setPrimaryStage(Stage primaryStage){
         this.primaryStage = primaryStage;
-
     }
 
     public void setParent(Parent parent){
@@ -47,17 +41,16 @@ public class ShowAlbumController implements Initializable {
         //editStage.initOwner(primaryStage);
     }
 
-    public void showAlbum(Album album){
+    public void showMovie(Movie movie){
 
-        titleLabel.setText(album.getTitle());
-        artistLabel.setText(album.getArtist());
-        genreLabel.setText(album.getGenre().toString());
-        String rating = "" + album.getRating();
+        titleLabel.setText(movie.getTitle());
+        directorLabel.setText(movie.getDirector());
+        genreLabel.setText(movie.getGenre().toString());
+        String rating = "" + movie.getRating();
         raitingLabel.setText(rating);
 
-        Image cover = new Image(album.getCoverUrl());
-        albumCover.setImage(cover);
+        Image cover = new Image(movie.getCoverUrl());
+        movieCover.setImage(cover);
         showStage.show();
     }
 }
-

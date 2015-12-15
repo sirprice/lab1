@@ -18,7 +18,6 @@ public class DeleteController {
         if (index>=0){
             model.getAlbums().remove(index);
         }
-        //todo you should change in the model not album
     }
     public void deleteMovie(int index){
         if (index>=0){
