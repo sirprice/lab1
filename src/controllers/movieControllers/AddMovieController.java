@@ -24,9 +24,8 @@ public class AddMovieController implements Initializable {
     private Stage addStage, primaryStage;
     private Parent add;
     private Model model;
-    private int index;
     @FXML private TextField addTitle;
-    @FXML private TextField addDirector;
+    @FXML private TextField addMovieDirector;
     @FXML private ChoiceBox<MovieGenre> addGenre;
     @FXML private ChoiceBox<Integer> addRating;
     @FXML private TextField addUrl;
@@ -63,28 +62,34 @@ public class AddMovieController implements Initializable {
 
         Movie newMovie;
 
-        if (addUrl.getText().isEmpty()){
-            newMovie = new Movie(addTitle.getText(), addDirector.getText(),addGenre.getValue(), addRating.getValue());
+        if (addUrl.getText().isEmpty()){ //todo this makes an error when the add fields is empty, try catch
+            newMovie = new Movie(addTitle.getText(), addMovieDirector.getText(),addGenre.getValue(), addRating.getValue());
             model.addMovie(newMovie);
+            clearTextFields();
+
         }
         else if (!addUrl.getText().isEmpty()){
-            newMovie = new Movie(addTitle.getText(), addDirector.getText(),addGenre.getValue(), addRating.getValue(), addUrl.getText());
+            newMovie = new Movie(addTitle.getText(), addMovieDirector.getText(),addGenre.getValue(), addRating.getValue(), addUrl.getText());
             model.addMovie(newMovie);
+            clearTextFields();
+
         }
+        //addDirector.toString();
+        //System.out.println(addTitle.toString() + "   ");
+
         addStage.close();
-        //clearTextFields();
     }
 
     public void abortEdit(){
         addStage.close();
-        //clearTextFields();
+        clearTextFields();
     }
 
     private void clearTextFields(){
-        addTitle.setText("");
-        addDirector.setText("");
-        addUrl.setText("");
-        //addGenre = new ChoiceBox<>();
-        //addRating.setValue(null);
+        addMovieDirector.clear();
+        addTitle.clear();
+        addUrl.clear();
+        addGenre.setValue(null);
+        addRating.setValue(null);
     }
 }

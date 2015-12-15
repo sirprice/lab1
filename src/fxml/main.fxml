@@ -83,7 +83,7 @@
             </TableColumn>
             <TableColumn minWidth="5.956573486328125" prefWidth="189.4503173828125" text="Director">
                <cellValueFactory>
-                  <PropertyValueFactory property="artist" />
+                  <PropertyValueFactory property="director" />
                </cellValueFactory>
             </TableColumn>
             <TableColumn minWidth="5.76397705078125" prefWidth="179.32611083984375" text="Genre">

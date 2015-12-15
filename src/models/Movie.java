@@ -16,11 +16,11 @@ public class Movie {
     private String coverUrl;
     private ArrayList<String> reviews;
 
-    public Movie (String title, String director, MovieGenre genre, int raiting){
+    public Movie (String title, String director, MovieGenre genre, int rating){
         this.title = title;
         this.director = director;
         this.genre = genre;
-        this.rating = raiting;
+        this.rating = rating;
         this.coverUrl = "http://www.yourwebgraphics.com/gallery/data/thumbnails/392/3D-Women-Question-mark-01.png";
 
     }

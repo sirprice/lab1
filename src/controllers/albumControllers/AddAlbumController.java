@@ -72,19 +72,19 @@ public class AddAlbumController implements Initializable {
         }
 
         addStage.close();
-        //clearTextFields();
+        clearTextFields();
 
     }
 
     public void abortEdit(){
         addStage.close();
-        //clearTextFields();
+        clearTextFields();
     }
 
-    private void clearTextFields(){ //todo make this work on both addAlbum and addMovie
-        addTitle.setText(null);
-        addArtist.setText(null);
-        addUrl.setText(null);
+    private void clearTextFields(){
+        addArtist.clear();
+        addTitle.clear();
+        addUrl.clear();
         addGenre.setValue(null);
         addRating.setValue(null);
     }
