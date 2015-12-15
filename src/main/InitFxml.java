@@ -111,13 +111,7 @@ public class InitFxml {
             lINCtrl.setParent(login);
             lINCtrl.setModel(model);
             lINCtrl.setPrimaryStage(primaryStage,root);
-            //lINCtrl.se
 
-
-
-           // primaryStage.setTitle("Media Center");
-            //primaryStage.setScene(new Scene(root, 1280, 720));
-           // primaryStage.show();
         }
 }
 

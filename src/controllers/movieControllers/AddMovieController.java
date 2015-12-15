@@ -71,9 +71,20 @@ public class AddMovieController implements Initializable {
             newMovie = new Movie(addTitle.getText(), addDirector.getText(),addGenre.getValue(), addRating.getValue(), addUrl.getText());
             model.addMovie(newMovie);
         }
+        addStage.close();
+        //clearTextFields();
     }
 
     public void abortEdit(){
         addStage.close();
+        //clearTextFields();
+    }
+
+    private void clearTextFields(){
+        addTitle.setText("");
+        addDirector.setText("");
+        addUrl.setText("");
+        //addGenre = new ChoiceBox<>();
+        //addRating.setValue(null);
     }
 }

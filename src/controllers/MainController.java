@@ -60,6 +60,7 @@ public class MainController implements Initializable {
                                AddMovieController addMovieController,EditMovieController editMovieController,
                                ShowMovieController showMovieController){
         this.addAlbumController = addAlbumController;
+        addAlbumController.setPrimaryStage(primaryStage);
 
         this.editAlbumController = editAlbumController;
         editAlbumController.setPrimaryStage(primaryStage);
@@ -107,7 +108,7 @@ public class MainController implements Initializable {
         }
     }
     public void addAlbum(){
-        addAlbumController.addAlbum();
+        addAlbumController.createAlbum();
     }
 
     public void editAlbum(ActionEvent e) {

@@ -52,18 +52,15 @@ public class AddAlbumController implements Initializable {
         addStage.initModality(Modality.APPLICATION_MODAL);
     }
 
-    public void addAlbum(){
+    public void createAlbum(){
         addStage.show();
     }
-    public void abortEdit(){
-        addStage.close();
-    }
 
-    public void createAlbum(){
+    public void saveAlbum(){
 
         Album newAlbum;
 
-        if (addUrl.getText().isEmpty()) {
+        if (addUrl.getText().isEmpty()){
             System.out.println("Halle");
             newAlbum = new Album(addTitle.getText(), addArtist.getText(), addGenre.getValue(), addRating.getValue());
             model.addAlbum(newAlbum);
@@ -73,9 +70,23 @@ public class AddAlbumController implements Initializable {
             newAlbum = new Album(addTitle.getText(),addArtist.getText(),addGenre.getValue(), addRating.getValue(), addUrl.getText());
             model.addAlbum(newAlbum);
         }
-        //else if(addTitle.getText() == null || addArtist.getText() == null || ){
 
-        //}
+        addStage.close();
+        //clearTextFields();
+
+    }
+
+    public void abortEdit(){
+        addStage.close();
+        //clearTextFields();
+    }
+
+    private void clearTextFields(){ //todo make this work on both addAlbum and addMovie
+        addTitle.setText(null);
+        addArtist.setText(null);
+        addUrl.setText(null);
+        addGenre.setValue(null);
+        addRating.setValue(null);
     }
 
 }
