@@ -24,6 +24,7 @@ public class AddAlbumController implements Initializable {
     private Stage addStage, primaryStage;
     private Parent add;
     private Model model;
+    private int artistId;
     @FXML private TextField addTitle;
     @FXML private TextField addArtist;
     @FXML private ChoiceBox<AlbumGenre> addGenre;
@@ -58,19 +59,36 @@ public class AddAlbumController implements Initializable {
 
     public void saveAlbum(){
 
-        Album newAlbum;
-        /*
-        if (addUrl.getText().isEmpty()){
-            System.out.println("Halle");
-            newAlbum = new Album(addTitle.getText(), addArtist.getText(), addGenre.getValue(), addRating.getValue());
-            model.addAlbum(newAlbum);
+        boolean albumExists = false;
+
+       for(Album a: model.getNewAlbums()){
+           if (a.getTitle().toUpperCase().equals(addTitle.getText().toUpperCase())
+                   && a.getArtist().toUpperCase().equals(addArtist.getText().toUpperCase())){
+               albumExists = true;
+           }
+
+       }
+
+        if (!albumExists) {
+            getArtistId();
+            if (artistId <= 0) {
+                Thread thread = new Thread() {
+                    public void run() {
+                        model.createArtist(addArtist.getText());
+
+                        getArtistId();
+                        System.out.println(artistId + "i run");
+                    }
+                };
+                thread.start();
+            }
         }
-        else if(!addUrl.getText().isEmpty()) {
-            System.out.println("Balle");
-            newAlbum = new Album(addTitle.getText(),addArtist.getText(),addGenre.getValue(), addRating.getValue(), addUrl.getText());
-            model.addAlbum(newAlbum);
-        }
-        */
+
+
+
+
+
+
         addStage.close();
         clearTextFields();
 
@@ -80,6 +98,14 @@ public class AddAlbumController implements Initializable {
         addStage.close();
         clearTextFields();
     }
+    private void getArtistId(){
+        Thread thread = new Thread(){
+            public void run(){
+                artistId = model.getArtistId(addArtist.getText());
+                System.out.println("Innuti get artist id  " + artistId);
+            }
+        };thread.start();
+    }
 
     private void clearTextFields(){
         addArtist.clear();
@@ -88,5 +114,4 @@ public class AddAlbumController implements Initializable {
         addGenre.setValue(null);
         addRating.setValue(null);
     }
-
 }

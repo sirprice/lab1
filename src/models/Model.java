@@ -60,6 +60,14 @@ public class Model {
         database.dropAlbum(queries.dropAlbumQuery(albumID));
     }
 
+    public int getArtistId(String artist){
+        return database.getArtistByName(queries.getArtistByName(artist));
+    }
+
+    public void createArtist(String name){
+        database.insertNewArtist(queries.insertArtist(name));
+    }
+
     public void setAlbum(int index,Album album) {
         albums.set(index,album);
     }
