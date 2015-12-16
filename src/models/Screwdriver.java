@@ -1,9 +1,13 @@
 package models;
 
+import javafx.collections.ObservableList;
+
 /**
  * Created by Scalman on 13/12/15.
  */
 public interface Screwdriver {
+
+    ObservableList<Album> getAlbums(String query);
 
     void insertAlbum();
 

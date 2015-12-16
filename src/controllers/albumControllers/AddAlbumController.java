@@ -59,7 +59,7 @@ public class AddAlbumController implements Initializable {
     public void saveAlbum(){
 
         Album newAlbum;
-
+        /*
         if (addUrl.getText().isEmpty()){
             System.out.println("Halle");
             newAlbum = new Album(addTitle.getText(), addArtist.getText(), addGenre.getValue(), addRating.getValue());
@@ -70,7 +70,7 @@ public class AddAlbumController implements Initializable {
             newAlbum = new Album(addTitle.getText(),addArtist.getText(),addGenre.getValue(), addRating.getValue(), addUrl.getText());
             model.addAlbum(newAlbum);
         }
-
+        */
         addStage.close();
         clearTextFields();
 

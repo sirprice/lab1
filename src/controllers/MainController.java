@@ -1,5 +1,4 @@
 package controllers;
-
 import controllers.albumControllers.AddAlbumController;
 import controllers.albumControllers.EditAlbumController;
 import controllers.albumControllers.ShowAlbumController;
@@ -7,21 +6,16 @@ import controllers.movieControllers.AddMovieController;
 import controllers.movieControllers.EditMovieController;
 import controllers.movieControllers.ShowMovieController;
 import javafx.scene.Parent;
-
-
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import models.Album;
-import main.Main;
 import models.Model;
 import models.Movie;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -94,11 +88,25 @@ public class MainController implements Initializable {
     // - - - - - - - - - Albums - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     public void showAlbums(){
-        albumTable.setItems(model.getAlbums());
+        Thread thread = new Thread(){
+           public void run(){
+               model.getAlbums();
+               javafx.application.Platform.runLater(
+                       new Runnable() {
+                           @Override
+                           public void run() {
+                               albumTable.setItems(model.getNewAlbums());
+                           }
+                       }
+               );
+           }
+       };thread.start();
     }
 
     public void refreshAlbums(){
+        //albumTable.setItems(model.getNewAlbums());
         albumTable.refresh();
+
     }
 
     public void showSelectedAlbum(MouseEvent me){
@@ -122,7 +130,7 @@ public class MainController implements Initializable {
         deleteController.deleteAlbum(albumTable.getSelectionModel().getSelectedIndex());
     }
     public ObservableList<Album> getAlbums(){
-        albums = model.getAlbums();
+        albums = model.getNewAlbums();
         return albums;
     }
 
@@ -157,5 +165,6 @@ public class MainController implements Initializable {
     public void exitMediaCenter(){
         //todo close connection to database
     }
+
 }
 

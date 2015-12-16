@@ -30,8 +30,10 @@ public class InitFxml {
             database.connect(username,password);
 
             Model model = new Model();
+            model.setJDBCDatabase(database);
             DeleteController dCtrl = new DeleteController();
             dCtrl.setModel(model);
+
 
 
             //- - - - - - - - - - - MOVIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

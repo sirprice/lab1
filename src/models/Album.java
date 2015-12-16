@@ -2,6 +2,8 @@ package models;
 
 import enums.AlbumGenre;
 
+import java.util.ArrayList;
+
 /**
  * Created by cj on 07/12/15.
  */
@@ -9,11 +11,14 @@ public class Album {
     private String date;
     private String title;
 
+    private int albumID;
     private AlbumGenre genre;
     private int rating;
     private String releaseDate;
     private String artist;
+    private int artistID;
     private String noOfSongs;
+    private ArrayList<String> reviews;
 
 
     private String coverUrl;
@@ -21,18 +26,18 @@ public class Album {
 
 
 
-    public Album(String title, String artist, AlbumGenre genre, int rating) {
+    public Album(int albumID, String title, String artist, AlbumGenre genre) {
+        this.albumID = albumID;
         this.title = title;
         this.genre = genre;
-        this.rating = rating;
         this.artist = artist;
         this.coverUrl = "http://www.yourwebgraphics.com/gallery/data/thumbnails/392/3D-Women-Question-mark-01.png";
     }
 
-    public Album(String title, String artist, AlbumGenre genre, int rating, String coverUrl){
+    public Album(int albumID, String title, String artist, AlbumGenre genre, String coverUrl){
+        this.albumID = albumID;
         this.title = title;
         this.genre = genre;
-        this.rating = rating;
         this.artist = artist;
         this.coverUrl = coverUrl;
     }
@@ -93,5 +98,13 @@ public class Album {
     }
     public void setNoOfSongs(String noOfSongs) {
         this.noOfSongs = noOfSongs;
+    }
+
+    public String toString(){
+        String info ="Title: "+ title +
+                        "Artist: " + artist +
+                        "Genre: " + genre +
+                        "CoverUrl: " + coverUrl;
+        return info;
     }
 }

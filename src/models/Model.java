@@ -10,11 +10,15 @@ import javafx.collections.ObservableList;
  */
 public class Model {
 
+    private ObservableList<Album> newAlbums = FXCollections.observableArrayList();
     private ObservableList<Album> albums;
     private ObservableList<Movie> movies;
     private ObservableList<AlbumGenre> albumGenreList;
     private ObservableList<MovieGenre> movieGenreList;
     private ObservableList<Integer> ratingList;
+    private JDBCDatabase database;
+    private SQLQueries queries;
+
 
 
 
@@ -24,6 +28,7 @@ public class Model {
         albumGenreList = FXCollections.observableArrayList();
         movieGenreList = FXCollections.observableArrayList();
         ratingList = FXCollections.observableArrayList(1,2,3,4,5);
+        queries = new SQLQueries();
 
         for (AlbumGenre ag: AlbumGenre.values()){
             albumGenreList.add(ag);
@@ -34,17 +39,22 @@ public class Model {
         }
     }
 
-    public ObservableList<Album> getAlbums() {
-        return albums;
+
+    public void getAlbums(){
+        albums = database.getAlbums(queries.getAllAlbums);
     }
 
     public Album getAlbum(int index) {
         return albums.get(index);
     }
 
-    public void setAlbums(int index,Album album) {
-        albums.set(index,album);
+    public ObservableList<Album> getNewAlbums(){
 
+        return albums;
+    }
+
+    public void setAlbum(int index,Album album) {
+        albums.set(index,album);
     }
 
     public void addAlbum(Album newAlbum){
@@ -88,5 +98,9 @@ public class Model {
 
     public void setRatingList(ObservableList<Integer> ratingList) {
         this.ratingList = ratingList;
+    }
+
+    public void setJDBCDatabase(JDBCDatabase database) {
+        this.database = database;
     }
 }

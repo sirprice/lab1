@@ -16,7 +16,7 @@ public class DeleteController {
 
     public void deleteAlbum(int index){
         if (index>=0){
-            model.getAlbums().remove(index);
+            model.getNewAlbums().remove(index);
         }
     }
     public void deleteMovie(int index){
