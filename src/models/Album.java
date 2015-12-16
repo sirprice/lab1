@@ -24,16 +24,6 @@ public class Album {
     private String coverUrl;
     //private Review review;
 
-
-
-    public Album(int albumID, String title, String artist, AlbumGenre genre) {
-        this.albumID = albumID;
-        this.title = title;
-        this.genre = genre;
-        this.artist = artist;
-        this.coverUrl = "http://www.yourwebgraphics.com/gallery/data/thumbnails/392/3D-Women-Question-mark-01.png";
-    }
-
     public Album(int albumID, String title, String artist, AlbumGenre genre, String coverUrl){
         this.albumID = albumID;
         this.title = title;
@@ -41,8 +31,6 @@ public class Album {
         this.artist = artist;
         this.coverUrl = coverUrl;
     }
-
-
 
     public String getTitle() {
         return title;
@@ -98,6 +86,10 @@ public class Album {
     }
     public void setNoOfSongs(String noOfSongs) {
         this.noOfSongs = noOfSongs;
+    }
+
+    public int getAlbumID() {
+        return albumID;
     }
 
     public String toString(){

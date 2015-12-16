@@ -127,7 +127,12 @@ public class MainController implements Initializable {
     }
 
     public void deleteAlbum(){
-        deleteController.deleteAlbum(albumTable.getSelectionModel().getSelectedIndex());
+        Thread thread = new Thread(){
+            public void run(){
+                deleteController.deleteAlbum(albumTable.getSelectionModel().getSelectedIndex());
+                showAlbums();
+            }
+        };thread.start();
     }
     public ObservableList<Album> getAlbums(){
         albums = model.getNewAlbums();
@@ -152,7 +157,7 @@ public class MainController implements Initializable {
     public void showMovies(){
         Thread thread = new Thread(){
             public void run(){
-                model.getMovie();
+                model.getMovies();
                 javafx.application.Platform.runLater(
                         new Runnable() {
                             @Override
@@ -172,7 +177,12 @@ public class MainController implements Initializable {
         addMovieController.createMovie();
     }
     public void deleteMovie(){
-        deleteController.deleteMovie(movieTable.getSelectionModel().getSelectedIndex());
+        Thread thread = new Thread(){
+            public void run(){
+                deleteController.deleteMovie(movieTable.getSelectionModel().getSelectedIndex());
+                showMovies();
+            }
+        };thread.start();
     }
 
     public void exitMediaCenter(){

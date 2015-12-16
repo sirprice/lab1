@@ -39,6 +39,9 @@ public class Model {
         }
     }
 
+    public void deleteMovie(int movieId){
+        database.dropMovie(queries.dropMovieQuery(movieId));
+    }
 
     public void getAlbums(){
         albums = database.getAlbums(queries.getAllAlbums);
@@ -53,6 +56,10 @@ public class Model {
         return albums;
     }
 
+    public void deleteAlbum(int albumID){
+        database.dropAlbum(queries.dropAlbumQuery(albumID));
+    }
+
     public void setAlbum(int index,Album album) {
         albums.set(index,album);
     }
@@ -61,8 +68,11 @@ public class Model {
         albums.add(newAlbum);
     }
 
-    public void getMovie() {
+    public void getMovies() {
         movies = database.getMovies(queries.getAllMovies);
+    }
+    public Movie getMovie(int index){
+        return movies.get(index);
     }
 
     public ObservableList<Movie> getNewMovies() {
