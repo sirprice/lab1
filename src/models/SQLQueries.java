@@ -13,6 +13,16 @@ public class SQLQueries {
             "From Movie,Director " +
             "Where Movie.DirectorID = Director.ID;";
 
+    public String dropAlbumQuery(int index){
+        String query = "DELETE FROM ALBUM WHERE ALBUM.ID = " + index + ";";
+        return query;
+    }
+
+    public String dropMovieQuery(int index){
+        String query = "DELETE FROM MOVIE WHERE MOVIE.ID = " + index + ";";
+        return query;
+    }
+
     public String albumByArtistSearchQuery(String searchWord){
         String query = "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl " +
                 "From Album,Artist " +

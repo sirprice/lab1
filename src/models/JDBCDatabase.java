@@ -73,8 +73,15 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public void dropAlbum() {
+    public void dropAlbum(String query) {
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
 
+        }catch (java.sql.SQLException sql){
+            System.out.println(sql.getMessage());
+        }
     }
 
     @Override
@@ -93,7 +100,15 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public void dropMovie() {
+    public void dropMovie(String query) {
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+
+        }catch (java.sql.SQLException sql){
+            System.out.println(sql.getMessage());
+        }
 
     }
 

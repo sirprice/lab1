@@ -26,6 +26,10 @@ public class Movie {
 
     }
 
+    public int getMovieID() {
+        return movieID;
+    }
+
     public String getDirector() {
         return director;
     }

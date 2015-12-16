@@ -16,12 +16,13 @@ public class DeleteController {
 
     public void deleteAlbum(int index){
         if (index>=0){
-            model.getNewAlbums().remove(index);
+            model.deleteAlbum(model.getAlbum(index).getAlbumID());
         }
     }
     public void deleteMovie(int index){
         if (index>=0){
-            model.getMovies().remove(index);
+
+            model.deleteMovie(model.getMovie(index).getMovieID());
         }
     }
 }

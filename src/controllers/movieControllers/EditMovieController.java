@@ -89,13 +89,14 @@ public class EditMovieController implements Initializable {
 
     public void saveMovie(){
 
-        model.getMovie(index).setTitle(editTitle.getText());
-        model.getMovie(index).setDirector(editDirector.getText());
-        model.getMovie(index).setGenre((MovieGenre) editGenre.getValue());
-        model.getMovie(index).setRating((Integer) editRating.getValue());
-        model.getMovie(index).setCoverUrl(editUrl.getText());
+        /*
+        model.getMovies(index).setTitle(editTitle.getText());
+        model.getMovies(index).setDirector(editDirector.getText());
+        model.getMovies(index).setGenre((MovieGenre) editGenre.getValue());
+        model.getMovies(index).setRating((Integer) editRating.getValue());
+        model.getMovies(index).setCoverUrl(editUrl.getText());
         movieTable.refresh();
-
+*/
         editStage.close();
 
     }

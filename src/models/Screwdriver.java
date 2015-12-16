@@ -1,5 +1,6 @@
 package models;
 
+import javafx.beans.binding.StringBinding;
 import javafx.collections.ObservableList;
 
 /**
@@ -15,7 +16,7 @@ public interface Screwdriver {
 
     void alterAlbum();
 
-    void dropAlbum();
+    void dropAlbum(String query);
 
     void getArtist();
 
@@ -23,7 +24,7 @@ public interface Screwdriver {
 
     void alterMovie();
 
-    void dropMovie();
+    void dropMovie(String query);
 
     void getDirector();
 

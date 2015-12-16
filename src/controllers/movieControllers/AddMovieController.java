@@ -61,7 +61,7 @@ public class AddMovieController implements Initializable {
     public void saveMovie(){
 
         Movie newMovie;
-
+        /*
         if (addUrl.getText().isEmpty()){ //todo this makes an error when the add fields is empty, try catch
             newMovie = new Movie(addTitle.getText(), addMovieDirector.getText(),addGenre.getValue(), addRating.getValue());
             model.addMovie(newMovie);
@@ -73,7 +73,7 @@ public class AddMovieController implements Initializable {
             model.addMovie(newMovie);
             clearTextFields();
 
-        }
+        }*/
         //addDirector.toString();
         //System.out.println(addTitle.toString() + "   ");
 
