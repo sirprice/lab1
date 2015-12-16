@@ -21,7 +21,7 @@ public class DeleteController {
     }
     public void deleteMovie(int index){
         if (index>=0){
-            model.getMovies().remove(index);
+            //model.getMovies().remove(index);
         }
     }
 }

@@ -127,7 +127,7 @@ public class JDBCDatabase implements Screwdriver {
                     }
                 }
                 Album tmp = new Album(rs.getInt("ID"), rs.getString("Title"),rs.getString("Name"),tmpGenre,rs.getString("CoverUrl"));
-                System.out.println("1" + tmp.toString());
+                System.out.println(" 1" + tmp.toString());
                 albums.add(tmp);
 
             }
@@ -160,7 +160,7 @@ public class JDBCDatabase implements Screwdriver {
                     }
                 }
                 Movie tmp = new Movie(rs.getInt("ID"), rs.getString("Title"),rs.getString("Name"),tmpGenre,rs.getString("CoverUrl"));
-                System.out.println("1" + tmp.toString());
+                System.out.println("1 " + tmp.toString());
                 movies.add(tmp);
 
             }

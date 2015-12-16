@@ -65,4 +65,13 @@ public class Movie {
     public void setCoverUrl(String coverUrl) {
         this.coverUrl = coverUrl;
     }
+
+    public String toString(){
+        String info ="Title: " + title +
+                        "Director: " + director +
+                        "Genre: " + genre +
+                        "CoverUrl: " + coverUrl;
+        return info;
+    }
+
 }
