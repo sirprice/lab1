@@ -46,4 +46,16 @@ public class SQLQueries {
         String query ="";
         return query;
     }
+
+    public String getArtistByName(String searchWord){
+        String query ="SELECT ID FROM Artist WHERE Artist.name = '" + searchWord + "' ;";
+        return query;
+    }
+
+    public String insertArtist(String name){
+
+        return "INSERT INTO Artist(name) VALUES('" + name + "');";
+    }
+
+
 }

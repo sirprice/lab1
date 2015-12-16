@@ -44,6 +44,35 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    @Override
+    public void insertNewArtist(String query) {
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+
+        }catch (java.sql.SQLException sql){
+            System.out.println(sql.getMessage());
+        }
+    }
+
+    @Override
+    public int getArtistByName(String query) {
+        Statement stmt = null;
+        int artistId = -1;
+        try {
+            stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                artistId = rs.getInt("ID");
+                System.out.println(artistId);
+            }
+            //return artistId;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return artistId;
+    }
 
     @Override
     public ObservableList<Album> getAlbums(String query) {
@@ -82,11 +111,6 @@ public class JDBCDatabase implements Screwdriver {
         }catch (java.sql.SQLException sql){
             System.out.println(sql.getMessage());
         }
-    }
-
-    @Override
-    public void getArtist() {
-
     }
 
     @Override

@@ -18,7 +18,9 @@ public interface Screwdriver {
 
     void dropAlbum(String query);
 
-    void getArtist();
+    int getArtistByName(String query);
+
+    void insertNewArtist(String query);
 
     void insertMovie();
 
