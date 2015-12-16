@@ -150,7 +150,20 @@ public class MainController implements Initializable {
     }
 
     public void showMovies(){
-        movieTable.setItems(model.getMovies());
+        Thread thread = new Thread(){
+            public void run(){
+                model.getMovie();
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                movieTable.setItems(model.getNewMovies());
+                            }
+                        }
+                );
+            }
+        };thread.start();
+
     }
     public void refreshMovies(){
         movieTable.refresh();

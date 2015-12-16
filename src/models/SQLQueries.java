@@ -9,6 +9,10 @@ public class SQLQueries {
                                         "From Album,Artist " +
                                         "Where Album.ArtistID = Artist.ID;";
 
+    public final String getAllMovies = "Select Movie.ID, Movie.Title, Director.Name, Movie.Genre, Movie.CoverUrl " +
+            "From Movie,Director " +
+            "Where Movie.DirectorID = Director.ID;";
+
     public String albumByArtistSearchQuery(String searchWord){
         String query = "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl " +
                 "From Album,Artist " +

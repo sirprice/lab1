@@ -1,6 +1,7 @@
 package models;
 
 import enums.AlbumGenre;
+import enums.MovieGenre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -49,12 +50,17 @@ public class JDBCDatabase implements Screwdriver {
 
         ObservableList<Album> albums;
         albums = getAlbumsQuery(query);
-        for (Album a : albums){
-            System.out.println("2" + a.toString());
-        }
+
         return albums;
     }
 
+    @Override
+    public ObservableList<Movie> getMovies(String query) {
+        ObservableList<Movie> movies;
+        movies = getMoviesQuery(query);
+
+        return movies;
+    }
 
     @Override
     public void insertAlbum() {
@@ -137,5 +143,38 @@ public class JDBCDatabase implements Screwdriver {
             }
         }
         return albums;
+    }
+
+    private ObservableList<Movie> getMoviesQuery(String query) {
+        Statement stmt = null;
+        ObservableList<Movie> movies = FXCollections.observableArrayList();
+        MovieGenre tmpGenre = MovieGenre.OTHER;
+        try {
+            // Execute the SQL statement
+            stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                for (MovieGenre ag : MovieGenre.values()){
+                    if (ag.toString().toUpperCase().equals(rs.getString("Genre").toUpperCase())){
+                        tmpGenre = ag;
+                    }
+                }
+                Movie tmp = new Movie(rs.getInt("ID"), rs.getString("Title"),rs.getString("Name"),tmpGenre,rs.getString("CoverUrl"));
+                System.out.println("1" + tmp.toString());
+                movies.add(tmp);
+
+            }
+            return movies;
+
+        }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
+
+        finally {
+            if (stmt != null) {
+                try{
+                    stmt.close();
+                }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
+            }
+        }
+        return movies;
     }
 }

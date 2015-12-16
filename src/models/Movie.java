@@ -13,25 +13,18 @@ public class Movie {
     private String director;
     private MovieGenre genre;
     private int rating;
+    private int movieID;
     private String coverUrl;
     private ArrayList<String> reviews;
 
-    public Movie (String title, String director, MovieGenre genre, int rating){
+    public Movie (int movieID,String title, String director, MovieGenre genre,String coverUrl){
+        this.movieID = movieID;
         this.title = title;
         this.director = director;
         this.genre = genre;
-        this.rating = rating;
-        this.coverUrl = "http://www.yourwebgraphics.com/gallery/data/thumbnails/392/3D-Women-Question-mark-01.png";
-
-    }
-    public Movie (String title, String director, MovieGenre genre, int raiting, String coverUrl){
-        this.title = title;
-        this.director = director;
-        this.genre = genre;
-        this.rating = raiting;
         this.coverUrl = coverUrl;
-    }
 
+    }
 
     public String getDirector() {
         return director;

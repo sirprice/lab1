@@ -9,6 +9,8 @@ public interface Screwdriver {
 
     ObservableList<Album> getAlbums(String query);
 
+    ObservableList<Movie> getMovies(String query);
+
     void insertAlbum();
 
     void alterAlbum();

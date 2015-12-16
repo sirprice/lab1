@@ -61,11 +61,11 @@ public class Model {
         albums.add(newAlbum);
     }
 
-    public Movie getMovie(int index) {
-        return movies.get(index);
+    public void getMovie() {
+        movies = database.getMovies(queries.getAllMovies);
     }
 
-    public ObservableList<Movie> getMovies() {
+    public ObservableList<Movie> getNewMovies() {
         return movies;
     }
 
