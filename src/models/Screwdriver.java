@@ -22,13 +22,15 @@ public interface Screwdriver {
 
     void insertNewArtist(String query);
 
-    void insertMovie();
+    void insertMovie(String query);
 
     void alterMovie();
 
     void dropMovie(String query);
 
-    void getDirector();
+    int getDirectorByName(String query);
+
+    void insertNewDirector(String query);
 
     User userAuthentication(String query);
 

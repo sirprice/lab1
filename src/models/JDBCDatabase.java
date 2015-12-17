@@ -24,7 +24,6 @@ public class JDBCDatabase implements Screwdriver {
 
     public JDBCDatabase (String server){
         this.server = server;
-
         //movies = FXCollections.observableArrayList();
     }
 
@@ -122,8 +121,15 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public void insertMovie() {
+    public void insertMovie(String query) {
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
 
+        }catch (java.sql.SQLException sql){
+            System.out.println(sql.getMessage());
+        }
     }
 
     @Override
@@ -145,8 +151,33 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public void getDirector() {
+    public int getDirectorByName(String query) {
+        Statement stmt = null;
+        int id = -1;
+        try {
+            stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                id = rs.getInt("ID");
+                System.out.println(id);
+            }
+            //return artistId;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
 
+    @Override
+    public void insertNewDirector(String query) {
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+
+        }catch (java.sql.SQLException sql){
+            System.out.println(sql.getMessage());
+        }
     }
 
     @Override

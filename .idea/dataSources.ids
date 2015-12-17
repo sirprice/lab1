@@ -131,7 +131,7 @@
       </column>
       <column id="36" parent="6" name="Title">
         <mandatory>1</mandatory>
-        <data-type>varchar(30)</data-type>
+        <data-type>varchar(100)</data-type>
       </column>
       <column id="37" parent="6" name="Genre">
         <mandatory>1</mandatory>

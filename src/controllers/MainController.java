@@ -95,26 +95,12 @@ public class MainController implements Initializable {
     // - - - - - - - - - Albums - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     public void showAlbums(){
-        Thread thread = new Thread(){
-           public void run(){
-               model.getAlbums();
-               javafx.application.Platform.runLater(
-                       new Runnable() {
-                           @Override
-                           public void run() {
-                               albumTable.setItems(model.getNewAlbums());
-                           }
-                       }
-               );
-           }
-       };thread.start();
+        model.getNewAlbums();
+        albumTable.setItems(model.getAlbums());
     }
 
     public void refreshAlbums(){
-        showAlbums();
-        //albumTable.setItems(model.getNewAlbums());
-        //albumTable.refresh();
-
+        albumTable.setItems(model.getAlbums());
     }
 
     public void showSelectedAlbum(MouseEvent me){
@@ -142,10 +128,6 @@ public class MainController implements Initializable {
             }
         };thread.start();
     }
-    public ObservableList<Album> getAlbums(){
-        albums = model.getNewAlbums();
-        return albums;
-    }
 
     // - - - - - - - - - - Movies - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -163,22 +145,10 @@ public class MainController implements Initializable {
     }
 
     public void showMovies(){
-        Thread thread = new Thread(){
-            public void run(){
-                model.getMovies();
-                javafx.application.Platform.runLater(
-                        new Runnable() {
-                            @Override
-                            public void run() {
-                                movieTable.setItems(model.getNewMovies());
-                            }
-                        }
-                );
-            }
-        };thread.start();
-
+        model.getNewMovies();
     }
     public void refreshMovies(){
+        movieTable.setItems(model.getMovies());
         movieTable.refresh();
     }
     public void addMovie(){

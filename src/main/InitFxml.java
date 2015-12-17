@@ -104,6 +104,9 @@ public class InitFxml {
             mCtrl.showAlbums();
             mCtrl.showMovies();
 
+            // Model
+            model.setMainController(mCtrl);
+
             //- - - - - - - - - - - -Login Controller - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
             Parent login = null;

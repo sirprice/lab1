@@ -1,5 +1,6 @@
 package models;
 
+import controllers.MainController;
 import enums.AlbumGenre;
 import enums.MovieGenre;
 import javafx.collections.FXCollections;
@@ -11,6 +12,7 @@ import javafx.collections.ObservableList;
 public class Model {
 
     private ObservableList<Album> newAlbums = FXCollections.observableArrayList();
+    private MainController mainController;
     private User user;
     private ObservableList<Album> albums;
     private ObservableList<Movie> movies;
@@ -19,9 +21,6 @@ public class Model {
     private ObservableList<Integer> ratingList;
     private JDBCDatabase database;
     private SQLQueries queries;
-
-
-
 
     public Model(){
         albums = FXCollections.observableArrayList();
@@ -40,19 +39,44 @@ public class Model {
         }
     }
 
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
+
+    public void createMovie(String title, String genre, int directorID){
+        database.insertMovie(queries.insertMovieQuery(title,genre,directorID));
+    }
+
     public void deleteMovie(int movieId){
         database.dropMovie(queries.dropMovieQuery(movieId));
     }
 
-    public void getAlbums(){
-        albums = database.getAlbums(queries.getAllAlbums);
+    public void getNewAlbums(){
+        Thread thread = new Thread(){
+            public void run(){
+                albums = database.getAlbums(queries.getAllAlbums);
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                setAlbums(albums);
+                                mainController.refreshAlbums();
+                            }
+                        }
+                );
+            }
+        };thread.start();
     }
 
     public Album getAlbum(int index) {
         return albums.get(index);
     }
 
-    public ObservableList<Album> getNewAlbums(){
+    public void setAlbums(ObservableList<Album> albums) {
+        this.albums = albums;
+    }
+
+    public ObservableList<Album> getAlbums(){
         return albums;
     }
     public void createAlbum(String title, String genre, int artistID){
@@ -66,6 +90,13 @@ public class Model {
     public int getArtistId(String artist){
         return database.getArtistByName(queries.getArtistByName(artist));
     }
+    public void createDirector(String name){
+        database.insertNewDirector(queries.insertDirector(name));
+    }
+
+    public int getDirectorId(String name){
+        return database.getDirectorByName(queries.getDirectorByName(name));
+    }
 
     public void createArtist(String name){
         database.insertNewArtist(queries.insertArtist(name));
@@ -75,7 +106,7 @@ public class Model {
         user = database.userAuthentication(queries.authenticateUser(username,password));
 
         if (user == null){
-            //System.out.println("User == null  " + user.toString());
+            System.out.println("User == null  ");
             return false;
         }
         if (user != null){
@@ -85,7 +116,11 @@ public class Model {
         return false;
     }
 
-    public void setAlbum(int index,Album album) {
+    public User getUser() {
+        return user;
+    }
+
+    public void setAlbum(int index, Album album) {
         albums.set(index,album);
     }
 
@@ -93,14 +128,26 @@ public class Model {
         albums.add(newAlbum);
     }
 
-    public void getMovies() {
-        movies = database.getMovies(queries.getAllMovies);
+    public void getNewMovies() {
+        Thread thread = new Thread(){
+            public void run(){
+                movies = database.getMovies(queries.getAllMovies);
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                mainController.refreshMovies();
+                            }
+                        }
+                );
+            }
+        };thread.start();
     }
     public Movie getMovie(int index){
         return movies.get(index);
     }
 
-    public ObservableList<Movie> getNewMovies() {
+    public ObservableList<Movie> getMovies() {
         return movies;
     }
 

@@ -25,6 +25,7 @@ public class AddAlbumController implements Initializable {
     private Parent add;
     private Model model;
     private int artistId;
+
     @FXML private TextField addTitle;
     @FXML private TextField addArtist;
     @FXML private ChoiceBox<AlbumGenre> addGenre;
@@ -58,16 +59,14 @@ public class AddAlbumController implements Initializable {
     }
 
     public void saveAlbum(){
-
         boolean albumExists = false;
 
-       for(Album a: model.getNewAlbums()){
-           if (a.getTitle().toUpperCase().equals(addTitle.getText().toUpperCase())
-                   && a.getArtist().toUpperCase().equals(addArtist.getText().toUpperCase())){
-               albumExists = true;
-           }
-
-       }
+        for(Album a: model.getAlbums()){
+            if (a.getTitle().toUpperCase().equals(addTitle.getText().toUpperCase())
+                    && a.getArtist().toUpperCase().equals(addArtist.getText().toUpperCase())){
+                albumExists = true;
+            }
+        }
 
         if (!albumExists) {
                 Thread thread = new Thread() {
@@ -77,25 +76,21 @@ public class AddAlbumController implements Initializable {
                             model.createArtist(addArtist.getText());
                             artistId = model.getArtistId(addArtist.getText());
                             model.createAlbum(addTitle.getText(),addGenre.getValue().toString(),artistId);
-                            System.out.println(artistId + "i run");
+
+                            System.out.println(model.getUser().toString() + " Added an album");
+                            model.getNewAlbums();
                         }
                         else {
                             model.createAlbum(addTitle.getText(),addGenre.getValue().toString(),artistId);
-
+                            System.out.println(model.getUser().toString() + " Added an album");
+                            model.getNewAlbums();
                         }
                     }
                 };
                 thread.start();
         }
-
-
-
-
-
-
         addStage.close();
         clearTextFields();
-
     }
 
     public void abortEdit(){

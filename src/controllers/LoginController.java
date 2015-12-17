@@ -62,8 +62,8 @@ public class LoginController {
                                 new Runnable() {
                                     @Override
                                     public void run() {
-                                        mainController.toMenue();
                                         loginStage.close();
+                                        mainController.toMenue();
                                     }
                                 }
                         );
@@ -73,8 +73,6 @@ public class LoginController {
                                 new Runnable() {
                                     @Override
                                     public void run() {
-                                        loginStage.close();
-                                        setLoginScene();
                                         text.setText("wrong password or username!");
                                     }
                                 }

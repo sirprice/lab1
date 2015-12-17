@@ -24,6 +24,12 @@ public class SQLQueries {
         return query;
     }
 
+    public String insertMovieQuery(String title, String genre, int directorID){
+        String query ="INSERT INTO Movie (Title,Genre,DirectorID) " +
+                "VALUES('"+ title +"', '"+ genre + "',"+ directorID +");";
+        return query;
+    }
+
     public String dropMovieQuery(int index){
         String query = "DELETE FROM MOVIE WHERE MOVIE.ID = " + index + ";";
         return query;
@@ -56,6 +62,15 @@ public class SQLQueries {
     public String getArtistByName(String searchWord){
         String query ="SELECT ID FROM Artist WHERE Artist.name = '" + searchWord + "' ;";
         return query;
+    }
+    public String getDirectorByName(String searchWord){
+        String query ="SELECT ID FROM Director WHERE Director.name = '" + searchWord + "' ;";
+        return query;
+    }
+
+    public String insertDirector(String name){
+
+        return "INSERT INTO Director(name) VALUES('" + name + "');";
     }
 
     public String insertArtist(String name){

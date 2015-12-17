@@ -24,6 +24,7 @@ public class AddMovieController implements Initializable {
     private Stage addStage, primaryStage;
     private Parent add;
     private Model model;
+    private int directorID;
     @FXML private TextField addTitle;
     @FXML private TextField addMovieDirector;
     @FXML private ChoiceBox<MovieGenre> addGenre;
@@ -60,25 +61,38 @@ public class AddMovieController implements Initializable {
 
     public void saveMovie(){
 
-        Movie newMovie;
-        /*
-        if (addUrl.getText().isEmpty()){ //todo this makes an error when the add fields is empty, try catch
-            newMovie = new Movie(addTitle.getText(), addMovieDirector.getText(),addGenre.getValue(), addRating.getValue());
-            model.addMovie(newMovie);
-            clearTextFields();
+        boolean movieExists = false;
 
+        for(Movie m: model.getMovies()){
+            if (m.getTitle().toUpperCase().equals(addTitle.getText().toUpperCase())
+                    && m.getDirector().toUpperCase().equals(addMovieDirector.getText().toUpperCase())){
+                movieExists = true;
+            }
         }
-        else if (!addUrl.getText().isEmpty()){
-            newMovie = new Movie(addTitle.getText(), addMovieDirector.getText(),addGenre.getValue(), addRating.getValue(), addUrl.getText());
-            model.addMovie(newMovie);
-            clearTextFields();
 
+        if (!movieExists) {
+            Thread thread = new Thread() {
+                public void run() {
+                    directorID = model.getDirectorId(addMovieDirector.getText());
+                    if (directorID <= 0) {
+                        model.createDirector(addMovieDirector.getText());
+                        directorID = model.getDirectorId(addMovieDirector.getText());
+                        model.createMovie(addTitle.getText(),addGenre.getValue().toString(),directorID);
+
+                        System.out.println(model.getUser().toString() + " Added a movie");
+                        model.getNewMovies();
+                    }
+                    else {
+                        model.createMovie(addTitle.getText(),addGenre.getValue().toString(),directorID);
+                        System.out.println(model.getUser().toString() + " Added a movie");
+                        model.getNewMovies();
+                    }
+                }
+            };
+            thread.start();
         }
-        */
-        //addDirector.toString();
-        //System.out.println(addTitle.toString() + "   ");
-
         addStage.close();
+        clearTextFields();
     }
 
     public void abortEdit(){
