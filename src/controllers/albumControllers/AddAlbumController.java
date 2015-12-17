@@ -85,12 +85,12 @@ public class AddAlbumController implements Initializable {
                             System.out.println(model.getUser().toString() + " Added an album");
                             model.getNewAlbums();
                         }
+                        clearTextFields();
                     }
                 };
                 thread.start();
         }
         addStage.close();
-        clearTextFields();
     }
 
     public void abortEdit(){
