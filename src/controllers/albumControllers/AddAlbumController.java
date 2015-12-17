@@ -59,6 +59,7 @@ public class AddAlbumController implements Initializable {
     }
 
     public void saveAlbum(){
+
         boolean albumExists = false;
 
         for(Album a: model.getAlbums()){
