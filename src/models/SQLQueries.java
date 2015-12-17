@@ -64,4 +64,9 @@ public class SQLQueries {
     }
 
 
+    public String authenticateUser(String username, String password){
+        String query="SELECT ID,Username FROM USER WHERE Username = '"+username+"' AND Password='"+password+"';";
+        return query;
+    }
+
 }

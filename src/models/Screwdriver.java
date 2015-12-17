@@ -30,7 +30,7 @@ public interface Screwdriver {
 
     void getDirector();
 
-    void userAuthentication();
+    User userAuthentication(String query);
 
     void getReviews();
 

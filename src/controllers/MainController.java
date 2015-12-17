@@ -10,9 +10,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import main.Main;
 import models.Album;
 import models.Model;
 import models.Movie;
@@ -49,9 +51,13 @@ public class MainController implements Initializable {
         this.model = model;
     }
 
+    public void setMain(Parent main) {
+        this.main = main;
+    }
+
     public void setControllers(AddAlbumController addAlbumController, EditAlbumController editAlbumController,
                                DeleteController deleteController, ShowAlbumController showAlbumController,
-                               AddMovieController addMovieController,EditMovieController editMovieController,
+                               AddMovieController addMovieController, EditMovieController editMovieController,
                                ShowMovieController showMovieController){
         this.addAlbumController = addAlbumController;
         addAlbumController.setPrimaryStage(primaryStage);
@@ -78,10 +84,11 @@ public class MainController implements Initializable {
 
     }
 
-    /*public void toMenu(){
+    public void toMenue(){
+
         primaryStage.setScene(new Scene(main, Main.WIDTH, Main.HEIGHT));
         primaryStage.show();
-    }*/
+    }
 
 
 

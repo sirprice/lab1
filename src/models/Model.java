@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 public class Model {
 
     private ObservableList<Album> newAlbums = FXCollections.observableArrayList();
+    private User user;
     private ObservableList<Album> albums;
     private ObservableList<Movie> movies;
     private ObservableList<AlbumGenre> albumGenreList;
@@ -52,7 +53,6 @@ public class Model {
     }
 
     public ObservableList<Album> getNewAlbums(){
-
         return albums;
     }
     public void createAlbum(String title, String genre, int artistID){
@@ -69,6 +69,20 @@ public class Model {
 
     public void createArtist(String name){
         database.insertNewArtist(queries.insertArtist(name));
+    }
+
+    public boolean authentcateUser(String username, String password){
+        user = database.userAuthentication(queries.authenticateUser(username,password));
+
+        if (user == null){
+            //System.out.println("User == null  " + user.toString());
+            return false;
+        }
+        if (user != null){
+            System.out.println("User != null  " + user.toString());
+            return true;
+        }
+        return false;
     }
 
     public void setAlbum(int index,Album album) {

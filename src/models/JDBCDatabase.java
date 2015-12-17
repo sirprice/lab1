@@ -17,6 +17,7 @@ public class JDBCDatabase implements Screwdriver {
     private String username;
     private String password;
     private Connection connection;
+    private User user;
     private ObservableList<Album> albums;
     private ObservableList<Movie> movies;
 
@@ -24,7 +25,7 @@ public class JDBCDatabase implements Screwdriver {
     public JDBCDatabase (String server){
         this.server = server;
 
-        movies = FXCollections.observableArrayList();
+        //movies = FXCollections.observableArrayList();
     }
 
     public void connect(String username, String password){
@@ -149,8 +150,8 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public void userAuthentication() {
-
+    public User userAuthentication(String query) {
+        return getUserQuery(query);
     }
 
     @Override
@@ -222,5 +223,31 @@ public class JDBCDatabase implements Screwdriver {
             }
         }
         return movies;
+    }
+
+    private User getUserQuery(String query) {
+        Statement stmt = null;
+        User user = null;
+
+        try {
+            // Execute the SQL statement
+            stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                user = new User(rs.getInt("ID"), rs.getString("Username"));
+                System.out.println("1 " + user.toString());
+            }
+            return user;
+
+        }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
+
+        finally {
+            if (stmt != null) {
+                try{
+                    stmt.close();
+                }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
+            }
+        }
+        return user;
     }
 }

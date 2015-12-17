@@ -18,6 +18,7 @@ public class LoginController {
     private Stage loginStage,primaryStage;
     private Parent add,root;
     private Model model;
+    private MainController mainController;
 
     @FXML private PasswordField password;
     @FXML private TextField userName;
@@ -31,25 +32,57 @@ public class LoginController {
         this.root = root;
     }
 
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
+
     public void setParent(Parent parent){
         this.add = parent;
         loginStage = new Stage();
         loginStage.setScene(new Scene(add, 600,400));
-        loginStage.show();
     }
 
+    public void setLoginScene(){
+        loginStage.show();
+    }
     public void checkLogin(){
 
         System.out.println(password.getText().toString() + " " + userName.getText().toString());
-        System.out.printf("jhiuhihuih");
-        if (password.getText().isEmpty() || userName.getText().isEmpty()){
 
+
+
+
+        if (password.getText().isEmpty() || userName.getText().isEmpty()){
             text.setText("wrong password or username!");
         }else {
-            primaryStage.setTitle("Media Center");
-            primaryStage.setScene(new Scene(root, 1280, 720));
-            primaryStage.show();
-            loginStage.close();
+            Thread thread = new Thread() {
+                public void run() {
+                    if (model.authentcateUser(userName.getText(),password.getText())) {
+                        javafx.application.Platform.runLater(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        mainController.toMenue();
+                                        loginStage.close();
+                                    }
+                                }
+                        );
+                    }
+                    else{
+                        javafx.application.Platform.runLater(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        loginStage.close();
+                                        setLoginScene();
+                                        text.setText("wrong password or username!");
+                                    }
+                                }
+                        );
+                    }
+                }
+            };
+            thread.start();
         }
     }
 }

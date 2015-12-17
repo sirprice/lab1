@@ -99,6 +99,7 @@ public class InitFxml {
             if (mCtrl == null) System.out.println("main controllern är null");
             mCtrl.setPrimaryStage(primaryStage);
             mCtrl.setModel(model);
+            mCtrl.setMain(root);
             mCtrl.setControllers(aACtrl, eACtrl, dCtrl, sACtrl, aMCtrl,eMCtrl,sMCtrl);
             mCtrl.showAlbums();
             mCtrl.showMovies();
@@ -112,7 +113,9 @@ public class InitFxml {
             if (lINCtrl == null) System.out.println("add album controllern är null");
             lINCtrl.setParent(login);
             lINCtrl.setModel(model);
+            lINCtrl.setMainController(mCtrl);
             lINCtrl.setPrimaryStage(primaryStage,root);
+            lINCtrl.setLoginScene();
 
         }
 }
