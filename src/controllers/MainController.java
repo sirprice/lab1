@@ -104,8 +104,9 @@ public class MainController implements Initializable {
     }
 
     public void refreshAlbums(){
+        showAlbums();
         //albumTable.setItems(model.getNewAlbums());
-        albumTable.refresh();
+        //albumTable.refresh();
 
     }
 

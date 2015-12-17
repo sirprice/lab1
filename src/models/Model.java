@@ -55,6 +55,9 @@ public class Model {
 
         return albums;
     }
+    public void createAlbum(String title, String genre, int artistID){
+        database.insertAlbum(queries.insertAlbumQuery(title,genre,artistID));
+    }
 
     public void deleteAlbum(int albumID){
         database.dropAlbum(queries.dropAlbumQuery(albumID));

@@ -70,18 +70,22 @@ public class AddAlbumController implements Initializable {
        }
 
         if (!albumExists) {
-            getArtistId();
-            if (artistId <= 0) {
                 Thread thread = new Thread() {
                     public void run() {
-                        model.createArtist(addArtist.getText());
+                        artistId = model.getArtistId(addArtist.getText());
+                        if (artistId <= 0) {
+                            model.createArtist(addArtist.getText());
+                            artistId = model.getArtistId(addArtist.getText());
+                            model.createAlbum(addTitle.getText(),addGenre.getValue().toString(),artistId);
+                            System.out.println(artistId + "i run");
+                        }
+                        else {
+                            model.createAlbum(addTitle.getText(),addGenre.getValue().toString(),artistId);
 
-                        getArtistId();
-                        System.out.println(artistId + "i run");
+                        }
                     }
                 };
                 thread.start();
-            }
         }
 
 

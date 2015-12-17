@@ -13,6 +13,12 @@ public class SQLQueries {
             "From Movie,Director " +
             "Where Movie.DirectorID = Director.ID;";
 
+    public String insertAlbumQuery(String title, String genre, int artistID){
+        String query ="INSERT INTO ALBUM (Title,Genre,artistID) " +
+                "VALUES('"+ title +"', '"+ genre + "',"+ artistID +");";
+        return query;
+    }
+
     public String dropAlbumQuery(int index){
         String query = "DELETE FROM ALBUM WHERE ALBUM.ID = " + index + ";";
         return query;

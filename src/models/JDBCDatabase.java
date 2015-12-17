@@ -92,8 +92,15 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public void insertAlbum() {
+    public void insertAlbum(String query) {
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
 
+        }catch (java.sql.SQLException sql){
+            System.out.println(sql.getMessage());
+        }
     }
 
     @Override
