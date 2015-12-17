@@ -16,7 +16,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Register" />
+              <MenuItem fx:id="registerId" mnemonicParsing="false" text="Register" />
             </items>
           </Menu>
         </menus>

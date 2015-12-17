@@ -87,12 +87,12 @@ public class AddMovieController implements Initializable {
                         System.out.println(model.getUser().toString() + " Added a movie");
                         model.getNewMovies();
                     }
+                    clearTextFields();
                 }
             };
             thread.start();
         }
         addStage.close();
-        clearTextFields();
     }
 
     public void abortEdit(){

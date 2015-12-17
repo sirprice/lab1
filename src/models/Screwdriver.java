@@ -14,7 +14,7 @@ public interface Screwdriver {
 
     void insertAlbum(String query);
 
-    void alterAlbum();
+    void alterAlbum(String query);
 
     void dropAlbum(String query);
 

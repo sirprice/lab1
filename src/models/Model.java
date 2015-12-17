@@ -14,6 +14,8 @@ public class Model {
     private ObservableList<Album> newAlbums = FXCollections.observableArrayList();
     private MainController mainController;
     private User user;
+    private int artistID;
+    private String artist;
     private ObservableList<Album> albums;
     private ObservableList<Movie> movies;
     private ObservableList<AlbumGenre> albumGenreList;
@@ -114,6 +116,44 @@ public class Model {
             return true;
         }
         return false;
+    }
+
+
+    public void editAlbum(int albumId,String artist, String genre, String title, String url){
+
+        boolean albumExists = false;
+        this.artist = artist;
+
+        for(Album a: getAlbums()){
+            if (a.getTitle().toUpperCase().equals(title.toUpperCase())
+                    && a.getArtist().toUpperCase().equals(artist.toUpperCase())){
+                albumExists = true;
+            }
+        }
+
+        if(!albumExists){
+            Thread thread = new Thread(){
+                public void run(){
+                    artistID = getArtistId(artist);
+                    if (artistID <= 0){
+                        createArtist(queries.getArtistByName(artist));
+                        artistID = getArtistId(artist);
+                        database.alterAlbum(queries.editAlbum(albumId,title,genre,artistID,url));
+                        System.out.println(user.toString() + "editFunktion:");
+                        getNewAlbums();
+                    }else {
+                        database.alterAlbum(queries.editAlbum(albumId,title,genre,artistID,url));
+                        System.out.println(user.toString() + "editFunktion:");
+                        getNewAlbums();
+                    }
+
+
+                    //albums = database.getAlbums(queries.getAllAlbums);
+
+                }
+            };thread.start();
+        }
+
     }
 
     public User getUser() {

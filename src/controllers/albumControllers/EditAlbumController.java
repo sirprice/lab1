@@ -94,6 +94,8 @@ public class EditAlbumController implements Initializable{
         model.getAlbum(index).setGenre((AlbumGenre) editGenre.getValue());
         model.getAlbum(index).setRating((Integer) editRating.getValue());
         model.getAlbum(index).setCoverUrl(editUrl.getText());
+        model.editAlbum(model.getAlbum(index).getAlbumID(), editArtist.getText(),
+                editGenre.getValue().toString(),editTitle.getText(),editUrl.getText());
         albumTable.refresh();
 
         editStage.close();

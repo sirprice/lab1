@@ -72,12 +72,11 @@ public class AddAlbumController implements Initializable {
                 Thread thread = new Thread() {
                     public void run() {
                         artistId = model.getArtistId(addArtist.getText());
+                        System.out.println("innan skapad artist" + artistId);
                         if (artistId <= 0) {
                             model.createArtist(addArtist.getText());
                             artistId = model.getArtistId(addArtist.getText());
                             model.createAlbum(addTitle.getText(),addGenre.getValue().toString(),artistId);
-
-                            System.out.println(model.getUser().toString() + " Added an album");
                             model.getNewAlbums();
                         }
                         else {
@@ -85,12 +84,12 @@ public class AddAlbumController implements Initializable {
                             System.out.println(model.getUser().toString() + " Added an album");
                             model.getNewAlbums();
                         }
+                        clearTextFields();
                     }
                 };
                 thread.start();
         }
         addStage.close();
-        clearTextFields();
     }
 
     public void abortEdit(){

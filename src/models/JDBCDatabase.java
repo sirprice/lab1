@@ -49,7 +49,8 @@ public class JDBCDatabase implements Screwdriver {
         Statement stmt = null;
         try {
             stmt = connection.createStatement();
-            stmt.executeUpdate(query);
+            int shit = stmt.executeUpdate(query);
+            System.out.println("JDBC asshole"+shit);
 
         }catch (java.sql.SQLException sql){
             System.out.println(sql.getMessage());
@@ -104,8 +105,15 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public void alterAlbum() {
+    public void alterAlbum(String query) {
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
 
+        }catch (java.sql.SQLException sql){
+            System.out.println(sql.getMessage());
+        }
     }
 
     @Override

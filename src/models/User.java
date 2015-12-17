@@ -4,8 +4,8 @@ package models;
  * Created by cj on 17/12/15.
  */
 public class User {
-    private int userID;
-    private String username;
+    private final int userID;
+    private final String username;
 
     public User (int userID, String username){
         this.userID = userID;
@@ -16,16 +16,8 @@ public class User {
         return userID;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
     public String getUsername() {
         return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     @Override
