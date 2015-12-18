@@ -17,7 +17,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by cj on 09/12/15.
+ * Created by cj And Scalman on 09/12/15.
+ * Creates album by sending a request to the database.
+ * a new thread takes care of the request and put the result in UI heap.
  */
 public class AddAlbumController implements Initializable {
 
@@ -35,29 +37,48 @@ public class AddAlbumController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+    /**
+     * Initialize the primary stage.
+     * @param primaryStage
+     */
     public void setPrimaryStage(Stage primaryStage){
         this.primaryStage = primaryStage;
     }
-
+    /**
+     * Initialize the model so this scene makes changes on the same data.
+     * @param model
+     */
     public void setModel(Model model){
         this.model = model;
     }
+    /**
+     * Initialize the choice boxes.
+     */
     public void setChoiceBoxes(){
         addRating.setItems(model.getRatingList());
         addGenre.setItems(model.getAlbumGenreList());
 
     }
+    /**
+     * Initialize the the scene and sets prepare the stage before show time.
+     * @param parent
+     */
     public void setParent(Parent parent){
         this.add = parent;
         addStage = new Stage();
         addStage.setScene(new Scene(add, 460,260));
         addStage.initModality(Modality.APPLICATION_MODAL);
     }
-
+    /**
+     * Shows the stage.
+     */
     public void createAlbum(){
         addStage.show();
     }
-
+    /**
+     * Sends a request to the database on a new thread.
+     */
     public void saveAlbum(){
 
         boolean albumExists = false;
@@ -95,7 +116,9 @@ public class AddAlbumController implements Initializable {
         }
         addStage.close();
     }
-
+    /**
+     * Cancel mode.
+     */
     public void abortEdit(){
         addStage.close();
         clearTextFields();
@@ -108,7 +131,9 @@ public class AddAlbumController implements Initializable {
             }
         };thread.start();
     }
-
+    /**
+     * Clears the text fields after an error occur.
+     */
     private void clearTextFields(){
         addArtist.clear();
         addTitle.clear();

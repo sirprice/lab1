@@ -79,7 +79,7 @@ public class EditAlbumController implements Initializable{
         editRating.setValue(selectedAlbum.getRating());
         editUrl.setText(selectedAlbum.getCoverUrl());
 
-        Image img = new Image(selectedAlbum.getCoverUrl());
+        Image img = new Image(selectedAlbum.getCoverUrl()); // try catch
         albumCover.setImage(img);
 
         editStage.show();
