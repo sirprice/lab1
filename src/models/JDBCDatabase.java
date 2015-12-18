@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Created by cj on 14/12/15.
@@ -105,6 +106,18 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
+    public void insertNewUser(String query) {
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+
+        }catch (java.sql.SQLException sql){
+            System.out.println(sql.getMessage());
+        }
+    }
+
+    @Override
     public void alterAlbum(String query) {
         Statement stmt = null;
         try {
@@ -189,7 +202,7 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public User userAuthentication(String query) {
+    public ArrayList<User> userAuthentication(String query) {
         return getUserQuery(query);
     }
 
@@ -264,16 +277,18 @@ public class JDBCDatabase implements Screwdriver {
         return movies;
     }
 
-    private User getUserQuery(String query) {
+    private ArrayList<User> getUserQuery(String query) {
         Statement stmt = null;
-        User user = null;
+        ArrayList<User> user = new ArrayList<>();
 
         try {
             // Execute the SQL statement
             stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                user = new User(rs.getInt("ID"), rs.getString("Username"));
+                user.add(new User(rs.getInt("ID"),rs.getString("Username")));
+                //user.add(rs.getInt("ID"),rs.getString("Username"));
+                //user = new User(rs.getInt("ID"), rs.getString("Username"));
                 System.out.println("1 " + user.toString());
             }
             return user;

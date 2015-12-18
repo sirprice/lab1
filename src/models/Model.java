@@ -6,6 +6,8 @@ import enums.MovieGenre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
+
 /**
  * Created by cj on 07/12/15.
  */
@@ -13,9 +15,11 @@ public class Model {
 
     private ObservableList<Album> newAlbums = FXCollections.observableArrayList();
     private MainController mainController;
-    private User user;
+
     private int artistID;
+
     private String artist;
+    private ArrayList<User> user;
     private ObservableList<Album> albums;
     private ObservableList<Movie> movies;
     private ObservableList<AlbumGenre> albumGenreList;
@@ -105,19 +109,37 @@ public class Model {
     }
 
     public boolean authentcateUser(String username, String password){
-        user = database.userAuthentication(queries.authenticateUser(username,password));
 
-        if (user == null){
-            System.out.println("User == null  ");
-            return false;
+        user = database.userAuthentication(queries.authenticateUser(username,password));
+        boolean exists = false;
+
+        for(User u: user){
+
+            if (u != null){
+                System.out.println("User != null  " + user.toString());
+                exists = true;
+            }
+
         }
-        if (user != null){
-            System.out.println("User != null  " + user.toString());
-            return true;
-        }
-        return false;
+        return exists;
     }
 
+    public boolean getAllUsers(String username){
+
+        user = database.userAuthentication(queries.getAllUsers());
+        boolean exists = false;
+
+        for (User u: user){
+            if (u.getUsername().toUpperCase().equals(username.toUpperCase())){
+                exists = true;
+            }
+        }
+        return exists;
+    }
+
+    public void createUser(String username, String password){
+        database.insertNewUser(queries.insertUser(username,password));
+    }
 
     public void editAlbum(int albumId,String artist, String genre, String title, String url){
 
@@ -156,7 +178,7 @@ public class Model {
 
     }
 
-    public User getUser() {
+    public ArrayList<User> getUser() {
         return user;
     }
 

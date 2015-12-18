@@ -1,6 +1,8 @@
 package main;
 
 import controllers.*;
+import controllers.LoginRegisterController.LoginController;
+import controllers.LoginRegisterController.RegisterController;
 import controllers.albumControllers.AddAlbumController;
 import controllers.albumControllers.EditAlbumController;
 import controllers.albumControllers.ShowAlbumController;
@@ -9,7 +11,6 @@ import controllers.movieControllers.EditMovieController;
 import controllers.movieControllers.ShowMovieController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import models.JDBCDatabase;
 import models.Model;
@@ -106,6 +107,15 @@ public class InitFxml {
 
             // Model
             model.setMainController(mCtrl);
+            //- - - - - - - - - - - -Register Controller - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+            Parent registerNewUser = null;
+            FXMLLoader registerNewLoader = new FXMLLoader();
+            registerNewUser = registerNewLoader.load(getClass().getResource("/fxml/register.fxml").openStream());
+            RegisterController rUCtrl = registerNewLoader.getController();
+            if (rUCtrl == null) System.out.println("add album controllern är null");
+            rUCtrl.setParent(registerNewUser);
+            rUCtrl.setModel(model);
 
             //- - - - - - - - - - - -Login Controller - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -116,7 +126,7 @@ public class InitFxml {
             if (lINCtrl == null) System.out.println("add album controllern är null");
             lINCtrl.setParent(login);
             lINCtrl.setModel(model);
-            lINCtrl.setMainController(mCtrl);
+            lINCtrl.setMainRegisterController(mCtrl,rUCtrl);
             lINCtrl.setPrimaryStage(primaryStage,root);
             lINCtrl.setLoginScene();
 

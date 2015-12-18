@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginRegisterController.LoginController">
    <children>
       <PasswordField fx:id="password" layoutX="277.0" layoutY="207.0" />
       <TextField fx:id="userName" layoutX="277.0" layoutY="173.0" />
@@ -16,7 +16,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem fx:id="registerId" mnemonicParsing="false" text="Register" />
+              <MenuItem fx:id="registerId" mnemonicParsing="false" onAction="#registerNewUser" text="Register" />
             </items>
           </Menu>
         </menus>

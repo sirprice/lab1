@@ -1,9 +1,11 @@
-package controllers;
+package controllers.LoginRegisterController;
 
+import controllers.MainController;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
@@ -19,10 +21,12 @@ public class LoginController {
     private Parent add,root;
     private Model model;
     private MainController mainController;
+    private RegisterController registerController;
 
     @FXML private PasswordField password;
     @FXML private TextField userName;
     @FXML private Label text;
+    //@FXML private MenuItem registerId;
 
     public void setModel(Model model){
         this.model = model;
@@ -32,8 +36,9 @@ public class LoginController {
         this.root = root;
     }
 
-    public void setMainController(MainController mainController) {
+    public void setMainRegisterController(MainController mainController,RegisterController registerController) {
         this.mainController = mainController;
+        this.registerController = registerController;
     }
 
     public void setParent(Parent parent){
@@ -83,4 +88,10 @@ public class LoginController {
             thread.start();
         }
     }
+
+    public void registerNewUser(){
+
+        registerController.setRegisterScene();
+    }
+
 }

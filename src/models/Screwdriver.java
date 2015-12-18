@@ -3,6 +3,8 @@ package models;
 import javafx.beans.binding.StringBinding;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
+
 /**
  * Created by Scalman on 13/12/15.
  */
@@ -32,7 +34,9 @@ public interface Screwdriver {
 
     void insertNewDirector(String query);
 
-    User userAuthentication(String query);
+    ArrayList<User> userAuthentication(String query);
+
+    void insertNewUser(String query);
 
     void getReviews();
 
