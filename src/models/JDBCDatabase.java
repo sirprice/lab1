@@ -242,8 +242,6 @@ public class JDBCDatabase implements Screwdriver {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 user = new User(rs.getInt("ID"), rs.getString("Username"));
-                //user.add(rs.getInt("ID"),rs.getString("Username"));
-                //user = new User(rs.getInt("ID"), rs.getString("Username"));
                 System.out.println("1 " + user.toString());
             }
             return user;

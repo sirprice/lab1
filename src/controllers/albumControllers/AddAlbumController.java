@@ -75,10 +75,13 @@ public class AddAlbumController implements Initializable {
                         artistId = model.getArtistId(addArtist.getText());
                         System.out.println("innan skapad artist" + artistId);
                         if (artistId <= 0) {
+                            // // TODO: 18/12/15 Start transaction
                             model.createArtist(addArtist.getText());
                             artistId = model.getArtistId(addArtist.getText());
                             model.createAlbum(addTitle.getText(),addGenre.getValue().toString(),artistId);
+                            // // TODO: 18/12/15 Commit transaction / rollback
                             model.getNewAlbums();
+
                         }
                         else {
                             model.createAlbum(addTitle.getText(),addGenre.getValue().toString(),artistId);

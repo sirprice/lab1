@@ -17,7 +17,6 @@ public class Model {
     private MainController mainController;
 
     private int artistID;
-
     private String artist;
     private User user;
     private ObservableList<Album> albums;
