@@ -90,7 +90,8 @@ public class LoginController {
     }
 
     public void registerNewUser(){
-
+        userName.clear();
+        password.clear();
         registerController.setRegisterScene();
     }
 

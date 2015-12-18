@@ -14,58 +14,58 @@ public class SQLQueries {
             "Where Movie.DirectorID = Director.ID;";
 
     public String insertAlbumQuery(String title, String genre, int artistID){
-        String query ="INSERT INTO ALBUM (Title,Genre,artistID) " +
+        return "INSERT INTO ALBUM (Title,Genre,artistID) " +
                 "VALUES('"+ title +"', '"+ genre + "',"+ artistID +");";
-        return query;
+
     }
 
     public String dropAlbumQuery(int index){
-        String query = "DELETE FROM ALBUM WHERE ALBUM.ID = " + index + ";";
-        return query;
+        return "DELETE FROM ALBUM WHERE ALBUM.ID = " + index + ";";
+
     }
 
     public String insertMovieQuery(String title, String genre, int directorID){
-        String query ="INSERT INTO Movie (Title,Genre,DirectorID) " +
+        return "INSERT INTO Movie (Title,Genre,DirectorID) " +
                 "VALUES('"+ title +"', '"+ genre + "',"+ directorID +");";
-        return query;
+
     }
 
     public String dropMovieQuery(int index){
-        String query = "DELETE FROM MOVIE WHERE MOVIE.ID = " + index + ";";
-        return query;
+        return "DELETE FROM MOVIE WHERE MOVIE.ID = " + index + ";";
+
     }
 
     public String albumByArtistSearchQuery(String searchWord){
-        String query = "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl " +
+        return "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl " +
                 "From Album,Artist " +
                 "Where Artist.Name = " + searchWord + ";";
-        return query;
+
     }
 
     public String albumByTitleSearchQuery(String searchWord){
-        String query = "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl " +
+        return "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl " +
                 "From Album,Artist " +
                 "Where Album.Title = " + searchWord + ";";
-        return query;
+
     }
     public String albumByGenreSearchQuery(String searchWord){
-        String query = "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl " +
+        return "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl " +
                 "From Album,Artist " +
                 "Where Album.Genre = " + searchWord + ";";
-        return query;
+
     }
     public String albumByRaitingtSearchQuery(String searchWord){
-        String query ="";
-        return query;
+        return "";
+
     }
 
     public String getArtistByName(String searchWord){
-        String query ="SELECT ID FROM Artist WHERE Artist.name = '" + searchWord + "' ;";
-        return query;
+        return "SELECT ID FROM Artist WHERE Artist.name = '" + searchWord + "' ;";
+
     }
     public String getDirectorByName(String searchWord){
-        String query ="SELECT ID FROM Director WHERE Director.name = '" + searchWord + "' ;";
-        return query;
+        return "SELECT ID FROM Director WHERE Director.name = '" + searchWord + "' ;";
+
     }
 
     public String insertDirector(String name){
@@ -79,8 +79,8 @@ public class SQLQueries {
     }
 
     public String authenticateUser(String username, String password){
-        String query = "SELECT ID,Username FROM USER WHERE Username = '"+username+"' AND Password='"+password+"';";
-        return query;
+        return  "SELECT ID,Username FROM USER WHERE Username = '"+username+"' AND Password='"+password+"';";
+
     }
 
     public String getAllUsers(){
@@ -93,9 +93,8 @@ public class SQLQueries {
 
     public String editAlbum(int albumID,String title, String genre, int artistID, String coverURL){
 
-        String query = "UPDATE Alubum SET Title = '" + title + "', Genre = '" + genre + "', " +
+        return  "UPDATE Alubum SET Title = '" + title + "', Genre = '" + genre + "', " +
                 "ArtistID = '" + artistID +"', CoverURL = '" + coverURL + "' WHERE id = '" + artistID + "';";
-        return query;
     }
 
 }

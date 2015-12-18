@@ -47,15 +47,7 @@ public class JDBCDatabase implements Screwdriver {
 
     @Override
     public void insertNewArtist(String query) {
-        Statement stmt = null;
-        try {
-            stmt = connection.createStatement();
-            int shit = stmt.executeUpdate(query);
-            System.out.println("JDBC asshole"+shit);
-
-        }catch (java.sql.SQLException sql){
-            System.out.println(sql.getMessage());
-        }
+        executeUpdate(query);
     }
 
     @Override
@@ -95,62 +87,27 @@ public class JDBCDatabase implements Screwdriver {
 
     @Override
     public void insertAlbum(String query) {
-        Statement stmt = null;
-        try {
-            stmt = connection.createStatement();
-            stmt.executeUpdate(query);
-
-        }catch (java.sql.SQLException sql){
-            System.out.println(sql.getMessage());
-        }
+        executeUpdate(query);
     }
 
     @Override
     public void insertNewUser(String query) {
-        Statement stmt = null;
-        try {
-            stmt = connection.createStatement();
-            stmt.executeUpdate(query);
-
-        }catch (java.sql.SQLException sql){
-            System.out.println(sql.getMessage());
-        }
+        executeUpdate(query);
     }
 
     @Override
     public void alterAlbum(String query) {
-        Statement stmt = null;
-        try {
-            stmt = connection.createStatement();
-            stmt.executeUpdate(query);
-
-        }catch (java.sql.SQLException sql){
-            System.out.println(sql.getMessage());
-        }
+        executeUpdate(query);
     }
 
     @Override
     public void dropAlbum(String query) {
-        Statement stmt = null;
-        try {
-            stmt = connection.createStatement();
-            stmt.executeUpdate(query);
-
-        }catch (java.sql.SQLException sql){
-            System.out.println(sql.getMessage());
-        }
+        executeUpdate(query);
     }
 
     @Override
     public void insertMovie(String query) {
-        Statement stmt = null;
-        try {
-            stmt = connection.createStatement();
-            stmt.executeUpdate(query);
-
-        }catch (java.sql.SQLException sql){
-            System.out.println(sql.getMessage());
-        }
+        executeUpdate(query);
     }
 
     @Override
@@ -160,15 +117,7 @@ public class JDBCDatabase implements Screwdriver {
 
     @Override
     public void dropMovie(String query) {
-        Statement stmt = null;
-        try {
-            stmt = connection.createStatement();
-            stmt.executeUpdate(query);
-
-        }catch (java.sql.SQLException sql){
-            System.out.println(sql.getMessage());
-        }
-
+        executeUpdate(query);
     }
 
     @Override
@@ -191,14 +140,7 @@ public class JDBCDatabase implements Screwdriver {
 
     @Override
     public void insertNewDirector(String query) {
-        Statement stmt = null;
-        try {
-            stmt = connection.createStatement();
-            stmt.executeUpdate(query);
-
-        }catch (java.sql.SQLException sql){
-            System.out.println(sql.getMessage());
-        }
+        executeUpdate(query);
     }
 
     @Override
@@ -208,6 +150,19 @@ public class JDBCDatabase implements Screwdriver {
 
     @Override
     public void getReviews() {
+
+    }
+
+    private void executeUpdate(String query){
+
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+
+        }catch (java.sql.SQLException sql){
+            System.out.println(sql.getMessage());
+        }
 
     }
 
