@@ -112,9 +112,7 @@ public class JDBCDatabase implements Screwdriver {
 
     @Override
     public void alterMovie() {
-
     }
-
     @Override
     public void dropMovie(String query) {
         executeUpdate(query);

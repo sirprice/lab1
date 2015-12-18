@@ -78,6 +78,7 @@ public class AddAlbumController implements Initializable {
     }
     /**
      * Sends a request to the database on a new thread.
+     * Sends a new request to create if not exist.
      */
     public void saveAlbum(){
 

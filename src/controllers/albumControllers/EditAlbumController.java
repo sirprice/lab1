@@ -21,7 +21,8 @@ import java.util.Observable;
 import java.util.ResourceBundle;
 
 /**
- * Created by cj on 09/12/15.
+ * Created by cj And Scalman on 09/12/15.
+ * Makes changes in the database by sending requests to the database.
  */
 public class EditAlbumController implements Initializable{
 
@@ -41,20 +42,31 @@ public class EditAlbumController implements Initializable{
 
 
     }
+    /**
+     * Initialize the primary stage.
+     * @param primaryStage
+     */
     public void setPrimaryStage(Stage primaryStage){
         this.primaryStage = primaryStage;
     }
-
+    /**
+     * Initialize the model so this scene makes changes on the same data.
+     * @param model
+     */
     public void setModel(Model model){
         this.model = model;
     }
-
+    /**
+     * Initialize the choice boxes.
+     */
     public void setChoiceBoxes(){
         editRating.setItems(model.getRatingList());
         editGenre.setItems(model.getAlbumGenreList());
-
     }
-
+    /**
+     * Initialize the the scene and sets prepare the stage before show time.
+     * @param parent
+     */
     public void setParent(Parent parent){
         this.edit = parent;
         editStage = new Stage();
@@ -63,10 +75,9 @@ public class EditAlbumController implements Initializable{
         //editStage.initOwner(primaryStage);
     }
 
-
-
-
-
+    /**
+     * Takes the selected albums data and fill the edit album text fields scene with it.
+     */
     public void editAlbumItems(){              //shows album text and window
 
 
@@ -83,10 +94,11 @@ public class EditAlbumController implements Initializable{
         albumCover.setImage(img);
 
         editStage.show();
-
-
     }
 
+    /**
+     * Sending a request to the database and changes the requested data.
+     */
     public void saveAlbum(){
 
         model.getAlbum(index).setTitle(editTitle.getText());
@@ -101,7 +113,9 @@ public class EditAlbumController implements Initializable{
         editStage.close();
 
     }
-
+    /**
+     * Cancel mode.
+     */
     public void abortEdit(){
         editStage.close();
     }
