@@ -83,8 +83,8 @@ public class SQLQueries {
 
     }
 
-    public String getAllUsers(){
-        return "SELECT ID,Username FROM USER;";
+    public String checkForUser(String username){
+        return "SELECT ID,Username FROM USER WHERE Username ='"+username+"';";
     }
 
     public String insertUser(String username, String password){

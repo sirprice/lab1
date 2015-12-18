@@ -34,7 +34,7 @@ public interface Screwdriver {
 
     void insertNewDirector(String query);
 
-    ArrayList<User> userAuthentication(String query);
+    User userAuthentication(String query);
 
     void insertNewUser(String query);
 

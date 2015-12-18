@@ -144,7 +144,7 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public ArrayList<User> userAuthentication(String query) {
+    public User userAuthentication(String query) {
         return getUserQuery(query);
     }
 
@@ -232,16 +232,16 @@ public class JDBCDatabase implements Screwdriver {
         return movies;
     }
 
-    private ArrayList<User> getUserQuery(String query) {
+    private User getUserQuery(String query) {
         Statement stmt = null;
-        ArrayList<User> user = new ArrayList<>();
+        User user = null;
 
         try {
             // Execute the SQL statement
             stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                user.add(new User(rs.getInt("ID"),rs.getString("Username")));
+                user = new User(rs.getInt("ID"), rs.getString("Username"));
                 //user.add(rs.getInt("ID"),rs.getString("Username"));
                 //user = new User(rs.getInt("ID"), rs.getString("Username"));
                 System.out.println("1 " + user.toString());

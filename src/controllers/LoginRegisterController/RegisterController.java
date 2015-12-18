@@ -19,7 +19,7 @@ public class RegisterController {
     private Stage registerStage;
     private Model model;
     @FXML private Label text;
-    @FXML private TextField newUsername, newPassword;
+    @FXML private TextField newUsername, newPassword, retypePassword;
 
 
     public void setModel(Model model){
@@ -40,6 +40,11 @@ public class RegisterController {
 
     public void registerNewUser(){
 
+        if (!(newPassword.getText().equals(retypePassword.getText()))){
+            text.setText("Passwords don't match");
+            return;
+        }
+
         if (newUsername.getText().length() <= 4 || newPassword.getText().length() <=4){
             System.out.println("null");
             text.setText("Username or password > 4 char");
@@ -48,7 +53,7 @@ public class RegisterController {
         Thread thread = new Thread() {
             public void run() {
 
-                if (model.getAllUsers(newUsername.getText())){
+                if (model.checkForUser(newUsername.getText())){
                     javafx.application.Platform.runLater(
                             new Runnable() {
                                 @Override
@@ -65,6 +70,7 @@ public class RegisterController {
                                 public void run() {
                                     newUsername.clear();
                                     newPassword.clear();
+                                    retypePassword.clear();
                                     registerStage.close();
                                 }
                             }

@@ -19,7 +19,7 @@ public class Model {
     private int artistID;
 
     private String artist;
-    private ArrayList<User> user;
+    private User user;
     private ObservableList<Album> albums;
     private ObservableList<Movie> movies;
     private ObservableList<AlbumGenre> albumGenreList;
@@ -111,30 +111,24 @@ public class Model {
     public boolean authentcateUser(String username, String password){
 
         user = database.userAuthentication(queries.authenticateUser(username,password));
-        boolean exists = false;
 
-        for(User u: user){
-
-            if (u != null){
-                System.out.println("User != null  " + user.toString());
-                exists = true;
-            }
-
+        if (user != null){
+            System.out.println("User != null  " + user.toString());
+            return true;
         }
-        return exists;
+        return false;
     }
 
-    public boolean getAllUsers(String username){
+    public boolean checkForUser(String username){
 
-        user = database.userAuthentication(queries.getAllUsers());
-        boolean exists = false;
+        user = database.userAuthentication(queries.checkForUser(username));
 
-        for (User u: user){
-            if (u.getUsername().toUpperCase().equals(username.toUpperCase())){
-                exists = true;
-            }
+
+        if (user != null){
+            user = null;
+            return true;
         }
-        return exists;
+        return false;
     }
 
     public void createUser(String username, String password){
@@ -178,7 +172,7 @@ public class Model {
 
     }
 
-    public ArrayList<User> getUser() {
+    public User getUser() {
         return user;
     }
 
