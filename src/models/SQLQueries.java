@@ -96,5 +96,10 @@ public class SQLQueries {
         return  "UPDATE Alubum SET Title = '" + title + "', Genre = '" + genre + "', " +
                 "ArtistID = '" + artistID +"', CoverURL = '" + coverURL + "' WHERE id = '" + artistID + "';";
     }
+    public String editMovie(int movieID,String title, String genre, int directorID, String coverURL){
+
+        return  "UPDATE Movie SET Title = '" + title + "', Genre = '" + genre + "', " +
+                "DirectorID = '" + directorID +"', CoverURL = '" + coverURL + "' WHERE id = '" + directorID + "';";
+    }
 
 }

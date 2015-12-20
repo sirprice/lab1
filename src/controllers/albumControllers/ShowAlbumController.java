@@ -21,7 +21,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by cj on 10/12/15.
+ * Created by cj And Scalman on 10/12/15.
+ * Shows the selected items information on a new scene.
  */
 public class ShowAlbumController implements Initializable {
 
@@ -34,11 +35,18 @@ public class ShowAlbumController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+    /**
+     * Initialize the primary stage.
+     * @param primaryStage
+     */
     public void setPrimaryStage(Stage primaryStage){
         this.primaryStage = primaryStage;
 
     }
-
+    /**
+     * Initialize the the scene and sets prepare the stage before show time.
+     * @param parent
+     */
     public void setParent(Parent parent){
         this.show = parent;
         showStage = new Stage();
@@ -46,7 +54,9 @@ public class ShowAlbumController implements Initializable {
         showStage.initModality(Modality.APPLICATION_MODAL);
         //editStage.initOwner(primaryStage);
     }
-
+    /**
+     * Takes the selected albums data and fill show album text labels.
+     */
     public void showAlbum(Album album){
 
         titleLabel.setText(album.getTitle());

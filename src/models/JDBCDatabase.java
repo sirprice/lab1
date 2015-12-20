@@ -111,8 +111,7 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public void alterMovie() {
-    }
+    public void alterMovie(String query) { executeUpdate(query);}
     @Override
     public void dropMovie(String query) {
         executeUpdate(query);

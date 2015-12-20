@@ -17,6 +17,7 @@ public class Model {
     private MainController mainController;
 
     private int artistID;
+    private int directorID;
     private String artist;
     private User user;
     private ObservableList<Album> albums;
@@ -133,7 +134,42 @@ public class Model {
     public void createUser(String username, String password){
         database.insertNewUser(queries.insertUser(username,password));
     }
+    public void editMovie(int movieID,String director, String genre, String title, String url){
 
+        boolean movieExists = false;
+        //this.artist = artist;
+
+        for(Movie m: getMovies()){
+            if (m.getTitle().toUpperCase().equals(title.toUpperCase())
+                    && m.getDirector().toUpperCase().equals(director.toUpperCase())){
+                movieExists = true;
+            }
+        }
+
+        if(!movieExists){
+            Thread thread = new Thread(){
+                public void run(){
+                    directorID = getDirectorId(director);
+                    if (directorID <= 0){
+                        createArtist(queries.getDirectorByName(director));
+                        directorID = getDirectorId(director);
+                        database.alterMovie(queries.editMovie(movieID,title,genre,directorID,url));
+                        System.out.println(user.toString() + "editFunktion:");
+                        getNewMovies();
+                    }else {
+                        database.alterAlbum(queries.editMovie(movieID,title,genre,directorID,url));
+                        System.out.println(user.toString() + "editFunktion:");
+                        getNewMovies();
+                    }
+
+
+                    //albums = database.getAlbums(queries.getAllAlbums);
+
+                }
+            };thread.start();
+        }
+
+    }
     public void editAlbum(int albumId,String artist, String genre, String title, String url){
 
         boolean albumExists = false;

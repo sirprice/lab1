@@ -26,7 +26,7 @@ public interface Screwdriver {
 
     void insertMovie(String query);
 
-    void alterMovie();
+    void alterMovie(String query);
 
     void dropMovie(String query);
 
