@@ -8,6 +8,7 @@ import controllers.albumControllers.EditAlbumController;
 import controllers.albumControllers.ShowAlbumController;
 import controllers.movieControllers.AddMovieController;
 import controllers.movieControllers.EditMovieController;
+import controllers.movieControllers.ReviewMovieController;
 import controllers.movieControllers.ShowMovieController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -63,6 +64,14 @@ public class InitFxml {
             if (sMCtrl == null) System.out.println("edit album controllern är null");
             sMCtrl.setParent(showMovie);
 
+            Parent reviewMovie = null;
+            FXMLLoader reviewMovieLoader = new FXMLLoader();
+            reviewMovie = reviewMovieLoader.load(getClass().getResource("/fxml/movieFxml/reviewMovie.fxml").openStream());
+            ReviewMovieController rMCtrl = reviewMovieLoader.getController();
+            if (rMCtrl == null) System.out.println("edit album controllern är null");
+            rMCtrl.setParent(reviewMovie);
+            rMCtrl.setModel(model);
+
             //- - - - - - - - - - - ALBUMS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             Parent editAlbum = null;
             FXMLLoader editAlbumLoader = new FXMLLoader();
@@ -101,7 +110,7 @@ public class InitFxml {
             mCtrl.setPrimaryStage(primaryStage);
             mCtrl.setModel(model);
             mCtrl.setMain(root);
-            mCtrl.setControllers(aACtrl, eACtrl, dCtrl, sACtrl, aMCtrl,eMCtrl,sMCtrl);
+            mCtrl.setControllers(aACtrl, eACtrl, dCtrl, sACtrl, aMCtrl,eMCtrl,sMCtrl,rMCtrl);
             mCtrl.showAlbums();
             mCtrl.showMovies();
 

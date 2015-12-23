@@ -4,6 +4,7 @@ import controllers.albumControllers.EditAlbumController;
 import controllers.albumControllers.ShowAlbumController;
 import controllers.movieControllers.AddMovieController;
 import controllers.movieControllers.EditMovieController;
+import controllers.movieControllers.ReviewMovieController;
 import controllers.movieControllers.ShowMovieController;
 import javafx.scene.Parent;
 import javafx.collections.ObservableList;
@@ -30,6 +31,7 @@ public class MainController implements Initializable {
     private AddMovieController addMovieController;
     private EditMovieController editMovieController;
     private ShowMovieController showMovieController;
+    private ReviewMovieController reviewMovieController;
     private Model model;
 
     private Parent main;
@@ -58,7 +60,7 @@ public class MainController implements Initializable {
     public void setControllers(AddAlbumController addAlbumController, EditAlbumController editAlbumController,
                                DeleteController deleteController, ShowAlbumController showAlbumController,
                                AddMovieController addMovieController, EditMovieController editMovieController,
-                               ShowMovieController showMovieController){
+                               ShowMovieController showMovieController, ReviewMovieController reviewMovieController){
         this.addAlbumController = addAlbumController;
         addAlbumController.setPrimaryStage(primaryStage);
 
@@ -82,6 +84,9 @@ public class MainController implements Initializable {
 
         this.showMovieController = showMovieController;
 
+        this.reviewMovieController = reviewMovieController;
+
+
     }
 
     public void toMenue(){
@@ -94,6 +99,9 @@ public class MainController implements Initializable {
 
     // - - - - - - - - - Albums - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+    public void reviewAlbum(){
+
+    }
     public void showAlbums(){
         model.getNewAlbums();
         albumTable.setItems(model.getAlbums());
@@ -137,6 +145,11 @@ public class MainController implements Initializable {
             editMovieController.editMovieItems();
         }
     }
+
+    public void reviewMovie(){
+        reviewMovieController.reviewMovieStage();
+    }
+
     public void showSelectedMovie(MouseEvent me){
         Movie selected = movieTable.getSelectionModel().getSelectedItem();
         if (me.getClickCount() == 2 && !(selected == null)) {

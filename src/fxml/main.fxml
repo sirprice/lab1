@@ -68,8 +68,9 @@
          <contextMenu>
             <ContextMenu>
               <items>
-                <MenuItem fx:id="contextAlbumEdit" mnemonicParsing="false" onAction="#editAlbum" text="Edit" />
+                  <MenuItem fx:id="contextAlbumEdit" mnemonicParsing="false" onAction="#editAlbum" text="Edit" />
                   <MenuItem fx:id="contextAlbumDelete" mnemonicParsing="false" onAction="#deleteAlbum" text="Delete" />
+                  <MenuItem fx:id="contextAlbumReview" mnemonicParsing="false" onAction="#reviewAlbum" text="Review" />
               </items>
             </ContextMenu>
          </contextMenu>
@@ -100,8 +101,9 @@
          <contextMenu>
             <ContextMenu>
               <items>
-                <MenuItem fx:id="contextMovieEdit" mnemonicParsing="false" onAction="#editMovie" text="Edit" />
+                  <MenuItem fx:id="contextMovieEdit" mnemonicParsing="false" onAction="#editMovie" text="Edit" />
                   <MenuItem fx:id="contextMovieDelete" mnemonicParsing="false" onAction="#deleteMovie" text="Delete" />
+                  <MenuItem fx:id="contextMovieReview" mnemonicParsing="false" onAction="#reviewMovie" text="Review" />
               </items>
             </ContextMenu>
          </contextMenu>
