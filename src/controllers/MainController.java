@@ -139,7 +139,7 @@ public class MainController implements Initializable {
 
     // - - - - - - - - - - Movies - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    public void editMovie(ActionEvent e) {
+    public void editMovie() {
         Movie selected = movieTable.getSelectionModel().getSelectedItem();
         if (!(selected == null)) {
             editMovieController.editMovieItems();
@@ -148,6 +148,9 @@ public class MainController implements Initializable {
 
     public void reviewMovie(){
         reviewMovieController.reviewMovieStage();
+
+        Movie selected = movieTable.getSelectionModel().getSelectedItem();
+        reviewMovieController.setMovieTable(selected);
     }
 
     public void showSelectedMovie(MouseEvent me){

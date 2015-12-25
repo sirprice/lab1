@@ -9,22 +9,26 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Gray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.movieControllers.ReviewMovieController">
    <children>
       <TextArea fx:id="textReview" layoutX="24.0" layoutY="109.0" prefHeight="208.0" prefWidth="314.0" />
-      <RadioButton fx:id="one" layoutX="24.0" layoutY="73.0" mnemonicParsing="false" text="1" textOverrun="LEADING_WORD_ELLIPSIS" />
-      <RadioButton fx:id="two" layoutX="63.0" layoutY="73.0" mnemonicParsing="false" text="2" />
-      <ImageView fitHeight="208.0" fitWidth="215.0" layoutX="358.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
-      <RadioButton fx:id="three" layoutX="104.0" layoutY="73.0" mnemonicParsing="false" text="3" />
-      <RadioButton fx:id="four" layoutX="148.0" layoutY="73.0" mnemonicParsing="false" text="4" />
-      <RadioButton fx:id="five" layoutX="191.0" layoutY="73.0" mnemonicParsing="false" text="5" />
-      <Label layoutX="270.0" layoutY="44.0" text="Review">
+      <RadioButton fx:id="one" layoutX="24.0" layoutY="73.0" mnemonicParsing="false" onAction="#radioButton" text="1" textOverrun="LEADING_WORD_ELLIPSIS" />
+      <RadioButton fx:id="two" layoutX="63.0" layoutY="73.0" mnemonicParsing="false" onAction="#radioButton" text="2" />
+      <ImageView fx:id="imgView" fitHeight="208.0" fitWidth="215.0" layoutX="358.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
+      <RadioButton fx:id="three" layoutX="104.0" layoutY="73.0" mnemonicParsing="false" onAction="#radioButton" text="3" />
+      <RadioButton fx:id="four" layoutX="148.0" layoutY="73.0" mnemonicParsing="false" onAction="#radioButton" text="4" />
+      <RadioButton fx:id="five" layoutX="191.0" layoutY="73.0" mnemonicParsing="false" onAction="#radioButton" text="5" />
+      <Label layoutX="224.0" layoutY="43.0" text="Review">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <Button fx:id="submitReview" layoutX="514.0" layoutY="326.0" mnemonicParsing="false" text="Submit" />
       <Button fx:id="abortReview" layoutX="443.0" layoutY="326.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="62.0" text="Abort" />
+      <Label fx:id="title" layoutX="293.0" layoutY="46.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
