@@ -6,7 +6,6 @@ import enums.MovieGenre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -212,7 +211,7 @@ public class Model {
 
         Thread thread = new Thread(){
             public void run(){
-                String question = queries.addReview(usrId,movieId,date,text,rating);
+                String question = queries.addReviewMovie(usrId,movieId,date,text,rating);
                 database.insertNewReview(question);
             }
         };thread.start();

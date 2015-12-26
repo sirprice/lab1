@@ -9,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Gray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.movieControllers.ReviewMovieController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: Gray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.movieControllers.ReviewController">
    <children>
       <TextArea fx:id="textReview" layoutX="24.0" layoutY="109.0" prefHeight="208.0" prefWidth="314.0" />
       <RadioButton fx:id="one" layoutX="24.0" layoutY="73.0" mnemonicParsing="false" onAction="#radioButton" text="1" textOverrun="LEADING_WORD_ELLIPSIS" />

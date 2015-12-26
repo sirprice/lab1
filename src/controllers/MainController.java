@@ -4,7 +4,7 @@ import controllers.albumControllers.EditAlbumController;
 import controllers.albumControllers.ShowAlbumController;
 import controllers.movieControllers.AddMovieController;
 import controllers.movieControllers.EditMovieController;
-import controllers.movieControllers.ReviewMovieController;
+import controllers.movieControllers.ReviewController;
 import controllers.movieControllers.ShowMovieController;
 import javafx.scene.Parent;
 import javafx.collections.ObservableList;
@@ -31,7 +31,7 @@ public class MainController implements Initializable {
     private AddMovieController addMovieController;
     private EditMovieController editMovieController;
     private ShowMovieController showMovieController;
-    private ReviewMovieController reviewMovieController;
+    private ReviewController reviewMovieController;
     private Model model;
 
     private Parent main;
@@ -60,7 +60,7 @@ public class MainController implements Initializable {
     public void setControllers(AddAlbumController addAlbumController, EditAlbumController editAlbumController,
                                DeleteController deleteController, ShowAlbumController showAlbumController,
                                AddMovieController addMovieController, EditMovieController editMovieController,
-                               ShowMovieController showMovieController, ReviewMovieController reviewMovieController){
+                               ShowMovieController showMovieController, ReviewController reviewMovieController){
         this.addAlbumController = addAlbumController;
         addAlbumController.setPrimaryStage(primaryStage);
 

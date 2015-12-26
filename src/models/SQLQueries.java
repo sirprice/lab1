@@ -104,9 +104,13 @@ public class SQLQueries {
                 "DirectorID = '" + directorID +"', CoverURL = '" + coverURL + "' WHERE id = '" + directorID + "';";
     }
 
-    public String addReview(int userID, int movieID, Date date, String text, int rating){
-        return "INSERT INTO MovieReview(UserID,MovieID,RevDate,Review,Rating) VALUES(" + userID + "," + movieID +",'" + date
+    public String addReviewAlbum(int userID, int albumID, Date date, String text, int rating){
+        return "INSERT INTO AlbumReview(UserID,AlbumID,RevDate,Review,Rating) VALUES(" + userID + "," + albumID +",'" + date
                 + "','" + text + "'," + rating + ");";
     }
 
+    public String addReviewMovie(int userID, int movieID, Date date, String text, int rating){
+        return "INSERT INTO MovieReview(UserID,MovieID,RevDate,Review,Rating) VALUES(" + userID + "," + movieID +",'" + date
+                + "','" + text + "'," + rating + ");";
+    }
 }

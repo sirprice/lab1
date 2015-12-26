@@ -8,7 +8,7 @@ import controllers.albumControllers.EditAlbumController;
 import controllers.albumControllers.ShowAlbumController;
 import controllers.movieControllers.AddMovieController;
 import controllers.movieControllers.EditMovieController;
-import controllers.movieControllers.ReviewMovieController;
+import controllers.movieControllers.ReviewController;
 import controllers.movieControllers.ShowMovieController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -67,7 +67,7 @@ public class InitFxml {
             Parent reviewMovie = null;
             FXMLLoader reviewMovieLoader = new FXMLLoader();
             reviewMovie = reviewMovieLoader.load(getClass().getResource("/fxml/movieFxml/reviewMovie.fxml").openStream());
-            ReviewMovieController rMCtrl = reviewMovieLoader.getController();
+            ReviewController rMCtrl = reviewMovieLoader.getController();
             if (rMCtrl == null) System.out.println("edit album controllern är null");
             rMCtrl.setParent(reviewMovie);
             rMCtrl.setModel(model);

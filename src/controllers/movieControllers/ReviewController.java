@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 /**
  * Created by Scalman on 23/12/15.
  */
-public class ReviewMovieController implements Initializable{
+public class ReviewController implements Initializable{
 
     private Model model;
     private Stage primaryStage, reviewStage;
