@@ -106,7 +106,7 @@ public class SQLQueries {
 
     public String addReview(int userID, int movieID, Date date, String text, int rating){
         return "INSERT INTO MovieReview(UserID,MovieID,RevDate,Review,Rating) VALUES(" + userID + "," + movieID +",'" + date
-                + "','" + text + "'," + rating + ");"; //Todo needs to fix
+                + "','" + text + "'," + rating + ");";
     }
 
 }
