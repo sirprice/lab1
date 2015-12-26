@@ -51,6 +51,11 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
+    public void insertNewReview(String query) {
+        executeUpdate(query);
+    }
+
+    @Override
     public int getArtistByName(String query) {
         Statement stmt = null;
         int artistId = -1;

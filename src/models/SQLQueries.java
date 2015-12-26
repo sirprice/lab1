@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Date;
+
 /**
  * Created by cj on 16/12/15.
  */
@@ -100,6 +102,11 @@ public class SQLQueries {
 
         return  "UPDATE Movie SET Title = '" + title + "', Genre = '" + genre + "', " +
                 "DirectorID = '" + directorID +"', CoverURL = '" + coverURL + "' WHERE id = '" + directorID + "';";
+    }
+
+    public String addReview(int userID, int movieID, Date date, String text, int rating){
+        return "INSERT INTO MovieReview(UserID,MovieID,RevDate,Review,Rating) VALUES(" + userID + "," + movieID +",'" + date
+                + "','" + text + "'," + rating + ");"; //Todo needs to fix
     }
 
 }

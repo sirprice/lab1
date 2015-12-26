@@ -38,6 +38,8 @@ public interface Screwdriver {
 
     void insertNewUser(String query);
 
+    void insertNewReview(String query);
+
     void getReviews();
 
 

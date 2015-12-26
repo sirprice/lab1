@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by cj on 07/12/15.
@@ -204,6 +205,17 @@ public class Model {
                 }
             };thread.start();
         }
+
+    }
+
+    public void addReview(int usrId, int movieId, Date date, String text, int rating){
+
+        Thread thread = new Thread(){
+            public void run(){
+                String question = queries.addReview(usrId,movieId,date,text,rating);
+                database.insertNewReview(question);
+            }
+        };thread.start();
 
     }
 

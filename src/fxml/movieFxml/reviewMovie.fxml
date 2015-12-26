@@ -23,11 +23,16 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="submitReview" layoutX="514.0" layoutY="326.0" mnemonicParsing="false" text="Submit" />
+      <Button layoutX="514.0" layoutY="326.0" mnemonicParsing="false" onAction="#submitReview" text="Submit" />
       <Button fx:id="abortReview" layoutX="443.0" layoutY="326.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="62.0" text="Abort" />
       <Label fx:id="title" layoutX="293.0" layoutY="46.0">
          <font>
             <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="empty" layoutX="104.0" layoutY="345.0" textFill="#940707">
+         <font>
+            <Font size="14.0" />
          </font>
       </Label>
    </children>
