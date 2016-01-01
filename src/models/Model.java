@@ -27,6 +27,7 @@ public class Model {
     private ObservableList<Integer> ratingList;
     private JDBCDatabase database;
     private SQLQueries queries;
+    private boolean exists = false;
 
     public Model(){
         albums = FXCollections.observableArrayList();
@@ -123,7 +124,6 @@ public class Model {
 
         user = database.userAuthentication(queries.checkForUser(username));
 
-
         if (user != null){
             user = null;
             return true;
@@ -168,8 +168,8 @@ public class Model {
                 }
             };thread.start();
         }
-
     }
+
     public void editAlbum(int albumId,String artist, String genre, String title, String url){
 
         boolean albumExists = false;
@@ -207,22 +207,31 @@ public class Model {
 
     }
 
-    public void addMovieReview(int usrId, int movieId, Date date, String text, int rating){
+    public void addMovieReview(int usrID, int movieID, Date date, String text, int rating){
 
         Thread thread = new Thread(){
             public void run(){
-                String question = queries.addReviewMovie(usrId,movieId,date,text,rating);
-                database.insertNewReview(question);
+              /*  String question = queries.movieAlreadyReviewed(usrID,movieID);
+                exists =  database.checkIfReviewAlreadyExist(question);
+                if (!exists) {
+                    String question2 = queries.addReviewMovie(usrID, movieID, date, text, rating);
+                    database.insertNewReview(question2);
+                }*/
             }
         };thread.start();
 
     }
-    public void addAlbumReview(int usrId, int albumID, Date date, String text, int rating){
+    public void addAlbumReview(int usrID, int albumID, Date date, String text, int rating){
 
         Thread thread = new Thread(){
             public void run(){
-                String question = queries.addReviewAlbum(usrId,albumID,date,text,rating);
-                database.insertNewReview(question);
+                String question = queries.albumAlreadyReviewed(usrID,albumID);
+                exists = database.checkIfReviewAlreadyExist(question);
+                System.out.println("inside: " + exists);
+                if (!exists){
+                    String question2 = queries.addReviewAlbum(usrID,albumID,date,text,rating);
+                    database.insertNewReview(question2);
+                }
             }
         };thread.start();
 
@@ -255,6 +264,7 @@ public class Model {
             }
         };thread.start();
     }
+
     public Movie getMovie(int index){
         return movies.get(index);
     }

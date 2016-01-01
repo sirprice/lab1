@@ -84,6 +84,14 @@ public class SQLQueries {
         return  "SELECT ID,Username FROM USER WHERE Username = '"+username+"' AND Password='"+password+"';";
 
     }
+    //// TODO: 01/01/16
+    public String albumAlreadyReviewed(int userID, int albumID){
+        return  "SELECT UserId,AlbumID FROM AlbumReview WHERE userID = "+userID+" AND albumID = " + albumID + ";";
+    }
+
+    public String movieAlreadyReviewed(int userID, int movieID){
+        return  "SELECT UserId,MovieID FROM MovieReview WHERE userID = "+userID+" AND movieID = " + movieID + ";";
+    }
 
     public String checkForUser(String username){
         return "SELECT ID,Username FROM USER WHERE Username ='"+username+"';";

@@ -37,8 +37,6 @@ public class InitFxml {
             DeleteController dCtrl = new DeleteController();
             dCtrl.setModel(model);
 
-
-
             //- - - - - - - - - - - MOVIES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             Parent addMovie = null;
             FXMLLoader addMovieLoader = new FXMLLoader();
@@ -107,7 +105,6 @@ public class InitFxml {
             if (rACtrl == null) System.out.println("edit album controllern är null");
             rACtrl.setParent(reviewAlbum);
             rACtrl.setModel(model);
-
 
             //- - - - - - - - - - - -Main Controller - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             Parent root = null;

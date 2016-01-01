@@ -15,7 +15,7 @@ public class Movie {
     private int rating;
     private int movieID;
     private String coverUrl;
-    private ArrayList<String> reviews;
+   private ArrayList<Review> reviews;
 
     public Movie (int movieID,String title, String director, MovieGenre genre,String coverUrl){
         this.movieID = movieID;
@@ -23,7 +23,11 @@ public class Movie {
         this.director = director;
         this.genre = genre;
         this.coverUrl = coverUrl;
+        reviews = new ArrayList<>();
+    }
 
+    public void addReviews(Review review) {
+        this.reviews.add(review);
     }
 
     public int getMovieID() {

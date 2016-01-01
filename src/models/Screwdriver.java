@@ -40,6 +40,8 @@ public interface Screwdriver {
 
     void insertNewReview(String query);
 
+    boolean checkIfReviewAlreadyExist(String query);
+
     void getReviews();
 
 

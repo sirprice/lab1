@@ -56,6 +56,31 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
+    public boolean checkIfReviewAlreadyExist(String query) {
+        Statement stmt = null;
+        boolean exisist = false;
+        int userID = 0, AlbumID = 0;
+
+        try {
+            stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()){
+                userID = rs.getInt("userID");
+                AlbumID = rs.getInt("AlbumID");
+            }
+            if (userID != 0 && AlbumID != 0){
+                exisist = true;
+                System.out.println("" + userID + "   " + AlbumID);
+            }
+
+        }catch (java.sql.SQLException sql){
+            System.out.println(sql.getMessage());
+        }
+        System.out.println("Check : " + exisist);
+        return exisist;
+    }
+
+    @Override
     public int getArtistByName(String query) {
         Statement stmt = null;
         int artistId = -1;
