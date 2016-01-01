@@ -1,6 +1,7 @@
 package controllers;
 import controllers.albumControllers.AddAlbumController;
 import controllers.albumControllers.EditAlbumController;
+import controllers.albumControllers.ReviewAlbumController;
 import controllers.albumControllers.ShowAlbumController;
 import controllers.movieControllers.AddMovieController;
 import controllers.movieControllers.EditMovieController;
@@ -32,6 +33,7 @@ public class MainController implements Initializable {
     private EditMovieController editMovieController;
     private ShowMovieController showMovieController;
     private ReviewController reviewMovieController;
+    private ReviewAlbumController reviewAlbumController;
     private Model model;
 
     private Parent main;
@@ -39,7 +41,7 @@ public class MainController implements Initializable {
     private ObservableList <Album> albums;
     @FXML private TableView <Album> albumTable;
     @FXML private TableView <Movie> movieTable;
-    //@FXML private TableColumn<Album, String> Title,artist,genre, raiting;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -60,7 +62,11 @@ public class MainController implements Initializable {
     public void setControllers(AddAlbumController addAlbumController, EditAlbumController editAlbumController,
                                DeleteController deleteController, ShowAlbumController showAlbumController,
                                AddMovieController addMovieController, EditMovieController editMovieController,
-                               ShowMovieController showMovieController, ReviewController reviewMovieController){
+                               ShowMovieController showMovieController, ReviewController reviewMovieController,
+                               ReviewAlbumController reviewAlbumController){
+
+        this.reviewAlbumController = reviewAlbumController;
+
         this.addAlbumController = addAlbumController;
         addAlbumController.setPrimaryStage(primaryStage);
 
@@ -100,7 +106,9 @@ public class MainController implements Initializable {
     // - - - - - - - - - Albums - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     public void reviewAlbum(){
-
+        reviewAlbumController.reviewAlbumStage();
+        Album selected = albumTable.getSelectionModel().getSelectedItem();
+        reviewAlbumController.setAlbumTable(selected);
     }
     public void showAlbums(){
         model.getNewAlbums();
@@ -148,7 +156,6 @@ public class MainController implements Initializable {
 
     public void reviewMovie(){
         reviewMovieController.reviewMovieStage();
-
         Movie selected = movieTable.getSelectionModel().getSelectedItem();
         reviewMovieController.setMovieTable(selected);
     }

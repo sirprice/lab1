@@ -5,6 +5,7 @@ import controllers.LoginRegisterController.LoginController;
 import controllers.LoginRegisterController.RegisterController;
 import controllers.albumControllers.AddAlbumController;
 import controllers.albumControllers.EditAlbumController;
+import controllers.albumControllers.ReviewAlbumController;
 import controllers.albumControllers.ShowAlbumController;
 import controllers.movieControllers.AddMovieController;
 import controllers.movieControllers.EditMovieController;
@@ -99,6 +100,14 @@ public class InitFxml {
             aACtrl.setModel(model);
             aACtrl.setChoiceBoxes();
 
+            Parent reviewAlbum = null;
+            FXMLLoader reviewAlbumLoader = new FXMLLoader();
+            reviewAlbum = reviewAlbumLoader.load(getClass().getResource("/fxml/albumFxml/reviewAlbum.fxml").openStream());
+            ReviewAlbumController rACtrl = reviewAlbumLoader.getController();
+            if (rACtrl == null) System.out.println("edit album controllern är null");
+            rACtrl.setParent(reviewAlbum);
+            rACtrl.setModel(model);
+
 
             //- - - - - - - - - - - -Main Controller - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             Parent root = null;
@@ -110,7 +119,7 @@ public class InitFxml {
             mCtrl.setPrimaryStage(primaryStage);
             mCtrl.setModel(model);
             mCtrl.setMain(root);
-            mCtrl.setControllers(aACtrl, eACtrl, dCtrl, sACtrl, aMCtrl,eMCtrl,sMCtrl,rMCtrl);
+            mCtrl.setControllers(aACtrl, eACtrl, dCtrl, sACtrl, aMCtrl,eMCtrl,sMCtrl,rMCtrl,rACtrl);
             mCtrl.showAlbums();
             mCtrl.showMovies();
 

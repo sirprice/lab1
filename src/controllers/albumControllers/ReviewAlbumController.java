@@ -1,4 +1,5 @@
-package controllers.movieControllers;
+package controllers.albumControllers;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -8,24 +9,23 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import models.Album;
 import models.Model;
-import models.Movie;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
- * Created by Scalman on 23/12/15.
+ * Created by Scalman on 01/01/16.
  */
-public class ReviewController implements Initializable{
+public class ReviewAlbumController implements Initializable{
 
     private Model model;
     private Stage primaryStage, reviewStage;
-    private TableView<Movie> movieTable;
     private Parent review;
     private ToggleGroup group;
     private int rating;
-    private Movie movie;
+    private Album album;
     private Date date;
     private String text;
 
@@ -43,7 +43,6 @@ public class ReviewController implements Initializable{
         three.setToggleGroup(group);
         four.setToggleGroup(group);
         five.setToggleGroup(group);
-
     }
 
     public void setModel(Model model){
@@ -52,15 +51,16 @@ public class ReviewController implements Initializable{
     public void setPrimaryStage(Stage primaryStage){
         this.primaryStage = primaryStage;
     }
-    public void reviewMovieStage(){
+    public void reviewAlbumStage(){
         reviewStage.show();
     }
-    public void setMovieTable(Movie selectedMovie){
-        this.movie = selectedMovie;
-        title.setText(this.movie.getTitle());
+
+    public void setAlbumTable(Album selectedAlbum){
+        this.album = selectedAlbum;
+        title.setText(this.album.getTitle());
 
         //System.out.println("picture : " + selectedMovie.getCoverUrl());
-        Image img = new Image(selectedMovie.getCoverUrl());
+        Image img = new Image(selectedAlbum.getCoverUrl());
         imgView.setImage(img);
     }
 
@@ -90,9 +90,6 @@ public class ReviewController implements Initializable{
         if(five.isArmed()){
             rating = Integer.parseInt(five.getText());
         }
-        //System.out.println(rating);
-
-        //System.out.println(date);
     }
 
     public void submitReview(){
@@ -104,12 +101,9 @@ public class ReviewController implements Initializable{
             empty.setText("Please make some action");
             return;
         }
-
         if (textReview.getText().length() > 0 && rating > 0) {
-
-            model.addReview(model.getUser().getUserID(),movie.getMovieID(),sqlDate,textReview.getText(),rating);
+            model.addReview(model.getUser().getUserID(),album.getAlbumID(),sqlDate,textReview.getText(),rating);
             reviewStage.close();
-
         }else {
             empty.setText("Please make both options");
         }
@@ -118,4 +112,5 @@ public class ReviewController implements Initializable{
     public int getRating() {
         return rating;
     }
+
 }
