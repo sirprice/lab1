@@ -102,7 +102,7 @@ public class ReviewAlbumController implements Initializable{
             return;
         }
         if (textReview.getText().length() > 0 && rating > 0) {
-            model.addReview(model.getUser().getUserID(),album.getAlbumID(),sqlDate,textReview.getText(),rating);
+            model.addAlbumReview(model.getUser().getUserID(),album.getAlbumID(),sqlDate,textReview.getText(),rating);
             reviewStage.close();
         }else {
             empty.setText("Please make both options");

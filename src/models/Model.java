@@ -207,11 +207,21 @@ public class Model {
 
     }
 
-    public void addReview(int usrId, int movieId, Date date, String text, int rating){
+    public void addMovieReview(int usrId, int movieId, Date date, String text, int rating){
 
         Thread thread = new Thread(){
             public void run(){
                 String question = queries.addReviewMovie(usrId,movieId,date,text,rating);
+                database.insertNewReview(question);
+            }
+        };thread.start();
+
+    }
+    public void addAlbumReview(int usrId, int albumID, Date date, String text, int rating){
+
+        Thread thread = new Thread(){
+            public void run(){
+                String question = queries.addReviewAlbum(usrId,albumID,date,text,rating);
                 database.insertNewReview(question);
             }
         };thread.start();

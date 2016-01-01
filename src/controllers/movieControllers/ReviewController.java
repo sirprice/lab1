@@ -107,7 +107,7 @@ public class ReviewController implements Initializable{
 
         if (textReview.getText().length() > 0 && rating > 0) {
 
-            model.addReview(model.getUser().getUserID(),movie.getMovieID(),sqlDate,textReview.getText(),rating);
+            model.addMovieReview(model.getUser().getUserID(),movie.getMovieID(),sqlDate,textReview.getText(),rating);
             reviewStage.close();
 
         }else {
