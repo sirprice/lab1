@@ -106,9 +106,9 @@ public class MainController implements Initializable {
     // - - - - - - - - - Albums - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     public void reviewAlbum(){
-        reviewAlbumController.reviewAlbumStage();
         Album selected = albumTable.getSelectionModel().getSelectedItem();
         reviewAlbumController.setAlbumTable(selected);
+        reviewAlbumController.reviewAlbumStage();
     }
     public void showAlbums(){
         model.getNewAlbums();

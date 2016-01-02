@@ -86,7 +86,7 @@ public class SQLQueries {
     }
     //// TODO: 01/01/16
     public String albumAlreadyReviewed(int userID, int albumID){
-        return  "SELECT UserId,AlbumID FROM AlbumReview WHERE userID = "+userID+" AND albumID = " + albumID + ";";
+        return  "SELECT * FROM AlbumReview WHERE userID = "+userID+" AND albumID = " + albumID + ";";
     }
 
     public String movieAlreadyReviewed(int userID, int movieID){
@@ -113,8 +113,20 @@ public class SQLQueries {
     }
 
     public String addReviewAlbum(int userID, int albumID, Date date, String text, int rating){
+        System.out.println(date);
         return "INSERT INTO AlbumReview(UserID,AlbumID,RevDate,Review,Rating) VALUES(" + userID + "," + albumID +",'" + date
                 + "','" + text + "'," + rating + ");";
+    }
+    public String updateAlbumReview(int userID, int albumID, Date date, String text, int rating){
+        System.out.println(date);
+        return "UPDATE AlbumReview SET RevDate = '" + date + "', Review = '" + text + "', " +
+                "Rating = '" + rating +"' WHERE UserID ='" + userID + "' AND AlbumID = '" + albumID + "';";
+    }
+    public String deleteAlbumReview(int userID, int albumID){
+        return "DELETE FROM AlbumReview WHERE UserID ='" + userID + "' AND AlbumID = '" + albumID + "';";
+    }
+    public String getAlbumReviews(int albumID){
+        return "SELECT RevDate,Rating,Review, AlbumReview.UserID, AlbumID, Username FROM AlbumReview,User WHERE AlbumID ='"+ albumID +"' AND AlbumReview.UserID = User.ID;";
     }
 
     public String addReviewMovie(int userID, int movieID, Date date, String text, int rating){

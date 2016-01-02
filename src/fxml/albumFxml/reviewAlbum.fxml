@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
@@ -29,10 +30,11 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <Label fx:id="empty" layoutX="104.0" layoutY="345.0" textFill="#940707">
+        <Label fx:id="errorLabel" layoutX="104.0" layoutY="345.0" textFill="#940707">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
+      <Button fx:id="deleteReview" layoutX="24.0" layoutY="332.0" mnemonicParsing="false" onAction="#deleteReview" prefHeight="27.0" prefWidth="62.0" text="Delete" />
     </children>
 </AnchorPane>

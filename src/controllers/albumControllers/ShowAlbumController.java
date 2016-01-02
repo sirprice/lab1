@@ -10,14 +10,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Album;
+import models.Model;
+import models.Review;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -28,9 +32,12 @@ public class ShowAlbumController implements Initializable {
 
     private Stage showStage, primaryStage;
     private Parent show;
+    private Model model;
     private AlbumGenre genre;
+    private ArrayList<Review> reviews = new ArrayList<>();
     @FXML private Label titleLabel, artistLabel, genreLabel, raitingLabel;
     @FXML private ImageView albumCover;
+    @FXML private TextArea reviewArea;
 
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -43,6 +50,11 @@ public class ShowAlbumController implements Initializable {
         this.primaryStage = primaryStage;
 
     }
+
+    public void setModel(Model model) {
+        this.model = model;
+    }
+
     /**
      * Initialize the the scene and sets prepare the stage before show time.
      * @param parent
@@ -50,24 +62,50 @@ public class ShowAlbumController implements Initializable {
     public void setParent(Parent parent){
         this.show = parent;
         showStage = new Stage();
-        showStage.setScene(new Scene(show, 460, 260));
+        showStage.setScene(new Scene(show, 460, 372));
         showStage.initModality(Modality.APPLICATION_MODAL);
         //editStage.initOwner(primaryStage);
     }
+
     /**
      * Takes the selected albums data and fill show album text labels.
+     * @param album
      */
-    public void showAlbum(Album album){
+    public void showAlbum(Album album) {
 
-        titleLabel.setText(album.getTitle());
-        artistLabel.setText(album.getArtist());
-        genreLabel.setText(album.getGenre().toString());
-        String rating = "" + album.getRating();
-        raitingLabel.setText(rating);
+        Thread thread = new Thread() {
+            public void run() {
+                reviews = model.getAlbumReviews(album.getAlbumID());
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                StringBuilder reviewText = new StringBuilder();
+                                for (Review r : reviews){
+                                    reviewText.append(r.toString());
+                                }
+                                reviewArea.setText(reviewText.toString());
+                            }
+                        }
+                );
+            }
 
-        Image cover = new Image(album.getCoverUrl());
-        albumCover.setImage(cover);
-        showStage.show();
+        };thread.start();
+
+
+            titleLabel.setText(album.getTitle());
+            artistLabel.setText(album.getArtist());
+            genreLabel.setText(album.getGenre().
+
+            toString()
+
+            );
+            String rating = "" + album.getRating();
+            raitingLabel.setText(rating);
+
+            Image cover = new Image(album.getCoverUrl());
+            albumCover.setImage(cover);
+            showStage.show();
     }
 }
 

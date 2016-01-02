@@ -3,6 +3,7 @@ package models;
 import javafx.beans.binding.StringBinding;
 import javafx.collections.ObservableList;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -40,9 +41,9 @@ public interface Screwdriver {
 
     void insertNewReview(String query);
 
-    boolean checkIfReviewAlreadyExist(String query);
+    Review checkIfReviewAlreadyExist(String query);
 
-    void getReviews();
+    ArrayList<Review> getReviews(String query);
 
 
 

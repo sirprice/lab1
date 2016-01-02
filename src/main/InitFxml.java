@@ -87,6 +87,7 @@ public class InitFxml {
             ShowAlbumController sACtrl = showAlbumLoader.getController();
             if (sACtrl == null) System.out.println("edit album controllern är null");
             sACtrl.setParent(showAlbum);
+            sACtrl.setModel(model);
 
 
             Parent addAlbum = null;

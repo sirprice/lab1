@@ -4,7 +4,9 @@ import enums.AlbumGenre;
 import enums.MovieGenre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import jdk.nashorn.internal.runtime.RewriteException;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -56,28 +58,21 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public boolean checkIfReviewAlreadyExist(String query) {
+    public Review checkIfReviewAlreadyExist(String query) {
         Statement stmt = null;
-        boolean exisist = false;
-        int userID = 0, AlbumID = 0;
-
+        Review review = null;
         try {
             stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()){
-                userID = rs.getInt("userID");
-                AlbumID = rs.getInt("AlbumID");
-            }
-            if (userID != 0 && AlbumID != 0){
-                exisist = true;
-                System.out.println("" + userID + "   " + AlbumID);
+            while (rs.next()) {
+                review = new Review(rs.getDate("RevDate"), rs.getInt("Rating"), rs.getString("Review"));
+                System.out.println(review);
             }
 
         }catch (java.sql.SQLException sql){
             System.out.println(sql.getMessage());
         }
-        System.out.println("Check : " + exisist);
-        return exisist;
+        return review;
     }
 
     @Override
@@ -176,11 +171,35 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public void getReviews() {
+    public ArrayList<Review> getReviews(String query) {
+        Statement stmt = null;
+        ArrayList<Review> reviews = new ArrayList<>();
+        try {
+            // Execute the SQL statement
+            stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Review tmp = new Review(rs.getDate("RevDate"),rs.getInt("Rating"),rs.getString("Review"), rs.getInt("UserID"),rs.getString("Username") , rs.getInt("AlbumID"));
+                System.out.println(" 1" + tmp.toString());
+                reviews.add(tmp);
 
+            }
+            //return reviews;
+
+        }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
+
+        finally {
+            if (stmt != null) {
+                try{
+                    stmt.close();
+                }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
+            }
+        }
+
+        return reviews;
     }
 
-    private void executeUpdate(String query){
+    public void executeUpdate(String query){
 
         Statement stmt = null;
         try {

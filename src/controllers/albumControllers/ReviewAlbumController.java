@@ -11,7 +11,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Album;
 import models.Model;
+import models.Review;
+
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -26,23 +29,32 @@ public class ReviewAlbumController implements Initializable{
     private ToggleGroup group;
     private int rating;
     private Album album;
+    private Review userReview = null;
     private Date date;
     private String text;
+    private ArrayList<RadioButton> radioButtons;
 
     @FXML private TextArea textReview;
     @FXML private RadioButton one,two,three,four,five;
     @FXML private Label title;
     @FXML private ImageView imgView;
-    @FXML private Label empty;
+    @FXML private Label errorLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         group = new ToggleGroup();
+        radioButtons = new ArrayList<>();
+
         one.setToggleGroup(group);
+        radioButtons.add(one);
         two.setToggleGroup(group);
+        radioButtons.add(two);
         three.setToggleGroup(group);
+        radioButtons.add(three);
         four.setToggleGroup(group);
+        radioButtons.add(four);
         five.setToggleGroup(group);
+        radioButtons.add(five);
     }
 
     public void setModel(Model model){
@@ -51,7 +63,32 @@ public class ReviewAlbumController implements Initializable{
     public void setPrimaryStage(Stage primaryStage){
         this.primaryStage = primaryStage;
     }
+
     public void reviewAlbumStage(){
+        Thread thread = new Thread(){
+            public void run(){
+                System.out.println(album);
+                System.out.println("rewAlb innan");
+                userReview = model.getAlbumReview(model.getUser().getUserID(),album.getAlbumID());
+                System.out.println("efter" + userReview);
+                if (userReview != null){
+                    javafx.application.Platform.runLater(
+                            new Runnable() {
+                                @Override
+                                public void run() {
+                                    System.out.println(userReview);
+                                    textReview.setText(userReview.getText());
+                                    for (RadioButton rb : radioButtons){
+                                        if (userReview.getRating() == Integer.parseInt(rb.getText()))
+                                            rb.setSelected(true);
+                                    }
+
+                                }
+                            }
+                    );
+                }
+            }
+        };thread.start();
         reviewStage.show();
     }
 
@@ -60,7 +97,7 @@ public class ReviewAlbumController implements Initializable{
         title.setText(this.album.getTitle());
 
         //System.out.println("picture : " + selectedMovie.getCoverUrl());
-        Image img = new Image(selectedAlbum.getCoverUrl());
+        Image img = new Image(album.getCoverUrl());
         imgView.setImage(img);
     }
 
@@ -74,39 +111,45 @@ public class ReviewAlbumController implements Initializable{
 
     public void radioButton(){
         rating = 0;
-
-        if(one.isArmed()){
-            rating = Integer.parseInt(one.getText());
-        }
-        if(two.isArmed()){
-            rating = Integer.parseInt(two.getText());
-        }
-        if(three.isArmed()){
-            rating = Integer.parseInt(three.getText());
-        }
-        if(four.isArmed()){
-            rating = Integer.parseInt(four.getText());
-        }
-        if(five.isArmed()){
-            rating = Integer.parseInt(five.getText());
-        }
+        RadioButton rb = (RadioButton) group.getSelectedToggle();
+        rating = Integer.parseInt(rb.getText());
+        //System.out.println(rating);
     }
 
     public void submitReview(){
 
         date = new Date();
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+        System.out.println(date);
 
-        if (textReview.getText().length() <= 0 && rating == 0){
-            empty.setText("Please make some action");
-            return;
+        if (userReview == null){
+            if (textReview.getText().length() > 0 && rating > 0) {
+                model.addAlbumReview(model.getUser().getUserID(),album.getAlbumID(),sqlDate,textReview.getText(),rating);
+                reviewStage.close();
+                clearFields();
+            }else {
+                errorLabel.setText("Please make both options");
+                return;
+            }
         }
-        if (textReview.getText().length() > 0 && rating > 0) {
+        if (userReview != null){
+            if (userReview.getRating() != rating || !userReview.getText().equals(textReview) ) {
+                System.out.println("uppdaterar");
+                model.updateAlbumReview(model.getUser().getUserID(),album.getAlbumID(),sqlDate,textReview.getText(),rating);
+                reviewStage.close();
+                clearFields();
+            }else {
+                reviewStage.close();
+                clearFields();
+            }
+        }
+    }
 
-            model.addAlbumReview(model.getUser().getUserID(),album.getAlbumID(),sqlDate,textReview.getText(),rating);
+    public void deleteReview(){
+        if (userReview != null) {
+            model.deleteAlbumReview(model.getUser().getUserID(), album.getAlbumID());
+            clearFields();
             reviewStage.close();
-        }else {
-            empty.setText("Please make both options");
         }
     }
 
@@ -114,4 +157,10 @@ public class ReviewAlbumController implements Initializable{
         return rating;
     }
 
+    private void clearFields(){
+        textReview.clear();
+        errorLabel.setText("");
+        if (group.getSelectedToggle() != null)
+            group.getSelectedToggle().setSelected(false);
+    }
 }

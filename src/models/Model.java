@@ -6,6 +6,7 @@ import enums.MovieGenre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -226,15 +227,47 @@ public class Model {
         Thread thread = new Thread(){
             public void run(){
                 String question = queries.albumAlreadyReviewed(usrID,albumID);
-                exists = database.checkIfReviewAlreadyExist(question);
-                System.out.println("inside: " + exists);
-                if (!exists){
+                Review review = database.checkIfReviewAlreadyExist(question);
+                if (review == null){
                     String question2 = queries.addReviewAlbum(usrID,albumID,date,text,rating);
                     database.insertNewReview(question2);
                 }
             }
         };thread.start();
 
+    }
+    public void updateAlbumReview(int usrID, int albumID, Date date, String text, int rating){
+        String question = queries.updateAlbumReview(usrID,albumID, date, text, rating);
+        database.executeUpdate(question);
+    }
+    public void deleteAlbumReview(int usrID, int albumID){
+        Thread thread = new Thread(){
+            public void run(){
+                String question = queries.deleteAlbumReview(usrID,albumID);
+                database.executeUpdate(question);
+            }
+        };thread.start();
+    }
+    public ArrayList<Review> getAlbumReviews(int albumID){
+        return database.getReviews(queries.getAlbumReviews(albumID));
+    }
+
+
+    public void getMovieReview(int usrID, int albumID, Date date, String text, int rating){
+        Thread thread = new Thread(){
+            public void run(){
+                String question = queries.albumAlreadyReviewed(usrID,albumID);
+                Review review = database.checkIfReviewAlreadyExist(question);
+
+                //return review;
+            }
+        };thread.start();
+    }
+    public Review getAlbumReview(int usrID, int albumID){
+        String question = queries.albumAlreadyReviewed(usrID,albumID);
+        Review review = database.checkIfReviewAlreadyExist(question);
+
+        return review;
     }
 
     public User getUser() {
