@@ -13,23 +13,25 @@ public class Album {
 
     private int albumID;
     private AlbumGenre genre;
-    private int rating;
+    private double rating;
     private String releaseDate;
     private String artist;
     private int artistID;
     private String noOfSongs;
+    private String username;
     private ArrayList<String> reviews;
 
 
     private String coverUrl;
     //private Review review;
 
-    public Album(int albumID, String title, String artist, AlbumGenre genre, String coverUrl){
+    public Album(int albumID, String title, String artist, AlbumGenre genre, String coverUrl, String username){
         this.albumID = albumID;
         this.title = title;
         this.genre = genre;
         this.artist = artist;
         this.coverUrl = coverUrl;
+        this.username = username;
     }
 
     public String getTitle() {
@@ -53,11 +55,19 @@ public class Album {
         this.genre = genre;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
-    public void setRating(int rating) {
+    public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getCoverUrl() {

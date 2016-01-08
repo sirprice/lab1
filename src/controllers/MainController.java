@@ -5,7 +5,7 @@ import controllers.albumControllers.ReviewAlbumController;
 import controllers.albumControllers.ShowAlbumController;
 import controllers.movieControllers.AddMovieController;
 import controllers.movieControllers.EditMovieController;
-import controllers.movieControllers.ReviewController;
+import controllers.movieControllers.ReviewMovieController;
 import controllers.movieControllers.ShowMovieController;
 import javafx.scene.Parent;
 import javafx.collections.ObservableList;
@@ -21,6 +21,7 @@ import models.Album;
 import models.Model;
 import models.Movie;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
@@ -32,18 +33,33 @@ public class MainController implements Initializable {
     private AddMovieController addMovieController;
     private EditMovieController editMovieController;
     private ShowMovieController showMovieController;
-    private ReviewController reviewMovieController;
+    private ReviewMovieController reviewMovieController;
     private ReviewAlbumController reviewAlbumController;
     private Model model;
+    private ArrayList<RadioButton> albumSearchRadioButtons = new ArrayList<>();
+    private ArrayList<RadioButton> movieSearchRadioButtons = new ArrayList<>();
+    private ToggleGroup movieSearchGroup, albumSearchGroup;
 
     private Parent main;
     private Stage primaryStage;
     private ObservableList <Album> albums;
     @FXML private TableView <Album> albumTable;
     @FXML private TableView <Movie> movieTable;
+    @FXML private TextField albumSearchField;
+    @FXML private RadioButton albumTitleSearch, albumArtistSearch, movieRatingSearch, movieDirectorSearch, movieGenreSearch;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        movieSearchGroup = movieDirectorSearch.getToggleGroup();
+        albumSearchGroup = albumArtistSearch.getToggleGroup();
+
+        albumSearchRadioButtons.add(albumTitleSearch);
+        albumSearchRadioButtons.add(albumArtistSearch);
+
+        movieSearchRadioButtons.add(movieDirectorSearch);
+        movieSearchRadioButtons.add(movieRatingSearch);
+        movieSearchRadioButtons.add(movieGenreSearch);
 
     }
 
@@ -62,7 +78,7 @@ public class MainController implements Initializable {
     public void setControllers(AddAlbumController addAlbumController, EditAlbumController editAlbumController,
                                DeleteController deleteController, ShowAlbumController showAlbumController,
                                AddMovieController addMovieController, EditMovieController editMovieController,
-                               ShowMovieController showMovieController, ReviewController reviewMovieController,
+                               ShowMovieController showMovieController, ReviewMovieController reviewMovieController,
                                ReviewAlbumController reviewAlbumController){
 
         this.reviewAlbumController = reviewAlbumController;
@@ -103,6 +119,7 @@ public class MainController implements Initializable {
 
 
 
+
     // - - - - - - - - - Albums - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     public void reviewAlbum(){
@@ -110,13 +127,21 @@ public class MainController implements Initializable {
         reviewAlbumController.setAlbumTable(selected);
         reviewAlbumController.reviewAlbumStage();
     }
-    public void showAlbums(){
-        model.getNewAlbums();
-        albumTable.setItems(model.getAlbums());
+
+    public void getAllAlbumRatings(){
+        for (Album a: model.getAlbums()){
+            model.updateAlbumRating(a.getAlbumID());
+        }
     }
+
+    public void getAlbums(){
+        model.getNewAlbums();
+    }
+
 
     public void refreshAlbums(){
         albumTable.setItems(model.getAlbums());
+        albumTable.refresh();
     }
 
     public void showSelectedAlbum(MouseEvent me){
@@ -132,15 +157,34 @@ public class MainController implements Initializable {
     public void editAlbum(ActionEvent e) {
         Album selected = albumTable.getSelectionModel().getSelectedItem();
         if (!(selected == null)){
-            editAlbumController.editAlbumItems();
+            editAlbumController.editAlbumItems(selected);
         }
+    }
+
+    public void searchForAlbum(){
+        System.out.println("Searching for album");
+        System.out.println(albumSearchField.getText());
+
+        RadioButton rb = (RadioButton) albumSearchGroup.getSelectedToggle();
+        if (albumSearchField.getText().length() <= 0){
+            model.getNewAlbums();
+        }
+        if (albumSearchField.getText().length() > 0 && rb.getText().equals("Title")){
+            System.out.println("Search for title");
+            model.getSearchForAlbums(albumSearchField.getText(), 1);
+        }
+        if (albumSearchField.getText().length() > 0 && rb.getText().equals("Artist")){
+            System.out.println("Search for Artist");
+            model.getSearchForAlbums(albumSearchField.getText(), 2);
+        }
+
     }
 
     public void deleteAlbum(){
         Thread thread = new Thread(){
             public void run(){
                 deleteController.deleteAlbum(albumTable.getSelectionModel().getSelectedIndex());
-                showAlbums();
+                getAlbums();
             }
         };thread.start();
     }

@@ -34,7 +34,7 @@ public class EditAlbumController implements Initializable{
     private int index;
     private TableView<Album> albumTable;
     @FXML private TextField editTitle, editArtist, editUrl;
-    @FXML private ChoiceBox editGenre, editRating;
+    @FXML private ChoiceBox editGenre;
     @FXML private ImageView albumCover;
     @FXML private Button editSubmit;
 
@@ -60,7 +60,6 @@ public class EditAlbumController implements Initializable{
      * Initialize the choice boxes.
      */
     public void setChoiceBoxes(){
-        editRating.setItems(model.getRatingList());
         editGenre.setItems(model.getAlbumGenreList());
     }
     /**
@@ -78,16 +77,13 @@ public class EditAlbumController implements Initializable{
     /**
      * Takes the selected albums data and fill the edit album text fields scene with it.
      */
-    public void editAlbumItems(){              //shows album text and window
+    public void editAlbumItems(Album selectedAlbum){              //shows album text and window
+        this.selectedAlbum = selectedAlbum;
 
-
-        selectedAlbum = albumTable.getSelectionModel().getSelectedItem();
-        this.index = albumTable.getSelectionModel().getSelectedIndex();
 
         editTitle.setText(selectedAlbum.getTitle());
         editArtist.setText(selectedAlbum.getArtist());
         editGenre.setValue(selectedAlbum.getGenre());
-        editRating.setValue(selectedAlbum.getRating());
         editUrl.setText(selectedAlbum.getCoverUrl());
 
         Image img = new Image(selectedAlbum.getCoverUrl()); // try catch
@@ -101,14 +97,8 @@ public class EditAlbumController implements Initializable{
      */
     public void saveAlbum(){
 
-        model.getAlbum(index).setTitle(editTitle.getText());
-        model.getAlbum(index).setArtist(editArtist.getText());
-        model.getAlbum(index).setGenre((AlbumGenre) editGenre.getValue());
-        model.getAlbum(index).setRating((Integer) editRating.getValue());
-        model.getAlbum(index).setCoverUrl(editUrl.getText());
-        model.editAlbum(model.getAlbum(index).getAlbumID(), editArtist.getText(),
-                editGenre.getValue().toString(),editTitle.getText(),editUrl.getText());
-        albumTable.refresh();
+        model.editAlbum(selectedAlbum.getAlbumID(), editArtist.getText(), editGenre.getValue().toString(),editTitle.getText(),editUrl.getText());
+        //albumTable.refresh();
 
         editStage.close();
 

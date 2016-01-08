@@ -36,7 +36,7 @@ public class EditMovieController implements Initializable {
 
     @FXML
     private TextField editTitle, editDirector, editUrl;
-    @FXML private ChoiceBox editGenre, editRating;
+    @FXML private ChoiceBox editGenre;
     @FXML private ImageView movieCover;
     @FXML private Button editSubmit;
 
@@ -57,7 +57,7 @@ public class EditMovieController implements Initializable {
     }
 
     public void setChoiceBoxes(){
-        editRating.setItems(model.getRatingList());
+
         editGenre.setItems(model.getMovieGenreList());
     }
 
@@ -77,7 +77,7 @@ public class EditMovieController implements Initializable {
         editTitle.setText(selectedMovie.getTitle());
         editDirector.setText(selectedMovie.getDirector());
         editGenre.setValue(selectedMovie.getGenre());
-        editRating.setValue(selectedMovie.getRating());
+
         editUrl.setText(selectedMovie.getCoverUrl());
 
         Image img = new Image(selectedMovie.getCoverUrl());
@@ -92,7 +92,6 @@ public class EditMovieController implements Initializable {
         model.getMovie(index).setTitle(editTitle.getText());
         model.getMovie(index).setDirector(editDirector.getText());
         model.getMovie(index).setGenre((MovieGenre) editGenre.getValue());
-        model.getMovie(index).setRating((Integer) editRating.getValue());
         model.getMovie(index).setCoverUrl(editUrl.getText());
 
         model.editMovie(model.getAlbum(index).getAlbumID(), editDirector.getText(),

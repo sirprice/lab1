@@ -82,7 +82,6 @@ public class ReviewAlbumController implements Initializable{
                                         if (userReview.getRating() == Integer.parseInt(rb.getText()))
                                             rb.setSelected(true);
                                     }
-
                                 }
                             }
                     );

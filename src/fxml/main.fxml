@@ -32,8 +32,8 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TextField layoutX="1027.0" layoutY="43.0" />
-      <Button layoutX="1206.0" layoutY="43.0" mnemonicParsing="false" text="Search" />
+      <TextField fx:id="albumSearchField" layoutX="1027.0" layoutY="43.0" />
+      <Button fx:id="albumSearchButton" layoutX="1206.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchForAlbum" text="Search" />
       <Label layoutX="207.0" layoutY="48.0" text="Albums" textFill="WHITE">
          <font>
             <Font size="17.0" />
@@ -121,12 +121,13 @@
             <ToggleGroup fx:id="albumRadio" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="albumGenreSearch" layoutX="957.0" layoutY="48.0" mnemonicParsing="false" text="Genre" toggleGroup="$albumRadio" />
-      <RadioButton fx:id="albumGenreSearch" layoutX="957.0" layoutY="384.0" mnemonicParsing="false" text="Genre">
+      <RadioButton fx:id="albumArtistSearch" layoutX="957.0" layoutY="48.0" mnemonicParsing="false" text="Artist" toggleGroup="$albumRadio" />
+      <RadioButton fx:id="movieRatingSearch" layoutX="957.0" layoutY="384.0" mnemonicParsing="false" text="Rating">
          <toggleGroup>
             <ToggleGroup fx:id="movieRadio" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="movieTitleSearch" layoutX="891.0" layoutY="385.0" mnemonicParsing="false" selected="true" text="Title" toggleGroup="$movieRadio" />
+      <RadioButton fx:id="movieGenreSearch" layoutX="891.0" layoutY="385.0" mnemonicParsing="false" text="Genre" toggleGroup="$movieRadio" />
+      <RadioButton fx:id="movieDirectorSearch" layoutX="814.0" layoutY="386.0" mnemonicParsing="false" selected="true" text="Director" toggleGroup="$movieRadio" />
    </children>
 </AnchorPane>

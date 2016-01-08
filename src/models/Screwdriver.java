@@ -41,6 +41,8 @@ public interface Screwdriver {
 
     void insertNewReview(String query);
 
+    double getAvgRating(String query);
+
     Review checkIfReviewAlreadyExist(String query);
 
     ArrayList<Review> getReviews(String query);

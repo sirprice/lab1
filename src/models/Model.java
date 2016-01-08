@@ -51,65 +51,6 @@ public class Model {
         this.mainController = mainController;
     }
 
-    public void createMovie(String title, String genre, int directorID){
-        database.insertMovie(queries.insertMovieQuery(title,genre,directorID));
-    }
-
-    public void deleteMovie(int movieId){
-        database.dropMovie(queries.dropMovieQuery(movieId));
-    }
-
-    public void getNewAlbums(){
-        Thread thread = new Thread(){
-            public void run(){
-                albums = database.getAlbums(queries.getAllAlbums);
-                javafx.application.Platform.runLater(
-                        new Runnable() {
-                            @Override
-                            public void run() {
-                                setAlbums(albums);
-                                mainController.refreshAlbums();
-                            }
-                        }
-                );
-            }
-        };thread.start();
-    }
-
-    public Album getAlbum(int index) {
-        return albums.get(index);
-    }
-
-    public void setAlbums(ObservableList<Album> albums) {
-        this.albums = albums;
-    }
-
-    public ObservableList<Album> getAlbums(){
-        return albums;
-    }
-    public void createAlbum(String title, String genre, int artistID){
-        database.insertAlbum(queries.insertAlbumQuery(title,genre,artistID));
-    }
-
-    public void deleteAlbum(int albumID){
-        database.dropAlbum(queries.dropAlbumQuery(albumID));
-    }
-
-    public int getArtistId(String artist){
-        return database.getArtistByName(queries.getArtistByName(artist));
-    }
-    public void createDirector(String name){
-        database.insertNewDirector(queries.insertDirector(name));
-    }
-
-    public int getDirectorId(String name){
-        return database.getDirectorByName(queries.getDirectorByName(name));
-    }
-
-    public void createArtist(String name){
-        database.insertNewArtist(queries.insertArtist(name));
-    }
-
     public boolean authentcateUser(String username, String password){
 
         user = database.userAuthentication(queries.authenticateUser(username,password));
@@ -131,6 +72,251 @@ public class Model {
         }
         return false;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setJDBCDatabase(JDBCDatabase database) {
+        this.database = database;
+    }
+
+
+    //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+    //                                              ALBUM
+    //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+    public Album getAlbum(int index) {
+        return albums.get(index);
+    }
+
+    public Album getAlbumById(int id) {
+        for (Album a : albums){
+            if (a.getAlbumID() == id){
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public ObservableList<Album> getAlbums(){
+        return albums;
+    }
+
+    public void getNewAlbums(){
+        Thread thread = new Thread(){
+            public void run(){
+                albums = database.getAlbums(queries.getAllAlbums);
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                setAlbums(albums);
+                                mainController.getAllAlbumRatings();
+                            }
+                        }
+                );
+            }
+        };thread.start();
+    }
+
+    public void setAlbums(ObservableList<Album> albums) {
+        this.albums = albums;
+    }
+
+    public void createArtist(String name){
+        database.insertNewArtist(queries.insertArtist(name));
+    }
+
+    public void createAlbum(String title, String genre, int artistID){
+        // todo check if thread
+        database.insertAlbum(queries.insertAlbumQuery(title,genre,artistID,user.getUserID()));
+    }
+
+    public void editAlbum(int albumId,String artist, String genre, String title, String url){
+
+        boolean albumExists = false;
+        this.artist = artist;
+        System.out.println("album ID : "+albumId);
+        for(Album a: getAlbums()){
+            if (a.getTitle().toUpperCase().equals(title.toUpperCase())
+                    && a.getArtist().toUpperCase().equals(artist.toUpperCase())){
+                albumExists = true;
+            }
+        }
+
+        if(!albumExists){
+            Thread thread = new Thread(){
+                public void run(){
+                    artistID = getArtistId(artist);
+                    if (artistID <= 0){
+                        createArtist(queries.getArtistByName(artist));
+                        artistID = getArtistId(artist);
+                        database.alterAlbum(queries.editAlbum(albumId,title,genre,artistID,url));
+                        System.out.println(user.toString() + "editFunktion:");
+                        javafx.application.Platform.runLater(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        getNewAlbums();
+                                    }
+                                }
+                        );
+
+                    }else {
+                        database.alterAlbum(queries.editAlbum(albumId,title,genre,artistID,url));
+                        System.out.println(user.toString() + "editFunktion:");
+                        javafx.application.Platform.runLater(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        getNewAlbums();
+                                    }
+                                }
+                        );
+                    }
+
+
+                    //albums = database.getAlbums(queries.getAllAlbums);
+
+                }
+            };thread.start();
+        }
+
+    }
+
+    public void deleteAlbum(int albumID){
+        database.dropAlbum(queries.dropAlbumQuery(albumID));
+    }
+
+    public int getArtistId(String artist){
+        return database.getArtistByName(queries.getArtistByName(artist));
+    }
+
+    public void getSearchForAlbums(String searchWord, int item){
+        Thread thread = new Thread(){
+            public void run(){
+                albums = database.getAlbums(queries.searchAlbums(searchWord, item));
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                setAlbums(albums);
+                                mainController.getAllAlbumRatings();
+                            }
+                        }
+                );
+            }
+        };thread.start();
+    }
+
+    public void updateAlbumRating(int id){
+
+        Thread thread = new Thread(){
+            public void run(){
+                getAlbumById(id).setRating(database.getAvgRating(queries.getAlbumRating(id)));
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                mainController.refreshAlbums();
+                            }
+                        }
+                );
+            }
+
+        };thread.start();
+
+    }
+
+    public void addAlbumReview(int usrID, int albumID, Date date, String text, int rating){
+
+        Thread thread = new Thread(){
+            public void run(){
+                String question = queries.albumAlreadyReviewed(usrID,albumID);
+                Review review = database.checkIfReviewAlreadyExist(question);
+                if (review == null){
+                    String question2 = queries.addReviewAlbum(usrID,albumID,date,text,rating);
+                    database.insertNewReview(question2);
+                    javafx.application.Platform.runLater(
+                            new Runnable() {
+                                @Override
+                                public void run() {
+                                    updateAlbumRating(albumID);
+                                }
+                            }
+                    );
+                }
+            }
+        };thread.start();
+
+    }
+
+    public void updateAlbumReview(int usrID, int albumID, Date date, String text, int rating){
+        Thread thread = new Thread(){
+            public void run(){
+                String question = queries.updateAlbumReview(usrID,albumID, date, text, rating);
+                database.executeUpdate(question);
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                updateAlbumRating(albumID);
+                            }
+                        }
+                );
+            }
+        };thread.start();
+
+    }
+
+    public void deleteAlbumReview(int usrID, int albumID){
+        Thread thread = new Thread(){
+            public void run(){
+                String question = queries.deleteAlbumReview(usrID,albumID);
+                database.executeUpdate(question);
+            }
+        };thread.start();
+    }
+
+    public ArrayList<Review> getAlbumReviews(int albumID){
+        return database.getReviews(queries.getAlbumReviews(albumID));
+    }
+
+    public Review getAlbumReview(int usrID, int albumID){
+        String question = queries.albumAlreadyReviewed(usrID,albumID);
+        Review review = database.checkIfReviewAlreadyExist(question);
+
+        return review;
+    }
+
+    public ObservableList<AlbumGenre> getAlbumGenreList() {
+        return albumGenreList;
+    }
+
+
+    //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+    //                                              MOVIE
+    //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+
+    public void createMovie(String title, String genre, int directorID){
+        database.insertMovie(queries.insertMovieQuery(title,genre,directorID));
+    }
+
+    public void deleteMovie(int movieId){
+        database.dropMovie(queries.dropMovieQuery(movieId));
+    }
+
+    public void createDirector(String name){
+        database.insertNewDirector(queries.insertDirector(name));
+    }
+
+    public int getDirectorId(String name){
+        return database.getDirectorByName(queries.getDirectorByName(name));
+    }
+
 
     public void createUser(String username, String password){
         database.insertNewUser(queries.insertUser(username,password));
@@ -171,43 +357,6 @@ public class Model {
         }
     }
 
-    public void editAlbum(int albumId,String artist, String genre, String title, String url){
-
-        boolean albumExists = false;
-        this.artist = artist;
-
-        for(Album a: getAlbums()){
-            if (a.getTitle().toUpperCase().equals(title.toUpperCase())
-                    && a.getArtist().toUpperCase().equals(artist.toUpperCase())){
-                albumExists = true;
-            }
-        }
-
-        if(!albumExists){
-            Thread thread = new Thread(){
-                public void run(){
-                    artistID = getArtistId(artist);
-                    if (artistID <= 0){
-                        createArtist(queries.getArtistByName(artist));
-                        artistID = getArtistId(artist);
-                        database.alterAlbum(queries.editAlbum(albumId,title,genre,artistID,url));
-                        System.out.println(user.toString() + "editFunktion:");
-                        getNewAlbums();
-                    }else {
-                        database.alterAlbum(queries.editAlbum(albumId,title,genre,artistID,url));
-                        System.out.println(user.toString() + "editFunktion:");
-                        getNewAlbums();
-                    }
-
-
-                    //albums = database.getAlbums(queries.getAllAlbums);
-
-                }
-            };thread.start();
-        }
-
-    }
-
     public void addMovieReview(int usrID, int movieID, Date date, String text, int rating){
 
         Thread thread = new Thread(){
@@ -222,36 +371,6 @@ public class Model {
         };thread.start();
 
     }
-    public void addAlbumReview(int usrID, int albumID, Date date, String text, int rating){
-
-        Thread thread = new Thread(){
-            public void run(){
-                String question = queries.albumAlreadyReviewed(usrID,albumID);
-                Review review = database.checkIfReviewAlreadyExist(question);
-                if (review == null){
-                    String question2 = queries.addReviewAlbum(usrID,albumID,date,text,rating);
-                    database.insertNewReview(question2);
-                }
-            }
-        };thread.start();
-
-    }
-    public void updateAlbumReview(int usrID, int albumID, Date date, String text, int rating){
-        String question = queries.updateAlbumReview(usrID,albumID, date, text, rating);
-        database.executeUpdate(question);
-    }
-    public void deleteAlbumReview(int usrID, int albumID){
-        Thread thread = new Thread(){
-            public void run(){
-                String question = queries.deleteAlbumReview(usrID,albumID);
-                database.executeUpdate(question);
-            }
-        };thread.start();
-    }
-    public ArrayList<Review> getAlbumReviews(int albumID){
-        return database.getReviews(queries.getAlbumReviews(albumID));
-    }
-
 
     public void getMovieReview(int usrID, int albumID, Date date, String text, int rating){
         Thread thread = new Thread(){
@@ -263,24 +382,7 @@ public class Model {
             }
         };thread.start();
     }
-    public Review getAlbumReview(int usrID, int albumID){
-        String question = queries.albumAlreadyReviewed(usrID,albumID);
-        Review review = database.checkIfReviewAlreadyExist(question);
 
-        return review;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setAlbum(int index, Album album) {
-        albums.set(index,album);
-    }
-
-    public void addAlbum(Album newAlbum){
-        albums.add(newAlbum);
-    }
 
     public void getNewMovies() {
         Thread thread = new Thread(){
@@ -306,27 +408,19 @@ public class Model {
         return movies;
     }
 
-    public void setMovies(ObservableList<Movie> movies) {
-        this.movies = movies;
-    }
-    public void addMovie(Movie newMovie){
-        movies.add(newMovie);
-    }
-
-    public ObservableList<AlbumGenre> getAlbumGenreList() {
-        return albumGenreList;
-    }
-
-    public void setAlbumGenreList(ObservableList<AlbumGenre> albumGenreList) {
-        this.albumGenreList = albumGenreList;
-    }
-
     public ObservableList<MovieGenre> getMovieGenreList() {
         return movieGenreList;
     }
 
+    //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+    //                                              SKIT
+    //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
     public void setMovieGenreList(ObservableList<MovieGenre> movieGenreList) {
         this.movieGenreList = movieGenreList;
+    }
+    public void setAlbumGenreList(ObservableList<AlbumGenre> albumGenreList) {
+        this.albumGenreList = albumGenreList;
     }
 
     public ObservableList<Integer> getRatingList() {
@@ -337,7 +431,18 @@ public class Model {
         this.ratingList = ratingList;
     }
 
-    public void setJDBCDatabase(JDBCDatabase database) {
-        this.database = database;
+
+    public void setAlbum(int index, Album album) {
+        albums.set(index,album);
+    }
+
+    public void addAlbum(Album newAlbum){
+        albums.add(newAlbum);
+    }
+    public void setMovies(ObservableList<Movie> movies) {
+        this.movies = movies;
+    }
+    public void addMovie(Movie newMovie){
+        movies.add(newMovie);
     }
 }

@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import jdk.nashorn.internal.runtime.RewriteException;
 
+import java.awt.geom.Arc2D;
 import java.awt.image.AreaAveragingScaleFilter;
 import java.sql.*;
 import java.util.ArrayList;
@@ -91,6 +92,25 @@ public class JDBCDatabase implements Screwdriver {
             e.printStackTrace();
         }
         return artistId;
+    }
+
+    @Override
+    public double getAvgRating(String query) {
+
+        double avg = 0;
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                avg = rs.getDouble("avg(Rating)");
+                System.out.println(avg);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return avg;
     }
 
     @Override
@@ -203,6 +223,7 @@ public class JDBCDatabase implements Screwdriver {
 
         Statement stmt = null;
         try {
+            System.out.println(query);
             stmt = connection.createStatement();
             stmt.executeUpdate(query);
 
@@ -226,7 +247,7 @@ public class JDBCDatabase implements Screwdriver {
                         tmpGenre = ag;
                     }
                 }
-                Album tmp = new Album(rs.getInt("ID"), rs.getString("Title"),rs.getString("Name"),tmpGenre,rs.getString("CoverUrl"));
+                Album tmp = new Album(rs.getInt("ID"), rs.getString("Title"),rs.getString("Name"),tmpGenre,rs.getString("CoverUrl"), rs.getString("Username"));
                 System.out.println(" 1" + tmp.toString());
                 albums.add(tmp);
 

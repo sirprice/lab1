@@ -31,7 +31,6 @@ public class AddAlbumController implements Initializable {
     @FXML private TextField addTitle;
     @FXML private TextField addArtist;
     @FXML private ChoiceBox<AlbumGenre> addGenre;
-    @FXML private ChoiceBox<Integer> addRating;
     @FXML private TextField addUrl;
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,7 +55,7 @@ public class AddAlbumController implements Initializable {
      * Initialize the choice boxes.
      */
     public void setChoiceBoxes(){
-        addRating.setItems(model.getRatingList());
+
         addGenre.setItems(model.getAlbumGenreList());
 
     }
@@ -110,7 +109,14 @@ public class AddAlbumController implements Initializable {
                             System.out.println(model.getUser().toString() + " Added an album");
                             model.getNewAlbums();
                         }
-                        clearTextFields();
+                        javafx.application.Platform.runLater(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        clearTextFields();
+                                    }
+                                }
+                        );
                     }
                 };
                 thread.start();
@@ -140,6 +146,5 @@ public class AddAlbumController implements Initializable {
         addTitle.clear();
         addUrl.clear();
         addGenre.setValue(null);
-        addRating.setValue(null);
     }
 }

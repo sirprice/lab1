@@ -7,17 +7,17 @@ import java.util.Date;
  */
 public class SQLQueries {
 
-    public final String getAllAlbums = "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl " +
-                                        "From Album,Artist " +
-                                        "Where Album.ArtistID = Artist.ID;";
+    public final String getAllAlbums = "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl, User.Username " +
+                                        "From Album,Artist,User " +
+                                        "Where Album.ArtistID = Artist.ID AND Album.UserID = User.ID;";
 
     public final String getAllMovies = "Select Movie.ID, Movie.Title, Director.Name, Movie.Genre, Movie.CoverUrl " +
             "From Movie,Director " +
             "Where Movie.DirectorID = Director.ID;";
 
-    public String insertAlbumQuery(String title, String genre, int artistID){
-        return "INSERT INTO ALBUM (Title,Genre,artistID) " +
-                "VALUES('"+ title +"', '"+ genre + "',"+ artistID +");";
+    public String insertAlbumQuery(String title, String genre, int artistID, int userID){
+        return "INSERT INTO ALBUM (Title,Genre,artistID,UserID) " +
+                "VALUES('"+ title +"', '"+ genre + "','"+ artistID + "','"+ userID +"');";
 
     }
 
@@ -103,13 +103,13 @@ public class SQLQueries {
 
     public String editAlbum(int albumID,String title, String genre, int artistID, String coverURL){
 
-        return  "UPDATE Alubum SET Title = '" + title + "', Genre = '" + genre + "', " +
-                "ArtistID = '" + artistID +"', CoverURL = '" + coverURL + "' WHERE id = '" + artistID + "';";
+        return  "UPDATE Album SET Title = '" + title + "', Genre = '" + genre + "', " +
+                "ArtistID = '" + artistID +"', CoverURL = '" + coverURL + "' WHERE id = '" + albumID + "';";
     }
     public String editMovie(int movieID,String title, String genre, int directorID, String coverURL){
 
         return  "UPDATE Movie SET Title = '" + title + "', Genre = '" + genre + "', " +
-                "DirectorID = '" + directorID +"', CoverURL = '" + coverURL + "' WHERE id = '" + directorID + "';";
+                "DirectorID = '" + directorID +"', CoverURL = '" + coverURL + "' WHERE id = '" + movieID + "';";
     }
 
     public String addReviewAlbum(int userID, int albumID, Date date, String text, int rating){
@@ -128,9 +128,29 @@ public class SQLQueries {
     public String getAlbumReviews(int albumID){
         return "SELECT RevDate,Rating,Review, AlbumReview.UserID, AlbumID, Username FROM AlbumReview,User WHERE AlbumID ='"+ albumID +"' AND AlbumReview.UserID = User.ID;";
     }
+    public String getAlbumRating(int albumID){
+        return "SELECT avg(Rating) FROM AlbumReview WHERE AlbumID ='" + albumID+"';";
+    }
+
+    public String searchAlbums(String searchWord, int item){
+        if (item == 1){
+            return "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl,User.Username " +
+                    "From Album,Artist,User " +
+                    "Where Album.ArtistID = Artist.ID " +
+                    "AND Album.title = '"+searchWord+"'AND Album.UserID = User.ID;";
+        }
+        if (item == 2){
+            return "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl, User.Username " +
+                    "From Album,Artist,User " +
+                    "Where Album.ArtistID = Artist.ID " +
+                    "AND Artist.Name = '"+searchWord+"'AND Album.UserID = User.ID;";
+        }
+            return "FEL";
+    }
 
     public String addReviewMovie(int userID, int movieID, Date date, String text, int rating){
         return "INSERT INTO MovieReview(UserID,MovieID,RevDate,Review,Rating) VALUES(" + userID + "," + movieID +",'" + date
                 + "','" + text + "'," + rating + ");";
     }
+
 }

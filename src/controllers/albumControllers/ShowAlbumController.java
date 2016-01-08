@@ -35,7 +35,7 @@ public class ShowAlbumController implements Initializable {
     private Model model;
     private AlbumGenre genre;
     private ArrayList<Review> reviews = new ArrayList<>();
-    @FXML private Label titleLabel, artistLabel, genreLabel, raitingLabel;
+    @FXML private Label titleLabel, artistLabel, genreLabel, raitingLabel, submittedByField;
     @FXML private ImageView albumCover;
     @FXML private TextArea reviewArea;
 
@@ -95,13 +95,10 @@ public class ShowAlbumController implements Initializable {
 
             titleLabel.setText(album.getTitle());
             artistLabel.setText(album.getArtist());
-            genreLabel.setText(album.getGenre().
-
-            toString()
-
-            );
+            genreLabel.setText(album.getGenre().toString());
             String rating = "" + album.getRating();
             raitingLabel.setText(rating);
+            submittedByField.setText(album.getUsername());
 
             Image cover = new Image(album.getCoverUrl());
             albumCover.setImage(cover);

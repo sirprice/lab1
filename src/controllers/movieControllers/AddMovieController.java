@@ -28,7 +28,6 @@ public class AddMovieController implements Initializable {
     @FXML private TextField addTitle;
     @FXML private TextField addMovieDirector;
     @FXML private ChoiceBox<MovieGenre> addGenre;
-    @FXML private ChoiceBox<Integer> addRating;
     @FXML private TextField addUrl;
 
 
@@ -37,7 +36,7 @@ public class AddMovieController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
     public void setChoiceBoxes(){
-        addRating.setItems(model.getRatingList());
+
         addGenre.setItems(model.getMovieGenreList());
     }
     public void setModel(Model model){
@@ -87,7 +86,14 @@ public class AddMovieController implements Initializable {
                         System.out.println(model.getUser().toString() + " Added a movie");
                         model.getNewMovies();
                     }
-                    clearTextFields();
+                    javafx.application.Platform.runLater(
+                            new Runnable() {
+                                @Override
+                                public void run() {
+                                    clearTextFields();
+                                }
+                            }
+                    );
                 }
             };
             thread.start();
@@ -105,6 +111,6 @@ public class AddMovieController implements Initializable {
         addTitle.clear();
         addUrl.clear();
         addGenre.setValue(null);
-        addRating.setValue(null);
+
     }
 }
