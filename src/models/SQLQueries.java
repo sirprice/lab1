@@ -137,7 +137,7 @@ public class SQLQueries {
             return "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl,User.Username " +
                     "From Album,Artist,User " +
                     "Where Album.ArtistID = Artist.ID " +
-                    "AND Album.title = '"+searchWord+"'AND Album.UserID = User.ID;";
+                    "AND Album.title LIKE '%"+searchWord+"%'AND Album.UserID = User.ID;";
         }
         if (item == 2){
             return "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl, User.Username " +
