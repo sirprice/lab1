@@ -62,6 +62,7 @@ public class InitFxml {
             ShowMovieController sMCtrl = showMovieLoader.getController();
             if (sMCtrl == null) System.out.println("edit album controllern är null");
             sMCtrl.setParent(showMovie);
+            sMCtrl.setModel(model);
 
             Parent reviewMovie = null;
             FXMLLoader reviewMovieLoader = new FXMLLoader();

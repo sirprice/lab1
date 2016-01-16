@@ -60,6 +60,7 @@ public class JDBCDatabase implements Screwdriver {
 
     @Override
     public Review checkIfReviewAlreadyExist(String query) {
+
         Statement stmt = null;
         Review review = null;
         try {
@@ -199,7 +200,7 @@ public class JDBCDatabase implements Screwdriver {
             stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                Review tmp = new Review(rs.getDate("RevDate"),rs.getInt("Rating"),rs.getString("Review"), rs.getInt("UserID"),rs.getString("Username") , rs.getInt("AlbumID"));
+                Review tmp = new Review(rs.getDate("RevDate"),rs.getInt("Rating"),rs.getString("Review"), rs.getInt("UserID"),rs.getString("Username"));
                 System.out.println(" 1" + tmp.toString());
                 reviews.add(tmp);
 
@@ -280,7 +281,7 @@ public class JDBCDatabase implements Screwdriver {
                         tmpGenre = ag;
                     }
                 }
-                Movie tmp = new Movie(rs.getInt("ID"), rs.getString("Title"),rs.getString("Name"),tmpGenre,rs.getString("CoverUrl"));
+                Movie tmp = new Movie(rs.getInt("ID"), rs.getString("Title"),rs.getString("Name"),tmpGenre,rs.getString("CoverUrl"), rs.getString("Username"));
                 System.out.println("1 " + tmp.toString());
                 movies.add(tmp);
 

@@ -11,13 +11,13 @@ public class SQLQueries {
                                         "From Album,Artist,User " +
                                         "Where Album.ArtistID = Artist.ID AND Album.UserID = User.ID;";
 
-    public final String getAllMovies = "Select Movie.ID, Movie.Title, Director.Name, Movie.Genre, Movie.CoverUrl " +
-            "From Movie,Director " +
-            "Where Movie.DirectorID = Director.ID;";
+    public final String getAllMovies = "Select Movie.ID, Movie.Title, Director.Name, Movie.Genre, Movie.CoverUrl, User.Username " +
+            "From Movie,Director,User " +
+            "Where Movie.DirectorID = Director.ID AND Movie.UserID = User.ID;";
 
     public String insertAlbumQuery(String title, String genre, int artistID, int userID){
         return "INSERT INTO ALBUM (Title,Genre,artistID,UserID) " +
-                "VALUES('"+ title +"', '"+ genre + "','"+ artistID + "','"+ userID +"');";
+                "VALUES('"+ title +"', '"+ genre + "','"+ artistID + "',"+ userID +");";
 
     }
 
@@ -26,9 +26,9 @@ public class SQLQueries {
 
     }
 
-    public String insertMovieQuery(String title, String genre, int directorID){
-        return "INSERT INTO Movie (Title,Genre,DirectorID) " +
-                "VALUES('"+ title +"', '"+ genre + "',"+ directorID +");";
+    public String insertMovieQuery(String title, String genre, int directorID, int userID){
+        return "INSERT INTO Movie (Title,Genre,DirectorID, UserID) " +
+                "VALUES('"+ title +"', '"+ genre + "','"+ directorID +"'," +userID+");";
 
     }
 
@@ -131,21 +131,64 @@ public class SQLQueries {
     public String getAlbumRating(int albumID){
         return "SELECT avg(Rating) FROM AlbumReview WHERE AlbumID ='" + albumID+"';";
     }
+    public String getMovieRating(int movieID){
+        return "SELECT avg(Rating) FROM MovieReview WHERE MovieID ='" + movieID+"';";
+    }
+    public String updateMovieReview(int userID, int movieID, Date date, String text, int rating){
+        System.out.println(date);
+        return "UPDATE MovieReview SET RevDate = '" + date + "', Review = '" + text + "', " +
+                "Rating = '" + rating +"' WHERE UserID ='" + userID + "' AND MovieID = '" + movieID + "';";
+    }
+    public String deleteMovieReview(int userID, int movieID){
+        return "DELETE FROM MovieReview WHERE UserID ='" + userID + "' AND MovieID = '" + movieID + "';";
+    }
 
     public String searchAlbums(String searchWord, int item){
         if (item == 1){
             return "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl,User.Username " +
                     "From Album,Artist,User " +
                     "Where Album.ArtistID = Artist.ID " +
-                    "AND Album.title = '"+searchWord+"'AND Album.UserID = User.ID;";
+                    "AND Album.title LIKE '%"+searchWord+"%' AND Album.UserID = User.ID;";
         }
         if (item == 2){
             return "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl, User.Username " +
                     "From Album,Artist,User " +
                     "Where Album.ArtistID = Artist.ID " +
-                    "AND Artist.Name = '"+searchWord+"'AND Album.UserID = User.ID;";
+                    "AND Artist.Name LIKE '%"+searchWord+"%' AND Album.UserID = User.ID;";
         }
-            return "FEL";
+        return "FEL";
+    }
+
+    public String searchMovies(String searchWord, int item){
+        if (item == 1){
+            return "Select Movie.ID, Movie.Title, Director.Name, Movie.Genre, Movie.CoverUrl,User.Username " +
+                    "From Movie,Director,User " +
+                    "Where Movie.DirectorID = Director.ID " +
+                    "AND Director.Name LIKE '%"+searchWord+"%' AND Movie.UserID = User.ID;";
+        }
+        if (item == 2){
+            return "Select Movie.ID, Movie.Title, Director.Name, Movie.Genre, Movie.CoverUrl, User.Username " +
+                    "From Movie,Director,User " +
+                    "Where Movie.DirectorID = Director.ID " +
+                    "AND Movie.Genre LIKE '%"+searchWord+"%' AND Movie.UserID = User.ID;";
+        }
+        if (item == 3){
+            double rating = Double.parseDouble(searchWord);
+            int maxRating = (int) rating + 1;
+            System.out.println("MaxRating = " +maxRating);
+            return "Select Movie.ID, Movie.Title, Director.Name, Movie.Genre, Movie.CoverUrl, User.Username, avg(MovieReview.Rating) " +
+                    "From Movie,Director,User,MovieReview " +
+                    "Where Movie.DirectorID = Director.ID " +
+                    "AND Movie.ID = MovieReview.MovieID " +
+                    "AND "+rating+" <= (SELECT avg(Rating) FROM MovieReview Where Movie.ID = MovieReview.MovieID GROUP BY Movie.ID) " +
+                    "AND "+maxRating+ " > (SELECT avg(Rating) FROM MovieReview Where Movie.ID = MovieReview.MovieID GROUP BY Movie.ID) " +
+                    "AND Movie.UserID = User.ID " +
+                    "GROUP BY Movie.ID;";
+        }
+        return "FEL";
+    }
+    public String getMovieReviews(int movieID){
+        return "SELECT RevDate,Rating,Review, MovieReview.UserID, MovieID, Username FROM MovieReview,User WHERE MovieID ='"+ movieID +"' AND MovieReview.UserID = User.ID;";
     }
 
     public String addReviewMovie(int userID, int movieID, Date date, String text, int rating){

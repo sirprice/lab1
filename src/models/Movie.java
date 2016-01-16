@@ -12,17 +12,19 @@ public class Movie {
     private String title;
     private String director;
     private MovieGenre genre;
-    private int rating;
+    private double rating;
     private int movieID;
     private String coverUrl;
-   private ArrayList<Review> reviews;
+    private ArrayList<Review> reviews;
+    private String username;
 
-    public Movie (int movieID,String title, String director, MovieGenre genre,String coverUrl){
+    public Movie (int movieID,String title, String director, MovieGenre genre,String coverUrl, String username){
         this.movieID = movieID;
         this.title = title;
         this.director = director;
         this.genre = genre;
         this.coverUrl = coverUrl;
+        this.username = username;
         reviews = new ArrayList<>();
     }
 
@@ -58,11 +60,11 @@ public class Movie {
         this.genre = genre;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 
@@ -72,6 +74,15 @@ public class Movie {
 
     public void setCoverUrl(String coverUrl) {
         this.coverUrl = coverUrl;
+    }
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public ArrayList<Review> getReviews() {
+        return reviews;
     }
 
     public String toString(){

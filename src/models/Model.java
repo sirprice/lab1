@@ -100,18 +100,19 @@ public class Model {
     }
 
     public ObservableList<Album> getAlbums(){
+
         return albums;
     }
 
     public void getNewAlbums(){
         Thread thread = new Thread(){
             public void run(){
-                albums = database.getAlbums(queries.getAllAlbums);
+                ObservableList<Album> newAlbums = database.getAlbums(queries.getAllAlbums);
                 javafx.application.Platform.runLater(
                         new Runnable() {
                             @Override
                             public void run() {
-                                setAlbums(albums);
+                                setAlbums(newAlbums);
                                 mainController.getAllAlbumRatings();
                             }
                         }
@@ -196,12 +197,13 @@ public class Model {
     public void getSearchForAlbums(String searchWord, int item){
         Thread thread = new Thread(){
             public void run(){
-                albums = database.getAlbums(queries.searchAlbums(searchWord, item));
+                ObservableList<Album> newAlbums = database.getAlbums(queries.searchAlbums(searchWord, item));
                 javafx.application.Platform.runLater(
                         new Runnable() {
                             @Override
                             public void run() {
-                                setAlbums(albums);
+                                setAlbums(newAlbums);
+                                mainController.refreshAlbums();
                                 mainController.getAllAlbumRatings();
                             }
                         }
@@ -300,9 +302,17 @@ public class Model {
     //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 
+    public Movie getMovieById(int id){
+        for (Movie m : movies){
+            if (m.getMovieID() == id){
+                return m;
+            }
+        }
+        return null;
+    }
 
     public void createMovie(String title, String genre, int directorID){
-        database.insertMovie(queries.insertMovieQuery(title,genre,directorID));
+        database.insertMovie(queries.insertMovieQuery(title,genre,directorID, user.getUserID()));
     }
 
     public void deleteMovie(int movieId){
@@ -361,28 +371,82 @@ public class Model {
 
         Thread thread = new Thread(){
             public void run(){
-              /*  String question = queries.movieAlreadyReviewed(usrID,movieID);
-                exists =  database.checkIfReviewAlreadyExist(question);
-                if (!exists) {
-                    String question2 = queries.addReviewMovie(usrID, movieID, date, text, rating);
+                String question = queries.movieAlreadyReviewed(usrID,movieID);
+                Review review = database.checkIfReviewAlreadyExist(question);
+                if (review == null){
+                    String question2 = queries.addReviewMovie(usrID,movieID,date,text,rating);
                     database.insertNewReview(question2);
-                }*/
+                    javafx.application.Platform.runLater(
+                            new Runnable() {
+                                @Override
+                                public void run() {
+                                    updateMovieRating(movieID);
+                                }
+                            }
+                    );
+                }
             }
         };thread.start();
 
     }
 
-    public void getMovieReview(int usrID, int albumID, Date date, String text, int rating){
+    public void updateMovieReview(int userID, int movieID, Date date, String text, int rating){
         Thread thread = new Thread(){
             public void run(){
-                String question = queries.albumAlreadyReviewed(usrID,albumID);
-                Review review = database.checkIfReviewAlreadyExist(question);
-
-                //return review;
+                String question = queries.updateMovieReview(userID,movieID, date, text, rating);
+                database.executeUpdate(question);
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                updateMovieRating(movieID);
+                            }
+                        }
+                );
             }
         };thread.start();
     }
 
+    public void updateMovieRating(int id){
+        Thread thread = new Thread(){
+            public void run(){
+                getMovieById(id).setRating(database.getAvgRating(queries.getMovieRating(id)));
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                mainController.refreshMovies();
+                            }
+                        }
+                );
+            }
+
+        };thread.start();
+    }
+
+    public Review getMovieReview(int usrID, int movieID){
+
+        String question = queries.albumAlreadyReviewed(usrID,movieID);
+        Review review = database.checkIfReviewAlreadyExist(question);
+
+
+        return review;
+    }
+    public ArrayList<Review> getMovieReviews(int movieID){
+
+        return database.getReviews(queries.getMovieReviews(movieID));
+    }
+
+
+
+    public void deleteMovieReview(int userID, int movieID){
+        Thread thread = new Thread(){
+            public void run(){
+                String question = queries.deleteMovieReview(userID,movieID);
+                database.executeUpdate(question);
+            }
+        };thread.start();
+    }
 
     public void getNewMovies() {
         Thread thread = new Thread(){
@@ -392,7 +456,8 @@ public class Model {
                         new Runnable() {
                             @Override
                             public void run() {
-                                mainController.refreshMovies();
+                                setMovies(movies);
+                                mainController.getAllMovieRatings();
                             }
                         }
                 );
@@ -408,8 +473,30 @@ public class Model {
         return movies;
     }
 
+    public void setMovies(ObservableList<Movie> movies) {
+        this.movies = movies;
+    }
     public ObservableList<MovieGenre> getMovieGenreList() {
         return movieGenreList;
+    }
+
+    public void getSearchForMovies(String searchWord, int item){
+        Thread thread = new Thread(){
+            public void run(){
+                ObservableList<Movie> newMovies = database.getMovies(queries.searchMovies(searchWord, item));
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                setMovies(newMovies);
+                                mainController.refreshMovies();
+                                mainController.getAllMovieRatings();
+                            }
+                        }
+                );
+            }
+        };thread.start();
+
     }
 
     //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -438,9 +525,6 @@ public class Model {
 
     public void addAlbum(Album newAlbum){
         albums.add(newAlbum);
-    }
-    public void setMovies(ObservableList<Movie> movies) {
-        this.movies = movies;
     }
     public void addMovie(Movie newMovie){
         movies.add(newMovie);

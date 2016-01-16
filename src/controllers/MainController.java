@@ -45,7 +45,7 @@ public class MainController implements Initializable {
     private ObservableList <Album> albums;
     @FXML private TableView <Album> albumTable;
     @FXML private TableView <Movie> movieTable;
-    @FXML private TextField albumSearchField;
+    @FXML private TextField albumSearchField, movieSearchField;
     @FXML private RadioButton albumTitleSearch, albumArtistSearch, movieRatingSearch, movieDirectorSearch, movieGenreSearch;
 
 
@@ -199,9 +199,9 @@ public class MainController implements Initializable {
     }
 
     public void reviewMovie(){
-        reviewMovieController.reviewMovieStage();
         Movie selected = movieTable.getSelectionModel().getSelectedItem();
-        reviewMovieController.setMovieTable(selected);
+        reviewMovieController.setMovie(selected);
+        reviewMovieController.reviewMovieStage();
     }
 
     public void showSelectedMovie(MouseEvent me){
@@ -229,6 +229,35 @@ public class MainController implements Initializable {
             }
         };thread.start();
     }
+
+    public void getAllMovieRatings(){
+        for (Movie m: model.getMovies()){
+            model.updateMovieRating(m.getMovieID());
+        }
+    }
+    public void searchForMovies(){
+        System.out.println("Searching for Movie");
+        System.out.println(movieSearchField.getText());
+
+        RadioButton rb = (RadioButton) movieSearchGroup.getSelectedToggle();
+        if (movieSearchField.getText().length() <= 0){
+            model.getNewMovies();
+        }
+        if (movieSearchField.getText().length() > 0 && rb.getText().equals("Director")){
+            System.out.println("Search for director movie");
+            model.getSearchForMovies(movieSearchField.getText(), 1);
+        }
+        if (movieSearchField.getText().length() > 0 && rb.getText().equals("Genre")){
+            System.out.println("Search for genre movie");
+            model.getSearchForMovies(movieSearchField.getText(), 2);
+        }
+        if (movieSearchField.getText().length() > 0 && rb.getText().equals("Rating")){
+            System.out.println("Search for rating movie");
+            model.getSearchForMovies(movieSearchField.getText(), 3);
+        }
+    }
+
+
 
     public void exitMediaCenter(){
         //todo close connection to database

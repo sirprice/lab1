@@ -5,28 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3dc3a3fa-aca5-4429-8314-fcfca43ec48d" name="Default" comment="movie review does not work">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controllers/movieControllers/ReviewMovieController.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/controllers/movieControllers/ReviewController.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java" afterPath="$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/albumControllers/EditAlbumController.java" afterPath="$PROJECT_DIR$/src/controllers/albumControllers/EditAlbumController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/albumControllers/ReviewAlbumController.java" afterPath="$PROJECT_DIR$/src/controllers/albumControllers/ReviewAlbumController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java" afterPath="$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/movieControllers/AddMovieController.java" afterPath="$PROJECT_DIR$/src/controllers/movieControllers/AddMovieController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/movieControllers/EditMovieController.java" afterPath="$PROJECT_DIR$/src/controllers/movieControllers/EditMovieController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fxml/albumFxml/addAlbum.fxml" afterPath="$PROJECT_DIR$/src/fxml/albumFxml/addAlbum.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fxml/albumFxml/editRecord.fxml" afterPath="$PROJECT_DIR$/src/fxml/albumFxml/editRecord.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/movieControllers/ReviewMovieController.java" afterPath="$PROJECT_DIR$/src/controllers/movieControllers/ReviewMovieController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/movieControllers/ShowMovieController.java" afterPath="$PROJECT_DIR$/src/controllers/movieControllers/ShowMovieController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fxml/main.fxml" afterPath="$PROJECT_DIR$/src/fxml/main.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fxml/movieFxml/addMovie.fxml" afterPath="$PROJECT_DIR$/src/fxml/movieFxml/addMovie.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fxml/movieFxml/editMovie.fxml" afterPath="$PROJECT_DIR$/src/fxml/movieFxml/editMovie.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fxml/movieFxml/reviewMovie.fxml" afterPath="$PROJECT_DIR$/src/fxml/movieFxml/reviewMovie.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fxml/movieFxml/showMovie.fxml" afterPath="$PROJECT_DIR$/src/fxml/movieFxml/showMovie.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/InitFxml.java" afterPath="$PROJECT_DIR$/src/main/InitFxml.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Album.java" afterPath="$PROJECT_DIR$/src/models/Album.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/JDBCDatabase.java" afterPath="$PROJECT_DIR$/src/models/JDBCDatabase.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Model.java" afterPath="$PROJECT_DIR$/src/models/Model.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Movie.java" afterPath="$PROJECT_DIR$/src/models/Movie.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Review.java" afterPath="$PROJECT_DIR$/src/models/Review.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/SQLQueries.java" afterPath="$PROJECT_DIR$/src/models/SQLQueries.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Screwdriver.java" afterPath="$PROJECT_DIR$/src/models/Screwdriver.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -70,6 +66,10 @@
         <option name="myItemId" value="MySQL - media@localhost" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MovieReview" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
     </PATH>
     <PATH>
       <PATH_ELEMENT>
@@ -81,7 +81,31 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
       <PATH_ELEMENT>
-        <option name="myItemId" value="Artist" />
+        <option name="myItemId" value="Movie" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - media@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="Director" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="MySQL - media@localhost" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
@@ -106,111 +130,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="159" column="55" selection-start-line="159" selection-start-column="55" selection-end-line="159" selection-end-column="55" />
-              <folding>
-                <element signature="e#4957#4958#0" expanded="true" />
-                <element signature="e#4993#4994#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Model.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/models/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9218989">
-              <caret line="254" column="93" selection-start-line="254" selection-start-column="93" selection-end-line="254" selection-end-column="93" />
+            <state vertical-scroll-proportion="0.4762634">
+              <caret line="204" column="53" selection-start-line="204" selection-start-column="53" selection-end-line="204" selection-end-column="53" />
               <folding>
                 <element signature="method#authentcateUser#0;class#Model#0" expanded="false" />
                 <element signature="method#checkForUser#0;class#Model#0" expanded="false" />
-                <element signature="method#getAlbumById#0;class#Model#0" expanded="false" />
-                <element signature="method#getNewAlbums#0;class#Model#0" expanded="false" />
-                <element signature="method#createAlbum#0;class#Model#0" expanded="false" />
                 <element signature="method#editAlbum#0;class#Model#0" expanded="false" />
-                <element signature="method#run#0;class#4437:5949" expanded="false" />
-                <element signature="method#getSearchForAlbums#0;class#Model#0" expanded="false" />
                 <element signature="method#updateAlbumRating#0;class#Model#0" expanded="false" />
                 <element signature="method#addAlbumReview#0;class#Model#0" expanded="false" />
                 <element signature="method#updateAlbumReview#0;class#Model#0" expanded="false" />
                 <element signature="method#deleteAlbumReview#0;class#Model#0" expanded="false" />
-                <element signature="method#getAlbumReviews#0;class#Model#0" expanded="false" />
                 <element signature="method#getAlbumReview#0;class#Model#0" expanded="false" />
-                <element signature="method#createMovie#0;class#Model#0" expanded="false" />
+                <element signature="e#10626#10627#0" expanded="true" />
+                <element signature="e#10693#10694#0" expanded="true" />
+                <element signature="e#10739#10740#0" expanded="true" />
+                <element signature="e#10811#10812#0" expanded="true" />
+                <element signature="e#10855#10856#0" expanded="true" />
+                <element signature="e#10937#10938#0" expanded="true" />
                 <element signature="method#editMovie#0;class#Model#0" expanded="false" />
                 <element signature="method#addMovieReview#0;class#Model#0" expanded="false" />
-                <element signature="method#run#0;class#12264:12688" expanded="false" />
+                <element signature="method#updateMovieReview#0;class#Model#0" expanded="false" />
+                <element signature="method#deleteMovieReview#0;class#Model#0" expanded="false" />
+                <element signature="method#getNewMovies#0;class#Model#0" expanded="false" />
+                <element signature="e#16118#16119#0" expanded="true" />
+                <element signature="e#16154#16155#0" expanded="true" />
+                <element signature="e#16214#16215#0" expanded="true" />
+                <element signature="e#16251#16252#0" expanded="true" />
+                <element signature="e#17364#17365#0" expanded="true" />
+                <element signature="e#17416#17417#0" expanded="true" />
+                <element signature="e#17495#17496#0" expanded="true" />
+                <element signature="e#17547#17548#0" expanded="true" />
+                <element signature="e#17601#17602#0" expanded="true" />
+                <element signature="e#17634#17635#0" expanded="true" />
+                <element signature="e#17703#17704#0" expanded="true" />
+                <element signature="e#17747#17748#0" expanded="true" />
+                <element signature="e#17800#17801#0" expanded="true" />
+                <element signature="e#17839#17840#0" expanded="true" />
+                <element signature="e#17882#17883#0" expanded="true" />
+                <element signature="e#17918#17919#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddMovieController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/movieControllers/AddMovieController.java">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="100" column="25" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
-              <folding>
-                <element signature="e#2941#2942#0" expanded="true" />
-                <element signature="e#3030#3031#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditAlbumController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/EditAlbumController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="100" column="10" selection-start-line="100" selection-start-column="10" selection-end-line="100" selection-end-column="10" />
-              <folding>
-                <element signature="e#1728#1729#0" expanded="true" />
-                <element signature="e#1789#1790#0" expanded="true" />
-                <element signature="e#3269#3270#0" expanded="true" />
-                <element signature="e#3313#3314#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editRecord.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fxml/albumFxml/editRecord.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JDBCDatabase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/JDBCDatabase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="225" column="36" selection-start-line="225" selection-start-column="36" selection-end-line="225" selection-end-column="36" />
-              <folding>
-                <element signature="e#3727#3728#0" expanded="true" />
-                <element signature="e#3763#3764#0" expanded="true" />
-                <element signature="e#4679#4680#0" expanded="true" />
-                <element signature="e#4715#4716#0" expanded="true" />
-                <element signature="e#4781#4782#0" expanded="true" />
-                <element signature="e#4823#4824#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/339bb055-11b9-482c-9d96-9ec9cc900b4d/console.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="20" />
+              <caret line="234" column="31" selection-start-line="234" selection-start-column="31" selection-end-line="234" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -220,35 +190,84 @@
         <entry file="file://$PROJECT_DIR$/src/models/SQLQueries.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="111" column="104" selection-start-line="111" selection-start-column="104" selection-end-line="111" selection-end-column="104" />
+              <caret line="191" column="5" selection-start-line="191" selection-start-column="5" selection-end-line="191" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Screwdriver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/Screwdriver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JDBCDatabase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/JDBCDatabase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="205" column="0" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Review.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/Review.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShowMovieController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/movieControllers/ShowMovieController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
               <folding>
-                <element signature="method#getAlbumRating#0;class#SQLQueries#0" expanded="false" />
+                <element signature="e#1454#1455#0" expanded="true" />
+                <element signature="e#1488#1489#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddAlbumController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java">
+      <file leaf-file-name="InitFxml.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/InitFxml.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="118" column="26" selection-start-line="111" selection-start-column="24" selection-end-line="118" selection-end-column="26" />
-              <folding>
-                <element signature="e#3759#3760#0" expanded="true" />
-                <element signature="e#3856#3857#0" expanded="true" />
-              </folding>
+              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReviewAlbumController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/ReviewAlbumController.java">
+      <file leaf-file-name="showMovie.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fxml/movieFxml/showMovie.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.09434">
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShowAlbumController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="64" column="51" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="51" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -283,30 +302,32 @@
         <option value="$PROJECT_DIR$/src/controllers/LoginRegisterController/LoginController.java" />
         <option value="$PROJECT_DIR$/src/controllers/LoginRegisterController/RegisterController.java" />
         <option value="$PROJECT_DIR$/src/controllers/movieControllers/reviewMovie.java" />
-        <option value="$PROJECT_DIR$/src/fxml/movieFxml/reviewMovie.fxml" />
         <option value="$PROJECT_DIR$/src/controllers/movieControllers/reviewMovieController.java" />
         <option value="$PROJECT_DIR$/src/fxml/albumFxml/reviewAlbum.fxml" />
         <option value="$PROJECT_DIR$/src/controllers/movieControllers/ReviewController.java" />
-        <option value="$PROJECT_DIR$/src/models/Movie.java" />
         <option value="$PROJECT_DIR$/src/fxml/albumFxml/showAlbum.fxml" />
-        <option value="$PROJECT_DIR$/src/models/Review.java" />
         <option value="$PROJECT_DIR$/src/fxml/main.fxml" />
-        <option value="$PROJECT_DIR$/src/controllers/movieControllers/ReviewMovieController.java" />
         <option value="$PROJECT_DIR$/src/models/Screwdriver.java" />
         <option value="$PROJECT_DIR$/src/models/Album.java" />
-        <option value="$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java" />
         <option value="$PROJECT_DIR$/src/controllers/albumControllers/ReviewAlbumController.java" />
-        <option value="$PROJECT_DIR$/src/main/InitFxml.java" />
         <option value="$PROJECT_DIR$/src/fxml/albumFxml/editRecord.fxml" />
         <option value="$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java" />
         <option value="$PROJECT_DIR$/src/controllers/movieControllers/AddMovieController.java" />
         <option value="$PROJECT_DIR$/src/controllers/movieControllers/EditMovieController.java" />
-        <option value="$PROJECT_DIR$/src/models/Model.java" />
-        <option value="$PROJECT_DIR$/src/controllers/MainController.java" />
-        <option value="$PROJECT_DIR$/src/models/JDBCDatabase.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/339bb055-11b9-482c-9d96-9ec9cc900b4d/console.sql" />
-        <option value="$PROJECT_DIR$/src/models/SQLQueries.java" />
         <option value="$PROJECT_DIR$/src/controllers/albumControllers/EditAlbumController.java" />
+        <option value="$PROJECT_DIR$/src/fxml/movieFxml/reviewMovie.fxml" />
+        <option value="$PROJECT_DIR$/src/controllers/movieControllers/ReviewMovieController.java" />
+        <option value="$PROJECT_DIR$/src/models/Movie.java" />
+        <option value="$PROJECT_DIR$/src/controllers/MainController.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/339bb055-11b9-482c-9d96-9ec9cc900b4d/console.sql" />
+        <option value="$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java" />
+        <option value="$PROJECT_DIR$/src/fxml/movieFxml/showMovie.fxml" />
+        <option value="$PROJECT_DIR$/src/models/Review.java" />
+        <option value="$PROJECT_DIR$/src/models/JDBCDatabase.java" />
+        <option value="$PROJECT_DIR$/src/models/SQLQueries.java" />
+        <option value="$PROJECT_DIR$/src/controllers/movieControllers/ShowMovieController.java" />
+        <option value="$PROJECT_DIR$/src/main/InitFxml.java" />
+        <option value="$PROJECT_DIR$/src/models/Model.java" />
       </list>
     </option>
   </component>
@@ -323,7 +344,6 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="773" />
@@ -353,8 +373,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -499,24 +518,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="enums" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lab1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lab1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -561,35 +562,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="LoginRegisterController" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lab1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lab1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="albumControllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1063,6 +1043,9 @@
       <workItem from="1451517205104" duration="50683000" />
       <workItem from="1452009637201" duration="396000" />
       <workItem from="1452262503611" duration="84000" />
+      <workItem from="1452263212204" duration="2549000" />
+      <workItem from="1452522191080" duration="141000" />
+      <workItem from="1452783109653" duration="13653000" />
     </task>
     <task id="LOCAL-00001" summary=":)">
       <created>1450285729213</created>
@@ -1182,7 +1165,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134664000" />
+    <option name="totallyTimeSpent" value="151007000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1194,31 +1177,31 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="23" width="1280" height="773" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32733813" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6152717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873562" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.56858236" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873562" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27607915" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22132471" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1914378" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34168014" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28675282" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32796934" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27662835" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293944" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1246,7 +1229,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1255,6 +1238,20 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/ReviewAlbumController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1642#1643#0" expanded="true" />
+            <element signature="e#1676#1677#0" expanded="true" />
+            <element signature="e#1729#1730#0" expanded="true" />
+            <element signature="e#1777#1778#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/Model.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1264,9 +1261,8 @@
             <element signature="method#checkForUser#0;class#Model#0" expanded="false" />
             <element signature="method#getAlbumById#0;class#Model#0" expanded="false" />
             <element signature="method#getNewAlbums#0;class#Model#0" expanded="false" />
-            <element signature="method#createAlbum#0;class#Model#0" expanded="false" />
             <element signature="method#editAlbum#0;class#Model#0" expanded="false" />
-            <element signature="method#run#0;class#4437:5949" expanded="false" />
+            <element signature="method#run#0;class#4466:5978" expanded="false" />
             <element signature="method#getSearchForAlbums#0;class#Model#0" expanded="false" />
             <element signature="method#updateAlbumRating#0;class#Model#0" expanded="false" />
             <element signature="method#addAlbumReview#0;class#Model#0" expanded="false" />
@@ -1277,7 +1273,7 @@
             <element signature="method#createMovie#0;class#Model#0" expanded="false" />
             <element signature="method#editMovie#0;class#Model#0" expanded="false" />
             <element signature="method#addMovieReview#0;class#Model#0" expanded="false" />
-            <element signature="method#run#0;class#12264:12688" expanded="false" />
+            <element signature="method#run#0;class#12590:13366" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1286,10 +1282,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="102" selection-end-column="24" />
-          <folding>
-            <element signature="e#4957#4958#0" expanded="true" />
-            <element signature="e#4993#4994#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1325,7 +1318,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1338,9 +1330,8 @@
             <element signature="method#checkForUser#0;class#Model#0" expanded="false" />
             <element signature="method#getAlbumById#0;class#Model#0" expanded="false" />
             <element signature="method#getNewAlbums#0;class#Model#0" expanded="false" />
-            <element signature="method#createAlbum#0;class#Model#0" expanded="false" />
             <element signature="method#editAlbum#0;class#Model#0" expanded="false" />
-            <element signature="method#run#0;class#4437:5949" expanded="false" />
+            <element signature="method#run#0;class#4466:5978" expanded="false" />
             <element signature="method#getSearchForAlbums#0;class#Model#0" expanded="false" />
             <element signature="method#updateAlbumRating#0;class#Model#0" expanded="false" />
             <element signature="method#addAlbumReview#0;class#Model#0" expanded="false" />
@@ -1351,7 +1342,7 @@
             <element signature="method#createMovie#0;class#Model#0" expanded="false" />
             <element signature="method#editMovie#0;class#Model#0" expanded="false" />
             <element signature="method#addMovieReview#0;class#Model#0" expanded="false" />
-            <element signature="method#run#0;class#12264:12688" expanded="false" />
+            <element signature="method#run#0;class#12590:13366" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1395,23 +1386,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fxml/login.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fxml/register.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fxml/register.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="38" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/RegisterController.java">
@@ -1432,46 +1423,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fxml/movieFxml/editMovie.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/034e4561-fd7d-4713-b467-6634b4001cb7/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fxml/movieFxml/addMovie.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fxml/movieFxml/reviewMovie.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.6792452">
-          <caret line="18" column="46" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/src.zip!/java/sql/Statement.java">
@@ -1481,24 +1443,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Movie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#672#673#0" expanded="false" />
-            <element signature="e#712#713#0" expanded="false" />
-            <element signature="e#743#744#0" expanded="false" />
-            <element signature="e#773#774#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="73" column="26" selection-start-line="65" selection-start-column="24" selection-end-line="73" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1506,7 +1454,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1518,67 +1465,180 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fxml/albumFxml/showAlbum.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/movieControllers/ShowMovieController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fxml/albumFxml/reviewAlbum.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39056143">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39056143">
+          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/339bb055-11b9-482c-9d96-9ec9cc900b4d/console_4.sql">
+    <entry file="file://$PROJECT_DIR$/src/fxml/main.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="13.207547">
+          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/enums/AlbumGenre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fxml/albumFxml/showAlbum.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.943396">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/movieControllers/EditMovieController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.706343">
+          <caret line="93" column="74" selection-start-line="93" selection-start-column="74" selection-end-line="93" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/movieControllers/AddMovieController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="100" column="25" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47416973">
+          <caret line="118" column="26" selection-start-line="111" selection-start-column="24" selection-end-line="118" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fxml/albumFxml/editRecord.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/EditAlbumController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6226937">
+          <caret line="69" column="27" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fxml/movieFxml/reviewMovie.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.886792">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/movieControllers/ReviewMovieController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="152" column="31" selection-start-line="152" selection-start-column="31" selection-end-line="152" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Album.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/ReviewAlbumController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1642#1643#0" expanded="true" />
+            <element signature="e#1676#1677#0" expanded="true" />
+            <element signature="e#1729#1730#0" expanded="true" />
+            <element signature="e#1777#1778#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Movie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="33" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="33" />
+          <folding>
+            <element signature="e#1654#1655#0" expanded="false" />
+            <element signature="e#1699#1700#0" expanded="false" />
+            <element signature="e#1729#1730#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/339bb055-11b9-482c-9d96-9ec9cc900b4d/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-32.133335">
+          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fxml/movieFxml/addMovie.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fxml/movieFxml/showMovie.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.09434">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/Review.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fxml/main.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="13.207547">
-          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/movieControllers/ReviewMovieController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -1591,60 +1651,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/enums/AlbumGenre.java">
+    <entry file="file://$PROJECT_DIR$/src/models/SQLQueries.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+          <caret line="191" column="5" selection-start-line="191" selection-start-column="5" selection-end-line="191" selection-end-column="5" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Album.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-          <folding>
-            <element signature="e#1343#1344#0" expanded="false" />
-            <element signature="e#1379#1380#0" expanded="false" />
-            <element signature="e#1414#1415#0" expanded="false" />
-            <element signature="e#1445#1446#0" expanded="false" />
-            <element signature="e#1493#1494#0" expanded="false" />
-            <element signature="e#1533#1534#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fxml/albumFxml/showAlbum.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.943396">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="57" selection-start-line="100" selection-start-column="57" selection-end-line="100" selection-end-column="57" />
+          <caret line="64" column="51" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="51" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/movieControllers/ShowMovieController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <element signature="e#1454#1455#0" expanded="true" />
+            <element signature="e#1488#1489#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/InitFxml.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="83" column="28" selection-start-line="83" selection-start-column="19" selection-end-line="83" selection-end-column="28" />
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/movieControllers/EditMovieController.java">
+    <entry file="file://$PROJECT_DIR$/src/models/JDBCDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.706343">
-          <caret line="93" column="74" selection-start-line="93" selection-start-column="74" selection-end-line="93" selection-end-column="74" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="205" column="0" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1652,126 +1697,51 @@
     <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="159" column="55" selection-start-line="159" selection-start-column="55" selection-end-line="159" selection-end-column="55" />
-          <folding>
-            <element signature="e#4957#4958#0" expanded="true" />
-            <element signature="e#4993#4994#0" expanded="true" />
-          </folding>
+          <caret line="234" column="31" selection-start-line="234" selection-start-column="31" selection-end-line="234" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9218989">
-          <caret line="254" column="93" selection-start-line="254" selection-start-column="93" selection-end-line="254" selection-end-column="93" />
+        <state vertical-scroll-proportion="0.4762634">
+          <caret line="204" column="53" selection-start-line="204" selection-start-column="53" selection-end-line="204" selection-end-column="53" />
           <folding>
             <element signature="method#authentcateUser#0;class#Model#0" expanded="false" />
             <element signature="method#checkForUser#0;class#Model#0" expanded="false" />
-            <element signature="method#getAlbumById#0;class#Model#0" expanded="false" />
-            <element signature="method#getNewAlbums#0;class#Model#0" expanded="false" />
-            <element signature="method#createAlbum#0;class#Model#0" expanded="false" />
             <element signature="method#editAlbum#0;class#Model#0" expanded="false" />
-            <element signature="method#run#0;class#4437:5949" expanded="false" />
-            <element signature="method#getSearchForAlbums#0;class#Model#0" expanded="false" />
             <element signature="method#updateAlbumRating#0;class#Model#0" expanded="false" />
             <element signature="method#addAlbumReview#0;class#Model#0" expanded="false" />
             <element signature="method#updateAlbumReview#0;class#Model#0" expanded="false" />
             <element signature="method#deleteAlbumReview#0;class#Model#0" expanded="false" />
-            <element signature="method#getAlbumReviews#0;class#Model#0" expanded="false" />
             <element signature="method#getAlbumReview#0;class#Model#0" expanded="false" />
-            <element signature="method#createMovie#0;class#Model#0" expanded="false" />
+            <element signature="e#10626#10627#0" expanded="true" />
+            <element signature="e#10693#10694#0" expanded="true" />
+            <element signature="e#10739#10740#0" expanded="true" />
+            <element signature="e#10811#10812#0" expanded="true" />
+            <element signature="e#10855#10856#0" expanded="true" />
+            <element signature="e#10937#10938#0" expanded="true" />
             <element signature="method#editMovie#0;class#Model#0" expanded="false" />
             <element signature="method#addMovieReview#0;class#Model#0" expanded="false" />
-            <element signature="method#run#0;class#12264:12688" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/movieControllers/AddMovieController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="25" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
-          <folding>
-            <element signature="e#2941#2942#0" expanded="true" />
-            <element signature="e#3030#3031#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/EditAlbumController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="10" selection-start-line="100" selection-start-column="10" selection-end-line="100" selection-end-column="10" />
-          <folding>
-            <element signature="e#1728#1729#0" expanded="true" />
-            <element signature="e#1789#1790#0" expanded="true" />
-            <element signature="e#3269#3270#0" expanded="true" />
-            <element signature="e#3313#3314#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fxml/albumFxml/editRecord.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/JDBCDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="225" column="36" selection-start-line="225" selection-start-column="36" selection-end-line="225" selection-end-column="36" />
-          <folding>
-            <element signature="e#3727#3728#0" expanded="true" />
-            <element signature="e#3763#3764#0" expanded="true" />
-            <element signature="e#4679#4680#0" expanded="true" />
-            <element signature="e#4715#4716#0" expanded="true" />
-            <element signature="e#4781#4782#0" expanded="true" />
-            <element signature="e#4823#4824#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/339bb055-11b9-482c-9d96-9ec9cc900b4d/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/SQLQueries.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="111" column="104" selection-start-line="111" selection-start-column="104" selection-end-line="111" selection-end-column="104" />
-          <folding>
-            <element signature="method#getAlbumRating#0;class#SQLQueries#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="118" column="26" selection-start-line="111" selection-start-column="24" selection-end-line="118" selection-end-column="26" />
-          <folding>
-            <element signature="e#3759#3760#0" expanded="true" />
-            <element signature="e#3856#3857#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/ReviewAlbumController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#updateMovieReview#0;class#Model#0" expanded="false" />
+            <element signature="method#deleteMovieReview#0;class#Model#0" expanded="false" />
+            <element signature="method#getNewMovies#0;class#Model#0" expanded="false" />
+            <element signature="e#16118#16119#0" expanded="true" />
+            <element signature="e#16154#16155#0" expanded="true" />
+            <element signature="e#16214#16215#0" expanded="true" />
+            <element signature="e#16251#16252#0" expanded="true" />
+            <element signature="e#17364#17365#0" expanded="true" />
+            <element signature="e#17416#17417#0" expanded="true" />
+            <element signature="e#17495#17496#0" expanded="true" />
+            <element signature="e#17547#17548#0" expanded="true" />
+            <element signature="e#17601#17602#0" expanded="true" />
+            <element signature="e#17634#17635#0" expanded="true" />
+            <element signature="e#17703#17704#0" expanded="true" />
+            <element signature="e#17747#17748#0" expanded="true" />
+            <element signature="e#17800#17801#0" expanded="true" />
+            <element signature="e#17839#17840#0" expanded="true" />
+            <element signature="e#17882#17883#0" expanded="true" />
+            <element signature="e#17918#17919#0" expanded="true" />
           </folding>
         </state>
       </provider>
