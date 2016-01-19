@@ -18,6 +18,6 @@
         <ImageView fx:id="movieCover" fitHeight="150.0" fitWidth="200.0" layoutX="10.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="225.0" layoutY="107.0" text="Submitted By" textFill="WHITE" />
       <Label fx:id="submittedByLabel" layoutX="314.0" layoutY="108.0" prefHeight="17.0" prefWidth="122.0" textFill="WHITE" />
-      <TextArea fx:id="reviewField" layoutX="15.0" layoutY="206.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="434.0" />
+      <TextArea fx:id="reviewField" editable="false" layoutX="15.0" layoutY="206.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="434.0" />
     </children>
 </AnchorPane>

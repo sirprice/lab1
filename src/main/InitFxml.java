@@ -28,9 +28,9 @@ public class InitFxml {
 
         public void initializLoadersAndControllers(Stage primaryStage) throws IOException {
 
-            JDBCDatabase database = new JDBCDatabase("jdbc:mysql://localhost:3306/media?UseClientEnc=UTF8");
+            JDBCDatabase database = new JDBCDatabase();
             System.out.println("Databas initierad");
-            database.connect(username,password);
+            //database.connect(username,password);
 
             Model model = new Model();
             model.setJDBCDatabase(database);

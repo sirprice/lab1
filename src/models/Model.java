@@ -1,13 +1,11 @@
 package models;
-
 import controllers.MainController;
 import enums.AlbumGenre;
 import enums.MovieGenre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.util.ArrayList;
-import java.util.Date;
+
 
 /**
  * Created by cj on 07/12/15.
@@ -27,8 +25,8 @@ public class Model {
     private ObservableList<MovieGenre> movieGenreList;
     private ObservableList<Integer> ratingList;
     private JDBCDatabase database;
-    private SQLQueries queries;
-    private boolean exists = false;
+
+
 
     public Model(){
         albums = FXCollections.observableArrayList();
@@ -36,7 +34,6 @@ public class Model {
         albumGenreList = FXCollections.observableArrayList();
         movieGenreList = FXCollections.observableArrayList();
         ratingList = FXCollections.observableArrayList(1,2,3,4,5);
-        queries = new SQLQueries();
 
         for (AlbumGenre ag: AlbumGenre.values()){
             albumGenreList.add(ag);
@@ -53,7 +50,7 @@ public class Model {
 
     public boolean authentcateUser(String username, String password){
 
-        user = database.userAuthentication(queries.authenticateUser(username,password));
+        user = database.userAuthentication(username,password);
 
         if (user != null){
             System.out.println("User != null  " + user.toString());
@@ -64,7 +61,7 @@ public class Model {
 
     public boolean checkForUser(String username){
 
-        user = database.userAuthentication(queries.checkForUser(username));
+        user = database.getUser(username);
 
         if (user != null){
             user = null;
@@ -107,7 +104,7 @@ public class Model {
     public void getNewAlbums(){
         Thread thread = new Thread(){
             public void run(){
-                ObservableList<Album> newAlbums = database.getAlbums(queries.getAllAlbums);
+                ObservableList<Album> newAlbums = database.getAllAlbums();
                 javafx.application.Platform.runLater(
                         new Runnable() {
                             @Override
@@ -126,12 +123,12 @@ public class Model {
     }
 
     public void createArtist(String name){
-        database.insertNewArtist(queries.insertArtist(name));
+        database.insertNewArtist(name);
     }
 
     public void createAlbum(String title, String genre, int artistID){
         // todo check if thread
-        database.insertAlbum(queries.insertAlbumQuery(title,genre,artistID,user.getUserID()));
+        database.insertAlbum(title,genre,artistID,user.getUserID());
     }
 
     public void editAlbum(int albumId,String artist, String genre, String title, String url){
@@ -151,9 +148,9 @@ public class Model {
                 public void run(){
                     artistID = getArtistId(artist);
                     if (artistID <= 0){
-                        createArtist(queries.getArtistByName(artist));
+                        createArtist(artist);
                         artistID = getArtistId(artist);
-                        database.alterAlbum(queries.editAlbum(albumId,title,genre,artistID,url));
+                        database.alterAlbum(albumId,title,genre,artistID,url);
                         System.out.println(user.toString() + "editFunktion:");
                         javafx.application.Platform.runLater(
                                 new Runnable() {
@@ -165,7 +162,7 @@ public class Model {
                         );
 
                     }else {
-                        database.alterAlbum(queries.editAlbum(albumId,title,genre,artistID,url));
+                        database.alterAlbum(albumId,title,genre,artistID,url);
                         System.out.println(user.toString() + "editFunktion:");
                         javafx.application.Platform.runLater(
                                 new Runnable() {
@@ -187,17 +184,21 @@ public class Model {
     }
 
     public void deleteAlbum(int albumID){
-        database.dropAlbum(queries.dropAlbumQuery(albumID));
+        Thread thread = new Thread(){
+            public void run(){
+                database.dropAlbum(albumID);
+            }
+        };thread.start();
     }
 
     public int getArtistId(String artist){
-        return database.getArtistByName(queries.getArtistByName(artist));
+        return database.getArtistByName(artist);
     }
 
     public void getSearchForAlbums(String searchWord, int item){
         Thread thread = new Thread(){
             public void run(){
-                ObservableList<Album> newAlbums = database.getAlbums(queries.searchAlbums(searchWord, item));
+                ObservableList<Album> newAlbums = database.getAlbumsBySearch(searchWord, item);
                 javafx.application.Platform.runLater(
                         new Runnable() {
                             @Override
@@ -213,10 +214,10 @@ public class Model {
     }
 
     public void updateAlbumRating(int id){
-
+        int mediaType = 1;
         Thread thread = new Thread(){
             public void run(){
-                getAlbumById(id).setRating(database.getAvgRating(queries.getAlbumRating(id)));
+                getAlbumById(id).setRating(database.getAvgRating(id, mediaType));
                 javafx.application.Platform.runLater(
                         new Runnable() {
                             @Override
@@ -231,15 +232,16 @@ public class Model {
 
     }
 
-    public void addAlbumReview(int usrID, int albumID, Date date, String text, int rating){
-
+    public void addAlbumReview(int userID, int albumID, java.sql.Date date, String text, int rating){
+        int mediaType = 1;
         Thread thread = new Thread(){
             public void run(){
-                String question = queries.albumAlreadyReviewed(usrID,albumID);
-                Review review = database.checkIfReviewAlreadyExist(question);
+
+
+                Review review = database.checkIfReviewAlreadyExist(userID,albumID,mediaType);
                 if (review == null){
-                    String question2 = queries.addReviewAlbum(usrID,albumID,date,text,rating);
-                    database.insertNewReview(question2);
+
+                    database.insertNewReview(userID,albumID,date,text,rating,mediaType);
                     javafx.application.Platform.runLater(
                             new Runnable() {
                                 @Override
@@ -254,11 +256,12 @@ public class Model {
 
     }
 
-    public void updateAlbumReview(int usrID, int albumID, Date date, String text, int rating){
+    public void updateAlbumReview(int userID, int albumID, java.sql.Date date, String text, int rating){
+        int mediaType = 1;
         Thread thread = new Thread(){
             public void run(){
-                String question = queries.updateAlbumReview(usrID,albumID, date, text, rating);
-                database.executeUpdate(question);
+                database.updateReview(userID,albumID, date, text, rating, mediaType);
+
                 javafx.application.Platform.runLater(
                         new Runnable() {
                             @Override
@@ -272,22 +275,23 @@ public class Model {
 
     }
 
-    public void deleteAlbumReview(int usrID, int albumID){
+    public void deleteAlbumReview(int userID, int albumID){
+        int mediaType = 1;
         Thread thread = new Thread(){
             public void run(){
-                String question = queries.deleteAlbumReview(usrID,albumID);
-                database.executeUpdate(question);
+                database.deleteReview(userID,albumID,mediaType);
             }
         };thread.start();
     }
 
     public ArrayList<Review> getAlbumReviews(int albumID){
-        return database.getReviews(queries.getAlbumReviews(albumID));
+        return database.getAlbumReviews(albumID);
     }
 
-    public Review getAlbumReview(int usrID, int albumID){
-        String question = queries.albumAlreadyReviewed(usrID,albumID);
-        Review review = database.checkIfReviewAlreadyExist(question);
+    public Review getAlbumReview(int userID, int albumID){
+        int mediaType = 1;
+
+        Review review = database.checkIfReviewAlreadyExist(userID, albumID, mediaType);
 
         return review;
     }
@@ -312,24 +316,29 @@ public class Model {
     }
 
     public void createMovie(String title, String genre, int directorID){
-        database.insertMovie(queries.insertMovieQuery(title,genre,directorID, user.getUserID()));
+        database.insertMovie(title,genre,directorID, user.getUserID());
     }
 
     public void deleteMovie(int movieId){
-        database.dropMovie(queries.dropMovieQuery(movieId));
+        Thread thread = new Thread(){
+            public void run(){
+                database.dropMovie(movieId);
+            }
+
+        };thread.start();
     }
 
     public void createDirector(String name){
-        database.insertNewDirector(queries.insertDirector(name));
+        database.insertNewDirector(name);
     }
 
     public int getDirectorId(String name){
-        return database.getDirectorByName(queries.getDirectorByName(name));
+        return database.getDirectorByName(name);
     }
 
 
     public void createUser(String username, String password){
-        database.insertNewUser(queries.insertUser(username,password));
+        database.insertNewUser(username,password);
     }
     public void editMovie(int movieID,String director, String genre, String title, String url){
 
@@ -348,13 +357,14 @@ public class Model {
                 public void run(){
                     directorID = getDirectorId(director);
                     if (directorID <= 0){
-                        createArtist(queries.getDirectorByName(director));
+                        createArtist(director);
                         directorID = getDirectorId(director);
-                        database.alterMovie(queries.editMovie(movieID,title,genre,directorID,url));
+                        database.alterMovie(movieID,title,genre,directorID,url);
                         System.out.println(user.toString() + "editFunktion:");
                         getNewMovies();
                     }else {
-                        database.alterAlbum(queries.editMovie(movieID,title,genre,directorID,url));
+
+                        database.alterMovie(movieID,title,genre,directorID,url);
                         System.out.println(user.toString() + "editFunktion:");
                         getNewMovies();
                     }
@@ -367,15 +377,14 @@ public class Model {
         }
     }
 
-    public void addMovieReview(int usrID, int movieID, Date date, String text, int rating){
-
+    public void addMovieReview(int userID, int movieID, java.sql.Date date, String text, int rating){
+        int mediaType = 2;
         Thread thread = new Thread(){
             public void run(){
-                String question = queries.movieAlreadyReviewed(usrID,movieID);
-                Review review = database.checkIfReviewAlreadyExist(question);
+
+                Review review = database.checkIfReviewAlreadyExist(userID,movieID,mediaType);
                 if (review == null){
-                    String question2 = queries.addReviewMovie(usrID,movieID,date,text,rating);
-                    database.insertNewReview(question2);
+                    database.insertNewReview(userID,movieID,date,text,rating,mediaType);
                     javafx.application.Platform.runLater(
                             new Runnable() {
                                 @Override
@@ -390,11 +399,12 @@ public class Model {
 
     }
 
-    public void updateMovieReview(int userID, int movieID, Date date, String text, int rating){
+    public void updateMovieReview(int userID, int movieID, java.sql.Date date, String text, int rating){
+        int mediaType = 2;
         Thread thread = new Thread(){
             public void run(){
-                String question = queries.updateMovieReview(userID,movieID, date, text, rating);
-                database.executeUpdate(question);
+
+                database.updateReview(userID, movieID, date, text, rating, mediaType);
                 javafx.application.Platform.runLater(
                         new Runnable() {
                             @Override
@@ -408,9 +418,10 @@ public class Model {
     }
 
     public void updateMovieRating(int id){
+        int mediaType = 2;
         Thread thread = new Thread(){
             public void run(){
-                getMovieById(id).setRating(database.getAvgRating(queries.getMovieRating(id)));
+                getMovieById(id).setRating(database.getAvgRating(id, mediaType));
                 javafx.application.Platform.runLater(
                         new Runnable() {
                             @Override
@@ -424,26 +435,25 @@ public class Model {
         };thread.start();
     }
 
-    public Review getMovieReview(int usrID, int movieID){
+    public Review getMovieReview(int userID, int movieID){
+        int mediaType = 2;
 
-        String question = queries.albumAlreadyReviewed(usrID,movieID);
-        Review review = database.checkIfReviewAlreadyExist(question);
-
+        Review review = database.checkIfReviewAlreadyExist(userID,movieID,mediaType);
 
         return review;
     }
     public ArrayList<Review> getMovieReviews(int movieID){
 
-        return database.getReviews(queries.getMovieReviews(movieID));
+        return database.getMovieReviews(movieID);
     }
 
 
 
     public void deleteMovieReview(int userID, int movieID){
+        int mediaType = 2;
         Thread thread = new Thread(){
             public void run(){
-                String question = queries.deleteMovieReview(userID,movieID);
-                database.executeUpdate(question);
+                database.deleteReview(userID,movieID,mediaType);
             }
         };thread.start();
     }
@@ -451,7 +461,7 @@ public class Model {
     public void getNewMovies() {
         Thread thread = new Thread(){
             public void run(){
-                movies = database.getMovies(queries.getAllMovies);
+                movies = database.getAllMovies();
                 javafx.application.Platform.runLater(
                         new Runnable() {
                             @Override
@@ -483,7 +493,7 @@ public class Model {
     public void getSearchForMovies(String searchWord, int item){
         Thread thread = new Thread(){
             public void run(){
-                ObservableList<Movie> newMovies = database.getMovies(queries.searchMovies(searchWord, item));
+                ObservableList<Movie> newMovies = database.getMoviesBySearch(searchWord, item);
                 javafx.application.Platform.runLater(
                         new Runnable() {
                             @Override

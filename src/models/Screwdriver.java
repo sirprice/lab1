@@ -5,48 +5,61 @@ import javafx.collections.ObservableList;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
+
 
 /**
  * Created by CJ & Scalman on 13/12/15.
  */
 public interface Screwdriver {
 
-    ObservableList<Album> getAlbums(String query);
+    ObservableList<Album> getAllAlbums();
 
-    ObservableList<Movie> getMovies(String query);
+    ObservableList<Album> getAlbumsBySearch(String searchWord, int item);
 
-    void insertAlbum(String query);
+    ObservableList<Movie> getAllMovies();
 
-    void alterAlbum(String query);
-
-    void dropAlbum(String query);
-
-    int getArtistByName(String query);
-
-    void insertNewArtist(String query);
-
-    void insertMovie(String query);
-
-    void alterMovie(String query);
-
-    void dropMovie(String query);
-
-    int getDirectorByName(String query);
-
-    void insertNewDirector(String query);
-
-    User userAuthentication(String query);
-
-    void insertNewUser(String query);
-
-    void insertNewReview(String query);
-
-    double getAvgRating(String query);
-
-    Review checkIfReviewAlreadyExist(String query);
-
-    ArrayList<Review> getReviews(String query);
+    ObservableList<Movie> getMoviesBySearch(String searchWord, int item);
 
 
+    void insertAlbum(String title, String genre, int artistID, int userID);
+
+    void alterAlbum(int albumID,String title, String genre, int artistID, String coverURL);
+
+    void dropAlbum(int albumID);
+
+    int getArtistByName(String name);
+
+    void insertNewArtist(String name);
+
+    void insertMovie(String title, String genre, int directorID, int userID);
+
+    void alterMovie(int movieID,String title, String genre, int directorID, String coverURL);
+
+    void dropMovie(int movieID);
+
+    int getDirectorByName(String name);
+
+    void insertNewDirector(String name);
+
+    User userAuthentication(String username,String password);
+
+    User getUser(String username);
+
+    void insertNewUser(String username, String password);
+
+    void insertNewReview(int userID, int mediaID, java.sql.Date date, String text, int rating, int mediaType);
+
+    double getAvgRating(int id, int mediaType);
+
+    Review checkIfReviewAlreadyExist(int usrID, int mediaID, int mediaType);
+
+    ArrayList<Review> getAlbumReviews(int albumID);
+
+    ArrayList<Review> getMovieReviews(int movieID);
+
+    void deleteReview(int usrID, int mediaID, int mediaType);
+
+    void updateReview(int userID, int albumID, java.sql.Date date, String text, int rating, int mediaType);
 
 }
