@@ -177,8 +177,6 @@ public class Model {
     public void editAlbum(int albumId,String artist, String genre, String title, String url){
 
         boolean albumExists = false;
-        this.artist = artist;
-
 
         for(Album a: database.getAllAlbums()){
             if (a.getTitle().toUpperCase().equals(title.toUpperCase())

@@ -9,7 +9,10 @@
     <bookmark url="file://$PROJECT_DIR$/src/controllers/albumControllers/ReviewAlbumController.java" line="80" mnemonic="8" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3dc3a3fa-aca5-4429-8314-fcfca43ec48d" name="Default" comment="" />
+    <list default="true" id="3dc3a3fa-aca5-4429-8314-fcfca43ec48d" name="Default" comment="everything works">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Model.java" afterPath="$PROJECT_DIR$/src/models/Model.java" />
+    </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,8 +52,8 @@
       <file leaf-file-name="Model.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/models/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6431853">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.25267994">
+              <caret line="179" column="0" selection-start-line="178" selection-start-column="36" selection-end-line="179" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -58,21 +61,21 @@
                 <element signature="method#checkForUser#0;class#Model#0" expanded="false" />
                 <element signature="method#getAlbumById#0;class#Model#0" expanded="false" />
                 <element signature="method#getNewAlbums#0;class#Model#0" expanded="false" />
-                <element signature="e#6312#6313#0" expanded="true" />
-                <element signature="e#6406#6407#0" expanded="true" />
-                <element signature="e#6872#6873#0" expanded="true" />
-                <element signature="e#6966#6967#0" expanded="true" />
-                <element signature="e#7661#7662#0" expanded="true" />
-                <element signature="e#7739#7740#0" expanded="true" />
-                <element signature="e#9568#9569#0" expanded="true" />
-                <element signature="e#9662#9663#0" expanded="true" />
-                <element signature="e#14727#14728#0" expanded="true" />
-                <element signature="e#14805#14806#0" expanded="true" />
-                <element signature="e#15071#15072#0" expanded="true" />
-                <element signature="e#15126#15127#0" expanded="true" />
+                <element signature="e#6281#6282#0" expanded="true" />
+                <element signature="e#6375#6376#0" expanded="true" />
+                <element signature="e#6841#6842#0" expanded="true" />
+                <element signature="e#6935#6936#0" expanded="true" />
+                <element signature="e#7630#7631#0" expanded="true" />
+                <element signature="e#7708#7709#0" expanded="true" />
+                <element signature="e#9537#9538#0" expanded="true" />
+                <element signature="e#9631#9632#0" expanded="true" />
+                <element signature="e#14696#14697#0" expanded="true" />
+                <element signature="e#14774#14775#0" expanded="true" />
+                <element signature="e#15040#15041#0" expanded="true" />
+                <element signature="e#15095#15096#0" expanded="true" />
                 <element signature="method#editMovie#0;class#Model#0" expanded="false" />
-                <element signature="e#19048#19049#0" expanded="true" />
-                <element signature="e#19142#19143#0" expanded="true" />
+                <element signature="e#19017#19018#0" expanded="true" />
+                <element signature="e#19111#19112#0" expanded="true" />
                 <element signature="method#getMovieReviews#0;class#Model#0" expanded="false" />
               </folding>
             </state>
@@ -314,6 +317,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lab1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lab1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lab1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -835,7 +856,7 @@
       <workItem from="1453303185358" duration="4168000" />
       <workItem from="1453310055433" duration="1373000" />
       <workItem from="1453313116680" duration="1962000" />
-      <workItem from="1453315280594" duration="339000" />
+      <workItem from="1453315280594" duration="403000" />
     </task>
     <task id="LOCAL-00001" summary=":)">
       <created>1450285729213</created>
@@ -981,11 +1002,17 @@
       <option name="project" value="LOCAL" />
       <updated>1453315629167</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="everything works">
+      <created>1453315648816</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1453315648816</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194799000" />
+    <option name="totallyTimeSpent" value="194863000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1098,21 +1125,21 @@
             <element signature="method#checkForUser#0;class#Model#0" expanded="false" />
             <element signature="method#getAlbumById#0;class#Model#0" expanded="false" />
             <element signature="method#getNewAlbums#0;class#Model#0" expanded="false" />
-            <element signature="e#6312#6313#0" expanded="true" />
-            <element signature="e#6406#6407#0" expanded="true" />
-            <element signature="e#6872#6873#0" expanded="true" />
-            <element signature="e#6966#6967#0" expanded="true" />
-            <element signature="e#7661#7662#0" expanded="true" />
-            <element signature="e#7739#7740#0" expanded="true" />
-            <element signature="e#9568#9569#0" expanded="true" />
-            <element signature="e#9662#9663#0" expanded="true" />
-            <element signature="e#14727#14728#0" expanded="true" />
-            <element signature="e#14805#14806#0" expanded="true" />
-            <element signature="e#15071#15072#0" expanded="true" />
-            <element signature="e#15126#15127#0" expanded="true" />
+            <element signature="e#6281#6282#0" expanded="true" />
+            <element signature="e#6375#6376#0" expanded="true" />
+            <element signature="e#6841#6842#0" expanded="true" />
+            <element signature="e#6935#6936#0" expanded="true" />
+            <element signature="e#7630#7631#0" expanded="true" />
+            <element signature="e#7708#7709#0" expanded="true" />
+            <element signature="e#9537#9538#0" expanded="true" />
+            <element signature="e#9631#9632#0" expanded="true" />
+            <element signature="e#14696#14697#0" expanded="true" />
+            <element signature="e#14774#14775#0" expanded="true" />
+            <element signature="e#15040#15041#0" expanded="true" />
+            <element signature="e#15095#15096#0" expanded="true" />
             <element signature="method#editMovie#0;class#Model#0" expanded="false" />
-            <element signature="e#19048#19049#0" expanded="true" />
-            <element signature="e#19142#19143#0" expanded="true" />
+            <element signature="e#19017#19018#0" expanded="true" />
+            <element signature="e#19111#19112#0" expanded="true" />
             <element signature="method#getMovieReviews#0;class#Model#0" expanded="false" />
           </folding>
         </state>
@@ -1621,8 +1648,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6431853">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.25267994">
+          <caret line="179" column="0" selection-start-line="178" selection-start-column="36" selection-end-line="179" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -1630,21 +1657,21 @@
             <element signature="method#checkForUser#0;class#Model#0" expanded="false" />
             <element signature="method#getAlbumById#0;class#Model#0" expanded="false" />
             <element signature="method#getNewAlbums#0;class#Model#0" expanded="false" />
-            <element signature="e#6312#6313#0" expanded="true" />
-            <element signature="e#6406#6407#0" expanded="true" />
-            <element signature="e#6872#6873#0" expanded="true" />
-            <element signature="e#6966#6967#0" expanded="true" />
-            <element signature="e#7661#7662#0" expanded="true" />
-            <element signature="e#7739#7740#0" expanded="true" />
-            <element signature="e#9568#9569#0" expanded="true" />
-            <element signature="e#9662#9663#0" expanded="true" />
-            <element signature="e#14727#14728#0" expanded="true" />
-            <element signature="e#14805#14806#0" expanded="true" />
-            <element signature="e#15071#15072#0" expanded="true" />
-            <element signature="e#15126#15127#0" expanded="true" />
+            <element signature="e#6281#6282#0" expanded="true" />
+            <element signature="e#6375#6376#0" expanded="true" />
+            <element signature="e#6841#6842#0" expanded="true" />
+            <element signature="e#6935#6936#0" expanded="true" />
+            <element signature="e#7630#7631#0" expanded="true" />
+            <element signature="e#7708#7709#0" expanded="true" />
+            <element signature="e#9537#9538#0" expanded="true" />
+            <element signature="e#9631#9632#0" expanded="true" />
+            <element signature="e#14696#14697#0" expanded="true" />
+            <element signature="e#14774#14775#0" expanded="true" />
+            <element signature="e#15040#15041#0" expanded="true" />
+            <element signature="e#15095#15096#0" expanded="true" />
             <element signature="method#editMovie#0;class#Model#0" expanded="false" />
-            <element signature="e#19048#19049#0" expanded="true" />
-            <element signature="e#19142#19143#0" expanded="true" />
+            <element signature="e#19017#19018#0" expanded="true" />
+            <element signature="e#19111#19112#0" expanded="true" />
             <element signature="method#getMovieReviews#0;class#Model#0" expanded="false" />
           </folding>
         </state>
