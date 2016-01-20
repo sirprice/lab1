@@ -94,7 +94,7 @@ public class EditMovieController implements Initializable {
         model.getMovie(index).setGenre((MovieGenre) editGenre.getValue());
         model.getMovie(index).setCoverUrl(editUrl.getText());
 
-        model.editMovie(model.getAlbum(index).getAlbumID(), editDirector.getText(),
+        model.editMovie(selectedMovie.getMovieID(), editDirector.getText(),
                 editGenre.getValue().toString(),editTitle.getText(),editUrl.getText());
 
 

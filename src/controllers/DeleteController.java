@@ -3,6 +3,7 @@ package controllers;
 import javafx.collections.ObservableList;
 import models.Album;
 import models.Model;
+import models.Movie;
 
 /**
  * Created by cj on 09/12/15.
@@ -14,15 +15,15 @@ public class DeleteController {
         this.model = model;
     }
 
-    public void deleteAlbum(int index){
-        if (index>=0){
-            model.deleteAlbum(model.getAlbum(index).getAlbumID());
+    public void deleteAlbum(Album selectedAlbum){
+        if (selectedAlbum.getAlbumID() >=0){
+            model.deleteAlbum(selectedAlbum.getAlbumID());
         }
     }
-    public void deleteMovie(int index){
-        if (index>=0){
+    public void deleteMovie(Movie selectedMovie){
+        if (selectedMovie.getMovieID() >=0){
 
-            model.deleteMovie(model.getMovie(index).getMovieID());
+            model.deleteMovie(selectedMovie.getMovieID());
         }
     }
 }

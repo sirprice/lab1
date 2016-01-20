@@ -38,7 +38,9 @@ public interface Screwdriver {
 
     void insertMovieOnly(String title, String genre, int userID, int directorID);
 
-    void alterMovie(int movieID,String title, String genre, int directorID, String coverURL);
+    void alterMovie(int movieID,String title, String genre, String coverURL, String directorName);
+
+    void alterMovieOnly(int movieID,String title, String genre, int directorID, String coverURL);
 
     void dropMovie(int movieID);
 

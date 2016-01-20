@@ -183,7 +183,7 @@ public class MainController implements Initializable {
     public void deleteAlbum(){
         Thread thread = new Thread(){
             public void run(){
-                deleteController.deleteAlbum(albumTable.getSelectionModel().getSelectedIndex());
+                deleteController.deleteAlbum(albumTable.getSelectionModel().getSelectedItem());
                 getAlbums();
             }
         };thread.start();
@@ -224,7 +224,7 @@ public class MainController implements Initializable {
     public void deleteMovie(){
         Thread thread = new Thread(){
             public void run(){
-                deleteController.deleteMovie(movieTable.getSelectionModel().getSelectedIndex());
+                deleteController.deleteMovie(movieTable.getSelectionModel().getSelectedItem());
                 showMovies();
             }
         };thread.start();

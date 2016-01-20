@@ -13,17 +13,11 @@ import java.util.Date;
  * Created by cj on 14/12/15.
  */
 public class JDBCDatabase implements Screwdriver {
-
-    private String database;
     private String server;
     //private Connection connection;
-    private User user;
-    private ObservableList<Album> albums;
-    private ObservableList<Movie> movies;
     private String username = "mediaapp";
     private String password = "password";
     private SQLQueries queries;
-
 
     public JDBCDatabase (){
         this.server = "jdbc:mysql://localhost:3306/media?UseClientEnc=UTF8";
@@ -574,7 +568,76 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public void alterMovie(int movieID,String title, String genre, int directorID, String coverURL) {
+    public void alterMovie(int movieID,String title, String genre, String coverURL, String directorName) {
+        PreparedStatement editMovie = null;
+        PreparedStatement insertDirector = null;
+        PreparedStatement getDirectorID = null;
+        Connection connection = null;
+        int directorID = 0;
+
+        try {
+            connection = setupTheDatabaseConnectionSomehow();
+            connection.setAutoCommit(false);
+
+            insertDirector = connection.prepareStatement(queries.insertDirector());
+            insertDirector.setString(1,directorName);
+            insertDirector.executeUpdate();
+            System.out.println("Inserted director");
+
+            getDirectorID = connection.prepareStatement(queries.getDirectorByName());
+            getDirectorID.setString(1,directorName);
+            ResultSet rs = getDirectorID.executeQuery();
+            System.out.println("Getting directorID....");
+            while (rs.next()){
+                directorID = rs.getInt("ID");
+                System.out.println("Got directorID: " + directorID);
+            }
+
+            System.out.println(title);
+            System.out.println(genre);
+            System.out.println(directorID);
+            System.out.println(coverURL);
+            System.out.println(movieID);
+
+            editMovie = connection.prepareStatement(queries.editMovie());
+            editMovie.setString(1,title);
+            editMovie.setString(2,genre);
+            editMovie.setInt(3,directorID);
+            editMovie.setString(4,coverURL);
+            editMovie.setInt(5,movieID);
+            editMovie.executeUpdate();
+            System.out.println("altered movie");
+
+            connection.commit();
+
+        }
+        catch(Exception e) {
+            if (connection != null) {
+                try {
+                    System.err.print("Transaction is being rolled back");
+                    connection.rollback();
+
+                } catch (SQLException except) {
+                    System.out.println(except.getMessage());
+                }
+            }
+        }
+        finally {
+            try{
+                editMovie.close();
+                insertDirector.close();
+                getDirectorID.close();
+                connection.setAutoCommit(true);
+                connection.close();
+                System.out.println("Connection closed");
+            }catch (java.sql.SQLException sqlE){
+                System.out.println(sqlE.getMessage());
+            }
+        }
+    }
+
+    @Override
+    public void alterMovieOnly(int movieID,String title, String genre, int directorID, String coverURL) {
         PreparedStatement stmt = null;
         Connection connection = null;
 
@@ -601,6 +664,7 @@ public class JDBCDatabase implements Screwdriver {
 
         }
     }
+
     @Override
     public void dropMovie(int movieID) {
         PreparedStatement stmt = null;

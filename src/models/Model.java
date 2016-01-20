@@ -191,6 +191,14 @@ public class Model {
         Thread thread = new Thread(){
             public void run(){
                 database.dropAlbum(albumID);
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                getNewAlbums();
+                            }
+                        }
+                );
             }
         };thread.start();
     }
@@ -332,6 +340,14 @@ public class Model {
         Thread thread = new Thread(){
             public void run(){
                 database.dropMovie(movieId);
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                getNewMovies();
+                            }
+                        }
+                );
             }
 
         };thread.start();
@@ -354,7 +370,7 @@ public class Model {
         boolean movieExists = false;
         //this.artist = artist;
 
-        for(Movie m: getMovies()){
+        for(Movie m: database.getAllMovies()){
             if (m.getTitle().toUpperCase().equals(title.toUpperCase())
                     && m.getDirector().toUpperCase().equals(director.toUpperCase())){
                 movieExists = true;
@@ -366,21 +382,14 @@ public class Model {
                 public void run(){
                     directorID = getDirectorId(director);
                     if (directorID <= 0){
-                        createArtist(director);
-                        directorID = getDirectorId(director);
-                        database.alterMovie(movieID,title,genre,directorID,url);
-                        System.out.println(user.toString() + "editFunktion:");
-                        getNewMovies();
+                        database.alterMovie(movieID,title,genre,url,director);
+
                     }else {
 
-                        database.alterMovie(movieID,title,genre,directorID,url);
-                        System.out.println(user.toString() + "editFunktion:");
-                        getNewMovies();
+                        database.alterMovieOnly(movieID,title,genre,directorID,url);
                     }
-
-
-                    //albums = database.getAlbums(queries.getAllAlbums);
-
+                    System.out.println(user.toString() + "editFunktion:");
+                    getNewMovies();
                 }
             };thread.start();
         }
@@ -466,6 +475,7 @@ public class Model {
             }
         };thread.start();
     }
+
 
     public void getNewMovies() {
         Thread thread = new Thread(){
