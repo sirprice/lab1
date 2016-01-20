@@ -1,3 +1,10 @@
+/**
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ */
+
 package controllers.albumControllers;
 
 import enums.AlbumGenre;
@@ -17,9 +24,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by cj And Scalman on 09/12/15.
- * Creates album by sending a request to the database.
- * a new thread takes care of the request and put the result in UI heap.
+ * This is the controller class for the add album view.
  */
 public class AddAlbumController implements Initializable {
 
@@ -75,6 +80,7 @@ public class AddAlbumController implements Initializable {
     public void createAlbum(){
         addStage.show();
     }
+
     /**
      * Sends a request to the database on a new thread.
      * Sends a new request to create if not exist.
@@ -134,7 +140,7 @@ public class AddAlbumController implements Initializable {
         };thread.start();
     }
     /**
-     * Clears the text fields after an error occur.
+     * Clears the text fields.
      */
     private void clearTextFields(){
         addArtist.clear();

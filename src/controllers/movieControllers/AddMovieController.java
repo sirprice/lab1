@@ -1,3 +1,9 @@
+/**
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ */
 package controllers.movieControllers;
 
 import enums.MovieGenre;
@@ -15,9 +21,7 @@ import models.Movie;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Created by cj on 11/12/15.
- */
+
 public class AddMovieController implements Initializable {
 
 

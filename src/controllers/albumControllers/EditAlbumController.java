@@ -1,3 +1,9 @@
+/**
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ */
 package controllers.albumControllers;
 
 import enums.AlbumGenre;
@@ -20,9 +26,9 @@ import java.net.URL;
 import java.util.Observable;
 import java.util.ResourceBundle;
 
+
 /**
- * Created by cj And Scalman on 09/12/15.
- * Makes changes in the database by sending requests to the database.
+ * This is the controller class for the edit album view
  */
 public class EditAlbumController implements Initializable{
 
@@ -63,7 +69,7 @@ public class EditAlbumController implements Initializable{
         editGenre.setItems(model.getAlbumGenreList());
     }
     /**
-     * Initialize the the scene and sets prepare the stage before show time.
+     * Initialize the the scene and sets the stage before show time.
      * @param parent
      */
     public void setParent(Parent parent){
@@ -71,11 +77,10 @@ public class EditAlbumController implements Initializable{
         editStage = new Stage();
         editStage.setScene(new Scene(edit, 460, 260));
         editStage.initModality(Modality.APPLICATION_MODAL);
-        //editStage.initOwner(primaryStage);
     }
 
     /**
-     * Takes the selected albums data and fill the edit album text fields scene with it.
+     * Takes the selected albums data and fills the edit album text fields with it and then shows the stage.
      */
     public void editAlbumItems(Album selectedAlbum){              //shows album text and window
         this.selectedAlbum = selectedAlbum;
@@ -86,19 +91,18 @@ public class EditAlbumController implements Initializable{
         editGenre.setValue(selectedAlbum.getGenre());
         editUrl.setText(selectedAlbum.getCoverUrl());
 
-        Image img = new Image(selectedAlbum.getCoverUrl()); // try catch
+        Image img = new Image(selectedAlbum.getCoverUrl());
         albumCover.setImage(img);
 
         editStage.show();
     }
 
     /**
-     * Sending a request to the database and changes the requested data.
+     * Sending a request to the database and changes the requested data and closes the stage.
      */
     public void saveAlbum(){
 
         model.editAlbum(selectedAlbum.getAlbumID(), editArtist.getText(), editGenre.getValue().toString(),editTitle.getText(),editUrl.getText());
-        //albumTable.refresh();
 
         editStage.close();
 
@@ -113,5 +117,4 @@ public class EditAlbumController implements Initializable{
     public void setAlbumTable(TableView<Album> albumTable){
         this.albumTable = albumTable;
     }
-
 }

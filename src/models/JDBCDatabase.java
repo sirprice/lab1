@@ -1,3 +1,10 @@
+/**
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ */
+
 package models;
 
 import enums.AlbumGenre;
@@ -6,15 +13,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.sql.*;
 import java.util.*;
-import java.util.Date;
 
 
-/**
- * Created by cj on 14/12/15.
- */
 public class JDBCDatabase implements Screwdriver {
     private String server;
-    //private Connection connection;
     private String username = "mediaapp";
     private String password = "password";
     private SQLQueries queries;
@@ -24,31 +26,15 @@ public class JDBCDatabase implements Screwdriver {
         queries = new SQLQueries();
     }
 
-    @Override
-    public void insertNewArtist(String name) {
-        PreparedStatement stmt = null;
-        Connection connection = null;
-
-        try {
-            connection = setupTheDatabaseConnectionSomehow();
-            stmt = connection.prepareStatement(queries.insertArtist());
-            stmt.setString(1,name);
-            stmt.executeUpdate();
-
-        }
-        catch(Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(null,
-                    "Database error, " + e.toString());
-        }finally {
-            try{
-                connection.close();
-                stmt.close();
-                System.out.println("Connection closed");
-            }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
-
-        }
-    }
-
+    /**
+     * Creates a review for a movie or album depended on which mediaType is declared
+     * @param userID
+     * @param mediaID
+     * @param date
+     * @param text
+     * @param rating
+     * @param mediaType
+     */
     @Override
     public void insertNewReview(int userID, int mediaID, java.sql.Date date, String text, int rating, int mediaType) {
         PreparedStatement stmt = null;
@@ -80,6 +66,13 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    /**
+     * Checks the database if a review for an existing movie or album exists depended on which mediaType is declared
+     * @param usrID
+     * @param mediaID
+     * @param mediaType
+     * @return
+     */
     @Override
     public Review checkIfReviewAlreadyExist(int usrID, int mediaID, int mediaType) {
         PreparedStatement stmt = null;
@@ -112,6 +105,11 @@ public class JDBCDatabase implements Screwdriver {
         return review;
     }
 
+    /**
+     * Searches the database for an artist by name
+     * @param name
+     * @return Returns ArtistID
+     */
     @Override
     public int getArtistByName(String name) {
         PreparedStatement stmt = null;
@@ -142,6 +140,12 @@ public class JDBCDatabase implements Screwdriver {
         return id;
     }
 
+    /**
+     * Gets the average rating for a mediaType by going through their reviews
+     * @param id
+     * @param mediaType
+     * @return Returns average rating
+     */
     @Override
     public double getAvgRating(int id, int mediaType) {
 
@@ -180,6 +184,10 @@ public class JDBCDatabase implements Screwdriver {
         return avg;
     }
 
+    /**
+     * Gets all albums from database
+     * @return Returns a list of all the albums in the database
+     */
     @Override
     public ObservableList<Album> getAllAlbums() {
         ObservableList<Album> albums = null;
@@ -206,6 +214,12 @@ public class JDBCDatabase implements Screwdriver {
         return albums;
     }
 
+    /**
+     * Gets all albums from database by search word
+     * @param searchWord
+     * @param item
+     * @return Returns a list of all the albums in the database that matched the search word
+     */
     @Override
     public ObservableList<Album> getAlbumsBySearch(String searchWord,int item) {
         ObservableList<Album> albums = null;
@@ -233,6 +247,10 @@ public class JDBCDatabase implements Screwdriver {
         return albums;
     }
 
+    /**
+     * Gets all the movies from the database
+     * @return Returns all the movies from the database
+     */
     @Override
     public ObservableList<Movie> getAllMovies() {
         ObservableList<Movie> movies = null;
@@ -260,6 +278,12 @@ public class JDBCDatabase implements Screwdriver {
         return movies;
     }
 
+    /**
+     * Gets all the movies by search word, or rating
+     * @param searchWord
+     * @param item
+     * @return Returns all the movies from the database that matched the search word
+     */
     @Override
     public ObservableList<Movie> getMoviesBySearch(String searchWord, int item) {
         ObservableList<Movie> movies = null;
@@ -299,6 +323,14 @@ public class JDBCDatabase implements Screwdriver {
         return movies;
     }
 
+    /**
+     * This method is used if the given artist is not represented in the database. The method will therefor
+     * first insert the artist into the database and after that insert the album.
+     * @param title
+     * @param genre
+     * @param userID
+     * @param artistName
+     */
     @Override
     public void insertAlbum(String title, String genre, int userID, String artistName) {
 
@@ -365,6 +397,14 @@ public class JDBCDatabase implements Screwdriver {
 
     }
 
+    /**
+     * This method is used if the given artist is already represented in the database. The method will therefor
+     * only insert the album.
+     * @param title
+     * @param genre
+     * @param userID
+     * @param artistID
+     */
     @Override
     public void insertAlbumOnly(String title, String genre, int userID, int artistID) {
         PreparedStatement insertAlbum = null;
@@ -393,6 +433,11 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    /**
+     * Creates a new user
+     * @param username
+     * @param password
+     */
     @Override
     public void insertNewUser(String username, String password) {
         PreparedStatement stmt = null;
@@ -419,6 +464,15 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    /**
+     * This method is used if the given artist is not represented in the database. The method will therefor
+     * first insert the artist into the database and after that alter the album.
+     * @param albumID
+     * @param title
+     * @param genre
+     * @param artistName
+     * @param coverURL
+     */
     @Override
     public void alterAlbum(int albumID,String title, String genre, String artistName, String coverURL) {
         PreparedStatement editAlbum = null;
@@ -482,6 +536,15 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    /**
+     * This method is used if the given artist is already represented in the database. The method will therefor
+     * olnly alter the album.
+     * @param albumID
+     * @param title
+     * @param genre
+     * @param artistID
+     * @param coverURL
+     */
     @Override
     public void alterAlbumOnly(int albumID,String title, String genre, int artistID, String coverURL) {
         PreparedStatement editAlbum = null;
@@ -512,6 +575,10 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    /**
+     * Deletes album by albumID
+     * @param albumID
+     */
     @Override
     public void dropAlbum(int albumID) {
 
@@ -538,6 +605,14 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    /**
+     * This method is used if the given director is not represented in the database. The method will therefor
+     * first insert the director into the database and after that insert the movie.
+     * @param title
+     * @param genre
+     * @param userID
+     * @param directorName
+     */
     @Override
     public void insertMovie(String title, String genre, int userID, String directorName) {
         PreparedStatement insertMovie = null;
@@ -603,6 +678,14 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    /**
+     * This method is used if the given director is already represented in the database. The method will therefor
+     * only insert the movie.
+     * @param title
+     * @param genre
+     * @param userID
+     * @param directorID
+     */
     @Override
     public void insertMovieOnly(String title, String genre, int userID, int directorID) {
         PreparedStatement insertMovie = null;
@@ -631,6 +714,15 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    /**
+     * This method is used if the given director is not represented in the database. The method will therefor
+     * first insert the director into the database and after that alter the movie.
+     * @param movieID
+     * @param title
+     * @param genre
+     * @param coverURL
+     * @param directorName
+     */
     @Override
     public void alterMovie(int movieID,String title, String genre, String coverURL, String directorName) {
         PreparedStatement editMovie = null;
@@ -700,6 +792,15 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    /**
+     * This method is used if the given director is already represented in the database. The method will therefor
+     * only alter the movie.
+     * @param movieID
+     * @param title
+     * @param genre
+     * @param directorID
+     * @param coverURL
+     */
     @Override
     public void alterMovieOnly(int movieID,String title, String genre, int directorID, String coverURL) {
         PreparedStatement stmt = null;
@@ -729,6 +830,10 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    /**
+     * Deletes the movie by movieID
+     * @param movieID
+     */
     @Override
     public void dropMovie(int movieID) {
         PreparedStatement stmt = null;
@@ -754,6 +859,11 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    /**
+     * Gets the director by name
+     * @param name
+     * @return Returns directorID
+     */
     @Override
     public int getDirectorByName(String name) {
         PreparedStatement stmt = null;
@@ -784,31 +894,11 @@ public class JDBCDatabase implements Screwdriver {
         return id;
     }
 
-    @Override
-    public void insertNewDirector(String name) {
-        PreparedStatement stmt = null;
-        Connection connection = null;
-
-        try {
-            connection = setupTheDatabaseConnectionSomehow();
-            stmt = connection.prepareStatement(queries.insertDirector());
-            stmt.setString(1,name);
-            stmt.executeUpdate();
-
-        }
-        catch(Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(null,
-                    "Database error, " + e.toString());
-        }finally {
-            try{
-                connection.close();
-                stmt.close();
-                System.out.println("Connection closed");
-            }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
-
-        }
-    }
-
+    /**
+     * Gets a user from username
+     * @param username
+     * @return Returns a user
+     */
     @Override
     public User getUser(String username) {
         PreparedStatement stmt = null;
@@ -841,6 +931,12 @@ public class JDBCDatabase implements Screwdriver {
         return user;
     }
 
+    /**
+     * Authenticates user information
+     * @param username
+     * @param password
+     * @return Returns a user
+     */
     @Override
     public User userAuthentication(String username,String password) {
         PreparedStatement stmt = null;
@@ -874,6 +970,12 @@ public class JDBCDatabase implements Screwdriver {
         return user;
     }
 
+    /**
+     * Deletes a the review that matches the parameters
+     * @param userID
+     * @param mediaID
+     * @param mediaType
+     */
     @Override
     public void deleteReview(int userID, int mediaID, int mediaType) {
         PreparedStatement stmt = null;
@@ -900,6 +1002,15 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    /**
+     * Updates the review specified from the parameters
+     * @param userID
+     * @param albumID
+     * @param date
+     * @param text
+     * @param rating
+     * @param mediaType
+     */
     @Override
     public void updateReview(int userID, int albumID, java.sql.Date date, String text, int rating, int mediaType) {
         PreparedStatement stmt = null;
@@ -931,6 +1042,11 @@ public class JDBCDatabase implements Screwdriver {
         }
     }
 
+    /**
+     * Gets all the review for a specific albumID
+     * @param albumID
+     * @return Returns a list of reviews
+     */
     @Override
     public ArrayList<Review> getAlbumReviews(int albumID) {
         PreparedStatement stmt = null;
@@ -964,7 +1080,11 @@ public class JDBCDatabase implements Screwdriver {
         return reviews;
     }
 
-
+    /**
+     * Gets all the review for a specific movieID
+     * @param movieID
+     * @return Returns a list of reviews
+     */
     @Override
     public ArrayList<Review> getMovieReviews(int movieID) {
         PreparedStatement stmt = null;
@@ -1002,7 +1122,11 @@ public class JDBCDatabase implements Screwdriver {
         return reviews;
     }
 
-
+    /**
+     * Gets all the albums from the database
+     * @param stmt
+     * @return returns a list of albums
+     */
     private ObservableList<Album> getAlbumsQuery(PreparedStatement stmt) {
         ObservableList<Album> albums = FXCollections.observableArrayList();
         AlbumGenre tmpGenre = AlbumGenre.OTHER;
@@ -1037,6 +1161,11 @@ public class JDBCDatabase implements Screwdriver {
         return albums;
     }
 
+    /**
+     * Gets all the movies from the database
+     * @param stmt
+     * @return returns a list of movies
+     */
     private ObservableList<Movie> getMoviesQuery(PreparedStatement stmt) {
 
         ObservableList<Movie> movies = FXCollections.observableArrayList();
@@ -1074,7 +1203,10 @@ public class JDBCDatabase implements Screwdriver {
     }
 
 
-
+    /**
+     * Sets up the connection to the database
+     * @return returns a connection
+     */
     private Connection setupTheDatabaseConnectionSomehow(){
 
         Connection connection = null;

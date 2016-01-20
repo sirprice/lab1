@@ -1,3 +1,10 @@
+/**
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ */
+
 package models;
 import controllers.MainController;
 import enums.AlbumGenre;
@@ -6,10 +13,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.util.ArrayList;
 
-
-/**
- * Created by cj on 07/12/15.
- */
 public class Model {
 
     private ObservableList<Album> newAlbums = FXCollections.observableArrayList();
@@ -122,9 +125,6 @@ public class Model {
         this.albums = albums;
     }
 
-    public void createArtist(String name){
-        database.insertNewArtist(name);
-    }
 
     public void createAlbum(String title, String genre,String artistName){
         // todo check if thread
@@ -355,10 +355,6 @@ public class Model {
             }
 
         };thread.start();
-    }
-
-    public void createDirector(String name){
-        database.insertNewDirector(name);
     }
 
     public int getDirectorId(String name){

@@ -1,10 +1,11 @@
+/**
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ */
 package models;
 
-import java.util.Date;
-
-/**
- * Created by cj on 16/12/15.
- */
 public class SQLQueries {
 
     public final String getAllAlbums = "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl, User.Username " +

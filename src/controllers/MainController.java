@@ -1,4 +1,12 @@
+/**
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ */
+
 package controllers;
+
 import controllers.albumControllers.AddAlbumController;
 import controllers.albumControllers.EditAlbumController;
 import controllers.albumControllers.ReviewAlbumController;

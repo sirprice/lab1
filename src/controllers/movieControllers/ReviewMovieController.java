@@ -1,3 +1,10 @@
+/**
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ */
+
 package controllers.movieControllers;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,9 +25,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-/**
- * Created by Scalman on 23/12/15.
- */
 public class ReviewMovieController implements Initializable{
 
     private Model model;

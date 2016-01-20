@@ -1,3 +1,9 @@
+/**
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ */
 package controllers.LoginRegisterController;
 
 import controllers.MainController;
@@ -13,7 +19,7 @@ import javafx.stage.Stage;
 import models.Model;
 
 /**
- * Created by cj on 09/12/15.
+ * This is the controller class for the login view.
  */
 public class LoginController {
 
@@ -28,34 +34,57 @@ public class LoginController {
     @FXML private Label text;
     //@FXML private MenuItem registerId;
 
+    /**
+     *
+     * @param model
+     */
     public void setModel(Model model){
         this.model = model;
     }
+
+    /**
+     * Initialize the primary stage.
+     * @param primaryStage
+     * @param root
+     */
     public void setPrimaryStage(Stage primaryStage,Parent root){
         this.primaryStage = primaryStage;
         this.root = root;
     }
 
+    /**
+     * Initialize the the scene and sets the stage before show time.
+     * @param mainController
+     * @param registerController
+     */
     public void setMainRegisterController(MainController mainController,RegisterController registerController) {
         this.mainController = mainController;
         this.registerController = registerController;
     }
 
+    /**
+     * Set the parent
+     * @param parent
+     */
     public void setParent(Parent parent){
         this.add = parent;
         loginStage = new Stage();
         loginStage.setScene(new Scene(add, 600,400));
     }
 
+    /**
+     * Shows login stage
+     */
     public void setLoginScene(){
         loginStage.show();
     }
+
+    /**
+     * This checks the login information against the database and confirms or denies the user access to the program
+     */
     public void checkLogin(){
 
         System.out.println(password.getText().toString() + " " + userName.getText().toString());
-
-
-
 
         if (password.getText().isEmpty() || userName.getText().isEmpty()){
             text.setText("wrong password or username!");
@@ -89,6 +118,9 @@ public class LoginController {
         }
     }
 
+    /**
+     * This is the controller method for launching the register controller.
+     */
     public void registerNewUser(){
         userName.clear();
         password.clear();

@@ -1,3 +1,9 @@
+/**
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ */
 package controllers.movieControllers;
 
 import enums.AlbumGenre;
@@ -21,9 +27,7 @@ import models.Movie;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Created by Scalman on 12/12/15.
- */
+
 public class EditMovieController implements Initializable {
 
     private Stage editStage, primaryStage;

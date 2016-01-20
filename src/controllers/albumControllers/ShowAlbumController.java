@@ -1,3 +1,9 @@
+/**
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ */
 package controllers.albumControllers;
 
 import enums.AlbumGenre;
@@ -25,8 +31,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
- * Created by cj And Scalman on 10/12/15.
- * Shows the selected items information on a new scene.
+ * This is the controller class for the show album view.
  */
 public class ShowAlbumController implements Initializable {
 
@@ -56,7 +61,7 @@ public class ShowAlbumController implements Initializable {
     }
 
     /**
-     * Initialize the the scene and sets prepare the stage before show time.
+     * Initialize the the scene and sets the stage before show time.
      * @param parent
      */
     public void setParent(Parent parent){
@@ -64,11 +69,10 @@ public class ShowAlbumController implements Initializable {
         showStage = new Stage();
         showStage.setScene(new Scene(show, 460, 372));
         showStage.initModality(Modality.APPLICATION_MODAL);
-        //editStage.initOwner(primaryStage);
     }
 
     /**
-     * Takes the selected albums data and fill show album text labels.
+     * Takes the selected albums data and fill album text labels.
      * @param album
      */
     public void showAlbum(Album album) {

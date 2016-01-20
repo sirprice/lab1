@@ -1,16 +1,16 @@
+/**
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ */
 package models;
 
-import javafx.beans.binding.StringBinding;
 import javafx.collections.ObservableList;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Date;
 
 
-/**
- * Created by CJ & Scalman on 13/12/15.
- */
+
 public interface Screwdriver {
 
     ObservableList<Album> getAllAlbums();
@@ -34,8 +34,6 @@ public interface Screwdriver {
 
     int getArtistByName(String name);
 
-    void insertNewArtist(String name);
-
     void insertMovie(String title, String genre, int userID, String directorName);
 
     void insertMovieOnly(String title, String genre, int userID, int directorID);
@@ -47,8 +45,6 @@ public interface Screwdriver {
     void dropMovie(int movieID);
 
     int getDirectorByName(String name);
-
-    void insertNewDirector(String name);
 
     User userAuthentication(String username,String password);
 
