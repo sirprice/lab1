@@ -3,6 +3,8 @@
  * Carl-Johan Dahlman, cjda@kth.se
  * Waleed Hassan, waleedh@kth.se
  * on 14/12/15.
+ * This class is connected to the database through JDBC Class
+ * and works as a model container with all important data structure.
  */
 
 package models;
