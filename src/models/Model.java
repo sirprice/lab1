@@ -15,18 +15,15 @@ import java.util.ArrayList;
 
 public class Model {
 
-    private ObservableList<Album> newAlbums = FXCollections.observableArrayList();
-    private MainController mainController;
 
+    private MainController mainController;
     private int artistID;
     private int directorID;
-    private String artist;
     private User user;
     private ObservableList<Album> albums;
     private ObservableList<Movie> movies;
     private ObservableList<AlbumGenre> albumGenreList;
     private ObservableList<MovieGenre> movieGenreList;
-    private ObservableList<Integer> ratingList;
     private JDBCDatabase database;
 
 
@@ -36,7 +33,6 @@ public class Model {
         movies = FXCollections.observableArrayList();
         albumGenreList = FXCollections.observableArrayList();
         movieGenreList = FXCollections.observableArrayList();
-        ratingList = FXCollections.observableArrayList(1,2,3,4,5);
         database = new JDBCDatabase();
         for (AlbumGenre ag: AlbumGenre.values()){
             albumGenreList.add(ag);
