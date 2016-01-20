@@ -1,11 +1,14 @@
 package models;
 
 import enums.MovieGenre;
-
 import java.util.ArrayList;
 
 /**
- * Created by cj on 10/12/15.
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ * Model contains data about Movie.
  */
 public class Movie {
 
@@ -28,6 +31,9 @@ public class Movie {
         reviews = new ArrayList<>();
     }
 
+    /**
+     *A buckle of getters and setters.
+     */
     public void addReviews(Review review) {
         this.reviews.add(review);
     }

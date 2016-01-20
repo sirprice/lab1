@@ -24,14 +24,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import main.Main;
 import models.Album;
 import models.Model;
 import models.Movie;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
+import main.Main;
 public class MainController implements Initializable {
 
     private AddAlbumController addAlbumController;

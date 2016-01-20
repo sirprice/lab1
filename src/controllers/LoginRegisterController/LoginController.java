@@ -11,10 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Model;
 
@@ -91,7 +89,7 @@ public class LoginController {
         }else {
             Thread thread = new Thread() {
                 public void run() {
-                    if (model.authentcateUser(userName.getText(),password.getText())) {
+                    if (model.authenticateUser(userName.getText(),password.getText())) {
                         javafx.application.Platform.runLater(
                                 new Runnable() {
                                     @Override
