@@ -47,11 +47,22 @@ public class Model {
         }
     }
 
+    /**
+     * sets the mainController.
+     * @param mainController
+     */
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
 
-    public boolean authentcateUser(String username, String password){
+    /**
+     * Checks the user input password/username matches the corresponding in the database.
+     * If true login succeed.
+     * @param username user input.
+     * @param password user input.
+     * @return false or true.
+     */
+    public boolean authenticateUser(String username, String password){
 
         user = database.userAuthentication(username,password);
 
@@ -61,7 +72,12 @@ public class Model {
         }
         return false;
     }
-
+    /**
+     * Checks user input if username already exists in the database.
+     * If true user registration failed.
+     * @param username user input.
+     * @return false or true depends if username already exists.
+     */
     public boolean checkForUser(String username){
 
         user = database.getUser(username);
@@ -73,12 +89,12 @@ public class Model {
         return false;
     }
 
+    /**
+     * Getter.
+     * @return user object.
+     */
     public User getUser() {
         return user;
-    }
-
-    public void setJDBCDatabase(JDBCDatabase database) {
-        this.database = database;
     }
 
 
@@ -86,10 +102,11 @@ public class Model {
     //                                              ALBUM
     //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-    public Album getAlbum(int index) {
-        return albums.get(index);
-    }
-
+    /**
+     * fetches the album if the id matching the corresponding id in the model.
+     * @param id specific id from the the table view.
+     * @return album if it is a match else null.
+     */
     public Album getAlbumById(int id) {
         for (Album a : albums){
             if (a.getAlbumID() == id){
@@ -99,11 +116,21 @@ public class Model {
         return null;
     }
 
+    /**
+     * Album list getter and setter.
+     * @return ObservableList Album.
+     */
     public ObservableList<Album> getAlbums(){
-
         return albums;
     }
+    public void setAlbums(ObservableList<Album> albums) {
+        this.albums = albums;
+    }
 
+    /**
+     * Runs on a separate thread and brings all the albums in the database.
+     * Thread setts the album list in a run later buffer so that the UIThread updates the view.
+     */
     public void getNewAlbums(){
         Thread thread = new Thread(){
             public void run(){
@@ -121,16 +148,22 @@ public class Model {
         };thread.start();
     }
 
-    public void setAlbums(ObservableList<Album> albums) {
-        this.albums = albums;
-    }
-
-
+    /**
+     * Creates album if artist does not exists.
+     * @param title album title
+     * @param genre album genre
+     * @param artistName artist name
+     */
     public void createAlbum(String title, String genre,String artistName){
-        // todo check if thread
         database.insertAlbum(title,genre,user.getUserID(),artistName);
     }
 
+    /**
+     *Creates album if artist already exists.
+     * @param title album title
+     * @param genre album genre
+     * @param artistID artist id
+     */
     public void createAlbumFromExistingArtist(String title, String genre,int artistID){
         database.insertAlbumOnly(title,genre,user.getUserID(),artistID);
     }

@@ -5,25 +5,24 @@ import enums.AlbumGenre;
 import java.util.ArrayList;
 
 /**
- * Created by cj on 07/12/15.
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ * Model contains data about albums.
  */
 public class Album {
     private String date;
     private String title;
-
     private int albumID;
     private AlbumGenre genre;
     private double rating;
     private String releaseDate;
     private String artist;
-    private int artistID;
     private String noOfSongs;
     private String username;
-    private ArrayList<String> reviews;
-
-
     private String coverUrl;
-    //private Review review;
+
 
     public Album(int albumID, String title, String artist, AlbumGenre genre, String coverUrl, String username){
         this.albumID = albumID;
@@ -34,6 +33,9 @@ public class Album {
         this.username = username;
     }
 
+    /**
+     * A buckle of getters and setters.
+     */
     public String getTitle() {
         return title;
     }

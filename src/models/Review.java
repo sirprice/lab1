@@ -1,10 +1,11 @@
 package models;
-
 import java.util.Date;
-import java.util.stream.Stream;
-
 /**
- * Created by Scalman on 01/01/16.
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ * Model contains data about a review.
  */
 public class Review {
 
@@ -29,6 +30,9 @@ public class Review {
         this.username = username;
     }
 
+    /**
+     *A buckle of
+     */
     public Date getDate() {
         return date;
     }

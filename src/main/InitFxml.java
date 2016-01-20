@@ -23,17 +23,11 @@ import java.io.IOException;
  * Created by Scalman on 10/12/15.
  */
 public class InitFxml {
-    private String username = "mediaapp";
-    private String password = "password";
 
-        public void initializLoadersAndControllers(Stage primaryStage) throws IOException {
 
-            //JDBCDatabase database = new JDBCDatabase();
-            System.out.println("Databas initierad");
-            //database.connect(username,password);
+        public void initializeLoadersAndControllers(Stage primaryStage) throws IOException {
 
             Model model = new Model();
-            //model.setJDBCDatabase();
             DeleteController dCtrl = new DeleteController();
             dCtrl.setModel(model);
 
@@ -108,7 +102,7 @@ public class InitFxml {
             rACtrl.setParent(reviewAlbum);
             rACtrl.setModel(model);
 
-            //- - - - - - - - - - - -Main Controller - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            //- - - - - - - - - - - -main.Main Controller - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
             Parent root = null;
             FXMLLoader loader = new FXMLLoader();
             System.out.println(getClass().getResource("/fxml/main.fxml"));

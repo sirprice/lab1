@@ -2,19 +2,23 @@ package main;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import main.InitFxml;
 
 
 public class Main extends Application {
     public static final int WIDTH = 1280;
     public static final int HEIGHT = 720;
-    private String username;
-    private String password;
+
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage){
 
+        try {
+            InitFxml initFxml = new InitFxml();
+            initFxml.initializeLoadersAndControllers(primaryStage);
 
-        InitFxml initFxml = new InitFxml();
-        initFxml.initializLoadersAndControllers(primaryStage);
+        }catch (Exception e) {
+            System.err.print(e);
+        }
 
     }
 
