@@ -420,28 +420,92 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public void alterAlbum(int albumID,String title, String genre, int artistID, String coverURL) {
-        PreparedStatement stmt = null;
+    public void alterAlbum(int albumID,String title, String genre, String artistName, String coverURL) {
+        PreparedStatement editAlbum = null;
+        PreparedStatement getArtistID = null;
+        PreparedStatement insertArtist = null;
+        int artistID = 0;
+
         Connection connection = null;
+
 
         try {
             connection = setupTheDatabaseConnectionSomehow();
-            stmt = connection.prepareStatement(queries.editAlbum());
-            stmt.setString(1,title);
-            stmt.setString(2,genre);
-            stmt.setInt(3,artistID);
-            stmt.setString(4,coverURL);
-            stmt.setInt(5,albumID);
-            stmt.executeUpdate();
+            connection.setAutoCommit(false);
+
+            insertArtist = connection.prepareStatement(queries.insertArtist());
+            insertArtist.setString(1,artistName);
+            insertArtist.executeUpdate();
+            System.out.println("inserted artist...");
+
+            getArtistID = connection.prepareStatement(queries.getArtistByName());
+            getArtistID.setString(1,artistName);
+            System.out.println("Fetch ArtistID...");
+            ResultSet rs = getArtistID.executeQuery();
+            while (rs.next()){
+                artistID = rs.getInt("ID");
+            }
+
+
+            editAlbum = connection.prepareStatement(queries.editAlbum());
+            editAlbum.setString(1,title);
+            editAlbum.setString(2,genre);
+            editAlbum.setInt(3,artistID);
+            editAlbum.setString(4,coverURL);
+            editAlbum.setInt(5,albumID);
+            editAlbum.executeUpdate();
+
+            connection.commit();
+
+        }catch (SQLException e){
+            if (connection != null){
+                try{
+                    System.err.print("Transaction is being rolled back");
+                    connection.rollback();
+
+                }catch (SQLException except){
+                    System.out.println(except.getMessage());
+                }
+            }
 
         }
-        catch(Exception e) {
+        finally {
+            try{
+                editAlbum.close();
+                insertArtist.close();
+                getArtistID.close();
+                connection.setAutoCommit(true);
+                connection.close();
+                System.out.println("Connection closed");
+            }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
+
+        }
+    }
+
+    @Override
+    public void alterAlbumOnly(int albumID,String title, String genre, int artistID, String coverURL) {
+        PreparedStatement editAlbum = null;
+        Connection connection = null;
+
+
+        try {
+            connection = setupTheDatabaseConnectionSomehow();
+
+            editAlbum = connection.prepareStatement(queries.editAlbum());
+            editAlbum.setString(1,title);
+            editAlbum.setString(2,genre);
+            editAlbum.setInt(3,artistID);
+            editAlbum.setString(4,coverURL);
+            editAlbum.setInt(5,albumID);
+            editAlbum.executeUpdate();
+
+        }catch(Exception e){
             javax.swing.JOptionPane.showMessageDialog(null,
                     "Database error, " + e.toString());
-        }finally {
+        } finally{
             try{
+                editAlbum.close();
                 connection.close();
-                stmt.close();
                 System.out.println("Connection closed");
             }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
 

@@ -26,7 +26,9 @@ public interface Screwdriver {
 
     void insertAlbumOnly(String title, String genre, int userID, int artistID);
 
-    void alterAlbum(int albumID,String title, String genre, int artistID, String coverURL);
+    void alterAlbum(int albumID,String title, String genre, String artistName, String coverURL);
+
+    void alterAlbumOnly(int albumID,String title, String genre, int artistID, String coverURL);
 
     void dropAlbum(int albumID);
 

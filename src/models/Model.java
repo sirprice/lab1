@@ -139,8 +139,9 @@ public class Model {
 
         boolean albumExists = false;
         this.artist = artist;
-        System.out.println("album ID : "+albumId);
-        for(Album a: getAlbums()){
+
+
+        for(Album a: database.getAllAlbums()){
             if (a.getTitle().toUpperCase().equals(title.toUpperCase())
                     && a.getArtist().toUpperCase().equals(artist.toUpperCase())){
                 albumExists = true;
@@ -152,9 +153,11 @@ public class Model {
                 public void run(){
                     artistID = getArtistId(artist);
                     if (artistID <= 0){
-                        createArtist(artist);
-                        artistID = getArtistId(artist);
-                        database.alterAlbum(albumId,title,genre,artistID,url);
+
+                        //createArtist(artist);
+                        //artistID = getArtistId(artist);
+                        database.alterAlbum(albumId,title,genre,artist,url);
+
                         System.out.println(user.toString() + "editFunktion:");
                         javafx.application.Platform.runLater(
                                 new Runnable() {
@@ -166,7 +169,8 @@ public class Model {
                         );
 
                     }else {
-                        database.alterAlbum(albumId,title,genre,artistID,url);
+                        database.alterAlbumOnly(albumId,title,genre,artistID,url);
+
                         System.out.println(user.toString() + "editFunktion:");
                         javafx.application.Platform.runLater(
                                 new Runnable() {
