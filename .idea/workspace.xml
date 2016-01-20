@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3dc3a3fa-aca5-4429-8314-fcfca43ec48d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/DeleteController.java" afterPath="$PROJECT_DIR$/src/controllers/DeleteController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/movieControllers/EditMovieController.java" afterPath="$PROJECT_DIR$/src/controllers/movieControllers/EditMovieController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/JDBCDatabase.java" afterPath="$PROJECT_DIR$/src/models/JDBCDatabase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Model.java" afterPath="$PROJECT_DIR$/src/models/Model.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Screwdriver.java" afterPath="$PROJECT_DIR$/src/models/Screwdriver.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -948,7 +942,7 @@
       <workItem from="1453198685274" duration="4480000" />
       <workItem from="1453215559013" duration="20481000" />
       <workItem from="1453289137446" duration="9000" />
-      <workItem from="1453289316073" duration="10900000" />
+      <workItem from="1453289316073" duration="11022000" />
     </task>
     <task id="LOCAL-00001" summary=":)">
       <created>1450285729213</created>
@@ -1088,11 +1082,17 @@
       <option name="project" value="LOCAL" />
       <updated>1453299771096</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="everything works">
+      <created>1453303047484</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1453303047484</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="186945000" />
+    <option name="totallyTimeSpent" value="187067000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
