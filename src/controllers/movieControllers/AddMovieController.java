@@ -74,18 +74,13 @@ public class AddMovieController implements Initializable {
                 public void run() {
                     directorID = model.getDirectorId(addMovieDirector.getText());
                     if (directorID <= 0) {
-                        model.createDirector(addMovieDirector.getText());
-                        directorID = model.getDirectorId(addMovieDirector.getText());
-                        model.createMovie(addTitle.getText(),addGenre.getValue().toString(),directorID);
-
-                        System.out.println(model.getUser().toString() + " Added a movie");
-                        model.getNewMovies();
+                        model.createMovie(addTitle.getText(),addGenre.getValue().toString(),addMovieDirector.getText());
                     }
                     else {
-                        model.createMovie(addTitle.getText(),addGenre.getValue().toString(),directorID);
-                        System.out.println(model.getUser().toString() + " Added a movie");
-                        model.getNewMovies();
+                        model.createMovieFromExistingDirector(addTitle.getText(),addGenre.getValue().toString(),directorID);
                     }
+                    System.out.println(model.getUser().toString() + " Added a movie");
+                    model.getNewMovies();
                     javafx.application.Platform.runLater(
                             new Runnable() {
                                 @Override

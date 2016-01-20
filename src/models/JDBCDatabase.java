@@ -306,33 +306,97 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public void insertAlbum(String title, String genre, int artistID, int userID) {
+    public void insertAlbum(String title, String genre, int userID, String artistName) {
 
-        PreparedStatement stmt = null;
+        PreparedStatement insertAlbum = null;
+        PreparedStatement insertArtist = null;
+        PreparedStatement getArtistID = null;
         Connection connection = null;
+        int artistID = 0;
+
 
         try {
             connection = setupTheDatabaseConnectionSomehow();
-            stmt = connection.prepareStatement(queries.insertAlbumQuery());
-            stmt.setString(1,title);
-            stmt.setString(2,genre);
-            stmt.setInt(3,artistID);
-            stmt.setInt(4,userID);
-            stmt.executeUpdate();
+            connection.setAutoCommit(false);
+
+            insertArtist = connection.prepareStatement(queries.insertArtist());
+            insertArtist.setString(1,artistName);
+            insertArtist.executeUpdate();
+            System.out.println("inserted artist...");
+
+
+            getArtistID = connection.prepareStatement(queries.getArtistByName());
+            getArtistID.setString(1,artistName);
+            ResultSet rs = getArtistID.executeQuery();
+            System.out.println("fetching artistID...");
+            while (rs.next()){
+                artistID = rs.getInt("ID");
+                System.out.println("got artistID: " + artistID);
+            }
+
+            insertAlbum = connection.prepareStatement(queries.insertAlbumQuery());
+            insertAlbum.setString(1,title);
+            insertAlbum.setString(2,genre);
+            insertAlbum.setInt(3,artistID);
+            insertAlbum.setInt(4,userID);
+            insertAlbum.executeUpdate();
+            System.out.println("Inserted Album");
+            connection.commit();
+        }
+
+        catch (SQLException e){
+            if (connection != null){
+                try{
+                    System.err.print("Transaction is being rolled back");
+                    connection.rollback();
+
+                }catch (SQLException except){
+                    System.out.println(except.getMessage());
+                }
+            }
 
         }
-        catch(Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(null,
-                    "Database error, " + e.toString());
-        }finally {
+        finally {
             try{
+                insertAlbum.close();
+                insertArtist.close();
+                getArtistID.close();
+
+                connection.setAutoCommit(true);
                 connection.close();
-                stmt.close();
                 System.out.println("Connection closed");
             }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
 
         }
 
+    }
+
+    @Override
+    public void insertAlbumOnly(String title, String genre, int userID, int artistID) {
+        PreparedStatement insertAlbum = null;
+        Connection connection = null;
+
+        try {
+            connection = setupTheDatabaseConnectionSomehow();
+
+            insertAlbum = connection.prepareStatement(queries.insertAlbumQuery());
+            insertAlbum.setString(1,title);
+            insertAlbum.setString(2,genre);
+            insertAlbum.setInt(3,artistID);
+            insertAlbum.setInt(4,userID);
+            insertAlbum.executeUpdate();
+
+        }catch(Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Database error, " + e.toString());
+        }
+        finally {
+            try{
+                insertAlbum.close();
+                connection.close();
+                System.out.println("Connection closed");
+            }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
+
+        }
     }
 
     @Override
@@ -417,27 +481,92 @@ public class JDBCDatabase implements Screwdriver {
     }
 
     @Override
-    public void insertMovie(String title, String genre, int directorID, int userID) {
-        PreparedStatement stmt = null;
+    public void insertMovie(String title, String genre, int userID, String directorName) {
+        PreparedStatement insertMovie = null;
+        PreparedStatement insertDirector = null;
+        PreparedStatement getDirectorID = null;
+        Connection connection = null;
+        int directorID = 0;
+
+        try {
+            connection = setupTheDatabaseConnectionSomehow();
+            connection.setAutoCommit(false);
+
+            insertDirector = connection.prepareStatement(queries.insertDirector());
+            insertDirector.setString(1, directorName);
+            insertDirector.executeUpdate();
+            System.out.println("Inserted director");
+
+            getDirectorID = connection.prepareStatement(queries.getDirectorByName());
+            getDirectorID.setString(1,directorName);
+            ResultSet rs =  getDirectorID.executeQuery();
+            System.out.println("Getting directorID...");
+            while (rs.next()) {
+                directorID = rs.getInt("ID");
+                System.out.println("Got directorID: "+directorID);
+            }
+
+
+            insertMovie = connection.prepareStatement(queries.insertMovieQuery());
+            insertMovie.setString(1,title);
+            insertMovie.setString(2,genre);
+            insertMovie.setInt(3,directorID);
+            insertMovie.setInt(4,userID);
+            insertMovie.executeUpdate();
+            System.out.println("Inserted movie...");
+
+            connection.commit();
+
+        }
+        catch (SQLException e){
+            if (connection != null){
+                try{
+                    System.err.print("Transaction is being rolled back");
+                    connection.rollback();
+
+                }catch (SQLException except){
+                    System.out.println(except.getMessage());
+                }
+            }
+        }
+
+        finally {
+            try{
+
+                getDirectorID.close();
+                insertDirector.close();
+                insertMovie.close();
+                connection.setAutoCommit(true);
+                connection.close();
+
+                System.out.println("Connection closed");
+            }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
+
+        }
+    }
+
+    @Override
+    public void insertMovieOnly(String title, String genre, int userID, int directorID) {
+        PreparedStatement insertMovie = null;
         Connection connection = null;
 
         try {
             connection = setupTheDatabaseConnectionSomehow();
-            stmt = connection.prepareStatement(queries.insertMovieQuery());
-            stmt.setString(1,title);
-            stmt.setString(2,genre);
-            stmt.setInt(3,directorID);
-            stmt.setInt(4,userID);
-            stmt.executeUpdate();
 
-        }
-        catch(Exception e) {
+            insertMovie = connection.prepareStatement(queries.insertMovieQuery());
+            insertMovie.setString(1,title);
+            insertMovie.setString(2,genre);
+            insertMovie.setInt(3,directorID);
+            insertMovie.setInt(4,userID);
+            insertMovie.executeUpdate();
+
+        }catch(Exception e){
             javax.swing.JOptionPane.showMessageDialog(null,
                     "Database error, " + e.toString());
-        }finally {
+        } finally{
             try{
+                insertMovie.close();
                 connection.close();
-                stmt.close();
                 System.out.println("Connection closed");
             }catch (java.sql.SQLException sqlE){ System.out.println(sqlE.getMessage()); }
 

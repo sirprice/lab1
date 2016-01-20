@@ -22,7 +22,9 @@ public interface Screwdriver {
     ObservableList<Movie> getMoviesBySearch(String searchWord, int item);
 
 
-    void insertAlbum(String title, String genre, int artistID, int userID);
+    void insertAlbum(String title, String genre, int userID, String artistName);
+
+    void insertAlbumOnly(String title, String genre, int userID, int artistID);
 
     void alterAlbum(int albumID,String title, String genre, int artistID, String coverURL);
 
@@ -32,7 +34,9 @@ public interface Screwdriver {
 
     void insertNewArtist(String name);
 
-    void insertMovie(String title, String genre, int directorID, int userID);
+    void insertMovie(String title, String genre, int userID, String directorName);
+
+    void insertMovieOnly(String title, String genre, int userID, int directorID);
 
     void alterMovie(int movieID,String title, String genre, int directorID, String coverURL);
 

@@ -96,19 +96,14 @@ public class AddAlbumController implements Initializable {
                         artistId = model.getArtistId(addArtist.getText());
                         System.out.println("innan skapad artist" + artistId);
                         if (artistId <= 0) {
-                            // // TODO: 18/12/15 Start transaction
-                            model.createArtist(addArtist.getText());
-                            artistId = model.getArtistId(addArtist.getText());
-                            model.createAlbum(addTitle.getText(),addGenre.getValue().toString(),artistId);
-                            // // TODO: 18/12/15 Commit transaction / rollback
-                            model.getNewAlbums();
-
+                            model.createAlbum(addTitle.getText(),addGenre.getValue().toString(),addArtist.getText());
                         }
                         else {
-                            model.createAlbum(addTitle.getText(),addGenre.getValue().toString(),artistId);
-                            System.out.println(model.getUser().toString() + " Added an album");
-                            model.getNewAlbums();
+                            model.createAlbumFromExistingArtist(addTitle.getText(),addGenre.getValue().toString(),artistId);
                         }
+                        System.out.println(model.getUser().toString() + " Added an album");
+                        model.getNewAlbums();
+
                         javafx.application.Platform.runLater(
                                 new Runnable() {
                                     @Override

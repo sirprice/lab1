@@ -126,9 +126,13 @@ public class Model {
         database.insertNewArtist(name);
     }
 
-    public void createAlbum(String title, String genre, int artistID){
+    public void createAlbum(String title, String genre,String artistName){
         // todo check if thread
-        database.insertAlbum(title,genre,artistID,user.getUserID());
+        database.insertAlbum(title,genre,user.getUserID(),artistName);
+    }
+
+    public void createAlbumFromExistingArtist(String title, String genre,int artistID){
+        database.insertAlbumOnly(title,genre,user.getUserID(),artistID);
     }
 
     public void editAlbum(int albumId,String artist, String genre, String title, String url){
@@ -315,9 +319,14 @@ public class Model {
         return null;
     }
 
-    public void createMovie(String title, String genre, int directorID){
-        database.insertMovie(title,genre,directorID, user.getUserID());
+    public void createMovie(String title, String genre, String directorName){
+        database.insertMovie(title,genre, user.getUserID(), directorName);
     }
+
+    public void createMovieFromExistingDirector(String title, String genre, int directorID){
+        database.insertMovieOnly(title,genre, user.getUserID(), directorID);
+    }
+
 
     public void deleteMovie(int movieId){
         Thread thread = new Thread(){
