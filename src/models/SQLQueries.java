@@ -116,29 +116,30 @@ public class SQLQueries {
             return "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl,User.Username " +
                     "From Album,Artist,User " +
                     "Where Album.ArtistID = Artist.ID " +
-                    "AND Album.title LIKE '%?%' AND Album.UserID = User.ID;";
+                    "AND Album.title LIKE ? AND Album.UserID = User.ID;";
         }
         if (item == 2){
             return "Select Album.ID, Album.Title, Artist.Name, Album.Genre, Album.CoverUrl, User.Username " +
                     "From Album,Artist,User " +
                     "Where Album.ArtistID = Artist.ID " +
-                    "AND Artist.Name LIKE '%?%' AND Album.UserID = User.ID;";
+                    "AND Artist.Name LIKE ? AND Album.UserID = User.ID;";
         }
         return "FEL";
     }
 
     public String searchMovies(int item){
+
         if (item == 1){
             return "Select Movie.ID, Movie.Title, Director.Name, Movie.Genre, Movie.CoverUrl,User.Username " +
                     "From Movie,Director,User " +
                     "Where Movie.DirectorID = Director.ID " +
-                    "AND Director.Name LIKE '%?%' AND Movie.UserID = User.ID;";
+                    "AND Director.Name LIKE ? AND Movie.UserID = User.ID;";
         }
         if (item == 2){
             return "Select Movie.ID, Movie.Title, Director.Name, Movie.Genre, Movie.CoverUrl, User.Username " +
                     "From Movie,Director,User " +
                     "Where Movie.DirectorID = Director.ID " +
-                    "AND Movie.Genre LIKE '%?%' AND Movie.UserID = User.ID;";
+                    "AND Movie.Genre LIKE ? AND Movie.UserID = User.ID;";
         }
         if (item == 3){
 

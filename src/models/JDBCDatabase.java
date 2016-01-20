@@ -221,7 +221,7 @@ public class JDBCDatabase implements Screwdriver {
         try {
             connection = setupTheDatabaseConnectionSomehow();
             stmt = connection.prepareStatement(queries.searchAlbums(item));
-            stmt.setString(1,searchWord);
+            stmt.setString(1,"%" + searchWord + "%");
             albums = getAlbumsQuery(stmt);
 
         }
@@ -276,8 +276,9 @@ public class JDBCDatabase implements Screwdriver {
             connection = setupTheDatabaseConnectionSomehow();
             stmt = connection.prepareStatement(queries.searchMovies(item));
 
+            System.out.println(item);
             if (item == 1 || item == 2){
-                stmt.setString(1,searchWord);
+                stmt.setString(1,"%" + searchWord + "%");
             }
             if (item == 3){
                 double rating = Double.parseDouble(searchWord);

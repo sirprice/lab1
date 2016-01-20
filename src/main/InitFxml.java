@@ -28,12 +28,12 @@ public class InitFxml {
 
         public void initializLoadersAndControllers(Stage primaryStage) throws IOException {
 
-            JDBCDatabase database = new JDBCDatabase();
+            //JDBCDatabase database = new JDBCDatabase();
             System.out.println("Databas initierad");
             //database.connect(username,password);
 
             Model model = new Model();
-            model.setJDBCDatabase(database);
+            //model.setJDBCDatabase();
             DeleteController dCtrl = new DeleteController();
             dCtrl.setModel(model);
 

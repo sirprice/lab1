@@ -34,7 +34,7 @@ public class Model {
         albumGenreList = FXCollections.observableArrayList();
         movieGenreList = FXCollections.observableArrayList();
         ratingList = FXCollections.observableArrayList(1,2,3,4,5);
-
+        database = new JDBCDatabase();
         for (AlbumGenre ag: AlbumGenre.values()){
             albumGenreList.add(ag);
         }

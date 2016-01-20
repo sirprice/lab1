@@ -44,7 +44,6 @@ public class ReviewAlbumController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         group = new ToggleGroup();
         radioButtons = new ArrayList<>();
-
         one.setToggleGroup(group);
         radioButtons.add(one);
         two.setToggleGroup(group);
