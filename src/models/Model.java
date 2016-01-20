@@ -135,6 +135,14 @@ public class Model {
         database.insertAlbumOnly(title,genre,user.getUserID(),artistID);
     }
 
+    /**
+     * calls to the database controller to edit the selected album. will handle if artist does not exist by creating it.
+     * @param albumId
+     * @param artist
+     * @param genre
+     * @param title
+     * @param url
+     */
     public void editAlbum(int albumId,String artist, String genre, String title, String url){
 
         boolean albumExists = false;
@@ -191,6 +199,10 @@ public class Model {
 
     }
 
+    /**
+     * calls to the database controller to delete the specified album
+     * @param albumID ID of the selected album
+     */
     public void deleteAlbum(int albumID){
         Thread thread = new Thread(){
             public void run(){
@@ -207,10 +219,20 @@ public class Model {
         };thread.start();
     }
 
+    /**
+     * calls to the database controller to fetch the ID of the name of an artist
+     * @param artist
+     * @return returns the artist ID
+     */
     public int getArtistId(String artist){
         return database.getArtistByName(artist);
     }
 
+    /**
+     * calls to the database controller to fetch the albums that matches the searchword.
+     * @param searchWord
+     * @param item item specifies if searching for title or artist
+     */
     public void getSearchForAlbums(String searchWord, int item){
         Thread thread = new Thread(){
             public void run(){
@@ -229,6 +251,10 @@ public class Model {
         };thread.start();
     }
 
+    /**
+     * calls to the database controller to update an albums average rating. Will add to runlater to refreshAlbum in mainController
+     * @param id
+     */
     public void updateAlbumRating(int id){
         int mediaType = 1;
         Thread thread = new Thread(){
@@ -248,6 +274,14 @@ public class Model {
 
     }
 
+    /**
+     * calls to the database controller to add a review to the specific album
+     * @param userID
+     * @param albumID
+     * @param date
+     * @param text
+     * @param rating
+     */
     public void addAlbumReview(int userID, int albumID, java.sql.Date date, String text, int rating){
         int mediaType = 1;
         Thread thread = new Thread(){
@@ -272,6 +306,14 @@ public class Model {
 
     }
 
+    /**
+     * calls to the database controller to update an album review
+     * @param userID
+     * @param albumID
+     * @param date
+     * @param text
+     * @param rating
+     */
     public void updateAlbumReview(int userID, int albumID, java.sql.Date date, String text, int rating){
         int mediaType = 1;
         Thread thread = new Thread(){
@@ -291,6 +333,11 @@ public class Model {
 
     }
 
+    /**
+     * calls to the database controller to delete album review;
+     * @param userID
+     * @param albumID
+     */
     public void deleteAlbumReview(int userID, int albumID){
         int mediaType = 1;
         Thread thread = new Thread(){
@@ -300,10 +347,21 @@ public class Model {
         };thread.start();
     }
 
+    /**
+     * calls to the database controller to fetch all the reviews for a specific album
+     * @param albumID
+     * @return List of reviews
+     */
     public ArrayList<Review> getAlbumReviews(int albumID){
         return database.getAlbumReviews(albumID);
     }
 
+    /**
+     * calls to the database controller to check if there's a review that matches the parameters
+     * @param userID
+     * @param albumID
+     * @return If found it will return a review
+     */
     public Review getAlbumReview(int userID, int albumID){
         int mediaType = 1;
 
@@ -312,6 +370,10 @@ public class Model {
         return review;
     }
 
+    /**
+     * get the album genre list
+     * @return list of album genres
+     */
     public ObservableList<AlbumGenre> getAlbumGenreList() {
         return albumGenreList;
     }
@@ -321,7 +383,11 @@ public class Model {
     //                                              MOVIE
     //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-
+    /**
+     * gets a movie from the movie list that matches the ID
+     * @param id
+     * @return returns a movie or null if no match
+     */
     public Movie getMovieById(int id){
         for (Movie m : movies){
             if (m.getMovieID() == id){
@@ -331,15 +397,30 @@ public class Model {
         return null;
     }
 
+    /**
+     * calls to the database controller to create a movie which director does not yet exists in the database
+     * @param title
+     * @param genre
+     * @param directorName
+     */
     public void createMovie(String title, String genre, String directorName){
         database.insertMovie(title,genre, user.getUserID(), directorName);
     }
 
+    /**
+     * calls to the database controller to create a movie that already have a director present in the database
+     * @param title
+     * @param genre
+     * @param directorID
+     */
     public void createMovieFromExistingDirector(String title, String genre, int directorID){
         database.insertMovieOnly(title,genre, user.getUserID(), directorID);
     }
 
-
+    /**
+     * calls to the database controller to delete a movie by id. Will add to runlater getNewMovies, see doc for more info
+     * @param movieId
+     */
     public void deleteMovie(int movieId){
         Thread thread = new Thread(){
             public void run(){
@@ -357,14 +438,32 @@ public class Model {
         };thread.start();
     }
 
+    /**
+     * calls to the database controller to get the ID of the name of a director
+     * @param name
+     * @return
+     */
     public int getDirectorId(String name){
         return database.getDirectorByName(name);
     }
 
-
+    /**
+     * calls to the database controller to create a user
+     * @param username
+     * @param password
+     */
     public void createUser(String username, String password){
         database.insertNewUser(username,password);
     }
+
+    /**
+     * calls to the database controller to alter a movie. Will also add to runlater to call getNewMovies, see doc for more info
+     * @param movieID
+     * @param director
+     * @param genre
+     * @param title
+     * @param url
+     */
     public void editMovie(int movieID,String director, String genre, String title, String url){
 
         boolean movieExists = false;
@@ -395,6 +494,14 @@ public class Model {
         }
     }
 
+    /**
+     * Calls to the database controller to add a review to a movie
+     * @param userID
+     * @param movieID
+     * @param date
+     * @param text
+     * @param rating
+     */
     public void addMovieReview(int userID, int movieID, java.sql.Date date, String text, int rating){
         int mediaType = 2;
         Thread thread = new Thread(){
@@ -417,6 +524,14 @@ public class Model {
 
     }
 
+    /**
+     * calls for the database controller to update a review. Will add to "runlater" call for uppdateMovieRating
+     * @param userID
+     * @param movieID
+     * @param date
+     * @param text
+     * @param rating
+     */
     public void updateMovieReview(int userID, int movieID, java.sql.Date date, String text, int rating){
         int mediaType = 2;
         Thread thread = new Thread(){
@@ -435,6 +550,10 @@ public class Model {
         };thread.start();
     }
 
+    /**
+     * calls to the database controller to update rating for movie by id
+     * @param id
+     */
     public void updateMovieRating(int id){
         int mediaType = 2;
         Thread thread = new Thread(){
@@ -453,6 +572,12 @@ public class Model {
         };thread.start();
     }
 
+    /**
+     * calls to the database controller to fetch the review that matches userID and movieID
+     * @param userID
+     * @param movieID
+     * @return review
+     */
     public Review getMovieReview(int userID, int movieID){
         int mediaType = 2;
 
@@ -460,13 +585,23 @@ public class Model {
 
         return review;
     }
+
+    /**
+     * calls to the database controller to fetch a list of all review that matches the movieID
+     * @param movieID
+     * @return list of reviews
+     */
     public ArrayList<Review> getMovieReviews(int movieID){
 
         return database.getMovieReviews(movieID);
     }
 
 
-
+    /**
+     * calls to the database controller to Delete the review
+     * @param userID userID
+     * @param movieID movieID
+     */
     public void deleteMovieReview(int userID, int movieID){
         int mediaType = 2;
         Thread thread = new Thread(){
@@ -476,7 +611,10 @@ public class Model {
         };thread.start();
     }
 
-
+    /**
+     * calls to the database controller to fetch the all the movies. Will also add to the "runlater" calls to
+     * setMovies and getAllMovieRationgs from mainController
+     */
     public void getNewMovies() {
         Thread thread = new Thread(){
             public void run(){
@@ -494,21 +632,46 @@ public class Model {
         };thread.start();
     }
 
+    /**
+     * Gets a movie from the list of movies that matches the index value
+     * @param index index of movie
+     * @return Returns a movie
+     */
     public Movie getMovie(int index){
         return movies.get(index);
     }
 
+    /**
+     * Geter for the avaiable list of movies
+     * @return A list of movies
+     */
     public ObservableList<Movie> getMovies() {
         return movies;
     }
 
+    /**
+     * Sets the list of available movies in the model
+     * @param movies An observable list of the type Movie
+     */
     public void setMovies(ObservableList<Movie> movies) {
         this.movies = movies;
     }
+
+    /**
+     * Getter for the movie genre list
+     * @return Returns a list of genres
+     */
     public ObservableList<MovieGenre> getMovieGenreList() {
         return movieGenreList;
     }
 
+    /**
+     * This method calls to the database controller class and asks for the movies that matches the search word.
+     * It will after that push instructions to the "runlater" in javafx to call on setMovies and will also tell it to call on refreshMovies and
+     * getAllMovieRatings from the mainController.
+     * @param searchWord guess what ?
+     * @param item Specifies if the item of search is title, genre or rating
+     */
     public void getSearchForMovies(String searchWord, int item){
         Thread thread = new Thread(){
             public void run(){
@@ -525,37 +688,5 @@ public class Model {
                 );
             }
         };thread.start();
-
-    }
-
-    //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-    //                                              SKIT
-    //* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-
-    public void setMovieGenreList(ObservableList<MovieGenre> movieGenreList) {
-        this.movieGenreList = movieGenreList;
-    }
-    public void setAlbumGenreList(ObservableList<AlbumGenre> albumGenreList) {
-        this.albumGenreList = albumGenreList;
-    }
-
-    public ObservableList<Integer> getRatingList() {
-        return ratingList;
-    }
-
-    public void setRatingList(ObservableList<Integer> ratingList) {
-        this.ratingList = ratingList;
-    }
-
-
-    public void setAlbum(int index, Album album) {
-        albums.set(index,album);
-    }
-
-    public void addAlbum(Album newAlbum){
-        albums.add(newAlbum);
-    }
-    public void addMovie(Movie newMovie){
-        movies.add(newMovie);
     }
 }

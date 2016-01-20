@@ -6,19 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3dc3a3fa-aca5-4429-8314-fcfca43ec48d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/DeleteController.java" afterPath="$PROJECT_DIR$/src/controllers/DeleteController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/LoginRegisterController/LoginController.java" afterPath="$PROJECT_DIR$/src/controllers/LoginRegisterController/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java" afterPath="$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/albumControllers/EditAlbumController.java" afterPath="$PROJECT_DIR$/src/controllers/albumControllers/EditAlbumController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java" afterPath="$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/movieControllers/AddMovieController.java" afterPath="$PROJECT_DIR$/src/controllers/movieControllers/AddMovieController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/movieControllers/EditMovieController.java" afterPath="$PROJECT_DIR$/src/controllers/movieControllers/EditMovieController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/movieControllers/ReviewMovieController.java" afterPath="$PROJECT_DIR$/src/controllers/movieControllers/ReviewMovieController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/JDBCDatabase.java" afterPath="$PROJECT_DIR$/src/models/JDBCDatabase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/LoginRegisterController/RegisterController.java" afterPath="$PROJECT_DIR$/src/controllers/LoginRegisterController/RegisterController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Model.java" afterPath="$PROJECT_DIR$/src/models/Model.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/SQLQueries.java" afterPath="$PROJECT_DIR$/src/models/SQLQueries.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Screwdriver.java" afterPath="$PROJECT_DIR$/src/models/Screwdriver.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -56,6 +45,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Model.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/models/Model.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.43797857">
+              <caret line="138" column="120" selection-start-line="138" selection-start-column="120" selection-end-line="138" selection-end-column="120" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#6570#6571#0" expanded="true" />
+                <element signature="e#6648#6649#0" expanded="true" />
+                <element signature="e#14217#14218#0" expanded="true" />
+                <element signature="e#14274#14275#0" expanded="true" />
+                <element signature="e#20161#20162#0" expanded="true" />
+                <element signature="e#20201#20202#0" expanded="true" />
+                <element signature="e#20342#20343#0" expanded="true" />
+                <element signature="e#20371#20372#0" expanded="true" />
+                <element signature="e#20558#20559#0" expanded="true" />
+                <element signature="e#20594#20595#0" expanded="true" />
+                <element signature="e#20750#20751#0" expanded="true" />
+                <element signature="e#20787#20788#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SQLQueries.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/SQLQueries.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ShowAlbumController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -68,27 +94,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/RegisterController.java">
+      <file leaf-file-name="JDBCDatabase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/JDBCDatabase.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="58" column="41" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
-              <folding />
+              <caret line="123" column="46" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/LoginController.java">
+      <file leaf-file-name="Screwdriver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/Screwdriver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.16079633">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
               <folding>
-                <element signature="e#1956#1957#0" expanded="true" />
-                <element signature="e#1989#1990#0" expanded="true" />
-                <element signature="e#3265#3266#0" expanded="true" />
-                <element signature="e#3388#3389#0" expanded="true" />
-                <marker date="1453309975000" expanded="true" signature="942:980" placeholder="/**...*/" />
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -120,7 +145,6 @@
         <option value="$PROJECT_DIR$/src/fxml/login.fxml" />
         <option value="$PROJECT_DIR$/src/fxml/register.fxml" />
         <option value="$PROJECT_DIR$/src/models/User.java" />
-        <option value="$PROJECT_DIR$/src/controllers/LoginRegisterController/RegisterController.java" />
         <option value="$PROJECT_DIR$/src/controllers/movieControllers/reviewMovie.java" />
         <option value="$PROJECT_DIR$/src/controllers/movieControllers/reviewMovieController.java" />
         <option value="$PROJECT_DIR$/src/fxml/albumFxml/reviewAlbum.fxml" />
@@ -146,11 +170,12 @@
         <option value="$PROJECT_DIR$/src/controllers/movieControllers/ReviewMovieController.java" />
         <option value="$PROJECT_DIR$/src/models/Screwdriver.java" />
         <option value="$PROJECT_DIR$/src/models/SQLQueries.java" />
-        <option value="$PROJECT_DIR$/src/models/Model.java" />
         <option value="$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java" />
         <option value="$PROJECT_DIR$/src/controllers/albumControllers/EditAlbumController.java" />
         <option value="$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java" />
         <option value="$PROJECT_DIR$/src/controllers/LoginRegisterController/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/LoginRegisterController/RegisterController.java" />
+        <option value="$PROJECT_DIR$/src/models/Model.java" />
       </list>
     </option>
   </component>
@@ -834,7 +859,7 @@
       <workItem from="1453289137446" duration="9000" />
       <workItem from="1453289316073" duration="10900000" />
       <workItem from="1453303094758" duration="12000" />
-      <workItem from="1453303185358" duration="4168000" />
+      <workItem from="1453303185358" duration="8720000" />
     </task>
     <task id="LOCAL-00001" summary=":)">
       <created>1450285729213</created>
@@ -974,11 +999,17 @@
       <option name="project" value="LOCAL" />
       <updated>1453299771096</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="everything works">
+      <created>1453309989921</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1453309989921</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191125000" />
+    <option name="totallyTimeSpent" value="195677000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -990,11 +1021,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="773" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32892805" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32599118" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1010,7 +1042,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32599118" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1098,8 +1129,18 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#editMovie#0;class#Model#0" expanded="false" />
-            <element signature="method#getMovieReviews#0;class#Model#0" expanded="false" />
+            <element signature="e#6570#6571#0" expanded="true" />
+            <element signature="e#6648#6649#0" expanded="true" />
+            <element signature="e#14217#14218#0" expanded="true" />
+            <element signature="e#14274#14275#0" expanded="true" />
+            <element signature="e#20161#20162#0" expanded="true" />
+            <element signature="e#20201#20202#0" expanded="true" />
+            <element signature="e#20342#20343#0" expanded="true" />
+            <element signature="e#20371#20372#0" expanded="true" />
+            <element signature="e#20558#20559#0" expanded="true" />
+            <element signature="e#20594#20595#0" expanded="true" />
+            <element signature="e#20750#20751#0" expanded="true" />
+            <element signature="e#20787#20788#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1399,67 +1440,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Screwdriver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16079633">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.114854515">
           <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.114854515">
-          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="method#editMovie#0;class#Model#0" expanded="false" />
-            <element signature="method#getMovieReviews#0;class#Model#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/SQLQueries.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.114854515">
-          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/JDBCDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.26493108">
-          <caret line="123" column="46" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="46" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.7565084">
-          <caret line="142" column="29" selection-start-line="142" selection-start-column="29" selection-end-line="142" selection-end-column="29" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1495,6 +1481,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.459418">
+          <caret line="142" column="29" selection-start-line="142" selection-start-column="29" selection-end-line="142" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.18376723">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#1956#1957#0" expanded="true" />
+            <element signature="e#1989#1990#0" expanded="true" />
+            <element signature="e#3265#3266#0" expanded="true" />
+            <element signature="e#3388#3389#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/RegisterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6784074">
+          <caret line="76" column="44" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1946#1947#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1505,24 +1525,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/RegisterController.java">
+    <entry file="file://$PROJECT_DIR$/src/models/JDBCDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="41" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
-          <folding />
+          <caret line="123" column="46" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/LoginController.java">
+    <entry file="file://$PROJECT_DIR$/src/models/Screwdriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16079633">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
           <folding>
-            <element signature="e#1956#1957#0" expanded="true" />
-            <element signature="e#1989#1990#0" expanded="true" />
-            <element signature="e#3265#3266#0" expanded="true" />
-            <element signature="e#3388#3389#0" expanded="true" />
-            <marker date="1453309975000" expanded="true" signature="942:980" placeholder="/**...*/" />
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/SQLQueries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43797857">
+          <caret line="138" column="120" selection-start-line="138" selection-start-column="120" selection-end-line="138" selection-end-column="120" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6570#6571#0" expanded="true" />
+            <element signature="e#6648#6649#0" expanded="true" />
+            <element signature="e#14217#14218#0" expanded="true" />
+            <element signature="e#14274#14275#0" expanded="true" />
+            <element signature="e#20161#20162#0" expanded="true" />
+            <element signature="e#20201#20202#0" expanded="true" />
+            <element signature="e#20342#20343#0" expanded="true" />
+            <element signature="e#20371#20372#0" expanded="true" />
+            <element signature="e#20558#20559#0" expanded="true" />
+            <element signature="e#20594#20595#0" expanded="true" />
+            <element signature="e#20750#20751#0" expanded="true" />
+            <element signature="e#20787#20788#0" expanded="true" />
           </folding>
         </state>
       </provider>

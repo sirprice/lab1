@@ -1,3 +1,9 @@
+/**
+ * Created by:
+ * Carl-Johan Dahlman, cjda@kth.se
+ * Waleed Hassan, waleedh@kth.se
+ * on 14/12/15.
+ */
 package controllers.LoginRegisterController;
 
 import javafx.fxml.FXML;
@@ -10,7 +16,7 @@ import javafx.stage.Stage;
 import models.Model;
 
 /**
- * Created by Scalman on 18/12/15.
+ * This is the controller class for the register new user view
  */
 public class RegisterController {
 
@@ -38,6 +44,9 @@ public class RegisterController {
         registerStage.show();
     }
 
+    /**
+     *
+     */
     public void registerNewUser(){
 
         if (!(newPassword.getText().equals(retypePassword.getText()))){
