@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Album {
     private String date;
     private String title;
-    private int albumID;
+    private String albumID;
     private AlbumGenre genre;
     private double rating;
     private String releaseDate;
@@ -24,7 +24,7 @@ public class Album {
     private String coverUrl;
 
 
-    public Album(int albumID, String title, String artist, AlbumGenre genre, String coverUrl, String username){
+    public Album(String albumID, String title, String artist, AlbumGenre genre, String coverUrl, String username){
         this.albumID = albumID;
         this.title = title;
         this.genre = genre;
@@ -100,7 +100,7 @@ public class Album {
         this.noOfSongs = noOfSongs;
     }
 
-    public int getAlbumID() {
+    public String getAlbumID() {
         return albumID;
     }
 

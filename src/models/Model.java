@@ -19,14 +19,14 @@ public class Model {
 
 
     private MainController mainController;
-    private int artistID;
-    private int directorID;
+    private String artistID;
+    private String directorID;
     private User user;
     private ObservableList<Album> albums;
     private ObservableList<Movie> movies;
     private ObservableList<AlbumGenre> albumGenreList;
     private ObservableList<MovieGenre> movieGenreList;
-    private JDBCDatabase database;
+    private MDB database;
 
 
 
@@ -35,7 +35,7 @@ public class Model {
         movies = FXCollections.observableArrayList();
         albumGenreList = FXCollections.observableArrayList();
         movieGenreList = FXCollections.observableArrayList();
-        database = new JDBCDatabase();
+        database = new MDB();
         for (AlbumGenre ag: AlbumGenre.values()){
             albumGenreList.add(ag);
         }
@@ -105,9 +105,9 @@ public class Model {
      * @param id specific id from the the table view.
      * @return album if it is a match else null.
      */
-    public Album getAlbumById(int id) {
+    public Album getAlbumById(String id) {
         for (Album a : albums){
-            if (a.getAlbumID() == id){
+            if (a.getAlbumID().equals(id)){
                 return a;
             }
         }
@@ -162,7 +162,7 @@ public class Model {
      * @param genre album genre
      * @param artistID artist id
      */
-    public void createAlbumFromExistingArtist(String title, String genre,int artistID){
+    public void createAlbumFromExistingArtist(String title, String genre,String artistID){
         database.insertAlbumOnly(title,genre,user.getUserID(),artistID);
     }
 
@@ -174,7 +174,7 @@ public class Model {
      * @param title
      * @param url
      */
-    public void editAlbum(int albumId,String artist, String genre, String title, String url){
+    public void editAlbum(String albumId,String artist, String genre, String title, String url){
 
         boolean albumExists = false;
 
@@ -191,8 +191,6 @@ public class Model {
                     artistID = getArtistId(artist);
                     if (artistID <= 0){
 
-                        //createArtist(artist);
-                        //artistID = getArtistId(artist);
                         database.alterAlbum(albumId,title,genre,artist,url);
 
                         System.out.println(user.toString() + "editFunktion:");
@@ -232,7 +230,7 @@ public class Model {
      * calls to the database controller to delete the specified album
      * @param albumID ID of the selected album
      */
-    public void deleteAlbum(int albumID){
+    public void deleteAlbum(String albumID){
         Thread thread = new Thread(){
             public void run(){
                 database.dropAlbum(albumID);
@@ -253,7 +251,7 @@ public class Model {
      * @param artist
      * @return returns the artist ID
      */
-    public int getArtistId(String artist){
+    public String getArtistId(String artist){
         return database.getArtistByName(artist);
     }
 
@@ -284,7 +282,7 @@ public class Model {
      * calls to the database controller to update an albums average rating. Will add to runlater to refreshAlbum in mainController
      * @param id
      */
-    public void updateAlbumRating(int id){
+    public void updateAlbumRating(String id){
         int mediaType = 1;
         Thread thread = new Thread(){
             public void run(){
@@ -311,7 +309,7 @@ public class Model {
      * @param text
      * @param rating
      */
-    public void addAlbumReview(int userID, int albumID, java.sql.Date date, String text, int rating){
+    public void addAlbumReview(String userID, String albumID, java.sql.Date date, String text, int rating){
         int mediaType = 1;
         Thread thread = new Thread(){
             public void run(){
@@ -343,7 +341,7 @@ public class Model {
      * @param text
      * @param rating
      */
-    public void updateAlbumReview(int userID, int albumID, java.sql.Date date, String text, int rating){
+    public void updateAlbumReview(String userID, String albumID, java.sql.Date date, String text, int rating){
         int mediaType = 1;
         Thread thread = new Thread(){
             public void run(){
@@ -367,7 +365,7 @@ public class Model {
      * @param userID
      * @param albumID
      */
-    public void deleteAlbumReview(int userID, int albumID){
+    public void deleteAlbumReview(String userID, String albumID){
         int mediaType = 1;
         Thread thread = new Thread(){
             public void run(){
@@ -381,7 +379,7 @@ public class Model {
      * @param albumID
      * @return List of reviews
      */
-    public ArrayList<Review> getAlbumReviews(int albumID){
+    public ArrayList<Review> getAlbumReviews(String albumID){
         return database.getAlbumReviews(albumID);
     }
 
@@ -391,7 +389,7 @@ public class Model {
      * @param albumID
      * @return If found it will return a review
      */
-    public Review getAlbumReview(int userID, int albumID){
+    public Review getAlbumReview(String userID, String albumID){
         int mediaType = 1;
 
         Review review = database.checkIfReviewAlreadyExist(userID, albumID, mediaType);
@@ -417,7 +415,7 @@ public class Model {
      * @param id
      * @return returns a movie or null if no match
      */
-    public Movie getMovieById(int id){
+    public Movie getMovieById(String id){
         for (Movie m : movies){
             if (m.getMovieID() == id){
                 return m;
@@ -442,7 +440,7 @@ public class Model {
      * @param genre
      * @param directorID
      */
-    public void createMovieFromExistingDirector(String title, String genre, int directorID){
+    public void createMovieFromExistingDirector(String title, String genre, String directorID){
         database.insertMovieOnly(title,genre, user.getUserID(), directorID);
     }
 
@@ -450,7 +448,7 @@ public class Model {
      * calls to the database controller to delete a movie by id. Will add to runlater getNewMovies, see doc for more info
      * @param movieId
      */
-    public void deleteMovie(int movieId){
+    public void deleteMovie(String movieId){
         Thread thread = new Thread(){
             public void run(){
                 database.dropMovie(movieId);
@@ -472,7 +470,7 @@ public class Model {
      * @param name
      * @return
      */
-    public int getDirectorId(String name){
+    public String getDirectorId(String name){
         return database.getDirectorByName(name);
     }
 
@@ -493,7 +491,7 @@ public class Model {
      * @param title
      * @param url
      */
-    public void editMovie(int movieID,String director, String genre, String title, String url){
+    public void editMovie(String movieID,String director, String genre, String title, String url){
 
         boolean movieExists = false;
         //this.artist = artist;
@@ -531,7 +529,7 @@ public class Model {
      * @param text
      * @param rating
      */
-    public void addMovieReview(int userID, int movieID, java.sql.Date date, String text, int rating){
+    public void addMovieReview(String userID, String movieID, java.sql.Date date, String text, int rating){
         int mediaType = 2;
         Thread thread = new Thread(){
             public void run(){
@@ -561,7 +559,7 @@ public class Model {
      * @param text
      * @param rating
      */
-    public void updateMovieReview(int userID, int movieID, java.sql.Date date, String text, int rating){
+    public void updateMovieReview(String userID, String movieID, java.sql.Date date, String text, int rating){
         int mediaType = 2;
         Thread thread = new Thread(){
             public void run(){
@@ -583,7 +581,7 @@ public class Model {
      * calls to the database controller to update rating for movie by id
      * @param id
      */
-    public void updateMovieRating(int id){
+    public void updateMovieRating(String id){
         int mediaType = 2;
         Thread thread = new Thread(){
             public void run(){
@@ -607,7 +605,7 @@ public class Model {
      * @param movieID
      * @return review
      */
-    public Review getMovieReview(int userID, int movieID){
+    public Review getMovieReview(String userID, String movieID){
         int mediaType = 2;
 
         Review review = database.checkIfReviewAlreadyExist(userID,movieID,mediaType);
@@ -620,7 +618,7 @@ public class Model {
      * @param movieID
      * @return list of reviews
      */
-    public ArrayList<Review> getMovieReviews(int movieID){
+    public ArrayList<Review> getMovieReviews(String movieID){
 
         return database.getMovieReviews(movieID);
     }
@@ -631,7 +629,7 @@ public class Model {
      * @param userID userID
      * @param movieID movieID
      */
-    public void deleteMovieReview(int userID, int movieID){
+    public void deleteMovieReview(String userID, String movieID){
         int mediaType = 2;
         Thread thread = new Thread(){
             public void run(){

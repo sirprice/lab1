@@ -16,12 +16,12 @@ public class Movie {
     private String director;
     private MovieGenre genre;
     private double rating;
-    private int movieID;
+    private String movieID;
     private String coverUrl;
     private ArrayList<Review> reviews;
     private String username;
 
-    public Movie (int movieID,String title, String director, MovieGenre genre,String coverUrl, String username){
+    public Movie (String movieID,String title, String director, MovieGenre genre,String coverUrl, String username){
         this.movieID = movieID;
         this.title = title;
         this.director = director;
@@ -38,7 +38,7 @@ public class Movie {
         this.reviews.add(review);
     }
 
-    public int getMovieID() {
+    public String getMovieID() {
         return movieID;
     }
 
