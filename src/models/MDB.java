@@ -55,8 +55,8 @@ public class MDB implements Screwdriver {
     }
 
     @Override
-    public int getArtistByName(String name) {
-        return 0;
+    public String getArtistByName(String name) {
+        return name;
     }
 
     @Override
@@ -85,8 +85,8 @@ public class MDB implements Screwdriver {
     }
 
     @Override
-    public int getDirectorByName(String name) {
-        return 0;
+    public String getDirectorByName(String name) {
+        return name;
     }
 
     @Override

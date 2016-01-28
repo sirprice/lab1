@@ -32,7 +32,7 @@ public interface Screwdriver {
 
     void dropAlbum(String albumID);
 
-    int getArtistByName(String name);
+    String getArtistByName(String name);
 
     void insertMovie(String title, String genre, String userID, String directorName);
 
@@ -44,7 +44,7 @@ public interface Screwdriver {
 
     void dropMovie(String movieID);
 
-    int getDirectorByName(String name);
+    String getDirectorByName(String name);
 
     User userAuthentication(String username,String password);
 

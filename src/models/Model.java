@@ -189,7 +189,7 @@ public class Model {
             Thread thread = new Thread(){
                 public void run(){
                     artistID = getArtistId(artist);
-                    if (artistID <= 0){
+                    if (artistID == null){
 
                         database.alterAlbum(albumId,title,genre,artist,url);
 
@@ -507,7 +507,7 @@ public class Model {
             Thread thread = new Thread(){
                 public void run(){
                     directorID = getDirectorId(director);
-                    if (directorID <= 0){
+                    if (directorID == null){
                         database.alterMovie(movieID,title,genre,url,director);
 
                     }else {
