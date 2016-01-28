@@ -12,7 +12,7 @@ public class Review {
     private Date date;
     private int rating;
     private String text;
-    private int userID;
+    private String userID;
     private int albumID;
     private String username;
 
@@ -22,7 +22,7 @@ public class Review {
         this.rating = rating;
         this.text = text;
     }
-    public Review(Date date, int rating, String text, int userID, String username) {
+    public Review(Date date, int rating, String text, String userID, String username) {
         this.date = date;
         this.rating = rating;
         this.text = text;

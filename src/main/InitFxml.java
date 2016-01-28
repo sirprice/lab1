@@ -14,7 +14,6 @@ import controllers.movieControllers.ShowMovieController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
-import models.JDBCDatabase;
 import models.Model;
 
 import java.io.IOException;
@@ -113,8 +112,8 @@ public class InitFxml {
             mCtrl.setModel(model);
             mCtrl.setMain(root);
             mCtrl.setControllers(aACtrl, eACtrl, dCtrl, sACtrl, aMCtrl,eMCtrl,sMCtrl,rMCtrl,rACtrl);
-            mCtrl.getAlbums();
-            mCtrl.showMovies();
+            //mCtrl.getAlbums();
+            //mCtrl.showMovies();
 
             // Model
             model.setMainController(mCtrl);
