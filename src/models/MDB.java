@@ -1,6 +1,13 @@
 package models;
 
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import javafx.collections.ObservableList;
+import org.bson.Document;
+import static com.mongodb.client.model.Filters.*;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -9,6 +16,16 @@ import java.util.ArrayList;
  * Created by cj on 28/01/16.
  */
 public class MDB implements Screwdriver {
+
+    private MongoClient mongoClient;
+
+    public MDB() {
+        mongoClient = new MongoClient();
+
+    }
+
+
+
     @Override
     public ObservableList<Album> getAllAlbums() {
         return null;
@@ -91,7 +108,28 @@ public class MDB implements Screwdriver {
 
     @Override
     public User userAuthentication(String username, String password) {
-        return null;
+        User user = null;
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
+        MongoCollection<Document> col = db.getCollection("User");
+
+        BasicDBObject query = new BasicDBObject();
+
+        Document document = col.find(and(eq("name",username),eq("password",password))).first();
+
+        if (document != null){
+            user = new User(document.getObjectId("_id").toString(),document.getString("name"));
+            System.out.println(document.getObjectId("_id").toString());
+            System.out.println();
+        }
+
+
+           // Document document = col.find().first();
+            //System.out.println(document.toJson());
+
+
+
+        return user;
     }
 
     @Override
