@@ -1,7 +1,6 @@
 package models;
 
 import javafx.collections.ObservableList;
-
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -9,6 +8,13 @@ import java.util.ArrayList;
  * Created by cj on 28/01/16.
  */
 public class MDB implements Screwdriver {
+
+
+    public MDB(){
+
+    }
+
+
     @Override
     public ObservableList<Album> getAllAlbums() {
         return null;
@@ -91,6 +97,10 @@ public class MDB implements Screwdriver {
 
     @Override
     public User userAuthentication(String username, String password) {
+
+        DBCollection coll = db.getCollection("User");
+        DBObject myDoc = coll.findOne();
+        System.out.println(myDoc);
         return null;
     }
 

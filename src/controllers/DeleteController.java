@@ -24,7 +24,6 @@ public class DeleteController {
     }
     public void deleteMovie(Movie selectedMovie){
         if (selectedMovie.getMovieID() != null){
-
             model.deleteMovie(selectedMovie.getMovieID());
         }
     }
