@@ -28,7 +28,7 @@ public class AddMovieController implements Initializable {
     private Stage addStage, primaryStage;
     private Parent add;
     private Model model;
-    private int directorID;
+    private String directorID;
     @FXML private TextField addTitle;
     @FXML private TextField addMovieDirector;
     @FXML private ChoiceBox<MovieGenre> addGenre;
@@ -77,7 +77,7 @@ public class AddMovieController implements Initializable {
             Thread thread = new Thread() {
                 public void run() {
                     directorID = model.getDirectorId(addMovieDirector.getText());
-                    if (directorID <= 0) {
+                    if (directorID == null) {
                         model.createMovie(addTitle.getText(),addGenre.getValue().toString(),addMovieDirector.getText());
                     }
                     else {

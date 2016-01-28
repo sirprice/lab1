@@ -18,12 +18,12 @@ public class DeleteController {
     }
 
     public void deleteAlbum(Album selectedAlbum){
-        if (selectedAlbum.getAlbumID() >=0){
+        if (selectedAlbum.getAlbumID() != null){
             model.deleteAlbum(selectedAlbum.getAlbumID());
         }
     }
     public void deleteMovie(Movie selectedMovie){
-        if (selectedMovie.getMovieID() >=0){
+        if (selectedMovie.getMovieID() != null){
 
             model.deleteMovie(selectedMovie.getMovieID());
         }

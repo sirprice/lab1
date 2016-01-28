@@ -31,7 +31,7 @@ public class AddAlbumController implements Initializable {
     private Stage addStage, primaryStage;
     private Parent add;
     private Model model;
-    private int artistId;
+    private String artistId;
 
     @FXML private TextField addTitle;
     @FXML private TextField addArtist;
@@ -101,7 +101,7 @@ public class AddAlbumController implements Initializable {
                     public void run() {
                         artistId = model.getArtistId(addArtist.getText());
                         System.out.println("innan skapad artist" + artistId);
-                        if (artistId <= 0) {
+                        if (artistId == null) {
                             model.createAlbum(addTitle.getText(),addGenre.getValue().toString(),addArtist.getText());
                         }
                         else {
