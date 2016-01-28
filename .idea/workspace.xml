@@ -10,10 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3dc3a3fa-aca5-4429-8314-fcfca43ec48d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/org_mongodb_mongodb_driver_3_2_1.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/mongodb_driver_3_2_1.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lab1.iml" afterPath="$PROJECT_DIR$/lab1.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/MDB.java" afterPath="$PROJECT_DIR$/src/models/MDB.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -45,16 +42,30 @@
       <file leaf-file-name="Model.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.3333333">
-              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="165" column="0" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="method#checkForUser#0;class#Model#0" expanded="false" />
                 <element signature="method#getAlbumById#0;class#Model#0" expanded="false" />
-                <element signature="method#getNewAlbums#0;class#Model#0" expanded="false" />
+                <element signature="e#6180#6181#0" expanded="true" />
+                <element signature="e#6274#6275#0" expanded="true" />
+                <element signature="e#7903#7904#0" expanded="true" />
+                <element signature="e#7958#7959#0" expanded="true" />
+                <element signature="e#15224#15225#0" expanded="true" />
+                <element signature="e#15281#15282#0" expanded="true" />
                 <element signature="method#getMovieReviews#0;class#Model#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegisterController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/RegisterController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="74" column="30" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -69,24 +80,70 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.3333333">
+              <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddAlbumController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MDB.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/models/MDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2894334">
-              <caret line="110" column="25" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.48238897">
+              <caret line="41" column="38" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3153#3154#0" expanded="true" />
-                <element signature="e#3180#3181#0" expanded="true" />
-                <element signature="e#3480#3481#0" expanded="true" />
-                <element signature="e#3504#3505#0" expanded="true" />
-                <element signature="e#3610#3611#0" expanded="true" />
-                <element signature="e#3637#3638#0" expanded="true" />
-                <element signature="e#3715#3716#0" expanded="true" />
-                <element signature="e#3742#3743#0" expanded="true" />
-                <element signature="e#3820#3821#0" expanded="true" />
-                <element signature="e#3847#3848#0" expanded="true" />
+                <element signature="e#1978#1979#0" expanded="true" />
+                <element signature="e#2005#2006#0" expanded="true" />
+                <element signature="e#2070#2071#0" expanded="true" />
+                <element signature="e#2097#2098#0" expanded="true" />
+                <element signature="e#2194#2195#0" expanded="true" />
+                <element signature="e#2221#2222#0" expanded="true" />
+                <element signature="e#4989#4990#0" expanded="true" />
+                <element signature="e#5016#5017#0" expanded="true" />
+                <element signature="e#7260#7261#0" expanded="true" />
+                <element signature="e#7284#7285#0" expanded="true" />
+                <element signature="e#7390#7391#0" expanded="true" />
+                <element signature="e#7417#7418#0" expanded="true" />
+                <element signature="e#7495#7496#0" expanded="true" />
+                <element signature="e#7522#7523#0" expanded="true" />
+                <element signature="e#7600#7601#0" expanded="true" />
+                <element signature="e#7627#7628#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SQLQueries.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/SQLQueries.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Album.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/Album.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="72" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="72" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -145,10 +202,10 @@
         <option value="$PROJECT_DIR$/src/main/InitFxml.java" />
         <option value="$PROJECT_DIR$/src/models/Review.java" />
         <option value="$PROJECT_DIR$/src/models/Screwdriver.java" />
-        <option value="$PROJECT_DIR$/src/models/Model.java" />
         <option value="$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java" />
         <option value="$PROJECT_DIR$/src/controllers/DeleteController.java" />
         <option value="$PROJECT_DIR$/src/controllers/movieControllers/AddMovieController.java" />
+        <option value="$PROJECT_DIR$/src/models/Model.java" />
         <option value="$PROJECT_DIR$/src/models/MDB.java" />
       </list>
     </option>
@@ -767,7 +824,7 @@
       <workItem from="1453976732687" duration="156000" />
       <workItem from="1453976947684" duration="1620000" />
       <workItem from="1453983468063" duration="5000" />
-      <workItem from="1453983488336" duration="2680000" />
+      <workItem from="1453983488336" duration="13569000" />
     </task>
     <task id="LOCAL-00001" summary=":)">
       <created>1450285729213</created>
@@ -943,11 +1000,17 @@
       <option name="project" value="LOCAL" />
       <updated>1453979362602</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="everything works">
+      <created>1453986427337</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1453986427337</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207926000" />
+    <option name="totallyTimeSpent" value="218815000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1055,16 +1118,22 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3153#3154#0" expanded="true" />
-            <element signature="e#3180#3181#0" expanded="true" />
-            <element signature="e#3480#3481#0" expanded="true" />
-            <element signature="e#3504#3505#0" expanded="true" />
-            <element signature="e#3610#3611#0" expanded="true" />
-            <element signature="e#3637#3638#0" expanded="true" />
-            <element signature="e#3715#3716#0" expanded="true" />
-            <element signature="e#3742#3743#0" expanded="true" />
-            <element signature="e#3820#3821#0" expanded="true" />
-            <element signature="e#3847#3848#0" expanded="true" />
+            <element signature="e#1978#1979#0" expanded="true" />
+            <element signature="e#2005#2006#0" expanded="true" />
+            <element signature="e#2070#2071#0" expanded="true" />
+            <element signature="e#2097#2098#0" expanded="true" />
+            <element signature="e#2194#2195#0" expanded="true" />
+            <element signature="e#2221#2222#0" expanded="true" />
+            <element signature="e#4989#4990#0" expanded="true" />
+            <element signature="e#5016#5017#0" expanded="true" />
+            <element signature="e#7260#7261#0" expanded="true" />
+            <element signature="e#7284#7285#0" expanded="true" />
+            <element signature="e#7390#7391#0" expanded="true" />
+            <element signature="e#7417#7418#0" expanded="true" />
+            <element signature="e#7495#7496#0" expanded="true" />
+            <element signature="e#7522#7523#0" expanded="true" />
+            <element signature="e#7600#7601#0" expanded="true" />
+            <element signature="e#7627#7628#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1076,9 +1145,13 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#checkForUser#0;class#Model#0" expanded="false" />
             <element signature="method#getAlbumById#0;class#Model#0" expanded="false" />
-            <element signature="method#getNewAlbums#0;class#Model#0" expanded="false" />
+            <element signature="e#6180#6181#0" expanded="true" />
+            <element signature="e#6274#6275#0" expanded="true" />
+            <element signature="e#7903#7904#0" expanded="true" />
+            <element signature="e#7958#7959#0" expanded="true" />
+            <element signature="e#15224#15225#0" expanded="true" />
+            <element signature="e#15281#15282#0" expanded="true" />
             <element signature="method#getMovieReviews#0;class#Model#0" expanded="false" />
           </folding>
         </state>
@@ -1299,13 +1372,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/RegisterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="41" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1418,20 +1484,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/SQLQueries.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.022970904">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Album.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.022970904">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="12" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36753446">
@@ -1446,25 +1498,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/ReviewAlbumController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="70" column="61" selection-start-line="70" selection-start-column="61" selection-end-line="70" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="44" selection-start-line="103" selection-start-column="44" selection-end-line="103" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -1507,14 +1544,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="39" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongodb-driver/3.2.1/mongodb-driver-3.2.1.jar!/com/mongodb/client/MongoCollection.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34664536">
@@ -1523,37 +1552,95 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="91" column="39" selection-start-line="91" selection-start-column="39" selection-end-line="91" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/RegisterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="74" column="30" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/Model.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3333333">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="165" column="0" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#checkForUser#0;class#Model#0" expanded="false" />
             <element signature="method#getAlbumById#0;class#Model#0" expanded="false" />
-            <element signature="method#getNewAlbums#0;class#Model#0" expanded="false" />
+            <element signature="e#6180#6181#0" expanded="true" />
+            <element signature="e#6274#6275#0" expanded="true" />
+            <element signature="e#7903#7904#0" expanded="true" />
+            <element signature="e#7958#7959#0" expanded="true" />
+            <element signature="e#15224#15225#0" expanded="true" />
+            <element signature="e#15281#15282#0" expanded="true" />
             <element signature="method#getMovieReviews#0;class#Model#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.3333333">
+          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/albumControllers/AddAlbumController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/SQLQueries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Album.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="72" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/MDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2894334">
-          <caret line="110" column="25" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.48238897">
+          <caret line="41" column="38" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3153#3154#0" expanded="true" />
-            <element signature="e#3180#3181#0" expanded="true" />
-            <element signature="e#3480#3481#0" expanded="true" />
-            <element signature="e#3504#3505#0" expanded="true" />
-            <element signature="e#3610#3611#0" expanded="true" />
-            <element signature="e#3637#3638#0" expanded="true" />
-            <element signature="e#3715#3716#0" expanded="true" />
-            <element signature="e#3742#3743#0" expanded="true" />
-            <element signature="e#3820#3821#0" expanded="true" />
-            <element signature="e#3847#3848#0" expanded="true" />
+            <element signature="e#1978#1979#0" expanded="true" />
+            <element signature="e#2005#2006#0" expanded="true" />
+            <element signature="e#2070#2071#0" expanded="true" />
+            <element signature="e#2097#2098#0" expanded="true" />
+            <element signature="e#2194#2195#0" expanded="true" />
+            <element signature="e#2221#2222#0" expanded="true" />
+            <element signature="e#4989#4990#0" expanded="true" />
+            <element signature="e#5016#5017#0" expanded="true" />
+            <element signature="e#7260#7261#0" expanded="true" />
+            <element signature="e#7284#7285#0" expanded="true" />
+            <element signature="e#7390#7391#0" expanded="true" />
+            <element signature="e#7417#7418#0" expanded="true" />
+            <element signature="e#7495#7496#0" expanded="true" />
+            <element signature="e#7522#7523#0" expanded="true" />
+            <element signature="e#7600#7601#0" expanded="true" />
+            <element signature="e#7627#7628#0" expanded="true" />
           </folding>
         </state>
       </provider>
