@@ -1,9 +1,12 @@
 package models;
 
 import com.mongodb.Block;
+import com.mongodb.DB;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.sun.javadoc.Doc;
 import enums.AlbumGenre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +15,7 @@ import org.bson.types.ObjectId;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
@@ -60,25 +64,26 @@ public class MDB implements Screwdriver {
                 Document dec = (Document) document.get("Artist");
                 Iterable<Document> usr = col2.find(eq("_id",document.getString("userID")));
 
-                String ds = null;
+                String userName = null;
                 for (Document d: usr){
-                    ds = d.getString("name");
+                    userName = d.getString("name");
                 }
+
 
 
 
                 albums.add(new Album(document.getObjectId("_id").toString(),document.getString("Title")
                         ,dec.getString("Name"),tmpGenre,
                         "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQN9NO4KaEAWBNSF6zHcmlcQmHUThEoTSQNbFK_lA35O8ak-5LvDg",
-                        ds));
+                        userName));
                 System.out.println(document.toJson());
             }
 
         };
 
+
         col.find().forEach(documentBlock);
-
-
+        mongoClient.close();
         return albums;
     }
 
@@ -109,7 +114,7 @@ public class MDB implements Screwdriver {
         MongoDatabase db = mongoClient.getDatabase("mediaapp");
         MongoCollection<Document> col = db.getCollection("Artist");
         MongoCollection<Document> col1 = db.getCollection("Album");
-
+        List<DBObject> reviews = new ArrayList<DBObject>();
 
         Document document1 = new Document("Artist",artistName);
         if (document1 != null){
@@ -121,7 +126,8 @@ public class MDB implements Screwdriver {
         Document document = new Document("Title",title)
         .append("Genre",genre)
         .append("userID",userID)
-                .append("Artist",new Document("ArtistID",id).append("Name",artistName));
+                .append("Artist",new Document("ArtistID",id).append("Name",artistName))
+                .append("Review",reviews);
 
         if (document != null){
             col1.insertOne(document);
@@ -138,6 +144,8 @@ public class MDB implements Screwdriver {
         MongoDatabase db = mongoClient.getDatabase("mediaapp");
         MongoCollection<Document> col = db.getCollection("Album");
         MongoCollection<Document> col2 = db.getCollection("Artist");
+        List<DBObject> reviews = new ArrayList<DBObject>();
+
 
         ObjectId artistOBJID = new ObjectId(artistID);
         Document document1 = new Document("_id",artistOBJID);
@@ -149,8 +157,8 @@ public class MDB implements Screwdriver {
             Document document = new Document("Title",title)
                     .append("Genre",genre)
                     .append("userID",userID)
-                    .append("Artist",new Document("ArtistID",artistID).append("Name",artist.getString("Name")));
-
+                    .append("Artist",new Document("ArtistID",artistID).append("Name",artist.getString("Name")))
+                    .append("Review",reviews);
 
             if (document != null){
                 col.insertOne(document);
@@ -192,7 +200,7 @@ public class MDB implements Screwdriver {
             System.out.println(returnValue);
         }
         System.out.println("shshshshhshhshshs:"+returnValue);
-
+        mongoClient.close();
         return returnValue;
     }
 
@@ -247,7 +255,7 @@ public class MDB implements Screwdriver {
             //System.out.println(document.toJson());
 
 
-
+        mongoClient.close();
         return user;
     }
 
@@ -272,7 +280,7 @@ public class MDB implements Screwdriver {
         //System.out.println(document.toJson());
 
 
-
+        mongoClient.close();
         return user;
     }
 
@@ -298,6 +306,27 @@ public class MDB implements Screwdriver {
 
     @Override
     public void insertNewReview(String userID, String mediaID, Date date, String text, int rating, int mediaType) {
+        System.out.println();
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
+        MongoCollection<Document> collUser = db.getCollection("User");
+        MongoCollection<Document> collAlbum = db.getCollection("Album");
+        MongoCollection<Document> collMovie = db.getCollection("Movie");
+
+
+        List<Document> reviews = new ArrayList<>();
+        Document user = (Document) collUser.find(eq("_id",userID));
+        String userName = user.getString("Name");
+        System.out.println("Nu plockade vi ut username: "+userName+"Från ett media");
+
+
+        if (mediaType == 1){
+            /*
+            Document document = collAlbum.find(eq("_id",mediaID)).first();
+            reviews = (List<Document>) document.get("Review");
+            reviews.add(new Document("User",userName).append("Rating",rating).append("ReviewText",text).append("Date",date));
+            */
+        }
 
     }
 

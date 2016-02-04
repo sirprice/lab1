@@ -84,15 +84,11 @@ public class RegisterController {
                                 }
                             }
                     );
-
                 }
-
             }
         };
         System.out.println("jddjdjddjdjdjjdjdjjdj");
         thread.start();
-
-
     }
 
 }

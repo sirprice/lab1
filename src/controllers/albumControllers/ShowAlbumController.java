@@ -96,13 +96,13 @@ public class ShowAlbumController implements Initializable {
 
         };thread.start();
 
-
+        System.out.println(album.getUsername()+" Här har du din jävel");
+            submittedByField.setText(album.getUsername());
             titleLabel.setText(album.getTitle());
             artistLabel.setText(album.getArtist());
             genreLabel.setText(album.getGenre().toString());
             String rating = "" + album.getRating();
             raitingLabel.setText(rating);
-            submittedByField.setText(album.getUsername());
 
             Image cover = new Image(album.getCoverUrl());
             albumCover.setImage(cover);
