@@ -112,7 +112,7 @@ public class InitFxml {
             mCtrl.setModel(model);
             mCtrl.setMain(root);
             mCtrl.setControllers(aACtrl, eACtrl, dCtrl, sACtrl, aMCtrl,eMCtrl,sMCtrl,rMCtrl,rACtrl);
-            //mCtrl.getAlbums();
+            mCtrl.getAlbums();
             //mCtrl.showMovies();
 
             // Model

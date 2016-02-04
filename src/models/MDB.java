@@ -1,20 +1,20 @@
 package models;
 
-
-import com.mongodb.BasicDBObject;
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import enums.AlbumGenre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
-import static com.mongodb.client.model.Filters.*;
-
 import java.sql.Date;
 import java.util.ArrayList;
+
+import static com.mongodb.client.model.Filters.and;
+import static com.mongodb.client.model.Filters.eq;
 
 /**
  * Created by cj on 28/01/16.
@@ -37,18 +37,40 @@ public class MDB implements Screwdriver {
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("mediaapp");
         MongoCollection<Document> col = db.getCollection("Album");
-        MongoCollection<Document> col1 = db.getCollection("Artist");
-
-        Document doc = new Document();
+        MongoCollection<Document> col2 = db.getCollection("User");
 
 
         Block<Document> documentBlock = new Block<Document>() {
+            AlbumGenre tmpGenre = AlbumGenre.OTHER;
             @Override
             public void apply(Document document) {
 
+                //Document d1 = col1.find(eq("Name",document.getString("Name")));
+                String genre = document.getString("Genre");
+
+                for (AlbumGenre a: AlbumGenre.values()){
+                    System.out.println(a.toString());
+                    if (genre.equals(a.name())){
+                        tmpGenre = a;
+                        System.out.println(a.toString());
+                        break;
+                    }
+                }
+
+                Document dec = (Document) document.get("Artist");
+                Iterable<Document> usr = col2.find(eq("_id",document.getString("userID")));
+
+                String ds = null;
+                for (Document d: usr){
+                    ds = d.getString("name");
+                }
+
+
+
                 albums.add(new Album(document.getObjectId("_id").toString(),document.getString("Title")
-                        ,document.getString("Name"),document.getString("Genre"),"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQN9NO4KaEAWBNSF6zHcmlcQmHUThEoTSQNbFK_lA35O8ak-5LvDg",
-                        document.getString("userID")));
+                        ,dec.getString("Name"),tmpGenre,
+                        "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQN9NO4KaEAWBNSF6zHcmlcQmHUThEoTSQNbFK_lA35O8ak-5LvDg",
+                        ds));
                 System.out.println(document.toJson());
             }
 
@@ -57,14 +79,7 @@ public class MDB implements Screwdriver {
         col.find().forEach(documentBlock);
 
 
-
-        /*if (document != null){
-            returnValue = document.getObjectId("_id").toString();
-            System.out.println(returnValue);
-        }*/
-        System.out.println("shshshshhshhshshs:"+returnValue);
-
-        return null;
+        return albums;
     }
 
     @Override
@@ -84,6 +99,35 @@ public class MDB implements Screwdriver {
 
     @Override
     public void insertAlbum(String title, String genre, String userID, String artistName) {
+
+
+
+        //MongoCollection<Document> col = db.getCollection("Album");
+
+
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
+        MongoCollection<Document> col = db.getCollection("Artist");
+        MongoCollection<Document> col1 = db.getCollection("Album");
+
+
+        Document document1 = new Document("Artist",artistName);
+        if (document1 != null){
+            col.insertOne(document1);
+        }
+
+        String id = getArtistByName(artistName);
+
+        Document document = new Document("Title",title)
+        .append("Genre",genre)
+        .append("userID",userID)
+                .append("Artist",new Document("ArtistID",id).append("Name",artistName));
+
+        if (document != null){
+            col1.insertOne(document);
+        }
+
+        mongoClient.close();
 
     }
 
