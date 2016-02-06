@@ -1,12 +1,9 @@
 package models;
 
 import com.mongodb.Block;
-import com.mongodb.DB;
-import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.sun.javadoc.Doc;
 import enums.AlbumGenre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -62,14 +59,15 @@ public class MDB implements Screwdriver {
                 }
 
                 Document dec = (Document) document.get("Artist");
-                Iterable<Document> usr = col2.find(eq("_id",document.getString("userID")));
-
                 String userName = null;
-                for (Document d: usr){
-                    userName = d.getString("name");
+
+                for (Document d: col2.find()){
+
+                    if (d.getObjectId("_id").toString().equals(document.getString("userID"))) {
+                        userName = d.getString("name");
+                        System.out.println("UserNamehjggygugu:   " + userName);
+                    }
                 }
-
-
 
 
                 albums.add(new Album(document.getObjectId("_id").toString(),document.getString("Title")
@@ -81,9 +79,9 @@ public class MDB implements Screwdriver {
 
         };
 
-
         col.find().forEach(documentBlock);
         mongoClient.close();
+
         return albums;
     }
 
@@ -105,32 +103,30 @@ public class MDB implements Screwdriver {
     @Override
     public void insertAlbum(String title, String genre, String userID, String artistName) {
 
-
-
-        //MongoCollection<Document> col = db.getCollection("Album");
-
-
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("mediaapp");
-        MongoCollection<Document> col = db.getCollection("Artist");
-        MongoCollection<Document> col1 = db.getCollection("Album");
-        List<DBObject> reviews = new ArrayList<DBObject>();
+        MongoCollection<Document> artistCollection = db.getCollection("Artist");
+        MongoCollection<Document> dbCollection = db.getCollection("Album");
+        List<Document> reviews = new ArrayList<>();
 
-        Document document1 = new Document("Artist",artistName);
-        if (document1 != null){
-            col.insertOne(document1);
-        }
 
-        String id = getArtistByName(artistName);
+        Document artistObj = new Document("Artist",artistName);
+        artistCollection.insertOne(artistObj);
+
+
+        artistObj = artistCollection.find(eq("Artist",artistName)).first();
+        String id = artistObj.getObjectId("_id").toString();
+        //String id = getArtistByName(artistName);
+
 
         Document document = new Document("Title",title)
-        .append("Genre",genre)
-        .append("userID",userID)
-                .append("Artist",new Document("ArtistID",id).append("Name",artistName))
-                .append("Review",reviews);
+                .append("Genre",genre)
+                .append("userID",userID)
+                .append("Artist",new Document("ArtistID",id).append("Name",artistName));
+
 
         if (document != null){
-            col1.insertOne(document);
+            dbCollection.insertOne(document);
         }
 
         mongoClient.close();
@@ -142,28 +138,29 @@ public class MDB implements Screwdriver {
 
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("mediaapp");
-        MongoCollection<Document> col = db.getCollection("Album");
-        MongoCollection<Document> col2 = db.getCollection("Artist");
-        List<DBObject> reviews = new ArrayList<DBObject>();
-
+        MongoCollection<Document> albumCollection = db.getCollection("Album");
+        MongoCollection<Document> sbCollection = db.getCollection("Artist");
+        List<Document> reviews = new ArrayList<>();
 
         ObjectId artistOBJID = new ObjectId(artistID);
-        Document document1 = new Document("_id",artistOBJID);
-        Document artist = col2.find(document1).first();
+        Document id = new Document("_id",artistOBJID);
+        Document artist = sbCollection.find(id).first();
 
-        if (document1 != null){
 
-            System.out.println(artist.toJson());
-            Document document = new Document("Title",title)
-                    .append("Genre",genre)
-                    .append("userID",userID)
-                    .append("Artist",new Document("ArtistID",artistID).append("Name",artist.getString("Name")))
-                    .append("Review",reviews);
 
-            if (document != null){
-                col.insertOne(document);
-            }
+        System.out.println(artist.toJson());
+        Document document = new Document("Title",title)
+                .append("Genre",genre)
+                .append("userID",userID)
+                .append("Artist",new Document("ArtistID",artistID).append("Name",artist.getString("Name")));
+
+
+
+
+        if (document != null){
+            albumCollection.insertOne(document);
         }
+
         mongoClient.close();
 
     }
@@ -199,7 +196,7 @@ public class MDB implements Screwdriver {
             returnValue = document.getObjectId("_id").toString();
             System.out.println(returnValue);
         }
-        System.out.println("shshshshhshhshshs:"+returnValue);
+
         mongoClient.close();
         return returnValue;
     }
@@ -251,8 +248,8 @@ public class MDB implements Screwdriver {
         }
 
 
-           // Document document = col.find().first();
-            //System.out.println(document.toJson());
+        // Document document = col.find().first();
+        //System.out.println(document.toJson());
 
 
         mongoClient.close();
@@ -289,46 +286,99 @@ public class MDB implements Screwdriver {
 
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("mediaapp");
-        MongoCollection<Document> col = db.getCollection("User");
+        MongoCollection<Document> userCollection = db.getCollection("User");
 
 
 
         Document document = new Document("name",username)
                 .append("password",password);
 
-                //col.find(eq("name",username)).first();
+        //col.find(eq("name",username)).first();
 
         if (document != null){
-            col.insertOne(document);
+            userCollection.insertOne(document);
         }
         mongoClient.close();
     }
 
     @Override
     public void insertNewReview(String userID, String mediaID, Date date, String text, int rating, int mediaType) {
-        System.out.println();
+
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("mediaapp");
         MongoCollection<Document> collUser = db.getCollection("User");
         MongoCollection<Document> collAlbum = db.getCollection("Album");
-        MongoCollection<Document> collMovie = db.getCollection("Movie");
-
-
-        List<Document> reviews = new ArrayList<>();
-        Document user = (Document) collUser.find(eq("_id",userID));
-        String userName = user.getString("Name");
-        System.out.println("Nu plockade vi ut username: "+userName+"Från ett media");
+        // MongoCollection<Document> collMovie = db.getCollection("Movie");
 
 
         if (mediaType == 1){
-            /*
-            Document document = collAlbum.find(eq("_id",mediaID)).first();
-            reviews = (List<Document>) document.get("Review");
-            reviews.add(new Document("User",userName).append("Rating",rating).append("ReviewText",text).append("Date",date));
-            */
-        }
 
+            System.out.println("UserID:  "+userID);
+            //Document user = collUser.find(e).first();
+            String userName = null;
+            for (Document d: collUser.find()){
+
+                if (d.getObjectId("_id").toString().equals(userID)) {
+                    userName = d.getString("name");
+                    break;
+                    //System.out.println("UserNamehjggygugu:   " + userName);
+                }
+            }
+
+            //FindIterable<Document> d = collAlbum.find(new Document("_id",new ObjectId(mediaID)));
+            // ArrayList<Document> bajs = (ArrayList<Document>) d.first().get("Review");
+
+            /*for(Document k: bajs){
+
+                System.out.println(k.toJson());
+            }*/
+
+
+            List<Document> reviews = new ArrayList<>();
+            Document tmp = new Document("Datum",date);
+            tmp.append("userID",userID)
+                    .append("text",text)
+                    .append("Rating",rating);
+
+            //System.out.println(tmp.toJson());
+            System.out.println("MediaID:    " + mediaID);
+            collAlbum.updateOne(new Document("_id",new ObjectId(mediaID)),new Document("$push",
+                    new Document("Review",tmp)));
+
+            reviews.add(tmp);
+
+
+            //collAlbum.insertOne(tmp);
+            //collAlbum.push("Review",reviews);
+
+            //Document doc = collAlbum.find();
+
+            // System.out.println(userName);
+            //String userName = user.getString("Name");
+            /*List<Review> reviews = new ArrayList<>();
+            Document document = new Document();
+            System.out.println("Nu plockade vi ut username: "+userName+"Från ett media");
+            for (Document a: collAlbum.find()){
+                if (a.getObjectId("_id").toString().equals(mediaID)) {
+                    reviews = (List<Review>) a.get("Review");
+                    //System.out.println("UserNamehjggygugu:   " + userName);
+                }
+            }*/
+
+            //Document document = collAlbum.find(eq("_id",mediaID)).first();
+            //System.out.println(document.toJson());
+            //Review review = new Review(date,0,text,userID,userName);
+
+            //  reviews.add(review);
+
+
+            //document.put("shuirface",reviews);
+
+
+        }
     }
+
+
 
     @Override
     public double getAvgRating(String id, int mediaType) {
