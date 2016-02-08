@@ -303,7 +303,7 @@ public class MDB implements Screwdriver {
 
     @Override
     public void insertNewReview(String userID, String mediaID, Date date, String text, int rating, int mediaType) {
-
+        String userName = null;
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("mediaapp");
         MongoCollection<Document> collUser = db.getCollection("User");
@@ -314,38 +314,21 @@ public class MDB implements Screwdriver {
         if (mediaType == 1){
 
             System.out.println("UserID:  "+userID);
-            //Document user = collUser.find(e).first();
-            String userName = null;
-            for (Document d: collUser.find()){
 
-                if (d.getObjectId("_id").toString().equals(userID)) {
-                    userName = d.getString("name");
-                    break;
-                    //System.out.println("UserNamehjggygugu:   " + userName);
-                }
-            }
-
-            //FindIterable<Document> d = collAlbum.find(new Document("_id",new ObjectId(mediaID)));
-            // ArrayList<Document> bajs = (ArrayList<Document>) d.first().get("Review");
-
-            /*for(Document k: bajs){
-
-                System.out.println(k.toJson());
-            }*/
-
+            userName = collUser.find(new Document("_id",new ObjectId(userID))).first().getString("name");
+            System.out.println("username son gjorde reviewn: " +userName);
 
             List<Document> reviews = new ArrayList<>();
             Document tmp = new Document("Datum",date);
-            tmp.append("userID",userID)
+            tmp.append("userName",userName)
                     .append("text",text)
                     .append("Rating",rating);
 
-            //System.out.println(tmp.toJson());
             System.out.println("MediaID:    " + mediaID);
             collAlbum.updateOne(new Document("_id",new ObjectId(mediaID)),new Document("$push",
                     new Document("Review",tmp)));
 
-            reviews.add(tmp);
+            //reviews.add(tmp);
 
 
             //collAlbum.insertOne(tmp);
@@ -392,6 +375,7 @@ public class MDB implements Screwdriver {
 
     @Override
     public ArrayList<Review> getAlbumReviews(String albumID) {
+
         return null;
     }
 
