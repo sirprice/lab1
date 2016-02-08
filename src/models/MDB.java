@@ -1,9 +1,10 @@
 package models;
 
-import com.mongodb.Block;
-import com.mongodb.MongoClient;
+import com.mongodb.*;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.sun.javadoc.Doc;
 import enums.AlbumGenre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -45,18 +46,6 @@ public class MDB implements Screwdriver {
             AlbumGenre tmpGenre = AlbumGenre.OTHER;
             @Override
             public void apply(Document document) {
-
-                //Document d1 = col1.find(eq("Name",document.getString("Name")));
-                String genre = document.getString("Genre");
-
-                for (AlbumGenre a: AlbumGenre.values()){
-                    System.out.println(a.toString());
-                    if (genre.equals(a.name())){
-                        tmpGenre = a;
-                        System.out.println(a.toString());
-                        break;
-                    }
-                }
 
                 Document dec = (Document) document.get("Artist");
                 String userName = null;
@@ -122,7 +111,8 @@ public class MDB implements Screwdriver {
         Document document = new Document("Title",title)
                 .append("Genre",genre)
                 .append("userID",userID)
-                .append("Artist",new Document("ArtistID",id).append("Name",artistName));
+                .append("Artist",new Document("ArtistID",id).append("Name",artistName))
+                .append("Review",reviews);
 
 
         if (document != null){
@@ -152,7 +142,8 @@ public class MDB implements Screwdriver {
         Document document = new Document("Title",title)
                 .append("Genre",genre)
                 .append("userID",userID)
-                .append("Artist",new Document("ArtistID",artistID).append("Name",artist.getString("Name")));
+                .append("Artist",new Document("ArtistID",artistID).append("Name",artist.getString("Name")))
+                .append("Review",reviews);
 
 
 
@@ -228,7 +219,21 @@ public class MDB implements Screwdriver {
 
     @Override
     public String getDirectorByName(String name) {
-        return name;
+        String returnValue = null;
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
+        MongoCollection<Document> col = db.getCollection("Director");
+
+        Document document = col.find(eq("Name",name)).first();
+        System.out.println("försökte finna jesus med namn:  " + name);
+
+        if (document != null){
+            returnValue = document.getObjectId("_id").toString();
+            System.out.println(returnValue);
+        }
+
+        mongoClient.close();
+        return returnValue;
     }
 
     @Override
@@ -303,61 +308,35 @@ public class MDB implements Screwdriver {
 
     @Override
     public void insertNewReview(String userID, String mediaID, Date date, String text, int rating, int mediaType) {
-        String userName = null;
+        String userName;
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("mediaapp");
-        MongoCollection<Document> collUser = db.getCollection("User");
-        MongoCollection<Document> collAlbum = db.getCollection("Album");
-        // MongoCollection<Document> collMovie = db.getCollection("Movie");
 
+        userName = db.getCollection("User").find(new Document("_id",new ObjectId(userID))).first().getString("name");
 
         if (mediaType == 1){
 
-            System.out.println("UserID:  "+userID);
-
-            userName = collUser.find(new Document("_id",new ObjectId(userID))).first().getString("name");
-            System.out.println("username son gjorde reviewn: " +userName);
-
-            List<Document> reviews = new ArrayList<>();
             Document tmp = new Document("Datum",date);
             tmp.append("userName",userName)
+                    .append("userID", userID)
                     .append("text",text)
                     .append("Rating",rating);
 
             System.out.println("MediaID:    " + mediaID);
-            collAlbum.updateOne(new Document("_id",new ObjectId(mediaID)),new Document("$push",
+            db.getCollection("Album").updateOne(new Document("_id",new ObjectId(mediaID)),new Document("$push",
                     new Document("Review",tmp)));
+        }
+        if (mediaType == 2){
 
-            //reviews.add(tmp);
+            Document tmp = new Document("Datum",date);
+            tmp.append("userName",userName)
+                    .append("userID", userID)
+                    .append("text",text)
+                    .append("Rating",rating);
 
-
-            //collAlbum.insertOne(tmp);
-            //collAlbum.push("Review",reviews);
-
-            //Document doc = collAlbum.find();
-
-            // System.out.println(userName);
-            //String userName = user.getString("Name");
-            /*List<Review> reviews = new ArrayList<>();
-            Document document = new Document();
-            System.out.println("Nu plockade vi ut username: "+userName+"Från ett media");
-            for (Document a: collAlbum.find()){
-                if (a.getObjectId("_id").toString().equals(mediaID)) {
-                    reviews = (List<Review>) a.get("Review");
-                    //System.out.println("UserNamehjggygugu:   " + userName);
-                }
-            }*/
-
-            //Document document = collAlbum.find(eq("_id",mediaID)).first();
-            //System.out.println(document.toJson());
-            //Review review = new Review(date,0,text,userID,userName);
-
-            //  reviews.add(review);
-
-
-            //document.put("shuirface",reviews);
-
-
+            System.out.println("MediaID:    " + mediaID);
+            db.getCollection("Movie").updateOne(new Document("_id",new ObjectId(mediaID)),new Document("$push",
+                    new Document("Review",tmp)));
         }
     }
 
@@ -365,23 +344,104 @@ public class MDB implements Screwdriver {
 
     @Override
     public double getAvgRating(String id, int mediaType) {
-        return 0;
+
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
+        int sum = 0;
+        double average = 0;
+        if (mediaType == 1){
+            Document album = db.getCollection("Album").find(new Document("_id",new ObjectId(id))).first();
+            ArrayList<Document> revDocs = (ArrayList<Document>) album.get("Review");
+            if (revDocs.size()>0){
+                for (Document d: revDocs){
+                    sum += d.getInteger("Rating");
+                }
+                average = (double) sum/revDocs.size();
+            }
+        }
+        if (mediaType == 2){
+            Document album = db.getCollection("Movie").find(new Document("_id",new ObjectId(id))).first();
+            ArrayList<Document> revDocs = (ArrayList<Document>) album.get("Review");
+
+            if (revDocs.size()>0){
+                for (Document d: revDocs){
+                    sum += d.getInteger("Rating");
+                }
+                average = (double) sum/revDocs.size();
+            }
+        }
+
+        return average;
     }
 
     @Override
     public Review checkIfReviewAlreadyExist(String usrID, String mediaID, int mediaType) {
-        return null;
+        System.out.println("Nu försöker vi hämta reviews");
+
+        Review review = null;
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
+
+        if (mediaType == 1){
+            Document album = db.getCollection("Album").find(new Document("_id",new ObjectId(mediaID))).first();
+            ArrayList<Document> revDocs = (ArrayList<Document>) album.get("Review");
+            for (Document d: revDocs){
+                if (d.getString("userID").equals(usrID)){
+                    review = new Review(d.getDate("Datum"),d.getInteger("Rating"), d.getString("Text"), d.getString("userName"));
+                }
+            }
+        }
+        if (mediaType == 2){
+            Document album = db.getCollection("Movie").find(new Document("_id",new ObjectId(mediaID))).first();
+            ArrayList<Document> revDocs = (ArrayList<Document>) album.get("Review");
+            for (Document d: revDocs){
+                if (d.getString("userID").equals(usrID)){
+                    review = new Review(d.getDate("Datum"),d.getInteger("Rating"), d.getString("Text"), d.getString("userName"));
+                }
+            }
+        }
+        return review;
     }
 
     @Override
     public ArrayList<Review> getAlbumReviews(String albumID) {
 
-        return null;
+        System.out.println("Nu försöker vi hämta reviews");
+
+        ArrayList<Review> reviews = new ArrayList<>();
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
+        MongoCollection<Document> collAlbum = db.getCollection("Album");
+
+        Document album = collAlbum.find(new Document("_id",new ObjectId(albumID))).first();
+        System.out.println(album.toJson());
+
+        ArrayList<Document> revDocs = (ArrayList<Document>) album.get("Review");
+        for (Document d: revDocs){
+            reviews.add(new Review(d.getDate("Datum"),d.getInteger("Rating"), d.getString("Text"), d.getString("userName")));
+        }
+
+        return reviews;
     }
 
     @Override
     public ArrayList<Review> getMovieReviews(String movieID) {
-        return null;
+        System.out.println("Nu försöker vi hämta reviews");
+
+        ArrayList<Review> reviews = new ArrayList<>();
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
+        MongoCollection<Document> collAlbum = db.getCollection("Movie");
+
+        Document album = collAlbum.find(new Document("_id",new ObjectId(movieID))).first();
+        System.out.println(album.toJson());
+
+        ArrayList<Document> revDocs = (ArrayList<Document>) album.get("Review");
+        for (Document d: revDocs){
+            reviews.add(new Review(d.getDate("Datum"),d.getInteger("Rating"), d.getString("Text"), d.getString("userName")));
+        }
+
+        return reviews;
     }
 
     @Override

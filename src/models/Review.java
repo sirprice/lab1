@@ -12,7 +12,6 @@ public class Review {
     private Date date;
     private int rating;
     private String text;
-    private String userID;
     private int albumID;
     private String username;
 
@@ -22,11 +21,10 @@ public class Review {
         this.rating = rating;
         this.text = text;
     }
-    public Review(Date date, int rating, String text, String userID, String username) {
+    public Review(Date date, int rating, String text, String username) {
         this.date = date;
         this.rating = rating;
         this.text = text;
-        this.userID = userID;
         this.username = username;
     }
 

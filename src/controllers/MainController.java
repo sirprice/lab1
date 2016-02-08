@@ -162,10 +162,13 @@ public class MainController implements Initializable {
     }
 
     public void editAlbum(ActionEvent e) {
+        throw new UnsupportedOperationException();
+        /*
         Album selected = albumTable.getSelectionModel().getSelectedItem();
         if (!(selected == null)){
             editAlbumController.editAlbumItems(selected);
         }
+        */
     }
 
     public void searchForAlbum(){
@@ -199,10 +202,13 @@ public class MainController implements Initializable {
     // - - - - - - - - - - Movies - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     public void editMovie() {
+        throw new UnsupportedOperationException();
+        /*
         Movie selected = movieTable.getSelectionModel().getSelectedItem();
         if (!(selected == null)) {
             editMovieController.editMovieItems();
         }
+        */
     }
 
     public void reviewMovie(){

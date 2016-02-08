@@ -71,23 +71,19 @@ public class ReviewAlbumController implements Initializable{
                 userReview = model.getAlbumReview(model.getUser().getUserID(),album.getAlbumID());
                 System.out.println("efter" + userReview);
                 if (userReview != null){
-                    javafx.application.Platform.runLater(
-                            new Runnable() {
-                                @Override
-                                public void run() {
-                                    System.out.println(userReview);
-                                    textReview.setText(userReview.getText());
-                                    for (RadioButton rb : radioButtons){
-                                        if (userReview.getRating() == Integer.parseInt(rb.getText()))
-                                            rb.setSelected(true);
-                                    }
-                                }
-                            }
-                    );
+                    throw new UnsupportedOperationException();
                 }
+                javafx.application.Platform.runLater(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                reviewStage.show();
+                            }
+                        }
+                );
             }
         };thread.start();
-        reviewStage.show();
+
     }
 
     public void setAlbumTable(Album selectedAlbum){
@@ -131,15 +127,7 @@ public class ReviewAlbumController implements Initializable{
             }
         }
         if (userReview != null){
-            if (userReview.getRating() != rating || !userReview.getText().equals(textReview) ) {
-                System.out.println("uppdaterar");
-                model.updateAlbumReview(model.getUser().getUserID(),album.getAlbumID(),sqlDate,textReview.getText(),rating);
-                reviewStage.close();
-                clearFields();
-            }else {
-                reviewStage.close();
-                clearFields();
-            }
+            throw new UnsupportedOperationException();
         }
     }
 
