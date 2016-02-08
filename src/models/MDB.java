@@ -194,12 +194,52 @@ public class MDB implements Screwdriver {
 
     @Override
     public void insertMovie(String title, String genre, String userID, String directorName) {
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
+        List<Document> reviews = new ArrayList<>();
 
+        Document director = new Document("Director",directorName);
+        db.getCollection("Director").insertOne(director);
+
+        director = db.getCollection("Director").find(eq("Director",directorName)).first();
+        String id = director.getObjectId("_id").toString();
+
+        Document document = new Document("Title",title)
+                .append("Genre",genre)
+                .append("userID",userID)
+                .append("Director",new Document("DirectorID",id).append("Name",directorName))
+                .append("Review",reviews);
+
+
+        if (document != null){
+            db.getCollection("Movie").insertOne(document);
+        }
+
+        mongoClient.close();
     }
 
     @Override
     public void insertMovieOnly(String title, String genre, String userID, String directorID) {
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
+        List<Document> reviews = new ArrayList<>();
 
+        Document director = db.getCollection("Director").find(new Document("_id",directorID)).first();
+        String id = director.getObjectId("_id").toString();
+        String directorName = director.getString("Name");
+
+        Document document = new Document("Title",title)
+                .append("Genre",genre)
+                .append("userID",userID)
+                .append("Director",new Document("DirectorID",id).append("Name",directorName))
+                .append("Review",reviews);
+
+
+        if (document != null){
+            db.getCollection("Movie").insertOne(document);
+        }
+
+        mongoClient.close();
     }
 
     @Override

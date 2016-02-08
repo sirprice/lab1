@@ -6,12 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3dc3a3fa-aca5-4429-8314-fcfca43ec48d" name="Default" comment="getmovie works">
+    <list default="true" id="3dc3a3fa-aca5-4429-8314-fcfca43ec48d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/albumControllers/ReviewAlbumController.java" afterPath="$PROJECT_DIR$/src/controllers/albumControllers/ReviewAlbumController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/MDB.java" afterPath="$PROJECT_DIR$/src/models/MDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Review.java" afterPath="$PROJECT_DIR$/src/models/Review.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -61,8 +58,8 @@
       <file leaf-file-name="MDB.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/models/MDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6334405">
-              <caret line="228" column="0" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.63022506">
+              <caret line="226" column="102" selection-start-line="226" selection-start-column="102" selection-end-line="226" selection-end-column="102" />
               <folding>
                 <element signature="docComment;class#MDB#0" expanded="false" />
                 <element signature="method#MDB#0;class#MDB#0" expanded="false" />
@@ -71,16 +68,13 @@
                 <element signature="method#apply#0;class#1121:2106" expanded="false" />
                 <element signature="method#alterAlbum#0;class#MDB#0" expanded="false" />
                 <element signature="method#alterAlbumOnly#0;class#MDB#0" expanded="false" />
-                <element signature="method#dropAlbum#0;class#MDB#0" expanded="false" />
-                <element signature="method#insertMovie#0;class#MDB#0" expanded="false" />
-                <element signature="method#insertMovieOnly#0;class#MDB#0" expanded="false" />
                 <element signature="method#alterMovie#0;class#MDB#0" expanded="false" />
                 <element signature="method#alterMovieOnly#0;class#MDB#0" expanded="false" />
                 <element signature="method#dropMovie#0;class#MDB#0" expanded="false" />
                 <element signature="method#userAuthentication#0;class#MDB#0" expanded="false" />
-                <element signature="e#7575#7617#0" expanded="false" />
+                <element signature="e#9223#9265#0" expanded="false" />
                 <element signature="method#getUser#0;class#MDB#0" expanded="false" />
-                <element signature="e#8315#8357#0" expanded="false" />
+                <element signature="e#9963#10005#0" expanded="false" />
                 <element signature="method#insertNewUser#0;class#MDB#0" expanded="false" />
                 <element signature="method#deleteReview#0;class#MDB#0" expanded="false" />
                 <element signature="method#updateReview#0;class#MDB#0" expanded="false" />
@@ -217,8 +211,8 @@
         <option value="$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java" />
         <option value="$PROJECT_DIR$/src/models/Review.java" />
         <option value="$PROJECT_DIR$/src/controllers/albumControllers/ReviewAlbumController.java" />
-        <option value="$PROJECT_DIR$/src/models/MDB.java" />
         <option value="$PROJECT_DIR$/src/controllers/MainController.java" />
+        <option value="$PROJECT_DIR$/src/models/MDB.java" />
       </list>
     </option>
   </component>
@@ -238,8 +232,8 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="110" />
-    <option name="y" value="304" />
+    <option name="x" value="22" />
+    <option name="y" value="23" />
     <option name="width" value="2355" />
     <option name="height" value="1053" />
   </component>
@@ -955,7 +949,7 @@
       <workItem from="1454532118184" duration="3670000" />
       <workItem from="1454577952809" duration="12652000" />
       <workItem from="1454865239658" duration="2822000" />
-      <workItem from="1454931310138" duration="13156000" />
+      <workItem from="1454931310138" duration="15561000" />
     </task>
     <task id="LOCAL-00001" summary=":)">
       <created>1450285729213</created>
@@ -1167,11 +1161,17 @@
       <option name="project" value="LOCAL" />
       <updated>1454923962706</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="getmovie works">
+      <created>1454947668785</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1454947668785</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="260750000" />
+    <option name="totallyTimeSpent" value="263155000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1183,7 +1183,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="110" y="304" width="2355" height="1053" extended-state="0" />
+    <frame x="22" y="23" width="2355" height="1053" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1735,8 +1735,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/MDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6334405">
-          <caret line="228" column="0" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.63022506">
+          <caret line="226" column="102" selection-start-line="226" selection-start-column="102" selection-end-line="226" selection-end-column="102" />
           <folding>
             <element signature="docComment;class#MDB#0" expanded="false" />
             <element signature="method#MDB#0;class#MDB#0" expanded="false" />
@@ -1745,16 +1745,13 @@
             <element signature="method#apply#0;class#1121:2106" expanded="false" />
             <element signature="method#alterAlbum#0;class#MDB#0" expanded="false" />
             <element signature="method#alterAlbumOnly#0;class#MDB#0" expanded="false" />
-            <element signature="method#dropAlbum#0;class#MDB#0" expanded="false" />
-            <element signature="method#insertMovie#0;class#MDB#0" expanded="false" />
-            <element signature="method#insertMovieOnly#0;class#MDB#0" expanded="false" />
             <element signature="method#alterMovie#0;class#MDB#0" expanded="false" />
             <element signature="method#alterMovieOnly#0;class#MDB#0" expanded="false" />
             <element signature="method#dropMovie#0;class#MDB#0" expanded="false" />
             <element signature="method#userAuthentication#0;class#MDB#0" expanded="false" />
-            <element signature="e#7575#7617#0" expanded="false" />
+            <element signature="e#9223#9265#0" expanded="false" />
             <element signature="method#getUser#0;class#MDB#0" expanded="false" />
-            <element signature="e#8315#8357#0" expanded="false" />
+            <element signature="e#9963#10005#0" expanded="false" />
             <element signature="method#insertNewUser#0;class#MDB#0" expanded="false" />
             <element signature="method#deleteReview#0;class#MDB#0" expanded="false" />
             <element signature="method#updateReview#0;class#MDB#0" expanded="false" />
