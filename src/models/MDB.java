@@ -6,6 +6,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.sun.javadoc.Doc;
 import enums.AlbumGenre;
+import enums.MovieGenre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.bson.Document;
@@ -33,31 +34,17 @@ public class MDB implements Screwdriver {
 
     @Override
     public ObservableList<Album> getAllAlbums() {
-
-        String returnValue = null;
         ObservableList<Album> albums = FXCollections.observableArrayList();
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("mediaapp");
-        MongoCollection<Document> col = db.getCollection("Album");
-        MongoCollection<Document> col2 = db.getCollection("User");
 
 
         Block<Document> documentBlock = new Block<Document>() {
             AlbumGenre tmpGenre = AlbumGenre.OTHER;
             @Override
             public void apply(Document document) {
-
+                String userName = db.getCollection("User").find(new Document("_id", new ObjectId(document.getString("userID")))).first().getString("name");
                 Document dec = (Document) document.get("Artist");
-                String userName = null;
-
-                for (Document d: col2.find()){
-
-                    if (d.getObjectId("_id").toString().equals(document.getString("userID"))) {
-                        userName = d.getString("name");
-                        System.out.println("UserNamehjggygugu:   " + userName);
-                    }
-                }
-
 
                 albums.add(new Album(document.getObjectId("_id").toString(),document.getString("Title")
                         ,dec.getString("Name"),tmpGenre,
@@ -68,7 +55,7 @@ public class MDB implements Screwdriver {
 
         };
 
-        col.find().forEach(documentBlock);
+        db.getCollection("Album").find().forEach(documentBlock);
         mongoClient.close();
 
         return albums;
@@ -78,12 +65,31 @@ public class MDB implements Screwdriver {
     public ObservableList<Album> getAlbumsBySearch(String searchWord, int item) {
         return null;
     }
-
     @Override
     public ObservableList<Movie> getAllMovies() {
-        return null;
-    }
+        ObservableList<Movie> movies = FXCollections.observableArrayList();
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
 
+        Block<Document> documentBlock = new Block<Document>() {
+            MovieGenre tmpGenre = MovieGenre.OTHER;
+            @Override
+            public void apply(Document document) {
+                String userName = db.getCollection("User").find(new Document("_id", new ObjectId(document.getString("userID")))).first().getString("name");
+                Document directorDoc = (Document) document.get("Director");
+
+                movies.add(new Movie(document.getObjectId("_id").toString(),document.getString("Title"),directorDoc.getString("Director"),tmpGenre,
+                        "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQN9NO4KaEAWBNSF6zHcmlcQmHUThEoTSQNbFK_lA35O8ak-5LvDg", userName ));
+
+                System.out.println(document.toJson());
+            }
+        };
+
+        db.getCollection("Movie").find().forEach(documentBlock);
+        mongoClient.close();
+
+        return movies;
+    }
     @Override
     public ObservableList<Movie> getMoviesBySearch(String searchWord, int item) {
         return null;
@@ -169,7 +175,10 @@ public class MDB implements Screwdriver {
 
     @Override
     public void dropAlbum(String albumID) {
-
+        System.out.println("Dropping album");
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
+        db.getCollection("Album").findOneAndDelete(new Document("_id", albumID));
     }
 
     @Override

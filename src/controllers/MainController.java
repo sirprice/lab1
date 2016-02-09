@@ -187,16 +187,18 @@ public class MainController implements Initializable {
             System.out.println("Search for Artist");
             model.getSearchForAlbums(albumSearchField.getText(), 2);
         }
-
     }
 
     public void deleteAlbum(){
+        throw new UnsupportedOperationException();
+        /*
         Thread thread = new Thread(){
             public void run(){
                 deleteController.deleteAlbum(albumTable.getSelectionModel().getSelectedItem());
                 getAlbums();
             }
         };thread.start();
+        */
     }
 
     // - - - - - - - - - - Movies - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -235,12 +237,15 @@ public class MainController implements Initializable {
         addMovieController.createMovie();
     }
     public void deleteMovie(){
+        throw new UnsupportedOperationException();
+        /*
         Thread thread = new Thread(){
             public void run(){
                 deleteController.deleteMovie(movieTable.getSelectionModel().getSelectedItem());
                 showMovies();
             }
         };thread.start();
+        */
     }
 
     public void getAllMovieRatings(){
