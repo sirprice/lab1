@@ -81,12 +81,13 @@ public class MDB implements Screwdriver {
                 movies.add(new Movie(document.getObjectId("_id").toString(),document.getString("Title"),directorDoc.getString("Director"),tmpGenre,
                         "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQN9NO4KaEAWBNSF6zHcmlcQmHUThEoTSQNbFK_lA35O8ak-5LvDg", userName ));
 
-                System.out.println(document.toJson());
+
             }
         };
 
         db.getCollection("Movie").find().forEach(documentBlock);
         mongoClient.close();
+        System.out.println(movies.toString());
 
         return movies;
     }

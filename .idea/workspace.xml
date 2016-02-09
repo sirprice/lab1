@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3dc3a3fa-aca5-4429-8314-fcfca43ec48d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/controllers/MainController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/InitFxml.java" afterPath="$PROJECT_DIR$/src/main/InitFxml.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/MDB.java" afterPath="$PROJECT_DIR$/src/models/MDB.java" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
@@ -37,36 +37,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RegisterController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/LoginRegisterController/RegisterController.java">
+      <file leaf-file-name="MDB.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/MDB.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="74" column="30" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
+              <caret line="89" column="44" selection-start-line="89" selection-start-column="44" selection-end-line="89" selection-end-column="44" />
               <folding>
-                <element signature="n#!!doc" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#719#720#0" expanded="false" />
-                <element signature="e#753#754#0" expanded="false" />
-                <element signature="e#1035#1036#0" expanded="false" />
-                <element signature="e#1071#1072#0" expanded="false" />
-                <element signature="e#1835#1836#0" expanded="false" />
-                <element signature="e#1946#1947#0" expanded="false" />
+                <element signature="docComment;class#MDB#0" expanded="false" />
+                <element signature="method#MDB#0;class#MDB#0" expanded="false" />
+                <element signature="e#3273#3274#0" expanded="true" />
+                <element signature="e#3300#3301#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MDB.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/models/MDB.java">
+      <file leaf-file-name="InitFxml.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/InitFxml.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6859756">
-              <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
-              <folding>
-                <element signature="docComment;class#MDB#0" expanded="false" />
-                <element signature="method#MDB#0;class#MDB#0" expanded="false" />
-                <element signature="e#3280#3281#0" expanded="true" />
-                <element signature="e#3307#3308#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="115" column="12" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -104,11 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="188" column="9" selection-start-line="188" selection-start-column="9" selection-end-line="188" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.5152439">
+              <caret line="247" column="10" selection-start-line="247" selection-start-column="10" selection-end-line="247" selection-end-column="10" />
               <folding>
                 <element signature="e#7879#7880#0" expanded="true" />
                 <element signature="e#7915#7916#0" expanded="true" />
@@ -215,12 +206,12 @@
         <option value="$PROJECT_DIR$/src/controllers/DeleteController.java" />
         <option value="$PROJECT_DIR$/src/controllers/movieControllers/AddMovieController.java" />
         <option value="$PROJECT_DIR$/src/models/Model.java" />
-        <option value="$PROJECT_DIR$/src/main/InitFxml.java" />
         <option value="$PROJECT_DIR$/src/controllers/albumControllers/ShowAlbumController.java" />
         <option value="$PROJECT_DIR$/src/models/Review.java" />
         <option value="$PROJECT_DIR$/src/controllers/albumControllers/ReviewAlbumController.java" />
-        <option value="$PROJECT_DIR$/src/models/MDB.java" />
         <option value="$PROJECT_DIR$/src/controllers/MainController.java" />
+        <option value="$PROJECT_DIR$/src/models/MDB.java" />
+        <option value="$PROJECT_DIR$/src/main/InitFxml.java" />
       </list>
     </option>
   </component>
@@ -957,7 +948,7 @@
       <workItem from="1454532118184" duration="3670000" />
       <workItem from="1454577952809" duration="12652000" />
       <workItem from="1454865239658" duration="2822000" />
-      <workItem from="1454931310138" duration="19203000" />
+      <workItem from="1454931310138" duration="19995000" />
     </task>
     <task id="LOCAL-00001" summary=":)">
       <created>1450285729213</created>
@@ -1181,11 +1172,17 @@
       <option name="project" value="LOCAL" />
       <updated>1454950718411</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="getmovie works">
+      <created>1455010062315</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1455010062315</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="266797000" />
+    <option name="totallyTimeSpent" value="267589000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1654,14 +1651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/InitFxml.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.5038285">
-          <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fxml/login.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -1735,28 +1724,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
+    <entry file="file://$PROJECT_DIR$/src/models/MDB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="188" column="9" selection-start-line="188" selection-start-column="9" selection-end-line="188" selection-end-column="9" />
+          <caret line="89" column="44" selection-start-line="89" selection-start-column="44" selection-end-line="89" selection-end-column="44" />
+          <folding>
+            <element signature="docComment;class#MDB#0" expanded="false" />
+            <element signature="method#MDB#0;class#MDB#0" expanded="false" />
+            <element signature="e#3273#3274#0" expanded="true" />
+            <element signature="e#3300#3301#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/InitFxml.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="115" column="12" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5152439">
+          <caret line="247" column="10" selection-start-line="247" selection-start-column="10" selection-end-line="247" selection-end-column="10" />
           <folding>
             <element signature="e#7879#7880#0" expanded="true" />
             <element signature="e#7915#7916#0" expanded="true" />
             <element signature="e#8060#8061#0" expanded="true" />
             <element signature="e#8108#8109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/MDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6859756">
-          <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
-          <folding>
-            <element signature="docComment;class#MDB#0" expanded="false" />
-            <element signature="method#MDB#0;class#MDB#0" expanded="false" />
-            <element signature="e#3280#3281#0" expanded="true" />
-            <element signature="e#3307#3308#0" expanded="true" />
           </folding>
         </state>
       </provider>
