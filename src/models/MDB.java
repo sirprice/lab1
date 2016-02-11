@@ -9,6 +9,7 @@ import enums.AlbumGenre;
 import enums.MovieGenre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -23,7 +24,7 @@ import static com.mongodb.client.model.Filters.eq;
  * Created by cj on 28/01/16.
  */
 public class MDB implements Screwdriver {
-
+    private static final String defaultURL = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQN9NO4KaEAWBNSF6zHcmlcQmHUThEoTSQNbFK_lA35O8ak-5LvDg";
 
 
     public MDB() {
@@ -40,15 +41,17 @@ public class MDB implements Screwdriver {
 
 
         Block<Document> documentBlock = new Block<Document>() {
-            AlbumGenre tmpGenre = AlbumGenre.OTHER;
+        AlbumGenre tmpGenre = AlbumGenre.OTHER;
             @Override
             public void apply(Document document) {
                 String userName = db.getCollection("User").find(new Document("_id", new ObjectId(document.getString("userID")))).first().getString("name");
                 Document dec = (Document) document.get("Artist");
 
+                tmpGenre = getAlbumGenre(document.getString("Genre"));
+
                 albums.add(new Album(document.getObjectId("_id").toString(),document.getString("Title")
                         ,dec.getString("Name"),tmpGenre,
-                        "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQN9NO4KaEAWBNSF6zHcmlcQmHUThEoTSQNbFK_lA35O8ak-5LvDg",
+                        defaultURL,
                         userName));
                 System.out.println(document.toJson());
             }
@@ -78,8 +81,11 @@ public class MDB implements Screwdriver {
                 String userName = db.getCollection("User").find(new Document("_id", new ObjectId(document.getString("userID")))).first().getString("name");
                 Document directorDoc = (Document) document.get("Director");
 
-                movies.add(new Movie(document.getObjectId("_id").toString(),document.getString("Title"),directorDoc.getString("Director"),tmpGenre,
-                        "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQN9NO4KaEAWBNSF6zHcmlcQmHUThEoTSQNbFK_lA35O8ak-5LvDg", userName ));
+                tmpGenre = getMovieGenre(document.getString("Genre"));
+
+
+                movies.add(new Movie(document.getObjectId("_id").toString(),document.getString("Title"),directorDoc.getString("Name"),tmpGenre,
+                        defaultURL, userName ));
 
 
             }
@@ -93,7 +99,69 @@ public class MDB implements Screwdriver {
     }
     @Override
     public ObservableList<Movie> getMoviesBySearch(String searchWord, int item) {
-        return null;
+        ObservableList<Movie> movies = FXCollections.observableArrayList();
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
+
+        if (item == 1){
+            Block<Document> documentBlock = new Block<Document>() {
+                MovieGenre tmpGenre = MovieGenre.OTHER;
+                @Override
+                public void apply(Document document) {
+                    String userName = db.getCollection("User").find(new Document("_id", new ObjectId(document.getString("userID")))).first().getString("name");
+                    Document directorDoc = (Document) document.get("Director");
+
+                    tmpGenre = getMovieGenre(document.getString("Genre"));
+
+                    movies.add(new Movie(document.getObjectId("_id").toString(),document.getString("Title"),directorDoc.getString("Name"),tmpGenre,
+                            defaultURL, userName ));
+                }
+            };
+            db.getCollection("Movie").find(new Document("Director.Name",new BasicDBObject("$regex",searchWord))).forEach(documentBlock);
+        }
+        if (item == 2){
+
+            Block<Document> documentBlock = new Block<Document>() {
+                MovieGenre tmpGenre = MovieGenre.OTHER;
+                @Override
+                public void apply(Document document) {
+                    String userName = db.getCollection("User").find(new Document("_id", new ObjectId(document.getString("userID")))).first().getString("name");
+                    Document directorDoc = (Document) document.get("Director");
+
+                    tmpGenre = getMovieGenre(document.getString("Genre"));
+
+                    movies.add(new Movie(document.getObjectId("_id").toString(),document.getString("Title"),directorDoc.getString("Name"),tmpGenre,
+                            defaultURL, userName ));
+                }
+            };
+            db.getCollection("Movie").find(new Document("Genre",new BasicDBObject("$regex",searchWord.toUpperCase()))).forEach(documentBlock);
+        }
+        if (item == 3){
+            Block<Document> documentBlock = new Block<Document>() {
+                MovieGenre tmpGenre = MovieGenre.OTHER;
+                @Override
+                public void apply(Document document) {
+
+                    double searchRating = Double.parseDouble(searchWord);
+                    double movieRating = getAvgRating(document.getObjectId("_id").toString(),2);
+
+                    if (movieRating >= searchRating && movieRating < searchRating+1){
+                        String userName = db.getCollection("User").find(new Document("_id", new ObjectId(document.getString("userID")))).first().getString("name");
+                        Document directorDoc = (Document) document.get("Director");
+
+                        tmpGenre = getMovieGenre(document.getString("Genre"));
+
+                        movies.add(new Movie(document.getObjectId("_id").toString(),document.getString("Title"),directorDoc.getString("Name"),tmpGenre,
+                                   defaultURL, userName ));
+                    }
+                }
+            };
+            db.getCollection("Movie").find().forEach(documentBlock);
+        }
+        mongoClient.close();
+        System.out.println(movies.toString());
+
+        return movies;
     }
 
     @Override
@@ -504,4 +572,23 @@ public class MDB implements Screwdriver {
 
     }
 
+    private AlbumGenre getAlbumGenre(String gen){
+        AlbumGenre genre = AlbumGenre.OTHER;
+        for (AlbumGenre g : AlbumGenre.values()){
+            if (g.toString().toUpperCase().equals(gen.toUpperCase())){
+                genre = g;
+            }
+        }
+        return genre;
+    }
+
+    private MovieGenre getMovieGenre(String gen){
+        MovieGenre genre = MovieGenre.OTHER;
+        for (MovieGenre g : MovieGenre.values()){
+            if (g.toString().toUpperCase().equals(gen.toUpperCase())){
+                genre = g;
+            }
+        }
+        return genre;
+    }
 }
