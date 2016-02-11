@@ -1,15 +1,14 @@
 package models;
 
-import com.mongodb.*;
-import com.mongodb.client.FindIterable;
+import com.mongodb.BasicDBObject;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.sun.javadoc.Doc;
 import enums.AlbumGenre;
 import enums.MovieGenre;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -66,7 +65,54 @@ public class MDB implements Screwdriver {
 
     @Override
     public ObservableList<Album> getAlbumsBySearch(String searchWord, int item) {
-        return null;
+
+        ObservableList<Album> albums = FXCollections.observableArrayList();
+        MongoClient mongoClient = new MongoClient();
+        MongoDatabase db = mongoClient.getDatabase("mediaapp");
+
+
+        if (item == 1){
+            Block<Document> documentBlock = new Block<Document>() {
+                @Override
+                public void apply(Document document) {
+                    String userName = db.getCollection("User").find(new Document("_id", new ObjectId(document.getString("userID")))).first().getString("name");
+                    Document artistDoc = (Document) document.get("Artist");
+
+                    AlbumGenre tmpGenre = getAlbumGenre(document.getString("Genre"));
+
+                    albums.add(new Album(document.getObjectId("_id").toString(),document.getString("Title")
+                            ,artistDoc.getString("Name"),tmpGenre,
+                            defaultURL,
+                            userName));
+                    System.out.println(document.toJson());
+                }
+            };
+            db.getCollection("Album").find(new Document("Title",new BasicDBObject("$regex",searchWord))).forEach(documentBlock);
+
+
+        }else if(item == 2){
+            Block<Document> documentBlock = new Block<Document>() {
+                @Override
+                public void apply(Document document) {
+                    String userName = db.getCollection("User").find(new Document("_id", new ObjectId(document.getString("userID")))).first().getString("name");
+                    Document artistDoc = (Document) document.get("Artist");
+
+                    AlbumGenre tmpGenre = getAlbumGenre(document.getString("Genre"));
+
+                    albums.add(new Album(document.getObjectId("_id").toString(),document.getString("Title")
+                            ,artistDoc.getString("Name"),tmpGenre,
+                            defaultURL,
+                            userName));
+                    System.out.println(document.toJson());
+                }
+            };
+            db.getCollection("Album").find(new Document("Artist.Name",new BasicDBObject("$regex",searchWord))).forEach(documentBlock);
+
+
+        }
+
+
+        return albums;
     }
     @Override
     public ObservableList<Movie> getAllMovies() {
@@ -92,6 +138,7 @@ public class MDB implements Screwdriver {
         };
 
         db.getCollection("Movie").find().forEach(documentBlock);
+
         mongoClient.close();
         System.out.println(movies.toString());
 
